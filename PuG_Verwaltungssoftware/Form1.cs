@@ -14,7 +14,6 @@ namespace PuG_Verwaltungssoftware
     {
         public Form1()
         {
-            // test
             InitializeComponent();
         }
     }
