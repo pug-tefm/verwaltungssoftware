@@ -17,9 +17,15 @@ namespace PuG_Verwaltungssoftware
             InitializeComponent();
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void miBeenden_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void mitarbeiterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+                
     }
 }
