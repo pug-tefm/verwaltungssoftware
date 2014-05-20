@@ -16,7 +16,7 @@ namespace PuG_Verwaltungssoftware
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainWindow());
+            Application.Run(new LogInWindow());
         }
     }
 }
