@@ -48,7 +48,13 @@
             this.ausschneidenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kopierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einfügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,20 +93,20 @@
             // mitarbeiterToolStripMenuItem
             // 
             this.mitarbeiterToolStripMenuItem.Name = "mitarbeiterToolStripMenuItem";
-            this.mitarbeiterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mitarbeiterToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.mitarbeiterToolStripMenuItem.Text = "Mitarbeiter";
             this.mitarbeiterToolStripMenuItem.Click += new System.EventHandler(this.mitarbeiterToolStripMenuItem_Click);
             // 
             // mitgliederToolStripMenuItem
             // 
             this.mitgliederToolStripMenuItem.Name = "mitgliederToolStripMenuItem";
-            this.mitgliederToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mitgliederToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.mitgliederToolStripMenuItem.Text = "Mitglieder";
             // 
             // kursToolStripMenuItem
             // 
             this.kursToolStripMenuItem.Name = "kursToolStripMenuItem";
-            this.kursToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kursToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.kursToolStripMenuItem.Text = "Kurs";
             // 
             // löschenToolStripMenuItem
@@ -196,11 +202,67 @@
             this.einfügenToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.einfügenToolStripMenuItem.Text = "Einfügen";
             // 
+            // tabControl
+            // 
+            this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl.ItemSize = new System.Drawing.Size(80, 110);
+            this.tabControl.Location = new System.Drawing.Point(12, 27);
+            this.tabControl.Multiline = true;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(560, 373);
+            this.tabControl.TabIndex = 1;
+            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Silver;
+            this.tabPage1.Location = new System.Drawing.Point(114, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(442, 365);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Home";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Silver;
+            this.tabPage2.Location = new System.Drawing.Point(104, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(452, 365);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Mitarbeiter";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Silver;
+            this.tabPage3.Location = new System.Drawing.Point(104, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(452, 365);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Mitglieder";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.Silver;
+            this.tabPage4.Location = new System.Drawing.Point(104, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(452, 365);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Kurse";
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 412);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -211,6 +273,7 @@
             this.Text = "P&G Verwaltungssoftware";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,6 +300,11 @@
         private System.Windows.Forms.ToolStripMenuItem ausschneidenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kopierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem einfügenToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 
