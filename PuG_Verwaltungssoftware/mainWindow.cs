@@ -67,6 +67,8 @@ namespace PuG_Verwaltungssoftware
         private void btLogin_Click(object sender, EventArgs e)
         {
             loginPanel.Hide();
+            c_DBConnect c = new c_DBConnect();
+            c.openConnection();
         }
 
         private void btExit_Click(object sender, EventArgs e)
