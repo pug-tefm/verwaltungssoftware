@@ -53,8 +53,16 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.loginPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btExit = new System.Windows.Forms.Button();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.btLogin = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
+            this.loginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -226,7 +234,7 @@
             this.tabPage1.Location = new System.Drawing.Point(114, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(442, 365);
+            this.tabPage1.Size = new System.Drawing.Size(466, 380);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             // 
@@ -245,7 +253,7 @@
             this.tabPage3.BackColor = System.Drawing.Color.Silver;
             this.tabPage3.Location = new System.Drawing.Point(114, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(442, 365);
+            this.tabPage3.Size = new System.Drawing.Size(466, 380);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Mitglieder";
             // 
@@ -254,15 +262,87 @@
             this.tabPage4.BackColor = System.Drawing.Color.Silver;
             this.tabPage4.Location = new System.Drawing.Point(114, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(442, 365);
+            this.tabPage4.Size = new System.Drawing.Size(466, 380);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Kurse";
+            // 
+            // loginPanel
+            // 
+            this.loginPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loginPanel.Controls.Add(this.pictureBox1);
+            this.loginPanel.Controls.Add(this.btExit);
+            this.loginPanel.Controls.Add(this.tbPassword);
+            this.loginPanel.Controls.Add(this.tbUsername);
+            this.loginPanel.Controls.Add(this.btLogin);
+            this.loginPanel.Location = new System.Drawing.Point(1, 0);
+            this.loginPanel.Name = "loginPanel";
+            this.loginPanel.Size = new System.Drawing.Size(583, 412);
+            this.loginPanel.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
+            this.pictureBox1.Location = new System.Drawing.Point(119, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(347, 148);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btExit
+            // 
+            this.btExit.Location = new System.Drawing.Point(373, 275);
+            this.btExit.Name = "btExit";
+            this.btExit.Size = new System.Drawing.Size(93, 32);
+            this.btExit.TabIndex = 3;
+            this.btExit.Text = "Beenden";
+            this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(116, 239);
+            this.tbPassword.MaxLength = 50;
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(350, 26);
+            this.tbPassword.TabIndex = 2;
+            this.tbPassword.Text = "Passwort";
+            this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
+            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(116, 203);
+            this.tbUsername.MaxLength = 50;
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(350, 26);
+            this.tbUsername.TabIndex = 1;
+            this.tbUsername.Text = "Benutzername";
+            this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
+            // 
+            // btLogin
+            // 
+            this.btLogin.Location = new System.Drawing.Point(116, 275);
+            this.btLogin.Name = "btLogin";
+            this.btLogin.Size = new System.Drawing.Size(251, 32);
+            this.btLogin.TabIndex = 0;
+            this.btLogin.Text = "Anmelden";
+            this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 412);
+            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,6 +355,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,6 +389,12 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel loginPanel;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.Button btExit;
+        private System.Windows.Forms.Button btLogin;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

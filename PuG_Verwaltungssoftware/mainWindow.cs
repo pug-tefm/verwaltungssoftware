@@ -63,6 +63,52 @@ namespace PuG_Verwaltungssoftware
             _stringFlags.LineAlignment = StringAlignment.Center;
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            loginPanel.Hide();
+        }
+
+        private void btExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void tbPassword_Enter(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "Passwort") {
+                tbPassword.Font = new Font(tbPassword.Font, FontStyle.Regular);
+                tbPassword.Text = "";
+                tbPassword.PasswordChar = char.Parse("*");
+            }
+        }
+
+        private void tbPassword_Leave(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "") {
+                tbPassword.Font = new Font(tbPassword.Font, FontStyle.Italic);
+                tbPassword.PasswordChar = char.Parse("\0");
+                tbPassword.Text = "Passwort";
+            }
+        }
+
+        private void tbUsername_Enter(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "Benutzername")
+            {
+                tbUsername.Font = new Font(tbUsername.Font, FontStyle.Regular);
+                tbUsername.Text = "";
+            }
+        }
+
+        private void tbUsername_Leave(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "")
+            {
+                tbUsername.Font = new Font(tbUsername.Font, FontStyle.Italic);
+                tbUsername.Text = "Benutzername";
+            }
+        }
                 
     }
 }
