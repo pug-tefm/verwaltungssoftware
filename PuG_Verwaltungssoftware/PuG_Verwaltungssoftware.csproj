@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="c_DBConnect.cs" />
+    <Compile Include="Klassen\c_DBConnect.cs" />
     <Compile Include="mainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
