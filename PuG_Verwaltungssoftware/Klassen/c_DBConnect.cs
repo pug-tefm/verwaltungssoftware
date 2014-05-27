@@ -13,7 +13,7 @@ namespace PuG_Verwaltungssoftware
         private MySqlConnection connection;
         private string server;
         private string database;
-        private string userID;
+        private string username;
         private string password;
 
         // Konstruktor
@@ -24,19 +24,19 @@ namespace PuG_Verwaltungssoftware
 
         private void initialize()
         {
-            server = "EriksServer";
-            database = "PuG_Verwaltung";
-            userID = "userID";
-            password = "password";
+            server = "rdbms.strato.de";
+            database = "DB1704156";
+            username = "U1704156";
+            password = "pugtefm2014";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + userID + ";" + "PASSWORD=" + password + ";";
+            database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
         }
 
         // Verbindung zur Datenbank herstellen
-        private bool openConnection()
+        public bool openConnection()
         {
             try
             {
@@ -55,6 +55,9 @@ namespace PuG_Verwaltungssoftware
                         break;
                     case 1045:
                         MessageBox.Show("Falscher Benutzername oder Passwort. Bitte erneut versuchen.");
+                        break;
+                    default:
+                        MessageBox.Show("Fehler: " + ex.Message);
                         break;
                 }
                 return false;
