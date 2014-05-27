@@ -27,19 +27,19 @@ namespace PuG_Verwaltungssoftware
             
         }
 
-        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
+        private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
             Brush _textBrush;
 
             // Get the item from the collection.
-            TabPage _tabPage = tabControl.TabPages[e.Index];
+            TabPage _tabPage = mainTabControl.TabPages[e.Index];
 
             // Get the real bounds for the tab rectangle.
-            Rectangle _tabBounds = tabControl.GetTabRect(e.Index);
+            Rectangle _tabBounds = mainTabControl.GetTabRect(e.Index);
 
             // Set tab size 
-            tabControl.SizeMode = TabSizeMode.Fixed;
+            mainTabControl.SizeMode = TabSizeMode.Fixed;
 
             if (e.State == DrawItemState.Selected)
             {
