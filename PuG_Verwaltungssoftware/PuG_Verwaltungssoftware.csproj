@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Klassen\c_DBConnect.cs" />
+    <Compile Include="Klassen\c_Kurse.cs" />
+    <Compile Include="Klassen\c_Mitarbeiter.cs" />
     <Compile Include="mainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
