@@ -33,10 +33,10 @@ namespace PuG_Verwaltungssoftware
             Brush _textBrush;
 
             // Get the item from the collection.
-            TabPage _tabPage = tabControl.TabPages[e.Index];
+            TabPage _tabPage = mainTabControl.TabPages[e.Index];
 
             // Get the real bounds for the tab rectangle.
-            Rectangle _tabBounds = tabControl.GetTabRect(e.Index);
+            Rectangle _tabBounds = mainTabControl.GetTabRect(e.Index);
 
             if (e.State == DrawItemState.Selected)
             {
