@@ -38,12 +38,15 @@ namespace PuG_Verwaltungssoftware
             // Get the real bounds for the tab rectangle.
             Rectangle _tabBounds = tabControl.GetTabRect(e.Index);
 
+            // Set tab size 
+            tabControl.SizeMode = TabSizeMode.Fixed;
+
             if (e.State == DrawItemState.Selected)
             {
 
                 // Draw a different background color, and don't paint a focus rectangle.
-                _textBrush = new SolidBrush(Color.Red);
-                g.FillRectangle(Brushes.CadetBlue, e.Bounds);
+                _textBrush = new SolidBrush(Color.Black);
+                g.FillRectangle(Brushes.LightSteelBlue, e.Bounds);
             }
             else
             {

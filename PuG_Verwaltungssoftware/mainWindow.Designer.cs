@@ -87,7 +87,7 @@
             this.mitgliederToolStripMenuItem,
             this.kursToolStripMenuItem});
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             // 
             // mitarbeiterToolStripMenuItem
@@ -116,7 +116,7 @@
             this.mitgliederToolStripMenuItem1,
             this.kursToolStripMenuItem1});
             this.löschenToolStripMenuItem.Name = "löschenToolStripMenuItem";
-            this.löschenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.löschenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.löschenToolStripMenuItem.Text = "Löschen";
             // 
             // mitarbeiterToolStripMenuItem1
@@ -142,7 +142,7 @@
             this.sperrenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mitgliederToolStripMenuItem2});
             this.sperrenToolStripMenuItem.Name = "sperrenToolStripMenuItem";
-            this.sperrenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sperrenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.sperrenToolStripMenuItem.Text = "Sperren";
             // 
             // mitgliederToolStripMenuItem2
@@ -154,12 +154,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(117, 6);
             // 
             // miBeenden
             // 
             this.miBeenden.Name = "miBeenden";
-            this.miBeenden.Size = new System.Drawing.Size(152, 22);
+            this.miBeenden.Size = new System.Drawing.Size(120, 22);
             this.miBeenden.Text = "Beenden";
             this.miBeenden.Click += new System.EventHandler(this.miBeenden_Click);
             // 
@@ -209,13 +209,15 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.ItemSize = new System.Drawing.Size(80, 110);
-            this.tabControl.Location = new System.Drawing.Point(12, 27);
+            this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(560, 373);
+            this.tabControl.Size = new System.Drawing.Size(584, 388);
             this.tabControl.TabIndex = 1;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             // 
@@ -225,35 +227,35 @@
             this.tabPage1.Location = new System.Drawing.Point(114, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(442, 365);
+            this.tabPage1.Size = new System.Drawing.Size(466, 380);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Silver;
-            this.tabPage2.Location = new System.Drawing.Point(104, 4);
+            this.tabPage2.Location = new System.Drawing.Point(114, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(452, 365);
+            this.tabPage2.Size = new System.Drawing.Size(442, 365);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mitarbeiter";
             // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Silver;
-            this.tabPage3.Location = new System.Drawing.Point(104, 4);
+            this.tabPage3.Location = new System.Drawing.Point(114, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(452, 365);
+            this.tabPage3.Size = new System.Drawing.Size(442, 365);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Mitglieder";
             // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.Silver;
-            this.tabPage4.Location = new System.Drawing.Point(104, 4);
+            this.tabPage4.Location = new System.Drawing.Point(114, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(452, 365);
+            this.tabPage4.Size = new System.Drawing.Size(442, 365);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Kurse";
             // 
