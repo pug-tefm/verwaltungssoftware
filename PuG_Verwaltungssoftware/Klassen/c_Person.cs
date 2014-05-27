@@ -60,6 +60,5 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             return this.adresse;
         }
-
     }
 }
