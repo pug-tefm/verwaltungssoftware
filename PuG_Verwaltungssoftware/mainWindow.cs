@@ -13,6 +13,8 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
+        c_DBConnect c = new c_DBConnect();
+        
         public mainWindow()
         {
             InitializeComponent();
@@ -68,7 +70,6 @@ namespace PuG_Verwaltungssoftware
         private void btLogin_Click(object sender, EventArgs e)
         {
             // Verbindung ueberpruefen
-            c_DBConnect c = new c_DBConnect();
             int dBConnectOk = c.openConnection();
             if (dBConnectOk == 0)
             {
@@ -89,6 +90,7 @@ namespace PuG_Verwaltungssoftware
                     if (hasRows == true)
                     {
                         loginPanel.Hide();
+                        c.closeConnection();
                     }
                     else
                     {
@@ -143,6 +145,56 @@ namespace PuG_Verwaltungssoftware
                 tbUsername.Font = new Font(tbUsername.Font, FontStyle.Italic);
                 tbUsername.Text = "Benutzername";
             }
+        }
+
+        private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
+        {
+            c.openConnection();  // Datenbank oeffnen
+            c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+            c.closeConnection(); // Datenbank schliessen
+
+            // Headertexte anpassen
+            gridMitarbeiter.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
+            gridMitarbeiter.Columns["vorname"].HeaderText = "Vorname";
+            gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
+            gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
+
+
+
+        }
+
+        private void gridMitarbeiter_SelectionChanged(object sender, EventArgs e)
+        {
+            int row = gridMitarbeiter.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
+            //MessageBox.Show(id.ToString());
+        }
+
+        private void btMaOeffnen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btMaLoeschen_Click(object sender, EventArgs e)
+        {
+            int row = gridMitarbeiter.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
+
+            DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+                c.openConnection();
+                c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
+                //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                c.closeConnection();
+            }
+
+        }
+
+        private void btMaNeu_Click(object sender, EventArgs e)
+        {
+
         }
                 
     }

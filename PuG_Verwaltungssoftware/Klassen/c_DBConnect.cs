@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace PuG_Verwaltungssoftware
 {
@@ -40,6 +41,10 @@ namespace PuG_Verwaltungssoftware
         {
             try
             {
+                //if (ConnectionState.Closed)
+                //{
+                //    connection.Open();
+                //}
                 connection.Open();
                 return 0;
             }
@@ -50,7 +55,7 @@ namespace PuG_Verwaltungssoftware
         }
 
         // Datenbankverbindung schliessen
-        private bool closeConnection()
+        public bool closeConnection()
         {
             try
             {
@@ -124,6 +129,27 @@ namespace PuG_Verwaltungssoftware
             List<string>[] list = new List<string>[3];
             return list;
         }
+
+
+
+        public void displayData(string query, DataGridView dataGridView) // SELECT
+        {
+            try
+            {
+                MySqlCommand myCommand = new MySqlCommand(query, connection);
+                MySqlDataAdapter myAdapter = new MySqlDataAdapter();
+
+                myAdapter.SelectCommand = myCommand;
+                DataTable dTable = new DataTable();
+                myAdapter.Fill(dTable);
+                dataGridView.DataSource = dTable;
+            }
+            catch (Exception ex) // Fehler
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         //Count statement
         public bool count(String query)
