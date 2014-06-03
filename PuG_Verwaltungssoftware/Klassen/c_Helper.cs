@@ -14,6 +14,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         static readonly string SaltKey = "S@LT&KEY";
         static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
+        // Methode zum Verschluesseln von Strings
         public static String encrypt(String query)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(query);
@@ -38,6 +39,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Convert.ToBase64String(cipherTextBytes);
         }
 
+        // Methode zum Entschluesseln von Strings
         public static String decrypt(String query)
         {
             byte[] cipherTextBytes = Convert.FromBase64String(query);
@@ -55,6 +57,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
 
+        // Methode zum Ueberpruefen, ob nur Nummern im String enthalten sind
         public static bool numFormat(String query)
         {
             for (int i = 0; i < query.Length; i++)
@@ -69,6 +72,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        // Methode zum Ueberpruefen ob Sonderzeichen im String enthalten sind
         public static bool wrongCharacters(String query)
         {
             for (int i = 0; i < query.Length; i++)

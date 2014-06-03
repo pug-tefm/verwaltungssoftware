@@ -149,15 +149,19 @@ namespace PuG_Verwaltungssoftware
 
         private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
         {
-            c.openConnection();  // Datenbank oeffnen
+            int dBConnectOk = c.openConnection();  // Datenbank oeffnen
             c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
             c.closeConnection(); // Datenbank schliessen
 
-            // Headertexte anpassen
-            gridMitarbeiter.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
-            gridMitarbeiter.Columns["vorname"].HeaderText = "Vorname";
-            gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
-            gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
+            if (dBConnectOk == 0)
+            {
+                // Headertexte anpassen
+                gridMitarbeiter.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
+                gridMitarbeiter.Columns["vorname"].HeaderText = "Vorname";
+                gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
+                gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
+            }
+            
 
 
 
@@ -172,7 +176,8 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaOeffnen_Click(object sender, EventArgs e)
         {
-
+            winMitarbeiterOeffnen window = new winMitarbeiterOeffnen();
+            window.Show();
         }
 
         private void btMaLoeschen_Click(object sender, EventArgs e)

@@ -51,6 +51,10 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.tabPageMitarbeiter = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
+            this.btMaLoeschen = new System.Windows.Forms.Button();
+            this.btMaOeffnen = new System.Windows.Forms.Button();
             this.btMaNeu = new System.Windows.Forms.Button();
             this.tabPageMitglieder = new System.Windows.Forms.TabPage();
             this.tabPageKurse = new System.Windows.Forms.TabPage();
@@ -61,20 +65,16 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
-            this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btMaOeffnen = new System.Windows.Forms.Button();
-            this.btMaLoeschen = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.tabPageMitarbeiter.SuspendLayout();
-            this.loginPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).BeginInit();
+            this.loginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -262,6 +262,65 @@
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gridMitarbeiter);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.btMaLoeschen);
+            this.splitContainer1.Panel2.Controls.Add(this.btMaOeffnen);
+            this.splitContainer1.Panel2.Controls.Add(this.btMaNeu);
+            this.splitContainer1.Size = new System.Drawing.Size(460, 374);
+            this.splitContainer1.SplitterDistance = 330;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // gridMitarbeiter
+            // 
+            this.gridMitarbeiter.AllowUserToAddRows = false;
+            this.gridMitarbeiter.AllowUserToDeleteRows = false;
+            this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
+            this.gridMitarbeiter.MultiSelect = false;
+            this.gridMitarbeiter.Name = "gridMitarbeiter";
+            this.gridMitarbeiter.ReadOnly = true;
+            this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridMitarbeiter.Size = new System.Drawing.Size(460, 330);
+            this.gridMitarbeiter.TabIndex = 0;
+            this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
+            // 
+            // btMaLoeschen
+            // 
+            this.btMaLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btMaLoeschen.Location = new System.Drawing.Point(92, 0);
+            this.btMaLoeschen.Name = "btMaLoeschen";
+            this.btMaLoeschen.Size = new System.Drawing.Size(92, 40);
+            this.btMaLoeschen.TabIndex = 3;
+            this.btMaLoeschen.Text = "Löschen";
+            this.btMaLoeschen.UseVisualStyleBackColor = true;
+            this.btMaLoeschen.Click += new System.EventHandler(this.btMaLoeschen_Click);
+            // 
+            // btMaOeffnen
+            // 
+            this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btMaOeffnen.Location = new System.Drawing.Point(334, 0);
+            this.btMaOeffnen.Name = "btMaOeffnen";
+            this.btMaOeffnen.Size = new System.Drawing.Size(126, 40);
+            this.btMaOeffnen.TabIndex = 2;
+            this.btMaOeffnen.Text = "Öffnen";
+            this.btMaOeffnen.UseVisualStyleBackColor = true;
+            this.btMaOeffnen.Click += new System.EventHandler(this.btMaOeffnen_Click);
+            // 
             // btMaNeu
             // 
             this.btMaNeu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -373,64 +432,6 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
-            // gridMitarbeiter
-            // 
-            this.gridMitarbeiter.AllowUserToAddRows = false;
-            this.gridMitarbeiter.AllowUserToDeleteRows = false;
-            this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
-            this.gridMitarbeiter.MultiSelect = false;
-            this.gridMitarbeiter.Name = "gridMitarbeiter";
-            this.gridMitarbeiter.ReadOnly = true;
-            this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(460, 330);
-            this.gridMitarbeiter.TabIndex = 0;
-            this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gridMitarbeiter);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.btMaLoeschen);
-            this.splitContainer1.Panel2.Controls.Add(this.btMaOeffnen);
-            this.splitContainer1.Panel2.Controls.Add(this.btMaNeu);
-            this.splitContainer1.Size = new System.Drawing.Size(460, 374);
-            this.splitContainer1.SplitterDistance = 330;
-            this.splitContainer1.TabIndex = 2;
-            // 
-            // btMaOeffnen
-            // 
-            this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMaOeffnen.Location = new System.Drawing.Point(334, 0);
-            this.btMaOeffnen.Name = "btMaOeffnen";
-            this.btMaOeffnen.Size = new System.Drawing.Size(126, 40);
-            this.btMaOeffnen.TabIndex = 2;
-            this.btMaOeffnen.Text = "Öffnen";
-            this.btMaOeffnen.UseVisualStyleBackColor = true;
-            this.btMaOeffnen.Click += new System.EventHandler(this.btMaOeffnen_Click);
-            // 
-            // btMaLoeschen
-            // 
-            this.btMaLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btMaLoeschen.Location = new System.Drawing.Point(92, 0);
-            this.btMaLoeschen.Name = "btMaLoeschen";
-            this.btMaLoeschen.Size = new System.Drawing.Size(92, 40);
-            this.btMaLoeschen.TabIndex = 3;
-            this.btMaLoeschen.Text = "Löschen";
-            this.btMaLoeschen.UseVisualStyleBackColor = true;
-            this.btMaLoeschen.Click += new System.EventHandler(this.btMaLoeschen_Click);
-            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -451,14 +452,14 @@
             this.menuStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             this.tabPageMitarbeiter.ResumeLayout(false);
-            this.loginPanel.ResumeLayout(false);
-            this.loginPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).EndInit();
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

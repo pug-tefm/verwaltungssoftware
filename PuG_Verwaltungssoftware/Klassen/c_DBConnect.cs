@@ -41,10 +41,6 @@ namespace PuG_Verwaltungssoftware
         {
             try
             {
-                //if (ConnectionState.Closed)
-                //{
-                //    connection.Open();
-                //}
                 connection.Open();
                 return 0;
             }
