@@ -66,9 +66,38 @@ namespace PuG_Verwaltungssoftware
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            loginPanel.Hide();
+            // Verbindung ueberpruefen
             c_DBConnect c = new c_DBConnect();
-            c.openConnection();
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                // Benutzername und Passwort ueberpruefen
+                String benutzer = tbUsername.Text;
+                String passwort = tbPassword.Text;
+
+                if (benutzer == "Benutzername" || passwort == "Passwort")
+                {
+                    lbLoginMessage.Text = "Bitte Benutzer und Passwort eingeben.";
+                }
+                else
+                {
+                    bool hasRows = c.count("SELECT * FROM mitarbeiter WHERE benutzername = '" + benutzer + "' AND passwort = '" + passwort + "';");
+                    if (hasRows == true)
+                    {
+                        loginPanel.Hide();
+                    }
+                    else
+                    {
+                        lbLoginMessage.Text = "Benutzername oder Passwort falsch.";
+                    }
+                    
+                }
+            }
+            else
+            {
+                lbLoginMessage.Text = "Verbindung zum Server fehlgeschlagen.";
+            }
+
         }
 
         private void btExit_Click(object sender, EventArgs e)

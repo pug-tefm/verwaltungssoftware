@@ -24,10 +24,10 @@ namespace PuG_Verwaltungssoftware
 
         private void initialize()
         {
-            server = "rdbms.strato.de";
-            database = "DB1704156";
-            username = "U1704156";
-            password = "pugtefm2014";
+            server = "localhost";
+            database = "pug_software";
+            username = "root";
+            password = "";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
@@ -36,31 +36,16 @@ namespace PuG_Verwaltungssoftware
         }
 
         // Verbindung zur Datenbank herstellen
-        public bool openConnection()
+        public int openConnection()
         {
             try
             {
                 connection.Open();
-                return true;
+                return 0;
             }
             catch (MySqlException ex)
             {
-                // Die zwei haeufigsten Error-Codes:
-                // 0: Cannot connect to server.
-                // 1045: Invalid user name and/or password.
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Verbindung zum Server fehlgeschlagen.\r\nBitte Administrator kontaktieren.");
-                        break;
-                    case 1045:
-                        MessageBox.Show("Falscher Benutzername oder Passwort. Bitte erneut versuchen.");
-                        break;
-                    default:
-                        MessageBox.Show("Fehler: " + ex.Message);
-                        break;
-                }
-                return false;
+                return 1;
             }
         }
 
@@ -141,10 +126,23 @@ namespace PuG_Verwaltungssoftware
         }
 
         //Count statement
-        public int count()
+        public bool count(String query)
         {
-            int count = -1;
-            return count;
+            try
+            {
+                MySqlCommand myCommand = new MySqlCommand(query, connection);
+                MySqlDataReader myReader;
+
+                myReader = myCommand.ExecuteReader(); // Command ausführen
+                bool count = myReader.HasRows;
+
+                return count;
+            }
+            catch (Exception ex) // Fehler
+            {
+                //MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         //Backup

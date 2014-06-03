@@ -59,6 +59,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.lbLoginMessage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.loginPanel.SuspendLayout();
@@ -271,12 +272,13 @@
             this.loginPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.loginPanel.Controls.Add(this.lbLoginMessage);
             this.loginPanel.Controls.Add(this.pictureBox1);
             this.loginPanel.Controls.Add(this.btExit);
             this.loginPanel.Controls.Add(this.tbPassword);
             this.loginPanel.Controls.Add(this.tbUsername);
             this.loginPanel.Controls.Add(this.btLogin);
-            this.loginPanel.Location = new System.Drawing.Point(1, 0);
+            this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(583, 412);
             this.loginPanel.TabIndex = 2;
@@ -337,6 +339,16 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
+            // lbLoginMessage
+            // 
+            this.lbLoginMessage.AutoSize = true;
+            this.lbLoginMessage.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoginMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbLoginMessage.Location = new System.Drawing.Point(119, 330);
+            this.lbLoginMessage.Name = "lbLoginMessage";
+            this.lbLoginMessage.Size = new System.Drawing.Size(0, 19);
+            this.lbLoginMessage.TabIndex = 5;
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -349,6 +361,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(600, 450);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
@@ -395,6 +408,7 @@
         private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.Button btLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbLoginMessage;
     }
 }
 
