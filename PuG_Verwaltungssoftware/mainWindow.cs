@@ -76,6 +76,8 @@ namespace PuG_Verwaltungssoftware
                 String benutzer = tbUsername.Text;
                 String passwort = tbPassword.Text;
 
+                passwort = c_Helper.encrypt(passwort);
+
                 if (benutzer == "Benutzername" || passwort == "Passwort")
                 {
                     lbLoginMessage.Text = "Bitte Benutzer und Passwort eingeben.";
