@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PuG_Verwaltungssoftware.Klassen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -81,6 +82,7 @@ namespace PuG_Verwaltungssoftware
                 }
                 else
                 {
+                    // Ueberpruefen ob Select-Befehl Zeilen zurueck liefert
                     bool hasRows = c.count("SELECT * FROM mitarbeiter WHERE benutzername = '" + benutzer + "' AND passwort = '" + passwort + "';");
                     if (hasRows == true)
                     {
