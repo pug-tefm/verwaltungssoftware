@@ -120,10 +120,23 @@ namespace PuG_Verwaltungssoftware
         }
 
         //Select statement
-        public List<string>[] select()
+        public DataTable select(String query)
         {
-            List<string>[] list = new List<string>[3];
-            return list;
+            MySqlCommand myCommand = new MySqlCommand(query, connection);
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter();
+
+            myAdapter.SelectCommand = myCommand;
+            DataTable dTable = new DataTable();
+            myAdapter.Fill(dTable);
+
+            if (dTable.Rows.Count >= 1)
+            {
+                return dTable;
+            }
+            else
+            {
+                return null;
+            }
         }
 
 
