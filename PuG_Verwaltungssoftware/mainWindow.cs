@@ -161,9 +161,6 @@ namespace PuG_Verwaltungssoftware
                 gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
                 gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
             }
-            
-
-
 
         }
 
@@ -182,24 +179,101 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaLoeschen_Click(object sender, EventArgs e)
         {
-            int row = gridMitarbeiter.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-
-            DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (gridMitarbeiter.RowCount >= 1)
             {
-                //do something
-                c.openConnection();
-                c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
-                //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
-                c.closeConnection();
-            }
+                int row = gridMitarbeiter.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
 
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                    c.openConnection();
+                    c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
+                    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                    c.closeConnection();
+                }
+            }
+            else
+            {
+                // Messagebox
+            }
+           
         }
 
         private void btMaNeu_Click(object sender, EventArgs e)
         {
+            winMitarbeiterNeu window = new winMitarbeiterNeu();
+            window.Show();
+        }
 
+        private void btMgLoeschen_Click(object sender, EventArgs e)
+        {
+            if (gridMitarbeiter.RowCount >= 1)
+            {
+                int row = gridMitglieder.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(gridMitglieder.Rows[row].Cells["mitglieder_id"].Value);
+
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie das ausgewählte Mitglied mit der Mitglieds-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                    c.openConnection();
+                    c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied");
+                    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                    c.closeConnection();
+                }
+            }
+            else
+            {
+                // Meesagebox
+            }
+        }
+
+        private void btKursLoeschen_Click(object sender, EventArgs e)
+        {
+            if (gridKurse.RowCount >= 1)
+            {
+                int row = gridKurse.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(gridKurse.Rows[row].Cells["kurs_id"].Value);
+
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //do something
+                    c.openConnection();
+                    c.delete("DELETE FROM kurse WHERE kurs_id = '" + id + "';", "Kurs");
+                    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                    c.closeConnection();
+                }
+            }
+            else
+            {
+                // Messagebox
+            }
+            
+        }
+
+        private void tabPageKurse_Enter(object sender, EventArgs e)
+        {
+            int dBConnectOk = c.openConnection();  // Datenbank oeffnen
+            c.displayData("SELECT * FROM kurse;", gridKurse);
+            c.closeConnection(); // Datenbank schliessen
+
+            if (dBConnectOk == 0)
+            {
+                // Headertexte anpassen
+                gridKurse.Columns["kurs_id"].HeaderText = "Kurs-Nr.";
+                gridKurse.Columns["kursleiter_id"].HeaderText = "Kursleiter-Nr.";
+                gridKurse.Columns["bezeichnung"].HeaderText = "Bezeichnung";
+                gridKurse.Columns["preis"].HeaderText = "Preis";
+                gridKurse.Columns["akt_teilnehmerzahl"].HeaderText = "akt. Teilnehmerzahl";
+                gridKurse.Columns["max_teilnehmerzahl"].HeaderText = "max. Teilnehmerzahl";
+                gridKurse.Columns["von"].HeaderText = "Von";
+                gridKurse.Columns["bis"].HeaderText = "Bis";
+                gridKurse.Columns["wochentag"].HeaderText = "Wochentag";
+                gridKurse.Columns["uhrzeit"].HeaderText = "Uhrzeit";
+            }
         }
                 
     }

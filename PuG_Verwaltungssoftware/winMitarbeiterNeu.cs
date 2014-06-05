@@ -10,17 +10,14 @@ using System.Windows.Forms;
 
 namespace PuG_Verwaltungssoftware
 {
-    public partial class winMitarbeiterOeffnen : Form
+    public partial class winMitarbeiterNeu : Form
     {
         bool editMode = false;
         bool save = false;
 
-        public winMitarbeiterOeffnen()
+        public winMitarbeiterNeu()
         {
             InitializeComponent();
-            
-            // DateTimePicker unsichtbar machen
-            dtpDatum.Visible = false;
 
         }
 
@@ -46,30 +43,6 @@ namespace PuG_Verwaltungssoftware
                 this.Close();
             }
             
-        }
-
-        private void btBearbeiten_Click(object sender, EventArgs e)
-        {
-            // Globale Variable true setzen
-            editMode = true;
-            
-            // Textboxen readOnly --> false
-            foreach (Control c in this.Controls)
-            {
-                if (c.GetType() == typeof(TextBox))
-                {
-                    ((TextBox)c).ReadOnly = false;
-                };
-            }
-
-            // Textbox Datum visible false und datepicker visible true und Position setzen
-            int xVal = tbDatum.Location.X;
-            int yVal = tbDatum.Location.Y;
-
-            dtpDatum.Visible = true;
-            tbDatum.Visible = false;
-            //dtpDatum.Location.X = xVal;
-            //dtpDatum.Location.Y = yVal;
         }
 
         private void btSpeichern_Click(object sender, EventArgs e)

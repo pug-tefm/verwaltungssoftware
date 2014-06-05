@@ -50,6 +50,8 @@
     <StartupObject>PuG_Verwaltungssoftware.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +70,12 @@
     <Compile Include="Klassen\c_Kurse.cs" />
     <Compile Include="Klassen\c_Mitarbeiter.cs" />
     <Compile Include="Klassen\c_Person.cs" />
+    <Compile Include="winMitarbeiterNeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winMitarbeiterNeu.Designer.cs">
+      <DependentUpon>winMitarbeiterNeu.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +90,9 @@
     <Compile Include="winMitarbeiterOeffnen.Designer.cs">
       <DependentUpon>winMitarbeiterOeffnen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="winMitarbeiterNeu.resx">
+      <DependentUpon>winMitarbeiterNeu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainWindow.resx">
       <DependentUpon>mainWindow.cs</DependentUpon>
     </EmbeddedResource>

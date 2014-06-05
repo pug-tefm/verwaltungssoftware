@@ -51,7 +51,7 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.tabPageMitarbeiter = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.scMitarbeiter = new System.Windows.Forms.SplitContainer();
             this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
             this.btMaLoeschen = new System.Windows.Forms.Button();
             this.btMaOeffnen = new System.Windows.Forms.Button();
@@ -65,16 +65,38 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.scMitglieder = new System.Windows.Forms.SplitContainer();
+            this.gridMitglieder = new System.Windows.Forms.DataGridView();
+            this.btMgNeu = new System.Windows.Forms.Button();
+            this.btMgOeffnen = new System.Windows.Forms.Button();
+            this.btMgLoeschen = new System.Windows.Forms.Button();
+            this.scKurse = new System.Windows.Forms.SplitContainer();
+            this.gridKurse = new System.Windows.Forms.DataGridView();
+            this.btKursLoeschen = new System.Windows.Forms.Button();
+            this.btKursOeffnen = new System.Windows.Forms.Button();
+            this.btKursNeu = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.tabPageMitarbeiter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMitarbeiter)).BeginInit();
+            this.scMitarbeiter.Panel1.SuspendLayout();
+            this.scMitarbeiter.Panel2.SuspendLayout();
+            this.scMitarbeiter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).BeginInit();
+            this.tabPageMitglieder.SuspendLayout();
+            this.tabPageKurse.SuspendLayout();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scMitglieder)).BeginInit();
+            this.scMitglieder.Panel1.SuspendLayout();
+            this.scMitglieder.Panel2.SuspendLayout();
+            this.scMitglieder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitglieder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scKurse)).BeginInit();
+            this.scKurse.Panel1.SuspendLayout();
+            this.scKurse.Panel2.SuspendLayout();
+            this.scKurse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKurse)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -253,7 +275,7 @@
             // tabPageMitarbeiter
             // 
             this.tabPageMitarbeiter.BackColor = System.Drawing.Color.Silver;
-            this.tabPageMitarbeiter.Controls.Add(this.splitContainer1);
+            this.tabPageMitarbeiter.Controls.Add(this.scMitarbeiter);
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
             this.tabPageMitarbeiter.Padding = new System.Windows.Forms.Padding(3);
@@ -262,26 +284,26 @@
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
             // 
-            // splitContainer1
+            // scMitarbeiter
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.scMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMitarbeiter.IsSplitterFixed = true;
+            this.scMitarbeiter.Location = new System.Drawing.Point(3, 3);
+            this.scMitarbeiter.Name = "scMitarbeiter";
+            this.scMitarbeiter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // scMitarbeiter.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.gridMitarbeiter);
+            this.scMitarbeiter.Panel1.Controls.Add(this.gridMitarbeiter);
             // 
-            // splitContainer1.Panel2
+            // scMitarbeiter.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btMaLoeschen);
-            this.splitContainer1.Panel2.Controls.Add(this.btMaOeffnen);
-            this.splitContainer1.Panel2.Controls.Add(this.btMaNeu);
-            this.splitContainer1.Size = new System.Drawing.Size(460, 374);
-            this.splitContainer1.SplitterDistance = 330;
-            this.splitContainer1.TabIndex = 2;
+            this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
+            this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
+            this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
+            this.scMitarbeiter.Size = new System.Drawing.Size(460, 374);
+            this.scMitarbeiter.SplitterDistance = 330;
+            this.scMitarbeiter.TabIndex = 2;
             // 
             // gridMitarbeiter
             // 
@@ -335,6 +357,7 @@
             // tabPageMitglieder
             // 
             this.tabPageMitglieder.BackColor = System.Drawing.Color.Silver;
+            this.tabPageMitglieder.Controls.Add(this.scMitglieder);
             this.tabPageMitglieder.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitglieder.Name = "tabPageMitglieder";
             this.tabPageMitglieder.Size = new System.Drawing.Size(466, 380);
@@ -344,11 +367,13 @@
             // tabPageKurse
             // 
             this.tabPageKurse.BackColor = System.Drawing.Color.Silver;
+            this.tabPageKurse.Controls.Add(this.scKurse);
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
             this.tabPageKurse.Size = new System.Drawing.Size(466, 380);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
+            this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
             // 
             // loginPanel
             // 
@@ -432,6 +457,138 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
+            // scMitglieder
+            // 
+            this.scMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMitglieder.Location = new System.Drawing.Point(0, 0);
+            this.scMitglieder.Name = "scMitglieder";
+            this.scMitglieder.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scMitglieder.Panel1
+            // 
+            this.scMitglieder.Panel1.Controls.Add(this.gridMitglieder);
+            // 
+            // scMitglieder.Panel2
+            // 
+            this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
+            this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
+            this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
+            this.scMitglieder.Size = new System.Drawing.Size(466, 380);
+            this.scMitglieder.SplitterDistance = 330;
+            this.scMitglieder.TabIndex = 0;
+            // 
+            // gridMitglieder
+            // 
+            this.gridMitglieder.AllowUserToAddRows = false;
+            this.gridMitglieder.AllowUserToDeleteRows = false;
+            this.gridMitglieder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridMitglieder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridMitglieder.Location = new System.Drawing.Point(0, 0);
+            this.gridMitglieder.MultiSelect = false;
+            this.gridMitglieder.Name = "gridMitglieder";
+            this.gridMitglieder.ReadOnly = true;
+            this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridMitglieder.Size = new System.Drawing.Size(466, 330);
+            this.gridMitglieder.TabIndex = 1;
+            // 
+            // btMgNeu
+            // 
+            this.btMgNeu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btMgNeu.Location = new System.Drawing.Point(0, 0);
+            this.btMgNeu.Name = "btMgNeu";
+            this.btMgNeu.Size = new System.Drawing.Size(92, 46);
+            this.btMgNeu.TabIndex = 4;
+            this.btMgNeu.Text = "Neu";
+            this.btMgNeu.UseVisualStyleBackColor = true;
+            // 
+            // btMgOeffnen
+            // 
+            this.btMgOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btMgOeffnen.Location = new System.Drawing.Point(340, 0);
+            this.btMgOeffnen.Name = "btMgOeffnen";
+            this.btMgOeffnen.Size = new System.Drawing.Size(126, 46);
+            this.btMgOeffnen.TabIndex = 5;
+            this.btMgOeffnen.Text = "Öffnen";
+            this.btMgOeffnen.UseVisualStyleBackColor = true;
+            // 
+            // btMgLoeschen
+            // 
+            this.btMgLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btMgLoeschen.Location = new System.Drawing.Point(92, 0);
+            this.btMgLoeschen.Name = "btMgLoeschen";
+            this.btMgLoeschen.Size = new System.Drawing.Size(92, 46);
+            this.btMgLoeschen.TabIndex = 6;
+            this.btMgLoeschen.Text = "Löschen";
+            this.btMgLoeschen.UseVisualStyleBackColor = true;
+            this.btMgLoeschen.Click += new System.EventHandler(this.btMgLoeschen_Click);
+            // 
+            // scKurse
+            // 
+            this.scKurse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scKurse.Location = new System.Drawing.Point(0, 0);
+            this.scKurse.Name = "scKurse";
+            this.scKurse.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scKurse.Panel1
+            // 
+            this.scKurse.Panel1.Controls.Add(this.gridKurse);
+            // 
+            // scKurse.Panel2
+            // 
+            this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
+            this.scKurse.Panel2.Controls.Add(this.btKursNeu);
+            this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
+            this.scKurse.Size = new System.Drawing.Size(466, 380);
+            this.scKurse.SplitterDistance = 330;
+            this.scKurse.TabIndex = 0;
+            // 
+            // gridKurse
+            // 
+            this.gridKurse.AllowUserToAddRows = false;
+            this.gridKurse.AllowUserToDeleteRows = false;
+            this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridKurse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridKurse.Location = new System.Drawing.Point(0, 0);
+            this.gridKurse.MultiSelect = false;
+            this.gridKurse.Name = "gridKurse";
+            this.gridKurse.ReadOnly = true;
+            this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridKurse.Size = new System.Drawing.Size(466, 330);
+            this.gridKurse.TabIndex = 2;
+            // 
+            // btKursLoeschen
+            // 
+            this.btKursLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btKursLoeschen.Location = new System.Drawing.Point(92, 0);
+            this.btKursLoeschen.Name = "btKursLoeschen";
+            this.btKursLoeschen.Size = new System.Drawing.Size(92, 46);
+            this.btKursLoeschen.TabIndex = 7;
+            this.btKursLoeschen.Text = "Löschen";
+            this.btKursLoeschen.UseVisualStyleBackColor = true;
+            this.btKursLoeschen.Click += new System.EventHandler(this.btKursLoeschen_Click);
+            // 
+            // btKursOeffnen
+            // 
+            this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btKursOeffnen.Location = new System.Drawing.Point(340, 0);
+            this.btKursOeffnen.Name = "btKursOeffnen";
+            this.btKursOeffnen.Size = new System.Drawing.Size(126, 46);
+            this.btKursOeffnen.TabIndex = 8;
+            this.btKursOeffnen.Text = "Öffnen";
+            this.btKursOeffnen.UseVisualStyleBackColor = true;
+            // 
+            // btKursNeu
+            // 
+            this.btKursNeu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btKursNeu.Location = new System.Drawing.Point(0, 0);
+            this.btKursNeu.Name = "btKursNeu";
+            this.btKursNeu.Size = new System.Drawing.Size(92, 46);
+            this.btKursNeu.TabIndex = 9;
+            this.btKursNeu.Text = "Neu";
+            this.btKursNeu.UseVisualStyleBackColor = true;
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -452,14 +609,26 @@
             this.menuStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             this.tabPageMitarbeiter.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.scMitarbeiter.Panel1.ResumeLayout(false);
+            this.scMitarbeiter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scMitarbeiter)).EndInit();
+            this.scMitarbeiter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).EndInit();
+            this.tabPageMitglieder.ResumeLayout(false);
+            this.tabPageKurse.ResumeLayout(false);
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.scMitglieder.Panel1.ResumeLayout(false);
+            this.scMitglieder.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scMitglieder)).EndInit();
+            this.scMitglieder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitglieder)).EndInit();
+            this.scKurse.Panel1.ResumeLayout(false);
+            this.scKurse.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scKurse)).EndInit();
+            this.scKurse.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridKurse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,9 +669,19 @@
         private System.Windows.Forms.Label lbLoginMessage;
         private System.Windows.Forms.Button btMaNeu;
         private System.Windows.Forms.DataGridView gridMitarbeiter;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer scMitarbeiter;
         private System.Windows.Forms.Button btMaLoeschen;
         private System.Windows.Forms.Button btMaOeffnen;
+        private System.Windows.Forms.SplitContainer scMitglieder;
+        private System.Windows.Forms.DataGridView gridMitglieder;
+        private System.Windows.Forms.Button btMgLoeschen;
+        private System.Windows.Forms.Button btMgOeffnen;
+        private System.Windows.Forms.Button btMgNeu;
+        private System.Windows.Forms.SplitContainer scKurse;
+        private System.Windows.Forms.DataGridView gridKurse;
+        private System.Windows.Forms.Button btKursNeu;
+        private System.Windows.Forms.Button btKursOeffnen;
+        private System.Windows.Forms.Button btKursLoeschen;
     }
 }
 

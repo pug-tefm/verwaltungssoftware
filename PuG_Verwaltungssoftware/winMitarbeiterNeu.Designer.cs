@@ -1,6 +1,6 @@
 ﻿namespace PuG_Verwaltungssoftware
 {
-    partial class winMitarbeiterOeffnen
+    partial class winMitarbeiterNeu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterOeffnen));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterNeu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbGehalt = new System.Windows.Forms.GroupBox();
+            this.tbGehalt = new System.Windows.Forms.TextBox();
+            this.lbGehalt = new System.Windows.Forms.Label();
             this.gbAnschrift = new System.Windows.Forms.GroupBox();
+            this.tbPlz = new System.Windows.Forms.TextBox();
+            this.tbOrt = new System.Windows.Forms.TextBox();
+            this.tbHausnummer = new System.Windows.Forms.TextBox();
+            this.tbStrasse = new System.Windows.Forms.TextBox();
             this.lbPlz = new System.Windows.Forms.Label();
             this.lbOrt = new System.Windows.Forms.Label();
             this.lbHausnummer = new System.Windows.Forms.Label();
@@ -44,22 +51,13 @@
             this.tbNachname = new System.Windows.Forms.TextBox();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
-            this.btBearbeiten = new System.Windows.Forms.Button();
-            this.gbGehalt = new System.Windows.Forms.GroupBox();
-            this.lbGehalt = new System.Windows.Forms.Label();
-            this.tbStrasse = new System.Windows.Forms.TextBox();
-            this.tbHausnummer = new System.Windows.Forms.TextBox();
-            this.tbOrt = new System.Windows.Forms.TextBox();
-            this.tbPlz = new System.Windows.Forms.TextBox();
-            this.tbGehalt = new System.Windows.Forms.TextBox();
-            this.tbDatum = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbGehalt.SuspendLayout();
             this.gbAnschrift.SuspendLayout();
             this.gbDaten.SuspendLayout();
-            this.gbGehalt.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -80,10 +78,40 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
             this.splitContainer1.Size = new System.Drawing.Size(564, 432);
             this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // gbGehalt
+            // 
+            this.gbGehalt.Controls.Add(this.tbGehalt);
+            this.gbGehalt.Controls.Add(this.lbGehalt);
+            this.gbGehalt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbGehalt.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbGehalt.Location = new System.Drawing.Point(0, 291);
+            this.gbGehalt.Name = "gbGehalt";
+            this.gbGehalt.Size = new System.Drawing.Size(564, 85);
+            this.gbGehalt.TabIndex = 10;
+            this.gbGehalt.TabStop = false;
+            this.gbGehalt.Text = "Gehalt";
+            // 
+            // tbGehalt
+            // 
+            this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGehalt.Location = new System.Drawing.Point(119, 22);
+            this.tbGehalt.Name = "tbGehalt";
+            this.tbGehalt.Size = new System.Drawing.Size(214, 26);
+            this.tbGehalt.TabIndex = 7;
+            // 
+            // lbGehalt
+            // 
+            this.lbGehalt.AutoSize = true;
+            this.lbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGehalt.Location = new System.Drawing.Point(12, 30);
+            this.lbGehalt.Name = "lbGehalt";
+            this.lbGehalt.Size = new System.Drawing.Size(53, 18);
+            this.lbGehalt.TabIndex = 3;
+            this.lbGehalt.Text = "Gehalt:";
             // 
             // gbAnschrift
             // 
@@ -103,6 +131,38 @@
             this.gbAnschrift.TabIndex = 9;
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
+            // 
+            // tbPlz
+            // 
+            this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPlz.Location = new System.Drawing.Point(119, 81);
+            this.tbPlz.Name = "tbPlz";
+            this.tbPlz.Size = new System.Drawing.Size(214, 26);
+            this.tbPlz.TabIndex = 9;
+            // 
+            // tbOrt
+            // 
+            this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOrt.Location = new System.Drawing.Point(119, 109);
+            this.tbOrt.Name = "tbOrt";
+            this.tbOrt.Size = new System.Drawing.Size(214, 26);
+            this.tbOrt.TabIndex = 8;
+            // 
+            // tbHausnummer
+            // 
+            this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
+            this.tbHausnummer.Name = "tbHausnummer";
+            this.tbHausnummer.Size = new System.Drawing.Size(214, 26);
+            this.tbHausnummer.TabIndex = 7;
+            // 
+            // tbStrasse
+            // 
+            this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbStrasse.Location = new System.Drawing.Point(119, 22);
+            this.tbStrasse.Name = "tbStrasse";
+            this.tbStrasse.Size = new System.Drawing.Size(214, 26);
+            this.tbStrasse.TabIndex = 6;
             // 
             // lbPlz
             // 
@@ -146,7 +206,6 @@
             // 
             // gbDaten
             // 
-            this.gbDaten.Controls.Add(this.tbDatum);
             this.gbDaten.Controls.Add(this.lbVorname);
             this.gbDaten.Controls.Add(this.lbNachname);
             this.gbDaten.Controls.Add(this.dtpDatum);
@@ -194,7 +253,6 @@
             this.tbVorname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
             this.tbVorname.Name = "tbVorname";
-            this.tbVorname.ReadOnly = true;
             this.tbVorname.Size = new System.Drawing.Size(214, 26);
             this.tbVorname.TabIndex = 1;
             // 
@@ -213,7 +271,6 @@
             this.tbNachname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
             this.tbNachname.Name = "tbNachname";
-            this.tbNachname.ReadOnly = true;
             this.tbNachname.Size = new System.Drawing.Size(214, 26);
             this.tbNachname.TabIndex = 3;
             // 
@@ -233,7 +290,7 @@
             // 
             this.btSpeichern.Dock = System.Windows.Forms.DockStyle.Left;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSpeichern.Location = new System.Drawing.Point(105, 0);
+            this.btSpeichern.Location = new System.Drawing.Point(0, 0);
             this.btSpeichern.Name = "btSpeichern";
             this.btSpeichern.Size = new System.Drawing.Size(105, 43);
             this.btSpeichern.TabIndex = 1;
@@ -241,96 +298,7 @@
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
-            // btBearbeiten
-            // 
-            this.btBearbeiten.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btBearbeiten.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
-            this.btBearbeiten.Name = "btBearbeiten";
-            this.btBearbeiten.Size = new System.Drawing.Size(105, 43);
-            this.btBearbeiten.TabIndex = 0;
-            this.btBearbeiten.Text = "Bearbeiten";
-            this.btBearbeiten.UseVisualStyleBackColor = true;
-            this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
-            // 
-            // gbGehalt
-            // 
-            this.gbGehalt.Controls.Add(this.tbGehalt);
-            this.gbGehalt.Controls.Add(this.lbGehalt);
-            this.gbGehalt.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbGehalt.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGehalt.Location = new System.Drawing.Point(0, 291);
-            this.gbGehalt.Name = "gbGehalt";
-            this.gbGehalt.Size = new System.Drawing.Size(564, 85);
-            this.gbGehalt.TabIndex = 10;
-            this.gbGehalt.TabStop = false;
-            this.gbGehalt.Text = "Gehalt";
-            // 
-            // lbGehalt
-            // 
-            this.lbGehalt.AutoSize = true;
-            this.lbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGehalt.Location = new System.Drawing.Point(12, 30);
-            this.lbGehalt.Name = "lbGehalt";
-            this.lbGehalt.Size = new System.Drawing.Size(53, 18);
-            this.lbGehalt.TabIndex = 3;
-            this.lbGehalt.Text = "Gehalt:";
-            // 
-            // tbStrasse
-            // 
-            this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbStrasse.Location = new System.Drawing.Point(119, 22);
-            this.tbStrasse.Name = "tbStrasse";
-            this.tbStrasse.ReadOnly = true;
-            this.tbStrasse.Size = new System.Drawing.Size(214, 26);
-            this.tbStrasse.TabIndex = 6;
-            // 
-            // tbHausnummer
-            // 
-            this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
-            this.tbHausnummer.Name = "tbHausnummer";
-            this.tbHausnummer.ReadOnly = true;
-            this.tbHausnummer.Size = new System.Drawing.Size(214, 26);
-            this.tbHausnummer.TabIndex = 7;
-            // 
-            // tbOrt
-            // 
-            this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrt.Location = new System.Drawing.Point(119, 109);
-            this.tbOrt.Name = "tbOrt";
-            this.tbOrt.ReadOnly = true;
-            this.tbOrt.Size = new System.Drawing.Size(214, 26);
-            this.tbOrt.TabIndex = 8;
-            // 
-            // tbPlz
-            // 
-            this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPlz.Location = new System.Drawing.Point(119, 81);
-            this.tbPlz.Name = "tbPlz";
-            this.tbPlz.ReadOnly = true;
-            this.tbPlz.Size = new System.Drawing.Size(214, 26);
-            this.tbPlz.TabIndex = 9;
-            // 
-            // tbGehalt
-            // 
-            this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGehalt.Location = new System.Drawing.Point(119, 22);
-            this.tbGehalt.Name = "tbGehalt";
-            this.tbGehalt.ReadOnly = true;
-            this.tbGehalt.Size = new System.Drawing.Size(214, 26);
-            this.tbGehalt.TabIndex = 7;
-            // 
-            // tbDatum
-            // 
-            this.tbDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDatum.Location = new System.Drawing.Point(119, 88);
-            this.tbDatum.Name = "tbDatum";
-            this.tbDatum.ReadOnly = true;
-            this.tbDatum.Size = new System.Drawing.Size(214, 26);
-            this.tbDatum.TabIndex = 6;
-            // 
-            // winMitarbeiterOeffnen
+            // winMitarbeiterNeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -338,19 +306,19 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(580, 470);
-            this.Name = "winMitarbeiterOeffnen";
+            this.Name = "winMitarbeiterNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mitarbeiter anzeigen und bearbeiten";
+            this.Text = "Neuen Mitarbeiter anlegen";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbGehalt.ResumeLayout(false);
+            this.gbGehalt.PerformLayout();
             this.gbAnschrift.ResumeLayout(false);
             this.gbAnschrift.PerformLayout();
             this.gbDaten.ResumeLayout(false);
             this.gbDaten.PerformLayout();
-            this.gbGehalt.ResumeLayout(false);
-            this.gbGehalt.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -360,7 +328,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btSpeichern;
-        private System.Windows.Forms.Button btBearbeiten;
         private System.Windows.Forms.DateTimePicker dtpDatum;
         private System.Windows.Forms.Label lbDatum;
         private System.Windows.Forms.TextBox tbNachname;
@@ -380,6 +347,5 @@
         private System.Windows.Forms.TextBox tbOrt;
         private System.Windows.Forms.TextBox tbHausnummer;
         private System.Windows.Forms.TextBox tbStrasse;
-        private System.Windows.Forms.TextBox tbDatum;
     }
 }
