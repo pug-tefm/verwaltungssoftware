@@ -70,6 +70,18 @@
     <Compile Include="Klassen\c_Kurse.cs" />
     <Compile Include="Klassen\c_Mitarbeiter.cs" />
     <Compile Include="Klassen\c_Person.cs" />
+    <Compile Include="winKursNeu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winKursNeu.Designer.cs">
+      <DependentUpon>winKursNeu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winKursOeffnen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winKursOeffnen.Designer.cs">
+      <DependentUpon>winKursOeffnen.cs</DependentUpon>
+    </Compile>
     <Compile Include="winMitgliedNeu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,12 @@
     <Compile Include="winMitarbeiterOeffnen.Designer.cs">
       <DependentUpon>winMitarbeiterOeffnen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="winKursNeu.resx">
+      <DependentUpon>winKursNeu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winKursOeffnen.resx">
+      <DependentUpon>winKursOeffnen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="winMitgliedNeu.resx">
       <DependentUpon>winMitgliedNeu.cs</DependentUpon>
     </EmbeddedResource>

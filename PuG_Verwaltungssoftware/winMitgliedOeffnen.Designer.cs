@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedOeffnen));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
-            this.tbGehalt = new System.Windows.Forms.TextBox();
+            this.tbVertragsart = new System.Windows.Forms.TextBox();
             this.lbVertragsart = new System.Windows.Forms.Label();
             this.gbAnschrift = new System.Windows.Forms.GroupBox();
             this.tbPlz = new System.Windows.Forms.TextBox();
@@ -53,11 +53,11 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbVertragsdatum = new System.Windows.Forms.TextBox();
             this.lbVertragsdatum = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbGesperrt = new System.Windows.Forms.TextBox();
             this.lbGesperrt = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbKommentar = new System.Windows.Forms.TextBox();
             this.lbKommentar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -93,13 +93,13 @@
             // 
             // gbVertrag
             // 
-            this.gbVertrag.Controls.Add(this.textBox3);
+            this.gbVertrag.Controls.Add(this.tbKommentar);
             this.gbVertrag.Controls.Add(this.lbKommentar);
-            this.gbVertrag.Controls.Add(this.textBox2);
+            this.gbVertrag.Controls.Add(this.tbGesperrt);
             this.gbVertrag.Controls.Add(this.lbGesperrt);
-            this.gbVertrag.Controls.Add(this.textBox1);
+            this.gbVertrag.Controls.Add(this.tbVertragsdatum);
             this.gbVertrag.Controls.Add(this.lbVertragsdatum);
-            this.gbVertrag.Controls.Add(this.tbGehalt);
+            this.gbVertrag.Controls.Add(this.tbVertragsart);
             this.gbVertrag.Controls.Add(this.lbVertragsart);
             this.gbVertrag.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbVertrag.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,14 +110,14 @@
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
             // 
-            // tbGehalt
+            // tbVertragsart
             // 
-            this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGehalt.Location = new System.Drawing.Point(119, 22);
-            this.tbGehalt.Name = "tbGehalt";
-            this.tbGehalt.ReadOnly = true;
-            this.tbGehalt.Size = new System.Drawing.Size(214, 26);
-            this.tbGehalt.TabIndex = 7;
+            this.tbVertragsart.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVertragsart.Location = new System.Drawing.Point(119, 22);
+            this.tbVertragsart.Name = "tbVertragsart";
+            this.tbVertragsart.ReadOnly = true;
+            this.tbVertragsart.Size = new System.Drawing.Size(214, 26);
+            this.tbVertragsart.TabIndex = 7;
             // 
             // lbVertragsart
             // 
@@ -342,14 +342,14 @@
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
-            // textBox1
+            // tbVertragsdatum
             // 
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(119, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(214, 26);
-            this.textBox1.TabIndex = 9;
+            this.tbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVertragsdatum.Location = new System.Drawing.Point(119, 56);
+            this.tbVertragsdatum.Name = "tbVertragsdatum";
+            this.tbVertragsdatum.ReadOnly = true;
+            this.tbVertragsdatum.Size = new System.Drawing.Size(214, 26);
+            this.tbVertragsdatum.TabIndex = 9;
             // 
             // lbVertragsdatum
             // 
@@ -361,14 +361,14 @@
             this.lbVertragsdatum.TabIndex = 8;
             this.lbVertragsdatum.Text = "Vertragsdatum:";
             // 
-            // textBox2
+            // tbGesperrt
             // 
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(119, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(214, 26);
-            this.textBox2.TabIndex = 11;
+            this.tbGesperrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGesperrt.Location = new System.Drawing.Point(119, 90);
+            this.tbGesperrt.Name = "tbGesperrt";
+            this.tbGesperrt.ReadOnly = true;
+            this.tbGesperrt.Size = new System.Drawing.Size(214, 26);
+            this.tbGesperrt.TabIndex = 11;
             // 
             // lbGesperrt
             // 
@@ -380,14 +380,14 @@
             this.lbGesperrt.TabIndex = 10;
             this.lbGesperrt.Text = "Gesperrt:";
             // 
-            // textBox3
+            // tbKommentar
             // 
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(119, 123);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(214, 26);
-            this.textBox3.TabIndex = 13;
+            this.tbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbKommentar.Location = new System.Drawing.Point(119, 123);
+            this.tbKommentar.Name = "tbKommentar";
+            this.tbKommentar.ReadOnly = true;
+            this.tbKommentar.Size = new System.Drawing.Size(214, 26);
+            this.tbKommentar.TabIndex = 13;
             // 
             // lbKommentar
             // 
@@ -443,18 +443,18 @@
         private System.Windows.Forms.Label lbHausnummer;
         private System.Windows.Forms.Label lbStrasse;
         private System.Windows.Forms.GroupBox gbVertrag;
-        private System.Windows.Forms.TextBox tbGehalt;
+        private System.Windows.Forms.TextBox tbVertragsart;
         private System.Windows.Forms.Label lbVertragsart;
         private System.Windows.Forms.TextBox tbPlz;
         private System.Windows.Forms.TextBox tbOrt;
         private System.Windows.Forms.TextBox tbHausnummer;
         private System.Windows.Forms.TextBox tbStrasse;
         private System.Windows.Forms.TextBox tbDatum;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbKommentar;
         private System.Windows.Forms.Label lbKommentar;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbGesperrt;
         private System.Windows.Forms.Label lbGesperrt;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbVertragsdatum;
         private System.Windows.Forms.Label lbVertragsdatum;
     }
 }

@@ -342,5 +342,17 @@ namespace PuG_Verwaltungssoftware
             }
 
         }
+
+        private void btKursNeu_Click(object sender, EventArgs e)
+        {
+            winKursNeu window = new winKursNeu();
+            window.Show();
+        }
+
+        private void btKursOeffnen_Click(object sender, EventArgs e)
+        {
+            winKursOeffnen window = new winKursOeffnen();
+            window.Show();
+        }
     }
 }

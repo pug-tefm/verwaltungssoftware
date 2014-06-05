@@ -57,11 +57,11 @@
             this.btKursOeffnen = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.lbLoginMessage = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btExit = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -415,6 +415,7 @@
             this.btKursNeu.TabIndex = 9;
             this.btKursNeu.Text = "Neu";
             this.btKursNeu.UseVisualStyleBackColor = true;
+            this.btKursNeu.Click += new System.EventHandler(this.btKursNeu_Click);
             // 
             // btKursOeffnen
             // 
@@ -425,6 +426,7 @@
             this.btKursOeffnen.TabIndex = 8;
             this.btKursOeffnen.Text = "Öffnen";
             this.btKursOeffnen.UseVisualStyleBackColor = true;
+            this.btKursOeffnen.Click += new System.EventHandler(this.btKursOeffnen_Click);
             // 
             // loginPanel
             // 
@@ -451,16 +453,6 @@
             this.lbLoginMessage.Name = "lbLoginMessage";
             this.lbLoginMessage.Size = new System.Drawing.Size(0, 19);
             this.lbLoginMessage.TabIndex = 5;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(119, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(347, 148);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // btExit
             // 
@@ -507,6 +499,16 @@
             this.btLogin.Text = "Anmelden";
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
+            this.pictureBox1.Location = new System.Drawing.Point(119, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(347, 148);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // mainWindow
             // 
