@@ -21,7 +21,7 @@ namespace PuG_Verwaltungssoftware
         String loginMaVorname = String.Empty;
         String loginMaNachname = String.Empty;
 
-        
+
         public mainWindow()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace PuG_Verwaltungssoftware
 
         private void mitarbeiterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
@@ -114,12 +114,12 @@ namespace PuG_Verwaltungssoftware
                         {
                             MessageBox.Show(ex.Message);
                         }
-                        
+
 
                         // Timer anlegen
                         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
                         timer.Interval = 999;
-                        timer.Enabled = true; 
+                        timer.Enabled = true;
                         // Timer starten
                         timer.Start();
                         // EventHandler
@@ -138,7 +138,7 @@ namespace PuG_Verwaltungssoftware
                     {
                         lbLoginMessage.Text = "Benutzername oder Passwort falsch.";
                     }
-                    
+
                 }
             }
             else
@@ -166,7 +166,7 @@ namespace PuG_Verwaltungssoftware
                     m = 0;
                     h = h + 1;
                 }
-                
+
             }
 
             // Timer ausgabe und String Format
@@ -181,7 +181,8 @@ namespace PuG_Verwaltungssoftware
 
         private void tbPassword_Enter(object sender, EventArgs e)
         {
-            if (tbPassword.Text == "Passwort") {
+            if (tbPassword.Text == "Passwort")
+            {
                 tbPassword.Font = new Font(tbPassword.Font, FontStyle.Regular);
                 tbPassword.Text = "";
                 tbPassword.PasswordChar = char.Parse("*");
@@ -190,7 +191,8 @@ namespace PuG_Verwaltungssoftware
 
         private void tbPassword_Leave(object sender, EventArgs e)
         {
-            if (tbPassword.Text == "") {
+            if (tbPassword.Text == "")
+            {
                 tbPassword.Font = new Font(tbPassword.Font, FontStyle.Italic);
                 tbPassword.PasswordChar = char.Parse("\0");
                 tbPassword.Text = "Passwort";
@@ -273,7 +275,72 @@ namespace PuG_Verwaltungssoftware
 
         }
 
+        private void btMgOeffnen_Click(object sender, EventArgs e)
+        {
+            winMitgliedOeffnen window = new winMitgliedOeffnen();
+            window.Show();
+        }
 
-                
+        private void btMgNeu_Click(object sender, EventArgs e)
+        {
+            winMitgliedNeu window = new winMitgliedNeu();
+            window.Show();
+        }
+
+        private void btMgLoeschen_Click(object sender, EventArgs e)
+        {
+            if (gridMitglieder.RowCount >= 1)
+            {
+                int row = gridMitglieder.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(gridMitglieder.Rows[row].Cells["mitglieder_id"].Value);
+
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie das ausgewählte Mitglied mit der Mitglieds-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    //do something
+                    c.openConnection();
+                    c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied");
+                    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                    c.closeConnection();
+                }
+            }
+
+            else
+            {
+                // Meesagebox
+            }
+        }
+
+        private void btKursLoeschen_Click(object sender, EventArgs e)
+        {
+            {
+                if (gridKurse.RowCount >= 1)
+                {
+
+                    int row = gridKurse.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(gridKurse.Rows[row].Cells["kurs_id"].Value);
+
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        //do something
+                        c.openConnection();
+                        c.delete("DELETE FROM kurse WHERE kurs_id = '" + id + "';", "Kurs");
+                        //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+                        c.closeConnection();
+                    }
+                }
+
+                else
+                {
+                    // Messagebox
+                }
+            }
+
+        }
     }
 }

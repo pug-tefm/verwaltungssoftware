@@ -52,7 +52,7 @@
             this.tabPageKurse = new System.Windows.Forms.TabPage();
             this.scKurse = new System.Windows.Forms.SplitContainer();
             this.gridKurse = new System.Windows.Forms.DataGridView();
-            this.btNeu = new System.Windows.Forms.Button();
+            this.btKursLoeschen = new System.Windows.Forms.Button();
             this.btKursNeu = new System.Windows.Forms.Button();
             this.btKursOeffnen = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
@@ -326,6 +326,7 @@
             this.btMgLoeschen.TabIndex = 6;
             this.btMgLoeschen.Text = "Löschen";
             this.btMgLoeschen.UseVisualStyleBackColor = true;
+            this.btMgLoeschen.Click += new System.EventHandler(this.btMgLoeschen_Click);
             // 
             // btMgNeu
             // 
@@ -336,6 +337,7 @@
             this.btMgNeu.TabIndex = 4;
             this.btMgNeu.Text = "Neu";
             this.btMgNeu.UseVisualStyleBackColor = true;
+            this.btMgNeu.Click += new System.EventHandler(this.btMgNeu_Click);
             // 
             // btMgOeffnen
             // 
@@ -346,6 +348,7 @@
             this.btMgOeffnen.TabIndex = 5;
             this.btMgOeffnen.Text = "Öffnen";
             this.btMgOeffnen.UseVisualStyleBackColor = true;
+            this.btMgOeffnen.Click += new System.EventHandler(this.btMgOeffnen_Click);
             // 
             // tabPageKurse
             // 
@@ -370,7 +373,7 @@
             // 
             // scKurse.Panel2
             // 
-            this.scKurse.Panel2.Controls.Add(this.btNeu);
+            this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
             this.scKurse.Size = new System.Drawing.Size(466, 404);
@@ -392,15 +395,16 @@
             this.gridKurse.Size = new System.Drawing.Size(466, 350);
             this.gridKurse.TabIndex = 2;
             // 
-            // btNeu
+            // btKursLoeschen
             // 
-            this.btNeu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btNeu.Location = new System.Drawing.Point(92, 0);
-            this.btNeu.Name = "btNeu";
-            this.btNeu.Size = new System.Drawing.Size(92, 50);
-            this.btNeu.TabIndex = 7;
-            this.btNeu.Text = "Neu";
-            this.btNeu.UseVisualStyleBackColor = true;
+            this.btKursLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btKursLoeschen.Location = new System.Drawing.Point(92, 0);
+            this.btKursLoeschen.Name = "btKursLoeschen";
+            this.btKursLoeschen.Size = new System.Drawing.Size(92, 50);
+            this.btKursLoeschen.TabIndex = 7;
+            this.btKursLoeschen.Text = "Löschen";
+            this.btKursLoeschen.UseVisualStyleBackColor = true;
+            this.btKursLoeschen.Click += new System.EventHandler(this.btKursLoeschen_Click);
             // 
             // btKursNeu
             // 
@@ -409,7 +413,7 @@
             this.btKursNeu.Name = "btKursNeu";
             this.btKursNeu.Size = new System.Drawing.Size(92, 50);
             this.btKursNeu.TabIndex = 9;
-            this.btKursNeu.Text = "Löschen";
+            this.btKursNeu.Text = "Neu";
             this.btKursNeu.UseVisualStyleBackColor = true;
             // 
             // btKursOeffnen
@@ -578,7 +582,7 @@
         private System.Windows.Forms.DataGridView gridKurse;
         private System.Windows.Forms.Button btKursNeu;
         private System.Windows.Forms.Button btKursOeffnen;
-        private System.Windows.Forms.Button btNeu;
+        private System.Windows.Forms.Button btKursLoeschen;
         private System.Windows.Forms.SplitContainer scHome;
         private System.Windows.Forms.Label lbTimer;
         private System.Windows.Forms.Label lbMitarbeiterName;
