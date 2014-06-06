@@ -180,6 +180,20 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        public int countRows(String query)
+        {
+            try
+            {
+                MySqlCommand myCommand = new MySqlCommand(query, connection);
+                return Convert.ToInt32(myCommand.ExecuteScalar());
+            }
+            catch (Exception ex) // Fehler
+            {
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
         //Backup
         public void backup()
         {

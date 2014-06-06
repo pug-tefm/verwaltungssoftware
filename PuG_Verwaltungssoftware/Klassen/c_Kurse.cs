@@ -17,7 +17,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         private String bis;
         private String wochentag;
         private String uhrzeit;
-        private String kursleiter;
+        private int kursleiter;
 
         public c_Kurse()
         {
@@ -65,7 +65,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             wochentag = pWochentag;
         }
 
-        public void setKursleiter(String pKursleiter)
+        public void setKursleiter(int pKursleiter)
         {
             kursleiter = pKursleiter;
         }
@@ -116,7 +116,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return wochentag;
         }
 
-        public String getKursleiter()
+        public int getKursleiter()
         {
             return kursleiter;
         }

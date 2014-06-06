@@ -359,6 +359,7 @@
             this.tabPageKurse.Size = new System.Drawing.Size(466, 404);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
+            this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
             // 
             // scKurse
             // 
@@ -518,8 +519,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(584, 412);
-            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -354,5 +354,22 @@ namespace PuG_Verwaltungssoftware
             winKursOeffnen window = new winKursOeffnen();
             window.Show();
         }
+
+        private void tabPageKurse_Enter(object sender, EventArgs e)
+        {
+            int dBConnectOk = c.openConnection();  // Datenbank öffnen
+            if (dBConnectOk == 0)
+            {
+                c.displayData("SELECT * FROM kurse;", gridKurse); // Kurse aus db in Grid View laden
+
+                // Headertexte anpassen
+                //gridKurse.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
+                //gridKurse.Columns["vorname"].HeaderText = "Vorname";
+                //gridKurse.Columns["nachname"].HeaderText = "Nachname";
+                //gridKurse.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
+                
+                c.closeConnection(); // Datenbank schliessen
+            } 
+        }
     }
 }

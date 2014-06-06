@@ -40,6 +40,10 @@
             this.lbBis = new System.Windows.Forms.Label();
             this.lbVon = new System.Windows.Forms.Label();
             this.gbDaten = new System.Windows.Forms.GroupBox();
+            this.tbMaxTeilnehmer = new System.Windows.Forms.TextBox();
+            this.lbMaxTeilnehmer = new System.Windows.Forms.Label();
+            this.tbAktTeilnehmer = new System.Windows.Forms.TextBox();
+            this.lbAktTeilnehmer = new System.Windows.Forms.Label();
             this.tbPreis = new System.Windows.Forms.TextBox();
             this.lbBezeichnung = new System.Windows.Forms.Label();
             this.lbKursleiter = new System.Windows.Forms.Label();
@@ -49,10 +53,6 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            this.tbAktTeilnehmer = new System.Windows.Forms.TextBox();
-            this.lbAktTeilnehmer = new System.Windows.Forms.Label();
-            this.tbMaxTeilnehmer = new System.Windows.Forms.TextBox();
-            this.lbMaxTeilnehmer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,24 +104,30 @@
             // 
             // tbWochentag
             // 
+            this.tbWochentag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbWochentag.Location = new System.Drawing.Point(129, 81);
             this.tbWochentag.Name = "tbWochentag";
             this.tbWochentag.ReadOnly = true;
             this.tbWochentag.Size = new System.Drawing.Size(214, 26);
-            this.tbWochentag.TabIndex = 9;
+            this.tbWochentag.TabIndex = 8;
             // 
             // tbUhrzeit
             // 
+            this.tbUhrzeit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbUhrzeit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUhrzeit.Location = new System.Drawing.Point(129, 109);
             this.tbUhrzeit.Name = "tbUhrzeit";
             this.tbUhrzeit.ReadOnly = true;
             this.tbUhrzeit.Size = new System.Drawing.Size(214, 26);
-            this.tbUhrzeit.TabIndex = 8;
+            this.tbUhrzeit.TabIndex = 9;
             // 
             // tbBis
             // 
+            this.tbBis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBis.Location = new System.Drawing.Point(129, 54);
             this.tbBis.Name = "tbBis";
@@ -131,6 +137,8 @@
             // 
             // tbVon
             // 
+            this.tbVon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVon.Location = new System.Drawing.Point(129, 22);
             this.tbVon.Name = "tbVon";
@@ -145,7 +153,7 @@
             this.lbWochentag.Location = new System.Drawing.Point(12, 89);
             this.lbWochentag.Name = "lbWochentag";
             this.lbWochentag.Size = new System.Drawing.Size(81, 18);
-            this.lbWochentag.TabIndex = 5;
+            this.lbWochentag.TabIndex = 0;
             this.lbWochentag.Text = "Wochentag:";
             // 
             // lbUhrzeit
@@ -155,7 +163,7 @@
             this.lbUhrzeit.Location = new System.Drawing.Point(12, 117);
             this.lbUhrzeit.Name = "lbUhrzeit";
             this.lbUhrzeit.Size = new System.Drawing.Size(57, 18);
-            this.lbUhrzeit.TabIndex = 4;
+            this.lbUhrzeit.TabIndex = 0;
             this.lbUhrzeit.Text = "Uhrzeit:";
             // 
             // lbBis
@@ -165,7 +173,7 @@
             this.lbBis.Location = new System.Drawing.Point(12, 61);
             this.lbBis.Name = "lbBis";
             this.lbBis.Size = new System.Drawing.Size(30, 18);
-            this.lbBis.TabIndex = 3;
+            this.lbBis.TabIndex = 0;
             this.lbBis.Text = "Bis:";
             // 
             // lbVon
@@ -175,7 +183,7 @@
             this.lbVon.Location = new System.Drawing.Point(12, 30);
             this.lbVon.Name = "lbVon";
             this.lbVon.Size = new System.Drawing.Size(36, 18);
-            this.lbVon.TabIndex = 2;
+            this.lbVon.TabIndex = 0;
             this.lbVon.Text = "Von:";
             // 
             // gbDaten
@@ -199,14 +207,58 @@
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Allgemeine Daten";
             // 
+            // tbMaxTeilnehmer
+            // 
+            this.tbMaxTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 152);
+            this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
+            this.tbMaxTeilnehmer.ReadOnly = true;
+            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(214, 26);
+            this.tbMaxTeilnehmer.TabIndex = 5;
+            // 
+            // lbMaxTeilnehmer
+            // 
+            this.lbMaxTeilnehmer.AutoSize = true;
+            this.lbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaxTeilnehmer.Location = new System.Drawing.Point(12, 156);
+            this.lbMaxTeilnehmer.Name = "lbMaxTeilnehmer";
+            this.lbMaxTeilnehmer.Size = new System.Drawing.Size(116, 18);
+            this.lbMaxTeilnehmer.TabIndex = 0;
+            this.lbMaxTeilnehmer.Text = "Max. Teilnehmer:";
+            // 
+            // tbAktTeilnehmer
+            // 
+            this.tbAktTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAktTeilnehmer.Location = new System.Drawing.Point(129, 120);
+            this.tbAktTeilnehmer.Name = "tbAktTeilnehmer";
+            this.tbAktTeilnehmer.ReadOnly = true;
+            this.tbAktTeilnehmer.Size = new System.Drawing.Size(214, 26);
+            this.tbAktTeilnehmer.TabIndex = 4;
+            // 
+            // lbAktTeilnehmer
+            // 
+            this.lbAktTeilnehmer.AutoSize = true;
+            this.lbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAktTeilnehmer.Location = new System.Drawing.Point(12, 124);
+            this.lbAktTeilnehmer.Name = "lbAktTeilnehmer";
+            this.lbAktTeilnehmer.Size = new System.Drawing.Size(111, 18);
+            this.lbAktTeilnehmer.TabIndex = 0;
+            this.lbAktTeilnehmer.Text = "Akt. Teilnehmer:";
+            // 
             // tbPreis
             // 
+            this.tbPreis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPreis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPreis.Location = new System.Drawing.Point(129, 88);
             this.tbPreis.Name = "tbPreis";
             this.tbPreis.ReadOnly = true;
             this.tbPreis.Size = new System.Drawing.Size(214, 26);
-            this.tbPreis.TabIndex = 6;
+            this.tbPreis.TabIndex = 3;
             // 
             // lbBezeichnung
             // 
@@ -215,7 +267,7 @@
             this.lbBezeichnung.Location = new System.Drawing.Point(12, 26);
             this.lbBezeichnung.Name = "lbBezeichnung";
             this.lbBezeichnung.Size = new System.Drawing.Size(91, 18);
-            this.lbBezeichnung.TabIndex = 1;
+            this.lbBezeichnung.TabIndex = 0;
             this.lbBezeichnung.Text = "Bezeichnung:";
             // 
             // lbKursleiter
@@ -225,11 +277,13 @@
             this.lbKursleiter.Location = new System.Drawing.Point(12, 58);
             this.lbKursleiter.Name = "lbKursleiter";
             this.lbKursleiter.Size = new System.Drawing.Size(73, 18);
-            this.lbKursleiter.TabIndex = 2;
+            this.lbKursleiter.TabIndex = 0;
             this.lbKursleiter.Text = "Kursleiter:";
             // 
             // tbBezeichnung
             // 
+            this.tbBezeichnung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBezeichnung.Location = new System.Drawing.Point(129, 18);
             this.tbBezeichnung.Name = "tbBezeichnung";
@@ -244,17 +298,19 @@
             this.lbPreis.Location = new System.Drawing.Point(12, 92);
             this.lbPreis.Name = "lbPreis";
             this.lbPreis.Size = new System.Drawing.Size(43, 18);
-            this.lbPreis.TabIndex = 4;
+            this.lbPreis.TabIndex = 0;
             this.lbPreis.Text = "Preis:";
             // 
             // tbKursleiter
             // 
+            this.tbKursleiter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursleiter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbKursleiter.Location = new System.Drawing.Point(129, 50);
             this.tbKursleiter.Name = "tbKursleiter";
             this.tbKursleiter.ReadOnly = true;
             this.tbKursleiter.Size = new System.Drawing.Size(214, 26);
-            this.tbKursleiter.TabIndex = 3;
+            this.tbKursleiter.TabIndex = 2;
             // 
             // btSchliessen
             // 
@@ -263,7 +319,7 @@
             this.btSchliessen.Location = new System.Drawing.Point(459, 0);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(105, 45);
-            this.btSchliessen.TabIndex = 2;
+            this.btSchliessen.TabIndex = 12;
             this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
@@ -275,7 +331,7 @@
             this.btSpeichern.Location = new System.Drawing.Point(105, 0);
             this.btSpeichern.Name = "btSpeichern";
             this.btSpeichern.Size = new System.Drawing.Size(105, 45);
-            this.btSpeichern.TabIndex = 1;
+            this.btSpeichern.TabIndex = 11;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
@@ -287,48 +343,10 @@
             this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
             this.btBearbeiten.Name = "btBearbeiten";
             this.btBearbeiten.Size = new System.Drawing.Size(105, 45);
-            this.btBearbeiten.TabIndex = 0;
+            this.btBearbeiten.TabIndex = 10;
             this.btBearbeiten.Text = "Bearbeiten";
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
-            // 
-            // tbAktTeilnehmer
-            // 
-            this.tbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAktTeilnehmer.Location = new System.Drawing.Point(129, 120);
-            this.tbAktTeilnehmer.Name = "tbAktTeilnehmer";
-            this.tbAktTeilnehmer.ReadOnly = true;
-            this.tbAktTeilnehmer.Size = new System.Drawing.Size(214, 26);
-            this.tbAktTeilnehmer.TabIndex = 9;
-            // 
-            // lbAktTeilnehmer
-            // 
-            this.lbAktTeilnehmer.AutoSize = true;
-            this.lbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAktTeilnehmer.Location = new System.Drawing.Point(12, 124);
-            this.lbAktTeilnehmer.Name = "lbAktTeilnehmer";
-            this.lbAktTeilnehmer.Size = new System.Drawing.Size(111, 18);
-            this.lbAktTeilnehmer.TabIndex = 7;
-            this.lbAktTeilnehmer.Text = "Akt. Teilnehmer:";
-            // 
-            // tbMaxTeilnehmer
-            // 
-            this.tbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 152);
-            this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
-            this.tbMaxTeilnehmer.ReadOnly = true;
-            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(214, 26);
-            this.tbMaxTeilnehmer.TabIndex = 11;
-            // 
-            // lbMaxTeilnehmer
-            // 
-            this.lbMaxTeilnehmer.AutoSize = true;
-            this.lbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaxTeilnehmer.Location = new System.Drawing.Point(12, 156);
-            this.lbMaxTeilnehmer.Name = "lbMaxTeilnehmer";
-            this.lbMaxTeilnehmer.Size = new System.Drawing.Size(116, 18);
-            this.lbMaxTeilnehmer.TabIndex = 10;
-            this.lbMaxTeilnehmer.Text = "Max. Teilnehmer:";
             // 
             // winKursOeffnen
             // 
