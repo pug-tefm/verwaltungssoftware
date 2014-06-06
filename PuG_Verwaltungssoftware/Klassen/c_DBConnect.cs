@@ -12,10 +12,10 @@ namespace PuG_Verwaltungssoftware
     class c_DBConnect
     {
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string username;
-        private string password;
+        private string server = "managed-5.7thserver.de";
+        private string database = "c3_erik_schule";
+        private string username = "c3_erik_schule";
+        private string password = "t0xVxFCNtCRfOTmnShgwdqvq1mn9fPX7";
 
         // Konstruktor
         public c_DBConnect()
@@ -25,10 +25,6 @@ namespace PuG_Verwaltungssoftware
 
         private void initialize()
         {
-            server = "localhost";
-            database = "pug_software";
-            username = "root";
-            password = "";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
