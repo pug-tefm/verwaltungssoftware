@@ -243,7 +243,9 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaOeffnen_Click(object sender, EventArgs e)
         {
-            winMitarbeiterOeffnen window = new winMitarbeiterOeffnen();
+            int row = gridMitarbeiter.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
+            winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id);
             window.Show();
         }
 

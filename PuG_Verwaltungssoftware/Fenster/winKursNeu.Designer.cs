@@ -75,8 +75,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Size = new System.Drawing.Size(394, 332);
-            this.splitContainer1.SplitterDistance = 295;
+            this.splitContainer1.Size = new System.Drawing.Size(394, 382);
+            this.splitContainer1.SplitterDistance = 339;
             this.splitContainer1.TabIndex = 0;
             // 
             // gbZeiten
@@ -95,7 +95,7 @@
             this.gbZeiten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbZeiten.Location = new System.Drawing.Point(0, 176);
             this.gbZeiten.Name = "gbZeiten";
-            this.gbZeiten.Size = new System.Drawing.Size(394, 117);
+            this.gbZeiten.Size = new System.Drawing.Size(394, 161);
             this.gbZeiten.TabIndex = 9;
             this.gbZeiten.TabStop = false;
             this.gbZeiten.Text = "Zeitliche Angaben";
@@ -194,7 +194,7 @@
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(394, 176);
+            this.gbDaten.Size = new System.Drawing.Size(394, 220);
             this.gbDaten.TabIndex = 8;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Allgemeine Daten";
@@ -287,7 +287,7 @@
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSchliessen.Location = new System.Drawing.Point(289, 0);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 33);
+            this.btSchliessen.Size = new System.Drawing.Size(105, 39);
             this.btSchliessen.TabIndex = 11;
             this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
@@ -299,7 +299,7 @@
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Location = new System.Drawing.Point(0, 0);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 33);
+            this.btSpeichern.Size = new System.Drawing.Size(105, 39);
             this.btSpeichern.TabIndex = 10;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
@@ -309,10 +309,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 332);
+            this.ClientSize = new System.Drawing.Size(394, 382);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(410, 370);
+            this.MinimumSize = new System.Drawing.Size(410, 420);
             this.Name = "winKursNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neuen Kurs anlegen";

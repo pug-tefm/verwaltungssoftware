@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterNeu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbLoginDaten = new System.Windows.Forms.GroupBox();
+            this.cbPosition = new System.Windows.Forms.ComboBox();
+            this.lbPosition = new System.Windows.Forms.Label();
+            this.tbInitPasswort = new System.Windows.Forms.TextBox();
+            this.tbInitUser = new System.Windows.Forms.TextBox();
+            this.lbInitPasswort = new System.Windows.Forms.Label();
+            this.lbInitUser = new System.Windows.Forms.Label();
             this.gbGehalt = new System.Windows.Forms.GroupBox();
             this.tbGehalt = new System.Windows.Forms.TextBox();
             this.lbGehalt = new System.Windows.Forms.Label();
@@ -55,6 +62,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbLoginDaten.SuspendLayout();
             this.gbGehalt.SuspendLayout();
             this.gbAnschrift.SuspendLayout();
             this.gbDaten.SuspendLayout();
@@ -70,6 +78,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbLoginDaten);
             this.splitContainer1.Panel1.Controls.Add(this.gbGehalt);
             this.splitContainer1.Panel1.Controls.Add(this.gbAnschrift);
             this.splitContainer1.Panel1.Controls.Add(this.gbDaten);
@@ -78,9 +87,87 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Size = new System.Drawing.Size(564, 432);
-            this.splitContainer1.SplitterDistance = 385;
+            this.splitContainer1.Size = new System.Drawing.Size(394, 522);
+            this.splitContainer1.SplitterDistance = 465;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // gbLoginDaten
+            // 
+            this.gbLoginDaten.Controls.Add(this.cbPosition);
+            this.gbLoginDaten.Controls.Add(this.lbPosition);
+            this.gbLoginDaten.Controls.Add(this.tbInitPasswort);
+            this.gbLoginDaten.Controls.Add(this.tbInitUser);
+            this.gbLoginDaten.Controls.Add(this.lbInitPasswort);
+            this.gbLoginDaten.Controls.Add(this.lbInitUser);
+            this.gbLoginDaten.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbLoginDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbLoginDaten.Location = new System.Drawing.Point(0, 353);
+            this.gbLoginDaten.Name = "gbLoginDaten";
+            this.gbLoginDaten.Size = new System.Drawing.Size(394, 109);
+            this.gbLoginDaten.TabIndex = 11;
+            this.gbLoginDaten.TabStop = false;
+            this.gbLoginDaten.Text = "Login - Daten";
+            // 
+            // cbPosition
+            // 
+            this.cbPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPosition.FormattingEnabled = true;
+            this.cbPosition.Location = new System.Drawing.Point(116, 81);
+            this.cbPosition.Name = "cbPosition";
+            this.cbPosition.Size = new System.Drawing.Size(253, 23);
+            this.cbPosition.TabIndex = 11;
+            // 
+            // lbPosition
+            // 
+            this.lbPosition.AutoSize = true;
+            this.lbPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPosition.Location = new System.Drawing.Point(7, 88);
+            this.lbPosition.Name = "lbPosition";
+            this.lbPosition.Size = new System.Drawing.Size(62, 18);
+            this.lbPosition.TabIndex = 10;
+            this.lbPosition.Text = "Position:";
+            // 
+            // tbInitPasswort
+            // 
+            this.tbInitPasswort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbInitPasswort.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInitPasswort.Location = new System.Drawing.Point(116, 48);
+            this.tbInitPasswort.Name = "tbInitPasswort";
+            this.tbInitPasswort.Size = new System.Drawing.Size(253, 26);
+            this.tbInitPasswort.TabIndex = 9;
+            // 
+            // tbInitUser
+            // 
+            this.tbInitUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbInitUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbInitUser.Location = new System.Drawing.Point(116, 16);
+            this.tbInitUser.Name = "tbInitUser";
+            this.tbInitUser.Size = new System.Drawing.Size(253, 26);
+            this.tbInitUser.TabIndex = 8;
+            // 
+            // lbInitPasswort
+            // 
+            this.lbInitPasswort.AutoSize = true;
+            this.lbInitPasswort.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInitPasswort.Location = new System.Drawing.Point(6, 56);
+            this.lbInitPasswort.Name = "lbInitPasswort";
+            this.lbInitPasswort.Size = new System.Drawing.Size(103, 18);
+            this.lbInitPasswort.TabIndex = 5;
+            this.lbInitPasswort.Text = "Initialpasswort:";
+            // 
+            // lbInitUser
+            // 
+            this.lbInitUser.AutoSize = true;
+            this.lbInitUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInitUser.Location = new System.Drawing.Point(6, 24);
+            this.lbInitUser.Name = "lbInitUser";
+            this.lbInitUser.Size = new System.Drawing.Size(103, 18);
+            this.lbInitUser.TabIndex = 4;
+            this.lbInitUser.Text = "Benutzername:";
             // 
             // gbGehalt
             // 
@@ -90,17 +177,19 @@
             this.gbGehalt.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGehalt.Location = new System.Drawing.Point(0, 291);
             this.gbGehalt.Name = "gbGehalt";
-            this.gbGehalt.Size = new System.Drawing.Size(564, 85);
+            this.gbGehalt.Size = new System.Drawing.Size(394, 62);
             this.gbGehalt.TabIndex = 10;
             this.gbGehalt.TabStop = false;
             this.gbGehalt.Text = "Gehalt";
             // 
             // tbGehalt
             // 
+            this.tbGehalt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbGehalt.Location = new System.Drawing.Point(119, 22);
             this.tbGehalt.Name = "tbGehalt";
-            this.tbGehalt.Size = new System.Drawing.Size(214, 26);
+            this.tbGehalt.Size = new System.Drawing.Size(253, 26);
             this.tbGehalt.TabIndex = 7;
             // 
             // lbGehalt
@@ -127,41 +216,49 @@
             this.gbAnschrift.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAnschrift.Location = new System.Drawing.Point(0, 142);
             this.gbAnschrift.Name = "gbAnschrift";
-            this.gbAnschrift.Size = new System.Drawing.Size(564, 149);
+            this.gbAnschrift.Size = new System.Drawing.Size(394, 149);
             this.gbAnschrift.TabIndex = 9;
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
             // 
             // tbPlz
             // 
+            this.tbPlz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
             this.tbPlz.Name = "tbPlz";
-            this.tbPlz.Size = new System.Drawing.Size(214, 26);
+            this.tbPlz.Size = new System.Drawing.Size(253, 26);
             this.tbPlz.TabIndex = 9;
             // 
             // tbOrt
             // 
+            this.tbOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOrt.Location = new System.Drawing.Point(119, 109);
             this.tbOrt.Name = "tbOrt";
-            this.tbOrt.Size = new System.Drawing.Size(214, 26);
+            this.tbOrt.Size = new System.Drawing.Size(253, 26);
             this.tbOrt.TabIndex = 8;
             // 
             // tbHausnummer
             // 
+            this.tbHausnummer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
             this.tbHausnummer.Name = "tbHausnummer";
-            this.tbHausnummer.Size = new System.Drawing.Size(214, 26);
+            this.tbHausnummer.Size = new System.Drawing.Size(253, 26);
             this.tbHausnummer.TabIndex = 7;
             // 
             // tbStrasse
             // 
+            this.tbStrasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStrasse.Location = new System.Drawing.Point(119, 22);
             this.tbStrasse.Name = "tbStrasse";
-            this.tbStrasse.Size = new System.Drawing.Size(214, 26);
+            this.tbStrasse.Size = new System.Drawing.Size(253, 26);
             this.tbStrasse.TabIndex = 6;
             // 
             // lbPlz
@@ -216,7 +313,7 @@
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(564, 142);
+            this.gbDaten.Size = new System.Drawing.Size(394, 142);
             this.gbDaten.TabIndex = 8;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
@@ -243,17 +340,22 @@
             // 
             // dtpDatum
             // 
+            this.dtpDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatum.Location = new System.Drawing.Point(119, 88);
             this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(214, 23);
+            this.dtpDatum.Size = new System.Drawing.Size(253, 23);
             this.dtpDatum.TabIndex = 5;
             // 
             // tbVorname
             // 
+            this.tbVorname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbVorname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
             this.tbVorname.Name = "tbVorname";
-            this.tbVorname.Size = new System.Drawing.Size(214, 26);
+            this.tbVorname.Size = new System.Drawing.Size(253, 26);
             this.tbVorname.TabIndex = 1;
             // 
             // lbDatum
@@ -268,19 +370,21 @@
             // 
             // tbNachname
             // 
+            this.tbNachname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNachname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
             this.tbNachname.Name = "tbNachname";
-            this.tbNachname.Size = new System.Drawing.Size(214, 26);
+            this.tbNachname.Size = new System.Drawing.Size(253, 26);
             this.tbNachname.TabIndex = 3;
             // 
             // btSchliessen
             // 
             this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(459, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(289, 0);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 43);
+            this.btSchliessen.Size = new System.Drawing.Size(105, 53);
             this.btSchliessen.TabIndex = 2;
             this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
@@ -292,7 +396,7 @@
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Location = new System.Drawing.Point(0, 0);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 43);
+            this.btSpeichern.Size = new System.Drawing.Size(105, 53);
             this.btSpeichern.TabIndex = 1;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
@@ -302,17 +406,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 432);
+            this.ClientSize = new System.Drawing.Size(394, 522);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(580, 470);
+            this.MinimumSize = new System.Drawing.Size(410, 560);
             this.Name = "winMitarbeiterNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neuen Mitarbeiter anlegen";
+            this.Load += new System.EventHandler(this.winMitarbeiterNeu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbLoginDaten.ResumeLayout(false);
+            this.gbLoginDaten.PerformLayout();
             this.gbGehalt.ResumeLayout(false);
             this.gbGehalt.PerformLayout();
             this.gbAnschrift.ResumeLayout(false);
@@ -347,5 +454,12 @@
         private System.Windows.Forms.TextBox tbOrt;
         private System.Windows.Forms.TextBox tbHausnummer;
         private System.Windows.Forms.TextBox tbStrasse;
+        private System.Windows.Forms.GroupBox gbLoginDaten;
+        private System.Windows.Forms.TextBox tbInitPasswort;
+        private System.Windows.Forms.TextBox tbInitUser;
+        private System.Windows.Forms.Label lbInitPasswort;
+        private System.Windows.Forms.Label lbInitUser;
+        private System.Windows.Forms.Label lbPosition;
+        private System.Windows.Forms.ComboBox cbPosition;
     }
 }

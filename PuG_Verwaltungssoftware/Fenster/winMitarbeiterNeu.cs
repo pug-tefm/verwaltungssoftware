@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PuG_Verwaltungssoftware.Klassen;
 
 namespace PuG_Verwaltungssoftware
 {
     public partial class winMitarbeiterNeu : Form
     {
-        bool editMode = false;
-        bool save = false;
-
         public winMitarbeiterNeu()
         {
             InitializeComponent();
@@ -24,31 +22,198 @@ namespace PuG_Verwaltungssoftware
         private void btSchliessen_Click(object sender, EventArgs e)
         {
             // Fenster schliessen
-            if (editMode == true)
+            if (tbVorname.Text.Trim().Length != 0 || tbNachname.Text.Trim().Length != 0 || tbStrasse.Text.Trim().Length != 0 || tbHausnummer.Text.Trim().Length != 0
+                || tbPlz.Text.Trim().Length != 0 || tbOrt.Text.Trim().Length != 0 || tbGehalt.Text.Trim().Length != 0 || tbInitUser.Text.Trim().Length != 0 || tbInitPasswort.Text.Trim().Length != 0)
             {
-                // MessageBox schliessen ohne speichern
-                // ######## unvollständig ##########
-                DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
                 {
                     this.Close();
-                }
-                else
-                {
-
                 }
             }
             else
             {
                 this.Close();
             }
-            
         }
 
         private void btSpeichern_Click(object sender, EventArgs e)
         {
-            // Globale Variable true setzen
-            save = true;
+
+            // Neues Mitarbeiter Objekt anlegen
+            c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
+
+            // Variablendeklaration und Initialisierung
+            String vorname;
+            String nachname;
+            String gebDatum;
+            String strasse;
+            String ort;
+            String initBenutzer;
+            String initPasswort;
+
+            String strSQL = String.Empty;
+
+            int hNummer;
+            int plz;
+            int posId;
+            double gehalt;
+
+
+            // =====================================
+            //   Ueberpruefung auf leere Textfelder
+            // =====================================
+
+            // Persoenliche Daten
+            if (tbVorname.Text != "" && tbNachname.Text != "" && dtpDatum.Text != "")
+            {
+                vorname = tbVorname.Text;
+                nachname = tbNachname.Text;
+                // GebDatum umformatieren
+                gebDatum = dtpDatum.Text;
+                DateTime date = Convert.ToDateTime(gebDatum);
+                gebDatum = date.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.");
+                return;
+            }
+
+            // Anschrift
+            if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbPlz.Text != "" && tbOrt.Text != "")
+            {
+                strasse = tbStrasse.Text;
+                ort = tbOrt.Text;
+                if (c_Helper.numFormat(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
+                {
+                    hNummer = Convert.ToInt32(tbHausnummer.Text);
+                    plz = Convert.ToInt32(tbPlz.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Im Feld Hausnummer und Postleitzahl dürfen nur Zahlen stehen.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.");
+                return;
+            }
+
+            // Gehalt
+            if (tbGehalt.Text != "")
+            {
+                gehalt = Convert.ToDouble(tbGehalt.Text);
+            }
+            else
+            {
+                MessageBox.Show("Bitte Feld Gehalt ausfüllen.");
+                return;
+            }
+
+            // Login - Daten
+            if (tbInitUser.Text != "" && tbInitPasswort.Text != "")
+            {
+                initBenutzer = tbInitUser.Text;
+                initPasswort = tbInitPasswort.Text;
+                // Ueberpruefen welche Position ausgewaehlt wurde
+                if (cbPosition.SelectedItem.ToString() == "Normal")
+                {
+                    posId = 2;
+                }
+                else if (cbPosition.SelectedItem.ToString() == "Chef")
+                {
+                    posId = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Keine Position ausgewählt.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Login-Daten ausfüllen.");
+                return;
+            }
+
+            
+
+            myMitarbeiter.setVorname(vorname);
+            myMitarbeiter.setNachname(nachname);
+            myMitarbeiter.setGebDatum(gebDatum);
+            myMitarbeiter.setStrasse(strasse);
+            myMitarbeiter.setOrt(ort);
+            myMitarbeiter.setHausnummer(hNummer);
+            myMitarbeiter.setPlz(plz);
+            myMitarbeiter.setGehalt(gehalt);
+            myMitarbeiter.setBenutzername(initBenutzer);
+            myMitarbeiter.setPasswort(initPasswort);
+            myMitarbeiter.setPositionId(posId);
+
+
+
+            // =====================================
+            //     Daten in Datenbank schreiben
+            // ===================================== 
+            
+            c_DBConnect c = new c_DBConnect();
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                strSQL = "INSERT INTO mitarbeiter (position_id, benutzername, passwort, vorname, nachname, geburtsdatum, strasse, hausnummer, plz, ort, gehalt)" +
+                    "VALUES (" + posId + ", '" + initBenutzer + "', '" + c_Helper.encrypt(initPasswort) + "' , '" + vorname + "', '" + nachname + "', '" + gebDatum + "', '" + strasse + "', " + hNummer + ", " + plz + ", '" + ort + "', " + gehalt + ");";
+                c.insert(strSQL, "Mitarbeiter");
+                c.closeConnection();
+
+                this.Close();  // Fenster schliessen
+            }
+            
         }
+
+        private void winMitarbeiterNeu_Load(object sender, EventArgs e)
+        {
+
+            // =====================================
+            //     Combobox mit Werten befuellen
+            // =====================================
+
+            string bezeichnung = "";
+            int pos = 0;
+            c_DBConnect c = new c_DBConnect();
+
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
+                if (rows > 0)
+                {
+                    DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
+                    if (result != null)
+                    {
+                        for (int i = 0; i < rows; i++)
+                        {
+                            bezeichnung = (String)result.Rows[i]["bezeichnung"];
+                            cbPosition.Items.Add(bezeichnung);
+                        }
+                    }
+                }
+                c.closeConnection();
+            }
+
+            // Combobox preselected Item
+            for (int i = 0; i < cbPosition.Items.Count; i++)
+            {
+                if (cbPosition.Items[i].ToString() == "Normal")
+                {
+                    pos = i;
+                }
+            }
+            cbPosition.SelectedIndex = pos;
+
+        }
+
     }
 }

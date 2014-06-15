@@ -12,7 +12,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         private String vorname;
         private String nachname;
         private String gebDatum;
-        private String[] adresse;
+        private String strasse;
+        private String ort;
+        private int hNummer;
+        private int plz;
 
         // Standardkonstruktor
         public c_Person()
@@ -20,7 +23,7 @@ namespace PuG_Verwaltungssoftware.Klassen
 
         }
 
-        public c_Person(String vor, String nach, String geb, String[] adr)
+        public c_Person(String vor, String nach, String geb, String strasse, String ort, int hNummer, int plz)
         {
 
         }
@@ -38,9 +41,21 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             this.gebDatum = pDatum;
         }
-        public void setAdresse(String[] pAdresse)
+        public void setStrasse(String pStrasse)
         {
-
+            this.strasse = pStrasse;
+        }
+        public void setOrt(String pOrt)
+        {
+            this.ort = pOrt;
+        }
+        public void setHausnummer(int pNummer)
+        {
+            this.hNummer = pNummer;
+        }
+        public void setPlz(int pPlz)
+        {
+            this.plz = pPlz;
         }
 
         // get-Methoden
@@ -56,9 +71,21 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             return this.gebDatum;
         }
-        public String[] getAdresse()
+        public String getStrasse()
         {
-            return this.adresse;
+            return this.strasse;
+        }
+        public String getOrt()
+        {
+            return this.ort;
+        }
+        public int getHausnummer()
+        {
+            return this.hNummer;
+        }
+        public int getPlz()
+        {
+            return this.plz;
         }
     }
 }
