@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PuG_Verwaltungssoftware.Klassen;
 
 namespace PuG_Verwaltungssoftware
 {
@@ -149,6 +150,78 @@ namespace PuG_Verwaltungssoftware
         {
             // Globale Variable true setzen
             save = true;
+
+            if (editMode == true)
+            {
+                // Variablendeklaration
+                String vorname = String.Empty;
+                String nachname = String.Empty;
+                String gebDatum = String.Empty;
+                String strasse = String.Empty;
+                String hausnummer = String.Empty;
+                String plz = String.Empty;
+                String ort = String.Empty;
+                String gehalt = String.Empty;
+                String benutzername = String.Empty;
+                String position = String.Empty;
+
+                String strSQL;
+                int posId;
+
+                // Neues Mitarbeiter Objekt anlegen
+                c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
+
+                // Wertzuweisungen
+                vorname = tbVorname.Text;
+                nachname = tbNachname.Text;
+                gebDatum = dtpDatum.Text;
+                strasse = tbStrasse.Text;
+                hausnummer = tbHausnummer.Text;
+                plz = tbPlz.Text;
+                ort = tbOrt.Text;
+                gehalt = tbGehalt.Text;
+                benutzername = tbBenutzername.Text;
+                position = tbPosition.Text;
+
+                strSQL = String.Empty;
+                posId = 0;
+
+                // Formatierungen und Konvertierungen
+                DateTime date = Convert.ToDateTime(gebDatum);
+                gebDatum = date.ToString("yyyy-MM-dd");
+
+                if (tbPosition.Text == "Normal")
+                {
+                    posId = 2;
+                }
+                else if (tbPosition.Text == "Chef")
+                {
+                    posId = 1;
+                }
+
+                myMitarbeiter.setVorname(vorname);
+                myMitarbeiter.setNachname(nachname);
+                myMitarbeiter.setGebDatum(gebDatum);
+                myMitarbeiter.setStrasse(strasse);
+                myMitarbeiter.setOrt(ort);
+                myMitarbeiter.setHausnummer(Convert.ToInt32(hausnummer));
+                myMitarbeiter.setPlz(Convert.ToInt32(plz));
+                myMitarbeiter.setGehalt(Convert.ToDouble(gehalt));
+                myMitarbeiter.setBenutzername(benutzername);
+                myMitarbeiter.setPositionId(posId);
+
+                c_DBConnect c = new c_DBConnect();
+                int dBConnectOk = c.openConnection();
+                if (dBConnectOk == 0)
+                {
+                    strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = " + hausnummer + ", plz = " + plz + ", ort = '" + ort + "', gehalt = " + gehalt + ";";
+                    //c.insert(strSQL, "Mitarbeiter");
+                    c.closeConnection();
+
+                    this.Close();  // Fenster schliessen
+                }
+            }
+
         }
 
     }
