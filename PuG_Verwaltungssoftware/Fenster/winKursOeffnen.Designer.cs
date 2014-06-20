@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winKursOeffnen));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gbZeiten = new System.Windows.Forms.GroupBox();
-            this.tbWochentag = new System.Windows.Forms.TextBox();
-            this.tbUhrzeit = new System.Windows.Forms.TextBox();
-            this.tbBis = new System.Windows.Forms.TextBox();
-            this.tbVon = new System.Windows.Forms.TextBox();
-            this.lbWochentag = new System.Windows.Forms.Label();
-            this.lbUhrzeit = new System.Windows.Forms.Label();
-            this.lbBis = new System.Windows.Forms.Label();
-            this.lbVon = new System.Windows.Forms.Label();
             this.gbDaten = new System.Windows.Forms.GroupBox();
+            this.cbKursleiter = new System.Windows.Forms.ComboBox();
             this.tbMaxTeilnehmer = new System.Windows.Forms.TextBox();
             this.lbMaxTeilnehmer = new System.Windows.Forms.Label();
             this.tbAktTeilnehmer = new System.Windows.Forms.TextBox();
@@ -50,6 +41,22 @@
             this.tbBezeichnung = new System.Windows.Forms.TextBox();
             this.lbPreis = new System.Windows.Forms.Label();
             this.tbKursleiter = new System.Windows.Forms.TextBox();
+            this.gbZeiten = new System.Windows.Forms.GroupBox();
+            this.dtpUhrzeitBis = new System.Windows.Forms.DateTimePicker();
+            this.tbUhrzeitBis = new System.Windows.Forms.TextBox();
+            this.lbUhrzeitBis = new System.Windows.Forms.Label();
+            this.dtpUhrzeitVon = new System.Windows.Forms.DateTimePicker();
+            this.cbWochentag = new System.Windows.Forms.ComboBox();
+            this.dtpDatumVon = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatumBis = new System.Windows.Forms.DateTimePicker();
+            this.tbDatumVon = new System.Windows.Forms.TextBox();
+            this.tbWochentag = new System.Windows.Forms.TextBox();
+            this.tbUhrzeitVon = new System.Windows.Forms.TextBox();
+            this.tbDatumBis = new System.Windows.Forms.TextBox();
+            this.lbWochentag = new System.Windows.Forms.Label();
+            this.lbUhrzeitVon = new System.Windows.Forms.Label();
+            this.lbDatumBis = new System.Windows.Forms.Label();
+            this.lbDatumVon = new System.Windows.Forms.Label();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
@@ -57,8 +64,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.gbZeiten.SuspendLayout();
             this.gbDaten.SuspendLayout();
+            this.gbZeiten.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -71,123 +78,23 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbZeiten);
             this.splitContainer1.Panel1.Controls.Add(this.gbDaten);
+            this.splitContainer1.Panel1.Controls.Add(this.gbZeiten);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
             this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
-            this.splitContainer1.Size = new System.Drawing.Size(564, 442);
-            this.splitContainer1.SplitterDistance = 393;
+            this.splitContainer1.Size = new System.Drawing.Size(404, 426);
+            this.splitContainer1.SplitterDistance = 371;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // gbZeiten
-            // 
-            this.gbZeiten.Controls.Add(this.tbWochentag);
-            this.gbZeiten.Controls.Add(this.tbUhrzeit);
-            this.gbZeiten.Controls.Add(this.tbBis);
-            this.gbZeiten.Controls.Add(this.tbVon);
-            this.gbZeiten.Controls.Add(this.lbWochentag);
-            this.gbZeiten.Controls.Add(this.lbUhrzeit);
-            this.gbZeiten.Controls.Add(this.lbBis);
-            this.gbZeiten.Controls.Add(this.lbVon);
-            this.gbZeiten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbZeiten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbZeiten.Location = new System.Drawing.Point(0, 208);
-            this.gbZeiten.Name = "gbZeiten";
-            this.gbZeiten.Size = new System.Drawing.Size(564, 201);
-            this.gbZeiten.TabIndex = 9;
-            this.gbZeiten.TabStop = false;
-            this.gbZeiten.Text = "Zeitliche Angaben";
-            // 
-            // tbWochentag
-            // 
-            this.tbWochentag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbWochentag.Location = new System.Drawing.Point(129, 81);
-            this.tbWochentag.Name = "tbWochentag";
-            this.tbWochentag.ReadOnly = true;
-            this.tbWochentag.Size = new System.Drawing.Size(214, 26);
-            this.tbWochentag.TabIndex = 8;
-            // 
-            // tbUhrzeit
-            // 
-            this.tbUhrzeit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUhrzeit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUhrzeit.Location = new System.Drawing.Point(129, 109);
-            this.tbUhrzeit.Name = "tbUhrzeit";
-            this.tbUhrzeit.ReadOnly = true;
-            this.tbUhrzeit.Size = new System.Drawing.Size(214, 26);
-            this.tbUhrzeit.TabIndex = 9;
-            // 
-            // tbBis
-            // 
-            this.tbBis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBis.Location = new System.Drawing.Point(129, 54);
-            this.tbBis.Name = "tbBis";
-            this.tbBis.ReadOnly = true;
-            this.tbBis.Size = new System.Drawing.Size(214, 26);
-            this.tbBis.TabIndex = 7;
-            // 
-            // tbVon
-            // 
-            this.tbVon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVon.Location = new System.Drawing.Point(129, 22);
-            this.tbVon.Name = "tbVon";
-            this.tbVon.ReadOnly = true;
-            this.tbVon.Size = new System.Drawing.Size(214, 26);
-            this.tbVon.TabIndex = 6;
-            // 
-            // lbWochentag
-            // 
-            this.lbWochentag.AutoSize = true;
-            this.lbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWochentag.Location = new System.Drawing.Point(12, 89);
-            this.lbWochentag.Name = "lbWochentag";
-            this.lbWochentag.Size = new System.Drawing.Size(81, 18);
-            this.lbWochentag.TabIndex = 0;
-            this.lbWochentag.Text = "Wochentag:";
-            // 
-            // lbUhrzeit
-            // 
-            this.lbUhrzeit.AutoSize = true;
-            this.lbUhrzeit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUhrzeit.Location = new System.Drawing.Point(12, 117);
-            this.lbUhrzeit.Name = "lbUhrzeit";
-            this.lbUhrzeit.Size = new System.Drawing.Size(57, 18);
-            this.lbUhrzeit.TabIndex = 0;
-            this.lbUhrzeit.Text = "Uhrzeit:";
-            // 
-            // lbBis
-            // 
-            this.lbBis.AutoSize = true;
-            this.lbBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBis.Location = new System.Drawing.Point(12, 61);
-            this.lbBis.Name = "lbBis";
-            this.lbBis.Size = new System.Drawing.Size(30, 18);
-            this.lbBis.TabIndex = 0;
-            this.lbBis.Text = "Bis:";
-            // 
-            // lbVon
-            // 
-            this.lbVon.AutoSize = true;
-            this.lbVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVon.Location = new System.Drawing.Point(12, 30);
-            this.lbVon.Name = "lbVon";
-            this.lbVon.Size = new System.Drawing.Size(36, 18);
-            this.lbVon.TabIndex = 0;
-            this.lbVon.Text = "Von:";
             // 
             // gbDaten
             // 
+            this.gbDaten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDaten.Controls.Add(this.cbKursleiter);
             this.gbDaten.Controls.Add(this.tbMaxTeilnehmer);
             this.gbDaten.Controls.Add(this.lbMaxTeilnehmer);
             this.gbDaten.Controls.Add(this.tbAktTeilnehmer);
@@ -198,31 +105,43 @@
             this.gbDaten.Controls.Add(this.tbBezeichnung);
             this.gbDaten.Controls.Add(this.lbPreis);
             this.gbDaten.Controls.Add(this.tbKursleiter);
-            this.gbDaten.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(564, 208);
-            this.gbDaten.TabIndex = 8;
+            this.gbDaten.Size = new System.Drawing.Size(392, 178);
+            this.gbDaten.TabIndex = 1;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Allgemeine Daten";
             // 
+            // cbKursleiter
+            // 
+            this.cbKursleiter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbKursleiter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbKursleiter.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.cbKursleiter.FormattingEnabled = true;
+            this.cbKursleiter.Location = new System.Drawing.Point(129, 47);
+            this.cbKursleiter.Name = "cbKursleiter";
+            this.cbKursleiter.Size = new System.Drawing.Size(240, 26);
+            this.cbKursleiter.TabIndex = 4;
+            // 
             // tbMaxTeilnehmer
             // 
-            this.tbMaxTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMaxTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 152);
+            this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 148);
             this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
             this.tbMaxTeilnehmer.ReadOnly = true;
-            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(214, 26);
-            this.tbMaxTeilnehmer.TabIndex = 5;
+            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(240, 26);
+            this.tbMaxTeilnehmer.TabIndex = 7;
             // 
             // lbMaxTeilnehmer
             // 
             this.lbMaxTeilnehmer.AutoSize = true;
             this.lbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaxTeilnehmer.Location = new System.Drawing.Point(12, 156);
+            this.lbMaxTeilnehmer.Location = new System.Drawing.Point(12, 151);
             this.lbMaxTeilnehmer.Name = "lbMaxTeilnehmer";
             this.lbMaxTeilnehmer.Size = new System.Drawing.Size(116, 18);
             this.lbMaxTeilnehmer.TabIndex = 0;
@@ -230,20 +149,20 @@
             // 
             // tbAktTeilnehmer
             // 
-            this.tbAktTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAktTeilnehmer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
             this.tbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAktTeilnehmer.Location = new System.Drawing.Point(129, 120);
+            this.tbAktTeilnehmer.Location = new System.Drawing.Point(129, 112);
             this.tbAktTeilnehmer.Name = "tbAktTeilnehmer";
             this.tbAktTeilnehmer.ReadOnly = true;
-            this.tbAktTeilnehmer.Size = new System.Drawing.Size(214, 26);
-            this.tbAktTeilnehmer.TabIndex = 4;
+            this.tbAktTeilnehmer.Size = new System.Drawing.Size(240, 26);
+            this.tbAktTeilnehmer.TabIndex = 6;
             // 
             // lbAktTeilnehmer
             // 
             this.lbAktTeilnehmer.AutoSize = true;
             this.lbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAktTeilnehmer.Location = new System.Drawing.Point(12, 124);
+            this.lbAktTeilnehmer.Location = new System.Drawing.Point(12, 115);
             this.lbAktTeilnehmer.Name = "lbAktTeilnehmer";
             this.lbAktTeilnehmer.Size = new System.Drawing.Size(111, 18);
             this.lbAktTeilnehmer.TabIndex = 0;
@@ -251,20 +170,20 @@
             // 
             // tbPreis
             // 
-            this.tbPreis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPreis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPreis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPreis.Location = new System.Drawing.Point(129, 88);
+            this.tbPreis.Location = new System.Drawing.Point(129, 80);
             this.tbPreis.Name = "tbPreis";
             this.tbPreis.ReadOnly = true;
-            this.tbPreis.Size = new System.Drawing.Size(214, 26);
-            this.tbPreis.TabIndex = 3;
+            this.tbPreis.Size = new System.Drawing.Size(240, 26);
+            this.tbPreis.TabIndex = 5;
             // 
             // lbBezeichnung
             // 
             this.lbBezeichnung.AutoSize = true;
             this.lbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBezeichnung.Location = new System.Drawing.Point(12, 26);
+            this.lbBezeichnung.Location = new System.Drawing.Point(12, 18);
             this.lbBezeichnung.Name = "lbBezeichnung";
             this.lbBezeichnung.Size = new System.Drawing.Size(91, 18);
             this.lbBezeichnung.TabIndex = 0;
@@ -274,7 +193,7 @@
             // 
             this.lbKursleiter.AutoSize = true;
             this.lbKursleiter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbKursleiter.Location = new System.Drawing.Point(12, 58);
+            this.lbKursleiter.Location = new System.Drawing.Point(12, 50);
             this.lbKursleiter.Name = "lbKursleiter";
             this.lbKursleiter.Size = new System.Drawing.Size(73, 18);
             this.lbKursleiter.TabIndex = 0;
@@ -282,20 +201,20 @@
             // 
             // tbBezeichnung
             // 
-            this.tbBezeichnung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBezeichnung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBezeichnung.Location = new System.Drawing.Point(129, 18);
+            this.tbBezeichnung.Location = new System.Drawing.Point(129, 15);
             this.tbBezeichnung.Name = "tbBezeichnung";
             this.tbBezeichnung.ReadOnly = true;
-            this.tbBezeichnung.Size = new System.Drawing.Size(214, 26);
-            this.tbBezeichnung.TabIndex = 1;
+            this.tbBezeichnung.Size = new System.Drawing.Size(240, 26);
+            this.tbBezeichnung.TabIndex = 2;
             // 
             // lbPreis
             // 
             this.lbPreis.AutoSize = true;
             this.lbPreis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPreis.Location = new System.Drawing.Point(12, 92);
+            this.lbPreis.Location = new System.Drawing.Point(12, 83);
             this.lbPreis.Name = "lbPreis";
             this.lbPreis.Size = new System.Drawing.Size(43, 18);
             this.lbPreis.TabIndex = 0;
@@ -303,23 +222,221 @@
             // 
             // tbKursleiter
             // 
-            this.tbKursleiter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbKursleiter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursleiter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKursleiter.Location = new System.Drawing.Point(129, 50);
+            this.tbKursleiter.Location = new System.Drawing.Point(129, 47);
             this.tbKursleiter.Name = "tbKursleiter";
             this.tbKursleiter.ReadOnly = true;
-            this.tbKursleiter.Size = new System.Drawing.Size(214, 26);
-            this.tbKursleiter.TabIndex = 2;
+            this.tbKursleiter.Size = new System.Drawing.Size(224, 26);
+            this.tbKursleiter.TabIndex = 3;
+            // 
+            // gbZeiten
+            // 
+            this.gbZeiten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbZeiten.Controls.Add(this.dtpUhrzeitBis);
+            this.gbZeiten.Controls.Add(this.tbUhrzeitBis);
+            this.gbZeiten.Controls.Add(this.lbUhrzeitBis);
+            this.gbZeiten.Controls.Add(this.dtpUhrzeitVon);
+            this.gbZeiten.Controls.Add(this.cbWochentag);
+            this.gbZeiten.Controls.Add(this.dtpDatumVon);
+            this.gbZeiten.Controls.Add(this.dtpDatumBis);
+            this.gbZeiten.Controls.Add(this.tbDatumVon);
+            this.gbZeiten.Controls.Add(this.tbWochentag);
+            this.gbZeiten.Controls.Add(this.tbUhrzeitVon);
+            this.gbZeiten.Controls.Add(this.tbDatumBis);
+            this.gbZeiten.Controls.Add(this.lbWochentag);
+            this.gbZeiten.Controls.Add(this.lbUhrzeitVon);
+            this.gbZeiten.Controls.Add(this.lbDatumBis);
+            this.gbZeiten.Controls.Add(this.lbDatumVon);
+            this.gbZeiten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbZeiten.Location = new System.Drawing.Point(0, 184);
+            this.gbZeiten.Name = "gbZeiten";
+            this.gbZeiten.Size = new System.Drawing.Size(392, 185);
+            this.gbZeiten.TabIndex = 8;
+            this.gbZeiten.TabStop = false;
+            this.gbZeiten.Text = "Zeitliche Angaben";
+            // 
+            // dtpUhrzeitBis
+            // 
+            this.dtpUhrzeitBis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpUhrzeitBis.CustomFormat = "HH:mm";
+            this.dtpUhrzeitBis.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.dtpUhrzeitBis.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpUhrzeitBis.Location = new System.Drawing.Point(129, 155);
+            this.dtpUhrzeitBis.Name = "dtpUhrzeitBis";
+            this.dtpUhrzeitBis.ShowUpDown = true;
+            this.dtpUhrzeitBis.Size = new System.Drawing.Size(62, 26);
+            this.dtpUhrzeitBis.TabIndex = 19;
+            this.dtpUhrzeitBis.Visible = false;
+            // 
+            // tbUhrzeitBis
+            // 
+            this.tbUhrzeitBis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUhrzeitBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUhrzeitBis.Location = new System.Drawing.Point(129, 155);
+            this.tbUhrzeitBis.Name = "tbUhrzeitBis";
+            this.tbUhrzeitBis.ReadOnly = true;
+            this.tbUhrzeitBis.Size = new System.Drawing.Size(62, 26);
+            this.tbUhrzeitBis.TabIndex = 18;
+            // 
+            // lbUhrzeitBis
+            // 
+            this.lbUhrzeitBis.AutoSize = true;
+            this.lbUhrzeitBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUhrzeitBis.Location = new System.Drawing.Point(12, 159);
+            this.lbUhrzeitBis.Name = "lbUhrzeitBis";
+            this.lbUhrzeitBis.Size = new System.Drawing.Size(78, 18);
+            this.lbUhrzeitBis.TabIndex = 17;
+            this.lbUhrzeitBis.Text = "Uhrzeit Bis:";
+            // 
+            // dtpUhrzeitVon
+            // 
+            this.dtpUhrzeitVon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpUhrzeitVon.CustomFormat = "HH:mm";
+            this.dtpUhrzeitVon.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.dtpUhrzeitVon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpUhrzeitVon.Location = new System.Drawing.Point(129, 121);
+            this.dtpUhrzeitVon.Name = "dtpUhrzeitVon";
+            this.dtpUhrzeitVon.ShowUpDown = true;
+            this.dtpUhrzeitVon.Size = new System.Drawing.Size(62, 26);
+            this.dtpUhrzeitVon.TabIndex = 16;
+            this.dtpUhrzeitVon.Visible = false;
+            // 
+            // cbWochentag
+            // 
+            this.cbWochentag.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbWochentag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.cbWochentag.FormattingEnabled = true;
+            this.cbWochentag.Location = new System.Drawing.Point(129, 89);
+            this.cbWochentag.Name = "cbWochentag";
+            this.cbWochentag.Size = new System.Drawing.Size(240, 26);
+            this.cbWochentag.TabIndex = 14;
+            // 
+            // dtpDatumVon
+            // 
+            this.dtpDatumVon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpDatumVon.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.dtpDatumVon.Location = new System.Drawing.Point(129, 22);
+            this.dtpDatumVon.Name = "dtpDatumVon";
+            this.dtpDatumVon.Size = new System.Drawing.Size(240, 26);
+            this.dtpDatumVon.TabIndex = 10;
+            this.dtpDatumVon.ValueChanged += new System.EventHandler(this.dtpDatumVon_ValueChanged);
+            // 
+            // dtpDatumBis
+            // 
+            this.dtpDatumBis.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpDatumBis.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.dtpDatumBis.Location = new System.Drawing.Point(129, 56);
+            this.dtpDatumBis.Name = "dtpDatumBis";
+            this.dtpDatumBis.Size = new System.Drawing.Size(240, 26);
+            this.dtpDatumBis.TabIndex = 12;
+            this.dtpDatumBis.ValueChanged += new System.EventHandler(this.dtpDatumBis_ValueChanged);
+            // 
+            // tbDatumVon
+            // 
+            this.tbDatumVon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDatumVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDatumVon.Location = new System.Drawing.Point(129, 22);
+            this.tbDatumVon.Name = "tbDatumVon";
+            this.tbDatumVon.ReadOnly = true;
+            this.tbDatumVon.Size = new System.Drawing.Size(224, 26);
+            this.tbDatumVon.TabIndex = 9;
+            // 
+            // tbWochentag
+            // 
+            this.tbWochentag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbWochentag.Location = new System.Drawing.Point(129, 89);
+            this.tbWochentag.Name = "tbWochentag";
+            this.tbWochentag.ReadOnly = true;
+            this.tbWochentag.Size = new System.Drawing.Size(224, 26);
+            this.tbWochentag.TabIndex = 13;
+            // 
+            // tbUhrzeitVon
+            // 
+            this.tbUhrzeitVon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUhrzeitVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUhrzeitVon.Location = new System.Drawing.Point(129, 121);
+            this.tbUhrzeitVon.Name = "tbUhrzeitVon";
+            this.tbUhrzeitVon.ReadOnly = true;
+            this.tbUhrzeitVon.Size = new System.Drawing.Size(62, 26);
+            this.tbUhrzeitVon.TabIndex = 15;
+            // 
+            // tbDatumBis
+            // 
+            this.tbDatumBis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDatumBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDatumBis.Location = new System.Drawing.Point(129, 56);
+            this.tbDatumBis.Name = "tbDatumBis";
+            this.tbDatumBis.ReadOnly = true;
+            this.tbDatumBis.Size = new System.Drawing.Size(224, 26);
+            this.tbDatumBis.TabIndex = 11;
+            // 
+            // lbWochentag
+            // 
+            this.lbWochentag.AutoSize = true;
+            this.lbWochentag.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWochentag.Location = new System.Drawing.Point(12, 92);
+            this.lbWochentag.Name = "lbWochentag";
+            this.lbWochentag.Size = new System.Drawing.Size(81, 18);
+            this.lbWochentag.TabIndex = 0;
+            this.lbWochentag.Text = "Wochentag:";
+            // 
+            // lbUhrzeitVon
+            // 
+            this.lbUhrzeitVon.AutoSize = true;
+            this.lbUhrzeitVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUhrzeitVon.Location = new System.Drawing.Point(12, 124);
+            this.lbUhrzeitVon.Name = "lbUhrzeitVon";
+            this.lbUhrzeitVon.Size = new System.Drawing.Size(84, 18);
+            this.lbUhrzeitVon.TabIndex = 0;
+            this.lbUhrzeitVon.Text = "Uhrzeit Von:";
+            // 
+            // lbDatumBis
+            // 
+            this.lbDatumBis.AutoSize = true;
+            this.lbDatumBis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDatumBis.Location = new System.Drawing.Point(12, 59);
+            this.lbDatumBis.Name = "lbDatumBis";
+            this.lbDatumBis.Size = new System.Drawing.Size(74, 18);
+            this.lbDatumBis.TabIndex = 0;
+            this.lbDatumBis.Text = "Datum Bis:";
+            // 
+            // lbDatumVon
+            // 
+            this.lbDatumVon.AutoSize = true;
+            this.lbDatumVon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDatumVon.Location = new System.Drawing.Point(12, 28);
+            this.lbDatumVon.Name = "lbDatumVon";
+            this.lbDatumVon.Size = new System.Drawing.Size(80, 18);
+            this.lbDatumVon.TabIndex = 0;
+            this.lbDatumVon.Text = "Datum Von:";
             // 
             // btSchliessen
             // 
             this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(459, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(299, 0);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 45);
-            this.btSchliessen.TabIndex = 12;
+            this.btSchliessen.Size = new System.Drawing.Size(105, 51);
+            this.btSchliessen.TabIndex = 19;
             this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
@@ -330,8 +447,8 @@
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Location = new System.Drawing.Point(105, 0);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 45);
-            this.btSpeichern.TabIndex = 11;
+            this.btSpeichern.Size = new System.Drawing.Size(105, 51);
+            this.btSpeichern.TabIndex = 18;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
@@ -342,8 +459,8 @@
             this.btBearbeiten.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
             this.btBearbeiten.Name = "btBearbeiten";
-            this.btBearbeiten.Size = new System.Drawing.Size(105, 45);
-            this.btBearbeiten.TabIndex = 10;
+            this.btBearbeiten.Size = new System.Drawing.Size(105, 51);
+            this.btBearbeiten.TabIndex = 17;
             this.btBearbeiten.Text = "Bearbeiten";
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
@@ -352,21 +469,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 442);
+            this.ClientSize = new System.Drawing.Size(404, 426);
             this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(580, 480);
+            this.MaximumSize = new System.Drawing.Size(420, 465);
+            this.MinimumSize = new System.Drawing.Size(420, 465);
             this.Name = "winKursOeffnen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kurs anzeigen und bearbeiten";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.winKursOeffnen_FormClosing);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.gbZeiten.ResumeLayout(false);
-            this.gbZeiten.PerformLayout();
             this.gbDaten.ResumeLayout(false);
             this.gbDaten.PerformLayout();
+            this.gbZeiten.ResumeLayout(false);
+            this.gbZeiten.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -385,17 +503,25 @@
         private System.Windows.Forms.Label lbBezeichnung;
         private System.Windows.Forms.GroupBox gbZeiten;
         private System.Windows.Forms.Label lbWochentag;
-        private System.Windows.Forms.Label lbUhrzeit;
-        private System.Windows.Forms.Label lbBis;
-        private System.Windows.Forms.Label lbVon;
+        private System.Windows.Forms.Label lbUhrzeitVon;
+        private System.Windows.Forms.Label lbDatumBis;
+        private System.Windows.Forms.Label lbDatumVon;
         private System.Windows.Forms.TextBox tbWochentag;
-        private System.Windows.Forms.TextBox tbUhrzeit;
-        private System.Windows.Forms.TextBox tbBis;
-        private System.Windows.Forms.TextBox tbVon;
+        private System.Windows.Forms.TextBox tbUhrzeitVon;
+        private System.Windows.Forms.TextBox tbDatumBis;
+        private System.Windows.Forms.TextBox tbDatumVon;
         private System.Windows.Forms.TextBox tbPreis;
         private System.Windows.Forms.TextBox tbMaxTeilnehmer;
         private System.Windows.Forms.Label lbMaxTeilnehmer;
         private System.Windows.Forms.TextBox tbAktTeilnehmer;
         private System.Windows.Forms.Label lbAktTeilnehmer;
+        private System.Windows.Forms.DateTimePicker dtpDatumBis;
+        private System.Windows.Forms.DateTimePicker dtpDatumVon;
+        private System.Windows.Forms.ComboBox cbKursleiter;
+        private System.Windows.Forms.ComboBox cbWochentag;
+        private System.Windows.Forms.DateTimePicker dtpUhrzeitVon;
+        private System.Windows.Forms.DateTimePicker dtpUhrzeitBis;
+        private System.Windows.Forms.TextBox tbUhrzeitBis;
+        private System.Windows.Forms.Label lbUhrzeitBis;
     }
 }

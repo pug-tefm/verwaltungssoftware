@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace PuG_Verwaltungssoftware.Klassen
 {
-    class c_Kurse
+    public class c_Kurse
     {
         private int kursID;
         private String bezeichnung;
         private double preis;
         private int aktTeilnehmer;
         private int maxTeilnehmer;
-        private String von;
-        private String bis;
-        private String wochentag;
-        private String uhrzeit;
-        private int kursleiter;
-
-        public c_Kurse()
-        {
-            
-        }
+        private DateTime datumVon;
+        private DateTime datumBis;
+        private DateTime uhrzeitVon;
+        private DateTime uhrzeitBis;
+        private int wochentag;
+        private String kursleiter;
 
         // set-Methoden
+        public void setKursId(int pKursID)
+        {
+            kursID = pKursID;
+        }
+
         public void setBezeichnung(String pBezeichnung)
         {
             bezeichnung = pBezeichnung;
@@ -42,30 +43,35 @@ namespace PuG_Verwaltungssoftware.Klassen
 
         public void setMaxTeilnehmer(int pMaxTeilnehmer)
         {
-            int maxTeilnehmer = pMaxTeilnehmer;
+            maxTeilnehmer = pMaxTeilnehmer;
         }
 
-        public void setVon(String pVon)
+        public void setDatumVon(DateTime pDatumVon)
         {
-            von = pVon;
+            datumVon = pDatumVon;
         }
 
-        public void setBis(String pBis)
+        public void setDatumBis(DateTime pDatumBis)
         {
-            bis = pBis;
+            datumBis = pDatumBis;
         }
 
-        public void setUhrzeit(String pUhrzeit)
+        public void setUhrzeitVon(DateTime pUhrzeitVon)
         {
-            uhrzeit = pUhrzeit;
+            uhrzeitVon = pUhrzeitVon;
         }
 
-        public void setWochentag(String pWochentag)
+        public void setUhrzeitBis(DateTime pUhrzeitBis)
+        {
+            uhrzeitBis = pUhrzeitBis;
+        }
+
+        public void setWochentag(int pWochentag)
         {
             wochentag = pWochentag;
         }
 
-        public void setKursleiter(int pKursleiter)
+        public void setKursleiter(String pKursleiter)
         {
             kursleiter = pKursleiter;
         }
@@ -96,27 +102,32 @@ namespace PuG_Verwaltungssoftware.Klassen
             return maxTeilnehmer;
         }
 
-        public String getVon()
+        public DateTime getDatumVon()
         {
-            return von;
+            return datumVon;
         }
 
-        public String getBis()
+        public DateTime getDatumBis()
         {
-            return bis;
+            return datumBis;
         }
 
-        public String getUhrzeit()
+        public DateTime getUhrzeitVon()
         {
-            return uhrzeit;
+            return uhrzeitVon;
         }
 
-        public String getWochentag()
+        public DateTime getUhrzeitBis()
+        {
+            return uhrzeitBis;
+        }
+
+        public int getWochentag()
         {
             return wochentag;
         }
 
-        public int getKursleiter()
+        public String getKursleiter()
         {
             return kursleiter;
         }

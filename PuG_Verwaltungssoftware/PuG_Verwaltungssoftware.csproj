@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fenster\winDataGridViewKurse.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Klassen\c_DBConnect.cs" />
     <Compile Include="Klassen\c_Helper.cs" />
     <Compile Include="Klassen\c_Kurse.cs" />
