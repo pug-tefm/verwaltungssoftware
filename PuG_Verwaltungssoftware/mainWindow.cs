@@ -232,6 +232,12 @@ namespace PuG_Verwaltungssoftware
                 gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
             }
 
+            for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+            {
+                ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+            }
+            ddlMitarbeiterSuchen.SelectedIndex = 0;
+
         }
 
         private void gridMitarbeiter_SelectionChanged(object sender, EventArgs e)
