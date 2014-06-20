@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuG_Verwaltungssoftware.Klassen
 {
-    class c_Helper
+    public class c_Helper
     {
         private BindingSource bindingSource;
 

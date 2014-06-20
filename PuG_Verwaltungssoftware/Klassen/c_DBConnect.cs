@@ -9,7 +9,7 @@ using System.Data;
 
 namespace PuG_Verwaltungssoftware
 {
-    class c_DBConnect
+    public class c_DBConnect
     {
         private MySqlConnection connection;
         private string server = "managed-5.7thserver.de";

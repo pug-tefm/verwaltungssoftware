@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PuG_Verwaltungssoftware.Klassen
 {
-    class c_Mitarbeiter : c_Person
+    public class c_Mitarbeiter : c_Person
     {
         // Deklaration
         private double gehalt;
