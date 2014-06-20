@@ -106,7 +106,7 @@
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(648, 430);
+            this.mainTabControl.Size = new System.Drawing.Size(677, 442);
             this.mainTabControl.TabIndex = 1;
             this.mainTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.mainTabControl_DrawItem);
             // 
@@ -358,9 +358,10 @@
             this.tabPageKurse.Controls.Add(this.scKurse);
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
-            this.tabPageKurse.Size = new System.Drawing.Size(530, 422);
+            this.tabPageKurse.Size = new System.Drawing.Size(559, 434);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
+            this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
             // 
             // scKurse
             // 
@@ -380,8 +381,8 @@
             this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
-            this.scKurse.Size = new System.Drawing.Size(530, 422);
-            this.scKurse.SplitterDistance = 365;
+            this.scKurse.Size = new System.Drawing.Size(559, 434);
+            this.scKurse.SplitterDistance = 375;
             this.scKurse.TabIndex = 0;
             // 
             // gridKurse
@@ -396,7 +397,7 @@
             this.gridKurse.Name = "gridKurse";
             this.gridKurse.ReadOnly = true;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKurse.Size = new System.Drawing.Size(530, 365);
+            this.gridKurse.Size = new System.Drawing.Size(559, 375);
             this.gridKurse.TabIndex = 2;
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
             this.gridKurse.Paint += new System.Windows.Forms.PaintEventHandler(this.gridKurse_Paint);
@@ -406,17 +407,17 @@
             // 
             // textBoxSuchen
             // 
+            this.textBoxSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSuchen.Location = new System.Drawing.Point(301, 14);
             this.textBoxSuchen.Name = "textBoxSuchen";
-            this.textBoxSuchen.Size = new System.Drawing.Size(97, 26);
+            this.textBoxSuchen.Size = new System.Drawing.Size(126, 26);
             this.textBoxSuchen.TabIndex = 11;
             this.textBoxSuchen.TextChanged += new System.EventHandler(this.textBoxSuchen_TextChanged);
             // 
             // comboBoxSuchen
             // 
-            this.comboBoxSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSuchen.FormattingEnabled = true;
             this.comboBoxSuchen.Location = new System.Drawing.Point(190, 14);
@@ -430,7 +431,7 @@
             this.btKursLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btKursLoeschen.Location = new System.Drawing.Point(92, 0);
             this.btKursLoeschen.Name = "btKursLoeschen";
-            this.btKursLoeschen.Size = new System.Drawing.Size(92, 53);
+            this.btKursLoeschen.Size = new System.Drawing.Size(92, 55);
             this.btKursLoeschen.TabIndex = 7;
             this.btKursLoeschen.Text = "Löschen";
             this.btKursLoeschen.UseVisualStyleBackColor = true;
@@ -441,7 +442,7 @@
             this.btKursNeu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btKursNeu.Location = new System.Drawing.Point(0, 0);
             this.btKursNeu.Name = "btKursNeu";
-            this.btKursNeu.Size = new System.Drawing.Size(92, 53);
+            this.btKursNeu.Size = new System.Drawing.Size(92, 55);
             this.btKursNeu.TabIndex = 9;
             this.btKursNeu.Text = "Neu";
             this.btKursNeu.UseVisualStyleBackColor = true;
@@ -450,9 +451,9 @@
             // btKursOeffnen
             // 
             this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursOeffnen.Location = new System.Drawing.Point(404, 0);
+            this.btKursOeffnen.Location = new System.Drawing.Point(433, 0);
             this.btKursOeffnen.Name = "btKursOeffnen";
-            this.btKursOeffnen.Size = new System.Drawing.Size(126, 53);
+            this.btKursOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursOeffnen.TabIndex = 8;
             this.btKursOeffnen.Text = "Öffnen";
             this.btKursOeffnen.UseVisualStyleBackColor = true;
@@ -472,7 +473,7 @@
             this.loginPanel.Controls.Add(this.btLogin);
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(648, 430);
+            this.loginPanel.Size = new System.Drawing.Size(677, 442);
             this.loginPanel.TabIndex = 2;
             // 
             // lbLoginMessage
@@ -548,7 +549,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
-            this.ClientSize = new System.Drawing.Size(649, 430);
+            this.ClientSize = new System.Drawing.Size(678, 442);
             this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

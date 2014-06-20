@@ -15,13 +15,35 @@ namespace PuG_Verwaltungssoftware
         private bool laufendeKurse   = false; // der die drei Zustände
         private bool vergangeneKurse = false; // des Filters
 
+        private void tabPageKurse_Enter(object sender, EventArgs e)
+        {
+            int dBConnectOk = c.openConnection();  // Datenbank oeffnen
+            c.displayData("SELECT * FROM kurse;", gridKurse);
+            c.closeConnection(); // Datenbank schliessen
+
+            if (dBConnectOk == 0)
+            {
+                // Headertexte anpassen
+                //gridMitarbeiter.Columns["kurs_id"].HeaderText = "Kurs-ID";
+                //gridMitarbeiter.Columns["kursleiter"].HeaderText = "Kursleiter";
+                //gridMitarbeiter.Columns["bezeichnung"].HeaderText = "Bezeichnung";
+                //gridMitarbeiter.Columns["akt_teilnehmer"].HeaderText = "Akt. Teilnehmer";
+                //gridMitarbeiter.Columns["max_teilnehmer"].HeaderText = "Max. Teilnehmer";
+                //gridMitarbeiter.Columns["datuum_von"].HeaderText = "Datum Von";
+                //gridMitarbeiter.Columns["datum_bis"].HeaderText = "Datum Bis";
+                //gridMitarbeiter.Columns["wochentag"].HeaderText = "Wochentag";
+                //gridMitarbeiter.Columns["uhrzeit_von"].HeaderText = "Uhrzeit Von";
+                //gridMitarbeiter.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
+            }
+        }
+
         private void rowsLoeschenKurse(DataGridView dataGridView)
         {
             if (gridKurse.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
                 foreach (DataGridViewRow row in dataGridView.SelectedRows) // Wegen Multiselect
                 {
-                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["kurs_id"].Value);
+                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value);
                     DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
@@ -33,9 +55,9 @@ namespace PuG_Verwaltungssoftware
                     }
                 }
 
-                //if (kommendeKurse == true) { kommendeKurseFilter(true); }
-                //if (laufendeKurse == true) { laufendeKurseFilter(true); }
-                //if (vergangeneKurse == true) { vergangeneKurseFilter(true); }
+                if (kommendeKurse   == true) { kommendeKurseFilter(true);   }
+                if (laufendeKurse   == true) { laufendeKurseFilter(true);   }
+                if (vergangeneKurse == true) { vergangeneKurseFilter(true); }
             }
             else
             {
@@ -124,9 +146,9 @@ namespace PuG_Verwaltungssoftware
                 myContextMenu.Items.Add(toolStripItemFour);
 
                 // Und bei auswahl mit einem Bild versehen 
-                //if (kommendeKurse == true) toolStripItemOne.Image     = Bitmap.FromFile("C:\\Users\\tim.lindner\\documents\\visual studio 2012\\Projects\\PuGTest\\PuGTest\\Resources\\Check-icon.png");
-                //if (laufendeKurse == true) toolStripItemTwo.Image     = Bitmap.FromFile("C:\\Users\\tim.lindner\\documents\\visual studio 2012\\Projects\\PuGTest\\PuGTest\\Resources\\Check-icon.png");
-                //if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\tim.lindner\\documents\\visual studio 2012\\Projects\\PuGTest\\PuGTest\\Resources\\Check-icon.png");
+                //if (kommendeKurse == true) toolStripItemOne.Image     = Bitmap.FromFile("PFAD");
+                //if (laufendeKurse == true) toolStripItemTwo.Image     = Bitmap.FromFile("PFAD");
+                //if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("PFAD");
 
                 // Handler der Items
                 toolStripItemOne.Click   += new EventHandler(toolStripItemOne_Click);
@@ -233,7 +255,7 @@ namespace PuG_Verwaltungssoftware
         {
             if (kommendeKurse == false)
             {
-                if (laufendeKurse == true) laufendeKurseFilter();
+                if (laufendeKurse   == true) laufendeKurseFilter();
                 if (vergangeneKurse == true) vergangeneKurseFilter();
                 kommendeKurseFilter();
             }
@@ -243,7 +265,7 @@ namespace PuG_Verwaltungssoftware
         {
             if (laufendeKurse == false)
             {
-                if (kommendeKurse == true) kommendeKurseFilter();
+                if (kommendeKurse   == true) kommendeKurseFilter();
                 if (vergangeneKurse == true) vergangeneKurseFilter();
                 laufendeKurseFilter();
             }
@@ -369,8 +391,8 @@ namespace PuG_Verwaltungssoftware
 
         public void keineEinschraenkungen()
         {
-            if (kommendeKurse == true) kommendeKurseFilter();
-            if (laufendeKurse == true) laufendeKurseFilter();
+            if (kommendeKurse   == true) kommendeKurseFilter();
+            if (laufendeKurse   == true) laufendeKurseFilter();
             if (vergangeneKurse == true) vergangeneKurseFilter();
         }
 
