@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterNeu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbLoginDaten = new System.Windows.Forms.GroupBox();
-            this.cbPosition = new System.Windows.Forms.ComboBox();
+            this.ddlPosition = new System.Windows.Forms.ComboBox();
             this.lbPosition = new System.Windows.Forms.Label();
             this.tbInitPasswort = new System.Windows.Forms.TextBox();
             this.tbInitUser = new System.Windows.Forms.TextBox();
@@ -93,7 +93,7 @@
             // 
             // gbLoginDaten
             // 
-            this.gbLoginDaten.Controls.Add(this.cbPosition);
+            this.gbLoginDaten.Controls.Add(this.ddlPosition);
             this.gbLoginDaten.Controls.Add(this.lbPosition);
             this.gbLoginDaten.Controls.Add(this.tbInitPasswort);
             this.gbLoginDaten.Controls.Add(this.tbInitUser);
@@ -108,16 +108,16 @@
             this.gbLoginDaten.TabStop = false;
             this.gbLoginDaten.Text = "Login - Daten";
             // 
-            // cbPosition
+            // ddlPosition
             // 
-            this.cbPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ddlPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPosition.FormattingEnabled = true;
-            this.cbPosition.Location = new System.Drawing.Point(116, 81);
-            this.cbPosition.Name = "cbPosition";
-            this.cbPosition.Size = new System.Drawing.Size(253, 23);
-            this.cbPosition.TabIndex = 11;
+            this.ddlPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlPosition.FormattingEnabled = true;
+            this.ddlPosition.Location = new System.Drawing.Point(116, 81);
+            this.ddlPosition.Name = "ddlPosition";
+            this.ddlPosition.Size = new System.Drawing.Size(253, 23);
+            this.ddlPosition.TabIndex = 11;
             // 
             // lbPosition
             // 
@@ -460,6 +460,6 @@
         private System.Windows.Forms.Label lbInitPasswort;
         private System.Windows.Forms.Label lbInitUser;
         private System.Windows.Forms.Label lbPosition;
-        private System.Windows.Forms.ComboBox cbPosition;
+        private System.Windows.Forms.ComboBox ddlPosition;
     }
 }

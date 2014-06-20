@@ -119,11 +119,11 @@ namespace PuG_Verwaltungssoftware
                 initBenutzer = tbInitUser.Text;
                 initPasswort = tbInitPasswort.Text;
                 // Ueberpruefen welche Position ausgewaehlt wurde
-                if (cbPosition.SelectedItem.ToString() == "Normal")
+                if (ddlPosition.SelectedItem.ToString() == "Normal")
                 {
                     posId = 2;
                 }
-                else if (cbPosition.SelectedItem.ToString() == "Chef")
+                else if (ddlPosition.SelectedItem.ToString() == "Chef")
                 {
                     posId = 1;
                 }
@@ -196,7 +196,7 @@ namespace PuG_Verwaltungssoftware
                         for (int i = 0; i < rows; i++)
                         {
                             bezeichnung = (String)result.Rows[i]["bezeichnung"];
-                            cbPosition.Items.Add(bezeichnung);
+                            ddlPosition.Items.Add(bezeichnung);
                         }
                     }
                 }
@@ -204,14 +204,14 @@ namespace PuG_Verwaltungssoftware
             }
 
             // Combobox preselected Item
-            for (int i = 0; i < cbPosition.Items.Count; i++)
+            for (int i = 0; i < ddlPosition.Items.Count; i++)
             {
-                if (cbPosition.Items[i].ToString() == "Normal")
+                if (ddlPosition.Items[i].ToString() == "Normal")
                 {
                     pos = i;
                 }
             }
-            cbPosition.SelectedIndex = pos;
+            ddlPosition.SelectedIndex = pos;
 
         }
 

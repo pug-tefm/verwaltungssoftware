@@ -314,5 +314,17 @@ namespace PuG_Verwaltungssoftware
                 // Meesagebox
             }
         }
+
+        private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            c_Helper c = new c_Helper();
+            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen);
+        }
+
+        private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
+        {
+            c_Helper c = new c_Helper();
+            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen);
+        }
     }
 }
