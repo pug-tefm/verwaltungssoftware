@@ -35,6 +35,12 @@ namespace PuG_Verwaltungssoftware
                 //gridMitarbeiter.Columns["uhrzeit_von"].HeaderText = "Uhrzeit Von";
                 //gridMitarbeiter.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
             }
+
+            for (int i = 0; i < gridKurse.ColumnCount; i++)
+            {
+                ddlKursSuchen.Items.Add(gridKurse.Columns[i].HeaderText);
+            }
+            ddlKursSuchen.SelectedIndex = 0;
         }
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
