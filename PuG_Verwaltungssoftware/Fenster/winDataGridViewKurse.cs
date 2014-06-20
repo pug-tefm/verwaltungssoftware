@@ -133,7 +133,7 @@ namespace PuG_Verwaltungssoftware
             if (e.Button == MouseButtons.Right) // Rechtsklick
             {
                 // ContextMenuStrip mit ToolStipMenuItem erzeugen
-                ContextMenuStrip myContextMenu       = new ContextMenuStrip();
+                ContextMenuStrip  myContextMenu      = new ContextMenuStrip();
                 ToolStripMenuItem toolStripItemOne   = new ToolStripMenuItem("Kommende Kurse");
                 ToolStripMenuItem toolStripItemTwo   = new ToolStripMenuItem("Laufende Kurse");
                 ToolStripMenuItem toolStripItemThree = new ToolStripMenuItem("Vergangene Kurse");
@@ -146,9 +146,9 @@ namespace PuG_Verwaltungssoftware
                 myContextMenu.Items.Add(toolStripItemFour);
 
                 // Und bei auswahl mit einem Bild versehen 
-                //if (kommendeKurse == true) toolStripItemOne.Image     = Bitmap.FromFile("PFAD");
-                //if (laufendeKurse == true) toolStripItemTwo.Image     = Bitmap.FromFile("PFAD");
-                //if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("PFAD");
+                if (kommendeKurse == true)   toolStripItemOne.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (laufendeKurse == true)   toolStripItemTwo.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
 
                 // Handler der Items
                 toolStripItemOne.Click   += new EventHandler(toolStripItemOne_Click);
@@ -160,7 +160,7 @@ namespace PuG_Verwaltungssoftware
 
                 if (currentMouseOverRow >= 0) // In der Tabelle
                 {
-                    //
+                    // Nix
                 }
 
                 myContextMenu.Show(gridKurse, new Point(e.X, e.Y));

@@ -163,6 +163,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ressources\Images\haken_gruen.png" />
     <Content Include="Ressources\Images\pug_runner.ico" />
     <Content Include="Ressources\Images\pug_runner.png" />
   </ItemGroup>

@@ -21,6 +21,31 @@ namespace PuG_Verwaltungssoftware
 
             myDataGridViewKurse = dataGridViewKurse;
 
+            string vorname    = "";
+            string nachname   = "";
+            c_DBConnect c = new c_DBConnect();
+ 
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
+                if (rows > 0)
+                {
+                    DataTable result = c.select("SELECT vorname, nachname FROM mitarbeiter;");
+                    if (result != null)
+                    {
+                        for (int i = 0; i < rows; i++)
+                        {
+                            vorname  = (String)result.Rows[i]["vorname"];
+                            nachname = (String)result.Rows[i]["nachname"];
+                            string vollerName = vorname + " " + nachname;
+                            cbKursleiter.Items.Add(vollerName);
+                        }
+                    }
+                }
+                c.closeConnection();
+            }
+
             gueltigerWochentagPruefen();
         }
 
