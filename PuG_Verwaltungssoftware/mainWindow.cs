@@ -369,5 +369,15 @@ namespace PuG_Verwaltungssoftware
             c_Helper c = new c_Helper();
             c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
         }
+
+        private void mainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+        //*************************Maxi**********************************
+        private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

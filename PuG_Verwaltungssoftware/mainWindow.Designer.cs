@@ -66,6 +66,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.tabPageKursUebersicht = new System.Windows.Forms.TabPage();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -101,6 +102,7 @@
             this.mainTabControl.Controls.Add(this.tabPageMitarbeiter);
             this.mainTabControl.Controls.Add(this.tabPageMitglieder);
             this.mainTabControl.Controls.Add(this.tabPageKurse);
+            this.mainTabControl.Controls.Add(this.tabPageKursUebersicht);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.mainTabControl.ItemSize = new System.Drawing.Size(80, 110);
@@ -567,6 +569,16 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
+            // tabPageKursUebersicht
+            // 
+            this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
+            this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKursUebersicht.TabIndex = 4;
+            this.tabPageKursUebersicht.Text = "Kurs Übersicht";
+            this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
+            this.tabPageKursUebersicht.Enter += new System.EventHandler(this.tabPageKursUebersicht_Enter);
+            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -583,6 +595,7 @@
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
+            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.mainTabControl.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
             this.scHome.Panel1.ResumeLayout(false);
@@ -656,6 +669,7 @@
         private System.Windows.Forms.ComboBox ddlKursSuchen;
         private System.Windows.Forms.ComboBox ddlMitarbeiterSuchen;
         private System.Windows.Forms.TextBox tbMitarbeiterSuchen;
+        private System.Windows.Forms.TabPage tabPageKursUebersicht;
     }
 }
 
