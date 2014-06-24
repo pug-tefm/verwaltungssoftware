@@ -238,7 +238,6 @@
             this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
-            this.gridMitarbeiter.MultiSelect = false;
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
