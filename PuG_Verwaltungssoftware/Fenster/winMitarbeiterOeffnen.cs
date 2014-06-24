@@ -219,7 +219,7 @@ namespace PuG_Verwaltungssoftware
                 if (dBConnectOk == 0)
                 {
                     strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = " + hausnummer + ", plz = " + plz + ", ort = '" + ort + "', gehalt = '" + gehalt + "' WHERE mitarbeiter_id = " + gId.ToString() +";";
-                    c.insert(strSQL, "Mitarbeiter");
+                    c.update(strSQL, "Mitarbeiter");
                     c.closeConnection();
                     c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gGridView);
 
