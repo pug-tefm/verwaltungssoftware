@@ -112,23 +112,28 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                if (tbBezeichnung.Text.Trim().Length != 0 || /*cbKursleiter.SelectedIndex != -1 ||*/ tbPreis.Text.Trim().Length != 0
+                if (tbBezeichnung.Text.Trim().Length != 0 || cbKursleiter.SelectedIndex != -1 || tbPreis.Text.Trim().Length != 0
                     || tbMaxTeilnehmer.Text.Trim().Length != 0 || cbWochentag.SelectedIndex != -1)
                 {
-                    myDataGridViewKurse.Rows.Add("Hans, Müller", tbBezeichnung.Text, double.Parse(tbPreis.Text), int.Parse(tbMaxTeilnehmer.Text),
-                                                 dtpDatumVon.Text, dtpDatumBis.Text, cbWochentag.Text, dtpUhrzeitVon.Value.TimeOfDay,
-                                                 dtpUhrzeitBis.Value.TimeOfDay);
-
-                    //c_DBConnect myConnection = new c_DBConnect();
-                    //myConnection.openConnection();
-                    //String query = "INSERT INTO kurse (bezeichnung , kursleiter, preis, max_teilnehmerzahl, datum_von, datum_bis, wochentag, " +
-                    //         "uhrzeit_von, uhzeit_bis) VALUES (" + tbBezeichnung.Text + ", " + "Hans, Müller" +", " + int.Parse(tbMaxTeilnehmer.Text) +
-                    //         ", " + dtpDatumVon.Text + ", " + dtpDatumBis.Text + ", " + cbWochentag.Text + ", " + dtpUhrzeitVon.Value.TimeOfDay +
-                    //         ", " + dtpUhrzeitBis.Value.TimeOfDay + ");";
-                    //myConnection.update(query, "Kurs");
-                    //myConnection.closeConnection();
-
-                    myDataGridViewKurse.Refresh();
+                    c_DBConnect myConnection = new c_DBConnect();
+                    int connected = myConnection.openConnection();
+                    if (connected == 0)
+                    {
+                        String datumVon = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, max_teilnehmer, datum_von, datum_bis, wochentag, " +
+                                 "uhrzeit_von, uhrzeit_bis) VALUES (" + cbKursleiter.SelectedIndex + ", '" + tbBezeichnung.Text + "', " + tbPreis.Text + ", " + tbMaxTeilnehmer.Text +
+                                 ", " + datumVon + ", " + datumBis + ", " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + "', '" + uhrzeitBis + "');";
+                        myConnection.insert(query, "Kurs");
+                        myConnection.displayData("SELECT * FROM kurse;", myDataGridViewKurse);
+                        myConnection.closeConnection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
                     DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dialogResult == DialogResult.Yes)

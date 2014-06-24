@@ -416,7 +416,6 @@
             // 
             this.gridKurse.AllowUserToAddRows = false;
             this.gridKurse.AllowUserToDeleteRows = false;
-            this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridKurse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKurse.Location = new System.Drawing.Point(0, 0);

@@ -24,16 +24,16 @@ namespace PuG_Verwaltungssoftware
             if (dBConnectOk == 0)
             {
                 // Headertexte anpassen
-                //gridMitarbeiter.Columns["kurs_id"].HeaderText = "Kurs-ID";
-                //gridMitarbeiter.Columns["kursleiter"].HeaderText = "Kursleiter";
-                //gridMitarbeiter.Columns["bezeichnung"].HeaderText = "Bezeichnung";
-                //gridMitarbeiter.Columns["akt_teilnehmer"].HeaderText = "Akt. Teilnehmer";
-                //gridMitarbeiter.Columns["max_teilnehmer"].HeaderText = "Max. Teilnehmer";
-                //gridMitarbeiter.Columns["datuum_von"].HeaderText = "Datum Von";
-                //gridMitarbeiter.Columns["datum_bis"].HeaderText = "Datum Bis";
-                //gridMitarbeiter.Columns["wochentag"].HeaderText = "Wochentag";
-                //gridMitarbeiter.Columns["uhrzeit_von"].HeaderText = "Uhrzeit Von";
-                //gridMitarbeiter.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
+                gridKurse.Columns["kurs_id"].HeaderText = "Kurs-ID";
+                gridKurse.Columns["kursleiter_id"].HeaderText = "Kursleiter";
+                gridKurse.Columns["bezeichnung"].HeaderText = "Bezeichnung";
+                gridKurse.Columns["akt_teilnehmer"].HeaderText = "Akt. Teilnehmer";
+                gridKurse.Columns["max_teilnehmer"].HeaderText = "Max. Teilnehmer";
+                gridKurse.Columns["datum_von"].HeaderText = "Datum Von";
+                gridKurse.Columns["datum_bis"].HeaderText = "Datum Bis";
+                gridKurse.Columns["wochentag"].HeaderText = "Wochentag";
+                gridKurse.Columns["uhrzeit_von"].HeaderText = "Uhrzeit Von";
+                gridKurse.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
             }
 
             if (gridKurse.ColumnCount > 0)
@@ -156,20 +156,19 @@ namespace PuG_Verwaltungssoftware
                 ToolStripMenuItem toolStripItemTwo   = new ToolStripMenuItem("Laufende Kurse");
                 ToolStripMenuItem toolStripItemThree = new ToolStripMenuItem("Vergangene Kurse");
                 ToolStripMenuItem toolStripItemFour  = new ToolStripMenuItem("Keine Einschränkung");
-                ToolStripMenuItem toolStripItemFive  = new ToolStripMenuItem("-");
-                ToolStripMenuItem toolStripItemSix   = new ToolStripMenuItem("Aktualisieren");
-
+                ToolStripMenuItem toolStripItemFive   = new ToolStripMenuItem("Aktualisieren");
 
                 // Items hinzufügen
                 myContextMenu.Items.Add(toolStripItemOne);
                 myContextMenu.Items.Add(toolStripItemTwo);
                 myContextMenu.Items.Add(toolStripItemThree);
                 myContextMenu.Items.Add(toolStripItemFour);
-                myContextMenu.Items.Add(toolStripItemSix);
+                myContextMenu.Items.Add("-");
+                myContextMenu.Items.Add(toolStripItemFive);
 
                 // Und bei auswahl mit einem Bild versehen 
-                if (kommendeKurse   == true)   toolStripItemOne.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (laufendeKurse   == true)   toolStripItemTwo.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (kommendeKurse   == true) toolStripItemOne.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (laufendeKurse   == true) toolStripItemTwo.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
                 if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
 
                 // Handler der Items
@@ -177,7 +176,7 @@ namespace PuG_Verwaltungssoftware
                 toolStripItemTwo.Click   += new EventHandler(toolStripItemTwoKurse_Click);
                 toolStripItemThree.Click += new EventHandler(toolStripItemThreeKurse_Click);
                 toolStripItemFour.Click  += new EventHandler(toolStripItemFourKurse_Click);
-                toolStripItemSix.Click   += new EventHandler(toolStripItemSixKurse_Click);
+                toolStripItemFive.Click  += new EventHandler(toolStripItemFiveKurse_Click);
 
                 int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
 
@@ -309,7 +308,7 @@ namespace PuG_Verwaltungssoftware
             keineEinschraenkungen();
         }
 
-        private void toolStripItemSixKurse_Click(object sender, EventArgs args)
+        private void toolStripItemFiveKurse_Click(object sender, EventArgs args)
         {
             int connected = c.openConnection();
             if (connected == 0)

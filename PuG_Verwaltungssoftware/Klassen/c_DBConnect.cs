@@ -70,8 +70,8 @@ namespace PuG_Verwaltungssoftware
                 MySqlDataReader myReader;
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
-
-                MessageBox.Show(textMB, " wurde hinzugefügt"); // MSG bei success
+                
+                MessageBox.Show(textMB + " wurde hinzugefügt", "Information", MessageBoxButtons.OK); // MSG bei success
             }
             catch (Exception ex) // Fehler
             {
@@ -89,7 +89,7 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + "wurde upgedated"); // MSG bei success
+                MessageBox.Show(textMB + "wurde upgedated", "Information", MessageBoxButtons.OK); // MSG bei success
             }
             catch (Exception ex) // Fehler
             {
@@ -107,7 +107,7 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + " wurde gelöscht"); // MSG bei success
+                MessageBox.Show(textMB + " wurde gelöscht", "Information", MessageBoxButtons.OK); // MSG bei success
             }
             catch (Exception ex) // Fehler
             {
