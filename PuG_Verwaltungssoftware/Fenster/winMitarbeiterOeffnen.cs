@@ -16,13 +16,17 @@ namespace PuG_Verwaltungssoftware
         bool editMode = false;
         bool save = false;
         int gId = 0;
+        DataGridView gGridView;
 
-        public winMitarbeiterOeffnen(int id)
+        public winMitarbeiterOeffnen(int id, DataGridView grid)
         {
             InitializeComponent();
             
             // ID festlegen
             gId = id;
+
+            // GridView zuweisen
+            gGridView = grid;
 
         }
 
@@ -53,23 +57,23 @@ namespace PuG_Verwaltungssoftware
                 {
                     vorname = (String)result.Rows[0]["vorname"];
                     nachname = (String)result.Rows[0]["nachname"];
-                    //gebDatum = (String)result.Rows[0]["geburtsdatum"];
+                    gebDatum = (result.Rows[0]["geburtsdatum"]).ToString();
                     strasse = (String)result.Rows[0]["strasse"];
                     hausnummer = (String)result.Rows[0]["hausnummer"];
-                    //plz = (String)result.Rows[0]["plz"];
+                    plz = (result.Rows[0]["plz"]).ToString();
                     ort = (String)result.Rows[0]["ort"];
-                    //gehalt = (String)result.Rows[0]["gehalt"];
+                    gehalt = (result.Rows[0]["gehalt"]).ToString();
                     benutzername = (String)result.Rows[0]["benutzername"];
-                    //position = (String)result.Rows[0]["position"];
+                    //position = (result.Rows[0]["position"]).ToString();
 
                     tbVorname.Text = vorname;
                     tbNachname.Text = nachname;
-                    //tbDatum.Text = gebDatum;
+                    tbDatum.Text = gebDatum;
                     tbStrasse.Text = strasse;
                     tbHausnummer.Text = hausnummer;
-                    //tbPlz.Text = plz;
+                    tbPlz.Text = plz;
                     tbOrt.Text = ort;
-                    //tbGehalt.Text = gehalt;
+                    tbGehalt.Text = gehalt;
                     tbBenutzername.Text = benutzername;
                     //tbPosition.Text = position;
                     
@@ -214,9 +218,10 @@ namespace PuG_Verwaltungssoftware
                 int dBConnectOk = c.openConnection();
                 if (dBConnectOk == 0)
                 {
-                    strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = " + hausnummer + ", plz = " + plz + ", ort = '" + ort + "', gehalt = " + gehalt + ";";
-                    //c.insert(strSQL, "Mitarbeiter");
+                    strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = " + hausnummer + ", plz = " + plz + ", ort = '" + ort + "', gehalt = '" + gehalt + "' WHERE mitarbeiter_id = " + gId.ToString() +";";
+                    c.insert(strSQL, "Mitarbeiter");
                     c.closeConnection();
+                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gGridView);
 
                     this.Close();  // Fenster schliessen
                 }

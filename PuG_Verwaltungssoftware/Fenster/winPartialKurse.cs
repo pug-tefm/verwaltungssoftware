@@ -49,7 +49,7 @@ namespace PuG_Verwaltungssoftware
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
         {
-            if (gridKurse.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            if (dataGridView.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
                 foreach (DataGridViewRow row in dataGridView.SelectedRows) // Wegen Multiselect
                 {
@@ -75,7 +75,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void oeffnen()
+        private void kurseOeffnen()
         {
             if (gridKurse.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
@@ -113,12 +113,20 @@ namespace PuG_Verwaltungssoftware
         {
             c_Helper myHelper = new c_Helper();
             myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+
+            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
+            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
+            kurseSortieren();
         }
 
         private void textBoxSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
             myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+
+            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
+            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
+            kurseSortieren();
         }
 
         private void btKursLoeschen_Click(object sender, EventArgs e)
@@ -134,7 +142,7 @@ namespace PuG_Verwaltungssoftware
 
         private void btKursOeffnen_Click(object sender, EventArgs e)
         {
-            oeffnen();
+            kurseOeffnen();
         }
 
 
@@ -148,23 +156,28 @@ namespace PuG_Verwaltungssoftware
                 ToolStripMenuItem toolStripItemTwo   = new ToolStripMenuItem("Laufende Kurse");
                 ToolStripMenuItem toolStripItemThree = new ToolStripMenuItem("Vergangene Kurse");
                 ToolStripMenuItem toolStripItemFour  = new ToolStripMenuItem("Keine Einschränkung");
+                ToolStripMenuItem toolStripItemFive  = new ToolStripMenuItem("-");
+                ToolStripMenuItem toolStripItemSix   = new ToolStripMenuItem("Aktualisieren");
+
 
                 // Items hinzufügen
                 myContextMenu.Items.Add(toolStripItemOne);
                 myContextMenu.Items.Add(toolStripItemTwo);
                 myContextMenu.Items.Add(toolStripItemThree);
                 myContextMenu.Items.Add(toolStripItemFour);
+                myContextMenu.Items.Add(toolStripItemSix);
 
                 // Und bei auswahl mit einem Bild versehen 
-                if (kommendeKurse == true)   toolStripItemOne.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (laufendeKurse == true)   toolStripItemTwo.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (kommendeKurse   == true)   toolStripItemOne.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                if (laufendeKurse   == true)   toolStripItemTwo.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
                 if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
 
                 // Handler der Items
-                toolStripItemOne.Click   += new EventHandler(toolStripItemOne_Click);
-                toolStripItemTwo.Click   += new EventHandler(toolStripItemTwo_Click);
-                toolStripItemThree.Click += new EventHandler(toolStripItemThree_Click);
-                toolStripItemFour.Click  += new EventHandler(toolStripItemFour_Click);
+                toolStripItemOne.Click   += new EventHandler(toolStripItemOneKurse_Click);
+                toolStripItemTwo.Click   += new EventHandler(toolStripItemTwoKurse_Click);
+                toolStripItemThree.Click += new EventHandler(toolStripItemThreeKurse_Click);
+                toolStripItemFour.Click  += new EventHandler(toolStripItemFourKurse_Click);
+                toolStripItemSix.Click   += new EventHandler(toolStripItemSixKurse_Click);
 
                 int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
 
@@ -230,7 +243,7 @@ namespace PuG_Verwaltungssoftware
         {
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
             // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-            sortieren();
+            kurseSortieren();
         }
 
         private void gridKurse_Paint(object sender, PaintEventArgs e)
@@ -261,7 +274,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemOne_Click(object sender, EventArgs args)
+        private void toolStripItemOneKurse_Click(object sender, EventArgs args)
         {
             if (kommendeKurse == false)
             {
@@ -271,7 +284,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemTwo_Click(object sender, EventArgs args)
+        private void toolStripItemTwoKurse_Click(object sender, EventArgs args)
         {
             if (laufendeKurse == false)
             {
@@ -281,7 +294,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemThree_Click(object sender, EventArgs args)
+        private void toolStripItemThreeKurse_Click(object sender, EventArgs args)
         {
             if (vergangeneKurse == false)
             {
@@ -291,9 +304,23 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemFour_Click(object sender, EventArgs args)
+        private void toolStripItemFourKurse_Click(object sender, EventArgs args)
         {
             keineEinschraenkungen();
+        }
+
+        private void toolStripItemSixKurse_Click(object sender, EventArgs args)
+        {
+            int connected = c.openConnection();
+            if (connected == 0)
+            {
+                c.displayData("SELECT * FROM kurse;", gridKurse);
+                c.closeConnection();
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void kommendeKurseFilter(bool kommendeKurseExtra = false)
@@ -406,7 +433,7 @@ namespace PuG_Verwaltungssoftware
             if (vergangeneKurse == true) vergangeneKurseFilter();
         }
 
-        private void sortieren()
+        private void kurseSortieren()
         {
             if (kommendeKurse == true)
             {

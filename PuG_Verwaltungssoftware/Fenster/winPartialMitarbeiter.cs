@@ -57,7 +57,7 @@ namespace PuG_Verwaltungssoftware
             {
                 int row = gridMitarbeiter.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id);
+                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, gridMitarbeiter);
                 window.Show();
             }
             else
@@ -114,5 +114,46 @@ namespace PuG_Verwaltungssoftware
             c_Helper c = new c_Helper();
             c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
         }
+
+
+        private void gridMitarbeiter_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemOne = new ToolStripMenuItem("Aktualisieren");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemOne);
+
+                // Handler der Items
+                toolStripItemOne.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+
+                int currentMouseOverRow = gridMitarbeiter.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridMitarbeiter, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemOneMitarbeiter_Click(object sender, EventArgs args)
+        {
+            int dbConnect = c.openConnection();
+            if (dbConnect == 0)
+            {
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+                c.closeConnection();
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

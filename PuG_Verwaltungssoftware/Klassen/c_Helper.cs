@@ -184,10 +184,6 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
             }
             bindingSource.Filter = string.Format(suchen, textBox.Text);
-
-            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
-            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-            //sortieren();
         }
 
         public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource)
@@ -200,10 +196,6 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen += dataGridView.Columns[comboBox.SelectedIndex].HeaderText.ToString();
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
                 bindingSource.Filter = string.Format(suchen, textBox.Text);
-
-                // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
-                // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-                //sortieren();
             }
         }
     }
