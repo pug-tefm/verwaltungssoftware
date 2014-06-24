@@ -11,7 +11,6 @@ namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Helper
     {
-        private BindingSource bindingSource;
 
         static readonly string PasswordHash = "P@@Sw0rd";
         static readonly string SaltKey = "S@LT&KEY";
@@ -172,7 +171,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return "-1";
         }
 
-        public void textBoxSuchenTextChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox)
+        public void textBoxSuchenTextChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource)
         {
             string suchen = "";
             if (String.IsNullOrEmpty(textBox.Text)) // Wenn leer dann suchen Filter entfernen
@@ -191,7 +190,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             //sortieren();
         }
 
-        public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox)
+        public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource)
         {
             if (!String.IsNullOrEmpty(textBox.Text))
             {

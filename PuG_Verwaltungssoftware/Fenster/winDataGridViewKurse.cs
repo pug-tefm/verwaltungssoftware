@@ -36,11 +36,15 @@ namespace PuG_Verwaltungssoftware
                 //gridMitarbeiter.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
             }
 
-            for (int i = 0; i < gridKurse.ColumnCount; i++)
+            if (gridKurse.ColumnCount > 0)
             {
-                ddlKursSuchen.Items.Add(gridKurse.Columns[i].HeaderText);
+                for (int i = 0; i < gridKurse.ColumnCount; i++)
+                {
+                    ddlKursSuchen.Items.Add(gridKurse.Columns[i].HeaderText);
+                }
+                ddlKursSuchen.SelectedIndex = 0;
             }
-            ddlKursSuchen.SelectedIndex = 0;
+            
         }
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
@@ -108,13 +112,13 @@ namespace PuG_Verwaltungssoftware
         private void comboBoxSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen);
+            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
         }
 
         private void textBoxSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen);
+            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
         }
 
         private void btKursLoeschen_Click(object sender, EventArgs e)

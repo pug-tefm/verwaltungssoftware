@@ -21,6 +21,8 @@ namespace PuG_Verwaltungssoftware
         String loginMaVorname = String.Empty;
         String loginMaNachname = String.Empty;
 
+        private BindingSource bindingSource;
+
 
         public mainWindow()
         {
@@ -49,7 +51,7 @@ namespace PuG_Verwaltungssoftware
             Rectangle _tabBounds = mainTabControl.GetTabRect(e.Index);
 
             // Set tab size 
-            mainTabControl.SizeMode = TabSizeMode.Fixed;
+            //mainTabControl.SizeMode = TabSizeMode.Fixed;
 
             if (e.State == DrawItemState.Selected)
             {
@@ -232,12 +234,18 @@ namespace PuG_Verwaltungssoftware
                 gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
             }
 
-            for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+            if (gridMitarbeiter.ColumnCount > 0)
             {
-                ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+                {
+                    ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                }
+                ddlMitarbeiterSuchen.SelectedIndex = 0;
             }
-            ddlMitarbeiterSuchen.SelectedIndex = 0;
-
+       
+            // Binding Objekt zuweisen
+            //bindingSource.DataSource = (DataTable)gridMitarbeiter.DataSource;
+            //gridMitarbeiter.DataSource = bindingSource;
         }
 
         private void gridMitarbeiter_SelectionChanged(object sender, EventArgs e)
@@ -249,25 +257,54 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaOeffnen_Click(object sender, EventArgs e)
         {
-            int row = gridMitarbeiter.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-            winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id);
-            window.Show();
+            if (gridMitarbeiter.RowCount > 0)
+            {
+                int row = gridMitarbeiter.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
+                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id);
+                window.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void btMaLoeschen_Click(object sender, EventArgs e)
         {
-            int row = gridMitarbeiter.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
+            //int row = gridMitarbeiter.CurrentCell.RowIndex;
+            //int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
 
-            DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            //DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    //do something
+            //    c.openConnection();
+            //    c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
+            //    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
+            //    c.closeConnection();
+            //}
+
+            if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
-                //do something
-                c.openConnection();
-                c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
-                //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
-                c.closeConnection();
+                foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
+                {
+                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        c.openConnection();
+                        gridMitarbeiter.Rows.RemoveAt(row.Index); // Row löschen
+                        c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
+                        c.closeConnection();
+                    }
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -324,13 +361,13 @@ namespace PuG_Verwaltungssoftware
         private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
             c_Helper c = new c_Helper();
-            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen);
+            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
         }
 
         private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper c = new c_Helper();
-            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen);
+            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
         }
     }
 }
