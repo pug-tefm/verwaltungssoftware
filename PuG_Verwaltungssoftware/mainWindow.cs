@@ -18,6 +18,7 @@ namespace PuG_Verwaltungssoftware
         int m = 0;
         int h = 0;
         int loginMaId = 0;
+        int loginMaPosId = 0;
         String loginMaVorname = String.Empty;
         String loginMaNachname = String.Empty;
 
@@ -91,6 +92,7 @@ namespace PuG_Verwaltungssoftware
                 if (benutzer == "Benutzername" || passwort == "Passwort")
                 {
                     lbLoginMessage.Text = "Bitte Benutzer und Passwort eingeben.";
+                    c.closeConnection();
                 }
                 else
                 {
@@ -109,6 +111,7 @@ namespace PuG_Verwaltungssoftware
                                 loginMaId = (int)result.Rows[0]["mitarbeiter_id"];
                                 loginMaVorname = (String)result.Rows[0]["vorname"];
                                 loginMaNachname = (String)result.Rows[0]["nachname"];
+                                loginMaPosId = (int)result.Rows[0]["position_id"];
                             }
 
                         }
@@ -139,6 +142,7 @@ namespace PuG_Verwaltungssoftware
                     else
                     {
                         lbLoginMessage.Text = "Benutzername oder Passwort falsch.";
+                        c.closeConnection();
                     }
 
                 }
@@ -146,6 +150,7 @@ namespace PuG_Verwaltungssoftware
             else
             {
                 lbLoginMessage.Text = "Verbindung zum Server fehlgeschlagen.";
+                c.closeConnection();
             }
 
         }

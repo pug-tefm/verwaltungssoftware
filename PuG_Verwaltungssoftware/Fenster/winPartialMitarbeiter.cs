@@ -16,7 +16,21 @@ namespace PuG_Verwaltungssoftware
         private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
         {
             int dBConnectOk = c.openConnection();  // Datenbank oeffnen
-            c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+
+            if (loginMaPosId == 1)
+            {
+                // Mitarbeiter ist admin (chef)
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+            }
+            else
+            {
+                // Mitarbeiter ist "normaler" Benutzer
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + loginMaId + "';", gridMitarbeiter);
+                btMaLoeschen.Enabled = false;
+                btMaNeu.Enabled = false;
+                ddlMitarbeiterSuchen.Enabled = false;
+                tbMitarbeiterSuchen.Enabled = false;
+            }
             c.closeConnection(); // Datenbank schliessen
 
             if (dBConnectOk == 0)
@@ -76,6 +90,11 @@ namespace PuG_Verwaltungssoftware
                 foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
                 {
                     int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                    if (id == loginMaId)
+                    {
+                        DialogResult dialogResultSelf = MessageBox.Show("Sie können sich nicht selbst löschen.", "Information", MessageBoxButtons.OK);
+                        return;
+                    }
                     DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)

@@ -115,7 +115,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             {
                 int character = query[i];
                 if ((character < 65 || character > 90) && (character < 97 || character > 122) && (character < 48 || character > 57) // Großbuchstaben && Kleinbuchstaben && 0 bis 9
-                  && character != 45) // - + & / #
+                  && character != 45 && character != 47) // - + & / #
                 {
                     return true;
                 }

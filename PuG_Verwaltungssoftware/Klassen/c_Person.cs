@@ -14,7 +14,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         private String gebDatum;
         private String strasse;
         private String ort;
-        private int hNummer;
+        private String hNummer;
         private int plz;
 
         // Standardkonstruktor
@@ -23,7 +23,7 @@ namespace PuG_Verwaltungssoftware.Klassen
 
         }
 
-        public c_Person(String vor, String nach, String geb, String strasse, String ort, int hNummer, int plz)
+        public c_Person(String vor, String nach, String geb, String strasse, String ort, String hNummer, int plz)
         {
 
         }
@@ -49,7 +49,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             this.ort = pOrt;
         }
-        public void setHausnummer(int pNummer)
+        public void setHausnummer(String pNummer)
         {
             this.hNummer = pNummer;
         }
@@ -79,7 +79,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             return this.ort;
         }
-        public int getHausnummer()
+        public String getHausnummer()
         {
             return this.hNummer;
         }

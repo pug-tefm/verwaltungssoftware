@@ -41,8 +41,8 @@
             this.tbGehalt = new System.Windows.Forms.TextBox();
             this.lbGehalt = new System.Windows.Forms.Label();
             this.gbAnschrift = new System.Windows.Forms.GroupBox();
-            this.tbPlz = new System.Windows.Forms.TextBox();
             this.tbOrt = new System.Windows.Forms.TextBox();
+            this.tbPlz = new System.Windows.Forms.TextBox();
             this.tbHausnummer = new System.Windows.Forms.TextBox();
             this.tbStrasse = new System.Windows.Forms.TextBox();
             this.lbPlz = new System.Windows.Forms.Label();
@@ -204,8 +204,8 @@
             // 
             // gbAnschrift
             // 
-            this.gbAnschrift.Controls.Add(this.tbPlz);
             this.gbAnschrift.Controls.Add(this.tbOrt);
+            this.gbAnschrift.Controls.Add(this.tbPlz);
             this.gbAnschrift.Controls.Add(this.tbHausnummer);
             this.gbAnschrift.Controls.Add(this.tbStrasse);
             this.gbAnschrift.Controls.Add(this.lbPlz);
@@ -221,6 +221,16 @@
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
             // 
+            // tbOrt
+            // 
+            this.tbOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOrt.Location = new System.Drawing.Point(119, 113);
+            this.tbOrt.Name = "tbOrt";
+            this.tbOrt.Size = new System.Drawing.Size(253, 26);
+            this.tbOrt.TabIndex = 9;
+            // 
             // tbPlz
             // 
             this.tbPlz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -229,17 +239,7 @@
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
             this.tbPlz.Name = "tbPlz";
             this.tbPlz.Size = new System.Drawing.Size(253, 26);
-            this.tbPlz.TabIndex = 9;
-            // 
-            // tbOrt
-            // 
-            this.tbOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOrt.Location = new System.Drawing.Point(119, 109);
-            this.tbOrt.Name = "tbOrt";
-            this.tbOrt.Size = new System.Drawing.Size(253, 26);
-            this.tbOrt.TabIndex = 8;
+            this.tbPlz.TabIndex = 8;
             // 
             // tbHausnummer
             // 
@@ -450,8 +450,8 @@
         private System.Windows.Forms.GroupBox gbGehalt;
         private System.Windows.Forms.TextBox tbGehalt;
         private System.Windows.Forms.Label lbGehalt;
-        private System.Windows.Forms.TextBox tbPlz;
         private System.Windows.Forms.TextBox tbOrt;
+        private System.Windows.Forms.TextBox tbPlz;
         private System.Windows.Forms.TextBox tbHausnummer;
         private System.Windows.Forms.TextBox tbStrasse;
         private System.Windows.Forms.GroupBox gbLoginDaten;

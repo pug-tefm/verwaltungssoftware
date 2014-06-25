@@ -35,12 +35,23 @@ namespace PuG_Verwaltungssoftware
         // Verbindung zur Datenbank herstellen
         public int openConnection()
         {
-            try
+            if (connection != null && connection.State == ConnectionState.Closed)
             {
-                connection.Open();
+                try
+                {
+                    connection.Open();
+                    return 0;
+                }
+                catch (MySqlException ex)
+                {
+                    return 1;
+                }
+            }
+            else if (connection != null && connection.State == ConnectionState.Open)
+            {
                 return 0;
             }
-            catch (MySqlException ex)
+            else
             {
                 return 1;
             }
@@ -89,7 +100,7 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + "wurde upgedated", "Information", MessageBoxButtons.OK); // MSG bei success
+                MessageBox.Show(textMB + " wurde geändert", "Information", MessageBoxButtons.OK); // MSG bei success
             }
             catch (Exception ex) // Fehler
             {
@@ -171,7 +182,7 @@ namespace PuG_Verwaltungssoftware
             }
             catch (Exception ex) // Fehler
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 return false;
             }
         }
