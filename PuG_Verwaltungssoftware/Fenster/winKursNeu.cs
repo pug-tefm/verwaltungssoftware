@@ -13,13 +13,13 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winKursNeu : Form
     {
-        private DataGridView myDataGridViewKurse;
+        private DataGridView myGridKurse;
 
         public winKursNeu(DataGridView dataGridViewKurse)
         {
             InitializeComponent();
 
-            myDataGridViewKurse = dataGridViewKurse;
+            myGridKurse = dataGridViewKurse;
 
             int    id         = 0;
             string vorname    = "";
@@ -74,21 +74,21 @@ namespace PuG_Verwaltungssoftware
             bool fehlerGefunden = false;
 
             // Fehlerüberprüfung Anfang
-            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text);
+            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text, 100);
             if (fehlerBezeichnung == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbBezeichnung.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text);
+            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text, 6);
             if (fehlerPreis == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbPreis.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text);
+            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text, 3);
             if (fehlerMaxTeilnehmer == true)
             {
                 fehlerGefunden = true;
@@ -135,17 +135,19 @@ namespace PuG_Verwaltungssoftware
 
                         bool ok = myConnection.insert(query, "Kurs");
                         if (ok == true)
-                        {     
+                        {
                             int connectedZwei = myConnection.openConnection();
                             if (connectedZwei == 0)
                             {
-                                myConnection.displayData("SELECT * FROM kurse;", myDataGridViewKurse);
+                                myConnection.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " +
+                                              "AS kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
+                                              "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", myGridKurse);
                                 myConnection.closeConnection();
                             }
                             else
                             {
                                 MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            } 
+                            }
 
                             DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dialogResult == DialogResult.Yes)
@@ -172,7 +174,7 @@ namespace PuG_Verwaltungssoftware
                     }
                     else
                     {
-                        MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
 

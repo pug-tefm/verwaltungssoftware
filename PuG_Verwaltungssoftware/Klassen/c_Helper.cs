@@ -60,8 +60,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Methode zum Ueberpruefen, ob nur Nummern, Komma oder Punkt im String enthalten sind
-        public static bool numFormatPunktKomma(String query)
+        public static bool numFormatPunktKomma(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             int zaehler = 0;
             for (int i = 0; i < query.Length; i++)
             {
@@ -81,8 +83,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Methode zum Ueberpruefen, ob nur Nummern im String enthalten sind
-        public static bool numFormat(String query)
+        public static bool numFormat(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
@@ -95,8 +99,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Methode zum Ueberpruefen ob nur Buchstaben im String enthalten sind
-        public static bool wrongCharacters(String query)
+        public static bool wrongCharacters(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
@@ -109,13 +115,15 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Methode zum Ueberpruefen ob nur Buchstaben Zahlen und einige extra Zeichen im String enthalten sind
-        public static bool wrongCharNumberExtra(String query)
+        public static bool wrongCharNumberExtra(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
-                if ((character < 65 || character > 90) && (character < 97 || character > 122) && (character < 48 || character > 57) // Großbuchstaben && Kleinbuchstaben && 0 bis 9
-                  && character != 45 && character != 47) // - + & / #
+                if ((character < 65 || character > 90) && (character < 97 || character > 122) && (character < 32 || character > 57) // Großbuchstaben && Kleinbuchstaben && 0 bis 9
+                  && character != 45) // - + & / #
                 {
                     return true;
                 }

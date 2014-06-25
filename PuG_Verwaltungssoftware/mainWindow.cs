@@ -275,8 +275,6 @@ namespace PuG_Verwaltungssoftware
         private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        
+        }  
     }
 }
