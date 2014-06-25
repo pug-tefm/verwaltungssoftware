@@ -16,6 +16,7 @@ namespace PuG_Verwaltungssoftware
         bool editMode = false;
         bool save = false;
         int gId = 0;
+        int gPosId = 0;
         DataGridView gGridView;
 
         public winMitarbeiterOeffnen(int id, DataGridView grid)
@@ -59,12 +60,24 @@ namespace PuG_Verwaltungssoftware
                     nachname = (String)result.Rows[0]["nachname"];
                     gebDatum = (result.Rows[0]["geburtsdatum"]).ToString();
                     strasse = (String)result.Rows[0]["strasse"];
-                    hausnummer = (String)result.Rows[0]["hausnummer"];
+                    hausnummer = (result.Rows[0]["hausnummer"]).ToString();
                     plz = (result.Rows[0]["plz"]).ToString();
                     ort = (String)result.Rows[0]["ort"];
                     gehalt = (result.Rows[0]["gehalt"]).ToString();
                     benutzername = (String)result.Rows[0]["benutzername"];
-                    //position = (result.Rows[0]["position"]).ToString();
+                    position = (result.Rows[0]["position_id"]).ToString();
+                    gPosId = Convert.ToInt32(position);
+                    if (position == "1")
+                    {
+                        position = "Chef";
+                    }
+                    else
+                    {
+                        position = "Normal";
+                    }
+
+                    // Formatierungen
+                    gebDatum = gebDatum.Substring(0, 10);
 
                     tbVorname.Text = vorname;
                     tbNachname.Text = nachname;
@@ -75,9 +88,12 @@ namespace PuG_Verwaltungssoftware
                     tbOrt.Text = ort;
                     tbGehalt.Text = gehalt;
                     tbBenutzername.Text = benutzername;
-                    //tbPosition.Text = position;
+                    tbPosition.Text = position;
                     
                 }
+
+                // Datenbankverbindung schliessen
+                c.closeConnection();
             }
         }
 
@@ -111,34 +127,83 @@ namespace PuG_Verwaltungssoftware
             editMode = true;
             
             // Textboxen readOnly --> false
-            foreach (Control c in gbDaten.Controls)
+            foreach (Control control in gbDaten.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (control.GetType() == typeof(TextBox))
                 {
-                    ((TextBox)c).ReadOnly = false;
+                    ((TextBox)control).ReadOnly = false;
                 }
             }
-            foreach (Control c in gbAnschrift.Controls)
+            foreach (Control control in gbAnschrift.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (control.GetType() == typeof(TextBox))
                 {
-                    ((TextBox)c).ReadOnly = false;
+                    ((TextBox)control).ReadOnly = false;
                 }
             }
-            foreach (Control c in gbGehalt.Controls)
+            foreach (Control control in gbGehalt.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (control.GetType() == typeof(TextBox))
                 {
-                    ((TextBox)c).ReadOnly = false;
+                    ((TextBox)control).ReadOnly = false;
                 }
             }
-            foreach (Control c in gbLoginDaten.Controls)
+            foreach (Control control in gbLoginDaten.Controls)
             {
-                if (c.GetType() == typeof(TextBox))
+                if (control.GetType() == typeof(TextBox))
                 {
-                    ((TextBox)c).ReadOnly = false;
+                    ((TextBox)control).ReadOnly = false;
                 }
             }
+
+            tbPosition.Visible = false;
+            ddlMitarbeiterPosition.Visible = true;
+
+            // =====================================
+            //     Combobox mit Werten befuellen
+            // =====================================
+
+            string bezeichnung = "";
+            int pos = 0;
+
+            c_DBConnect c = new c_DBConnect();
+            int dBConnectOk = c.openConnection();
+            //int dBConnectOk = 0;
+            if (dBConnectOk == 0)
+            {
+                int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
+                if (rows > 0)
+                {
+                    DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
+                    if (result != null)
+                    {
+                        for (int i = 0; i < rows; i++)
+                        {
+                            bezeichnung = (String)result.Rows[i]["bezeichnung"];
+                            ddlMitarbeiterPosition.Items.Add(bezeichnung);
+                        }
+                    }
+                }
+                c.closeConnection();
+            }
+
+            // Combobox preselected Item
+            for (int i = 0; i < ddlMitarbeiterPosition.Items.Count; i++)
+            {
+                if (ddlMitarbeiterPosition.Items[i].ToString() == "Normal")
+                {
+                    pos = i;
+                }
+            }
+            if (gPosId == 1)
+            {
+                ddlMitarbeiterPosition.SelectedIndex = 0;
+            }
+            else
+            {
+                ddlMitarbeiterPosition.SelectedIndex = pos; 
+            }
+                      
 
             // Textbox Datum visible false und datepicker visible true und Position setzen
             int xVal = tbDatum.Location.X;
@@ -185,7 +250,15 @@ namespace PuG_Verwaltungssoftware
                 ort = tbOrt.Text;
                 gehalt = tbGehalt.Text;
                 benutzername = tbBenutzername.Text;
-                position = tbPosition.Text;
+                position = ddlMitarbeiterPosition.SelectedItem.ToString();
+                if (position == "Chef")
+                {
+                    position = "1";
+                }
+                else
+                {
+                    position = "2";
+                }
 
                 strSQL = String.Empty;
                 posId = 0;
@@ -208,7 +281,7 @@ namespace PuG_Verwaltungssoftware
                 myMitarbeiter.setGebDatum(gebDatum);
                 myMitarbeiter.setStrasse(strasse);
                 myMitarbeiter.setOrt(ort);
-                myMitarbeiter.setHausnummer(Convert.ToInt32(hausnummer));
+                myMitarbeiter.setHausnummer(hausnummer);
                 myMitarbeiter.setPlz(Convert.ToInt32(plz));
                 myMitarbeiter.setGehalt(Convert.ToDouble(gehalt));
                 myMitarbeiter.setBenutzername(benutzername);

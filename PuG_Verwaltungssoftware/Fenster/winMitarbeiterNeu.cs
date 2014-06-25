@@ -23,7 +23,7 @@ namespace PuG_Verwaltungssoftware
         {
             // Fenster schliessen
             if (tbVorname.Text.Trim().Length != 0 || tbNachname.Text.Trim().Length != 0 || tbStrasse.Text.Trim().Length != 0 || tbHausnummer.Text.Trim().Length != 0
-                || tbPlz.Text.Trim().Length != 0 || tbOrt.Text.Trim().Length != 0 || tbGehalt.Text.Trim().Length != 0 || tbInitUser.Text.Trim().Length != 0 || tbInitPasswort.Text.Trim().Length != 0)
+                || tbOrt.Text.Trim().Length != 0 || tbPlz.Text.Trim().Length != 0 || tbGehalt.Text.Trim().Length != 0 || tbInitUser.Text.Trim().Length != 0 || tbInitPasswort.Text.Trim().Length != 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
@@ -48,13 +48,13 @@ namespace PuG_Verwaltungssoftware
             String nachname;
             String gebDatum;
             String strasse;
+            String hNummer;
             String ort;
             String initBenutzer;
             String initPasswort;
 
             String strSQL = String.Empty;
 
-            int hNummer;
             int plz;
             int posId;
             double gehalt;
@@ -81,18 +81,18 @@ namespace PuG_Verwaltungssoftware
             }
 
             // Anschrift
-            if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbPlz.Text != "" && tbOrt.Text != "")
+            if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbOrt.Text != "" && tbPlz.Text != "")
             {
                 strasse = tbStrasse.Text;
                 ort = tbOrt.Text;
-                if (c_Helper.numFormat(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
+                if (c_Helper.wrongCharNumberExtra(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
                 {
-                    hNummer = Convert.ToInt32(tbHausnummer.Text);
+                    hNummer = tbHausnummer.Text;
                     plz = Convert.ToInt32(tbPlz.Text);
                 }
                 else
                 {
-                    MessageBox.Show("Im Feld Hausnummer und Postleitzahl dürfen nur Zahlen stehen.");
+                    MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.");
                     return;
                 }
             }
@@ -106,6 +106,10 @@ namespace PuG_Verwaltungssoftware
             if (tbGehalt.Text != "")
             {
                 gehalt = Convert.ToDouble(tbGehalt.Text);
+                if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
+                {
+                    MessageBox.Show("Falsches Format für das Feld Gehalt.");
+                }
             }
             else
             {
