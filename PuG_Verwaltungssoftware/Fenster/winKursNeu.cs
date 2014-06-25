@@ -21,6 +21,7 @@ namespace PuG_Verwaltungssoftware
 
             myDataGridViewKurse = dataGridViewKurse;
 
+            int    id         = 0;
             string vorname    = "";
             string nachname   = "";
             c_DBConnect c = new c_DBConnect();
@@ -31,14 +32,15 @@ namespace PuG_Verwaltungssoftware
                 int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
                 if (rows > 0)
                 {
-                    DataTable result = c.select("SELECT vorname, nachname FROM mitarbeiter;");
+                    DataTable result = c.select("SELECT mitarbeiter_id, vorname, nachname FROM mitarbeiter;");
                     if (result != null)
                     {
                         for (int i = 0; i < rows; i++)
                         {
+                            id       =  (int)result.Rows[i]["mitarbeiter_id"];
                             vorname  = (String)result.Rows[i]["vorname"];
                             nachname = (String)result.Rows[i]["nachname"];
-                            string vollerName = vorname + " " + nachname;
+                            string vollerName = "(" + id.ToString() + ") " + vorname + " " + nachname;
                             cbKursleiter.Items.Add(vollerName);
                         }
                     }
@@ -119,15 +121,53 @@ namespace PuG_Verwaltungssoftware
                     int connected = myConnection.openConnection();
                     if (connected == 0)
                     {
-                        String datumVon = dtpDatumVon.Value.ToString("yyyy-MM-dd");
-                        String datumBis = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String datumVon   = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis   = dtpDatumBis.Value.ToString("yyyy-MM-dd");
                         String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
                         String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
-                        String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, max_teilnehmer, datum_von, datum_bis, wochentag, " +
-                                 "uhrzeit_von, uhrzeit_bis) VALUES (" + cbKursleiter.SelectedIndex + ", '" + tbBezeichnung.Text + "', " + tbPreis.Text + ", " + tbMaxTeilnehmer.Text +
-                                 ", " + datumVon + ", " + datumBis + ", " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + "', '" + uhrzeitBis + "');";
-                        myConnection.insert(query, "Kurs");
-                        myConnection.displayData("SELECT * FROM kurse;", myDataGridViewKurse);
+                        String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
+                        String preis      = tbPreis.Text.Replace(",", ".");
+
+                        String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, " +
+                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" + 
+                                        ", " + tbMaxTeilnehmer.Text + ", " + datumVon + ", " + datumBis + ", " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
+                                        "', '" + uhrzeitBis + "');";
+
+                        bool ok = myConnection.insert(query, "Kurs");
+                        if (ok == true)
+                        {     
+                            int connectedZwei = myConnection.openConnection();
+                            if (connectedZwei == 0)
+                            {
+                                myConnection.displayData("SELECT * FROM kurse;", myDataGridViewKurse);
+                                myConnection.closeConnection();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            } 
+
+                            DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                cbKursleiter.SelectedIndex = -1;
+                                cbWochentag.SelectedIndex = -1;
+
+                                tbBezeichnung.Text = "";
+                                tbPreis.Text = "";
+                                tbMaxTeilnehmer.Text = "";
+
+                                DateTime today = DateTime.Now;
+                                dtpDatumVon.Value = today.Date;
+                                dtpDatumBis.Value = today.Date;
+                                dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                                dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                            }
+                            if (dialogResult == DialogResult.No)
+                            {
+                                this.Close();
+                            }
+                        }
                         myConnection.closeConnection();
                     }
                     else
@@ -135,26 +175,7 @@ namespace PuG_Verwaltungssoftware
                         MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        cbKursleiter.SelectedIndex = -1;
-                        cbWochentag.SelectedIndex = -1;
 
-                        tbBezeichnung.Text = "";
-                        tbPreis.Text = "";
-                        tbMaxTeilnehmer.Text = "";
-
-                        DateTime today = DateTime.Now;
-                        dtpDatumVon.Value = today.Date;
-                        dtpDatumBis.Value = today.Date;
-                        dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
-                        dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
-                    }
-                    if (dialogResult == DialogResult.No)
-                    {
-                        this.Close();
-                    }
                 }
                 else
                 {

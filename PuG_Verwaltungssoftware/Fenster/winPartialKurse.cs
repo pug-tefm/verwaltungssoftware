@@ -11,9 +11,10 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
-        private bool kommendeKurse   = false; // Initialiesierung
-        private bool laufendeKurse   = false; // der die drei Zustände
-        private bool vergangeneKurse = false; // des Filters
+        private BindingSource bindingSourceKurse = new BindingSource();
+        private bool          kommendeKurse      = false; // Initialiesierung
+        private bool          laufendeKurse      = false; // der die drei Zustände
+        private bool          vergangeneKurse    = false; // des Filters
 
         private void tabPageKurse_Enter(object sender, EventArgs e)
         {
@@ -44,6 +45,9 @@ namespace PuG_Verwaltungssoftware
                 }
                 ddlKursSuchen.SelectedIndex = 0;
             }
+
+            bindingSourceKurse.DataSource = gridKurse.DataSource;
+            gridKurse.DataSource = bindingSourceKurse;
             
         }
 
@@ -53,7 +57,7 @@ namespace PuG_Verwaltungssoftware
             {
                 foreach (DataGridViewRow row in dataGridView.SelectedRows) // Wegen Multiselect
                 {
-                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value);
+                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["kurs_id"].Value);
                     DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
@@ -86,17 +90,17 @@ namespace PuG_Verwaltungssoftware
                         c_Kurse myKurse = new c_Kurse();
 
                         // Parameter von Kurs setzen
-                        myKurse.setKursId(int.Parse(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value.ToString()));
-                        myKurse.setKursleiter(gridKurse.Rows[row.Index].Cells["Kursleiter"].Value.ToString());
-                        myKurse.setBezeichnung(gridKurse.Rows[row.Index].Cells["Bezeichnung"].Value.ToString());
-                        myKurse.setPreis(double.Parse(gridKurse.Rows[row.Index].Cells["Preis"].Value.ToString()));
-                        myKurse.setAktTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["Akt. Teilnehmer"].Value.ToString()));
-                        myKurse.setMaxTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["Max. Teilnehmer"].Value.ToString()));
-                        myKurse.setDatumVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Datum Von"].Value.ToString()));
-                        myKurse.setDatumBis(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Datum Bis"].Value.ToString()));
-                        myKurse.setWochentag(c_Helper.umwandlungWochentagInInt(gridKurse.Rows[row.Index].Cells["Wochentag"].Value.ToString()));
-                        myKurse.setUhrzeitVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Uhrzeit Von"].Value.ToString()));
-                        myKurse.setUhrzeitBis(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Uhrzeit Bis"].Value.ToString()));
+                        myKurse.setKursId(int.Parse(gridKurse.Rows[row.Index].Cells["kurs_id"].Value.ToString()));
+                        myKurse.setKursleiter(gridKurse.Rows[row.Index].Cells["kursleiter_id"].Value.ToString());
+                        myKurse.setBezeichnung(gridKurse.Rows[row.Index].Cells["bezeichnung"].Value.ToString());
+                        myKurse.setPreis(double.Parse(gridKurse.Rows[row.Index].Cells["preis"].Value.ToString()));
+                        myKurse.setAktTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["akt_teilnehmer"].Value.ToString()));
+                        myKurse.setMaxTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["max_teilnehmer"].Value.ToString()));
+                        myKurse.setDatumVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["datum_von"].Value.ToString()));
+                        myKurse.setDatumBis(DateTime.Parse(gridKurse.Rows[row.Index].Cells["datum_bis"].Value.ToString()));
+                        myKurse.setWochentag(c_Helper.umwandlungWochentagInInt(gridKurse.Rows[row.Index].Cells["wochentag"].Value.ToString()));
+                        myKurse.setUhrzeitVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["uhrzeit_von"].Value.ToString()));
+                        myKurse.setUhrzeitBis(DateTime.Parse(gridKurse.Rows[row.Index].Cells["uhrzeit_bis"].Value.ToString()));
 
                         winKursOeffnen myKurseOeffnen = new winKursOeffnen(ref myKurse, ref gridKurse); // und an neues Fenster übergeben
                         myKurseOeffnen.Visible = true;
@@ -112,7 +116,7 @@ namespace PuG_Verwaltungssoftware
         private void comboBoxSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
 
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
             // diese wieder ausgeblendet werden, wenn ein Filter vorliget
@@ -122,7 +126,7 @@ namespace PuG_Verwaltungssoftware
         private void textBoxSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
 
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
             // diese wieder ausgeblendet werden, wenn ein Filter vorliget
@@ -167,9 +171,9 @@ namespace PuG_Verwaltungssoftware
                 myContextMenu.Items.Add(toolStripItemFive);
 
                 // Und bei auswahl mit einem Bild versehen 
-                if (kommendeKurse   == true) toolStripItemOne.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (laufendeKurse   == true) toolStripItemTwo.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                //if (kommendeKurse   == true) toolStripItemOne.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                //if (laufendeKurse   == true) toolStripItemTwo.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                //if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
 
                 // Handler der Items
                 toolStripItemOne.Click   += new EventHandler(toolStripItemOneKurse_Click);
@@ -251,15 +255,15 @@ namespace PuG_Verwaltungssoftware
 
             for (int i = 0; i < gridKurse.RowCount; i++) // Alle Zeilen anschauen
             {
-                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Von"].Value.ToString());
-                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Bis"].Value.ToString());
+                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_von"].Value.ToString());
+                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_bis"].Value.ToString());
                 if (today >= beginnDate && today <= endDate) // Wenn ein laufender Kurs
                 {
-                    String wochentag = gridKurse.Rows[i].Cells["Wochentag"].Value.ToString();
+                    String wochentag = gridKurse.Rows[i].Cells["wochentag"].Value.ToString();
                     if (c_Helper.umwandlungWochentagEngToGer(today.DayOfWeek.ToString()) == wochentag) // Wenn Tag = Heute
                     {
-                        DateTime beginnUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["Uhrzeit Von"].Value.ToString());
-                        DateTime endUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["Uhrzeit Bis"].Value.ToString());
+                        DateTime beginnUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["uhrzeit_von"].Value.ToString());
+                        DateTime endUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["uhrzeit_bis"].Value.ToString());
                         if (today.TimeOfDay > beginnUhrzeit.TimeOfDay && today.TimeOfDay < endUhrzeit.TimeOfDay) // Wenn Uhrzeit passt
                         {
                             gridKurse.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen; // Kurs als gerade laufend kennzeichnen
@@ -337,7 +341,7 @@ namespace PuG_Verwaltungssoftware
 
             for (int i = 0; i < gridKurse.RowCount; i++)
             {
-                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Von"].Value.ToString());
+                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_von"].Value.ToString());
                 if (today >= beginnDate)
                 {
                     CurrencyManager currencyManager = (CurrencyManager)BindingContext[gridKurse.DataSource];
@@ -371,8 +375,8 @@ namespace PuG_Verwaltungssoftware
 
             for (int i = 0; i < gridKurse.RowCount; i++)
             {
-                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Von"].Value.ToString());
-                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Bis"].Value.ToString());
+                DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_von"].Value.ToString());
+                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_bis"].Value.ToString());
                 if (today <= beginnDate || today >= endDate)
                 {
                     CurrencyManager currencyManager = (CurrencyManager)BindingContext[gridKurse.DataSource];
@@ -406,7 +410,7 @@ namespace PuG_Verwaltungssoftware
 
             for (int i = 0; i < gridKurse.RowCount; i++)
             {
-                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Bis"].Value.ToString());
+                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["datum_bis"].Value.ToString());
                 if (today <= endDate)
                 {
                     CurrencyManager currencyManager = (CurrencyManager)BindingContext[gridKurse.DataSource];

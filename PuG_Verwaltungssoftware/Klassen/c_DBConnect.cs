@@ -62,7 +62,7 @@ namespace PuG_Verwaltungssoftware
         }
 
         //Insert statement
-        public void insert(string query, string textMB)
+        public bool insert(string query, string textMB)
         {
             try
             {
@@ -72,15 +72,17 @@ namespace PuG_Verwaltungssoftware
                 myReader = myCommand.ExecuteReader(); // Command ausführen
                 
                 MessageBox.Show(textMB + " wurde hinzugefügt", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         //Update statement
-        public void update(string query, string textMB)
+        public bool update(string query, string textMB)
         {
             try
             {
@@ -90,15 +92,17 @@ namespace PuG_Verwaltungssoftware
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
                 MessageBox.Show(textMB + "wurde upgedated", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         //Delete statement
-        public void delete(string query, string textMB)
+        public bool delete(string query, string textMB)
         {
             try
             {
@@ -108,10 +112,12 @@ namespace PuG_Verwaltungssoftware
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
                 MessageBox.Show(textMB + " wurde gelöscht", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
