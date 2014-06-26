@@ -152,7 +152,7 @@ namespace PuG_Verwaltungssoftware
 
         private void btKursNeu_Click(object sender, EventArgs e)
         {
-            winKursNeu window = new winKursNeu(gridKurse);
+            winKursNeu window = new winKursNeu(gridKurse, bindingSourceKurse);
             window.Show();
         }
 
@@ -239,7 +239,7 @@ namespace PuG_Verwaltungssoftware
 
             if (e.KeyData == (Keys.Control | Keys.N)) // Steuerung + N = Neuer Kurs
             {
-                winKursNeu myKurseNeu = new winKursNeu(gridKurse);
+                winKursNeu myKurseNeu = new winKursNeu(gridKurse, bindingSourceKurse);
                 myKurseNeu.Visible = true;
             }
 
@@ -329,7 +329,7 @@ namespace PuG_Verwaltungssoftware
 
         private void toolStripItemNeuKurse_Click(object sender, EventArgs args)
         {
-            winKursNeu myKurseNeu = new winKursNeu(gridKurse);
+            winKursNeu myKurseNeu = new winKursNeu(gridKurse, bindingSourceKurse);
             myKurseNeu.Visible = true;
         }
 
@@ -414,6 +414,9 @@ namespace PuG_Verwaltungssoftware
                     String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
                     gridKurseTable.Rows[i]["Wochentag"] = wert;
                 }
+
+                bindingSourceKurse.DataSource = gridKurse.DataSource;
+                gridKurse.DataSource = bindingSourceKurse;
             }
             else
             {

@@ -13,13 +13,15 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winKursNeu : Form
     {
-        private DataGridView myGridKurse;
+        private DataGridView  myGridKurse;
+        private BindingSource myBindingSourceKurse;
 
-        public winKursNeu(DataGridView dataGridViewKurse)
+        public winKursNeu(DataGridView dataGridViewKurse, BindingSource bindingSourceKurse)
         {
             InitializeComponent();
 
-            myGridKurse = dataGridViewKurse;
+            myGridKurse          = dataGridViewKurse;
+            myBindingSourceKurse = bindingSourceKurse;
 
             c_Mitarbeiter.comboBoxFill(cbKursleiter, "");
 
@@ -105,12 +107,13 @@ namespace PuG_Verwaltungssoftware
 
                         String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, " +
                                         "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" + 
-                                        ", " + tbMaxTeilnehmer.Text + ", " + datumVon + ", " + datumBis + ", " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
+                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
                                         "', '" + uhrzeitBis + "');";
 
                         bool ok = myConnection.insert(query, "Kurs");
                         if (ok == true)
                         {
+                            myConnection.closeConnection();
                             int connectedZwei = myConnection.openConnection();
                             if (connectedZwei == 0)
                             {
@@ -139,6 +142,9 @@ namespace PuG_Verwaltungssoftware
                                     String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
                                     gridKurseTable.Rows[i]["Wochentag"] = wert;
                                 }
+
+                                myBindingSourceKurse.DataSource = myGridKurse.DataSource;
+                                myGridKurse.DataSource = myBindingSourceKurse;
                             }
                             else
                             {

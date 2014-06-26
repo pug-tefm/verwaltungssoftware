@@ -272,10 +272,10 @@ namespace PuG_Verwaltungssoftware
                         String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
                         String preis = tbPreis.Text.Replace(",", ".");
 
-                        String query = "UPDATE kurse SET bezeichnung = " + tbBezeichnung.Text + ", kursleiter = " + kursleiter +
+                        String query = "UPDATE kurse SET bezeichnung = '" + tbBezeichnung.Text + "', kursleiter_id = " + kursleiter +
                                        ", preis = " + preis + ", max_teilnehmer = " + tbMaxTeilnehmer.Text +
-                                       ", datum_von = " + datumVon + ", datum_bis = " + datumBis + ", wochentag = " + cbWochentag.SelectedIndex +
-                                       ", uhrzeit_von = " + uhrzeitVon + ", uhrzeit_bis" + uhrzeitBis + ";";
+                                       ", datum_von = '" + datumVon + "', datum_bis = '" + datumBis + "', wochentag = " + cbWochentag.SelectedIndex +
+                                       ", uhrzeit_von = '" + uhrzeitVon + "', uhrzeit_bis = '" + uhrzeitBis + "';";
 
                         bool ok = myConnection.update(query, "Kurs");
                         if (ok == true)
