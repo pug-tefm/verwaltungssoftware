@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PuG_Verwaltungssoftware.Klassen
 {
@@ -56,6 +58,45 @@ namespace PuG_Verwaltungssoftware.Klassen
             return this.posId;
         }
 
+        // ComboBox Fill Kurse
+        public static void comboBoxFill(ComboBox cbKursleiter, string kursleiter)
+        {
+            int id = 0;
+            string vorname = "";
+            string nachname = "";
+            c_DBConnect c = new c_DBConnect();
+
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
+                if (rows > 0)
+                {
+                    DataTable result = c.select("SELECT mitarbeiter_id, vorname, nachname FROM mitarbeiter;");
+                    if (result != null)
+                    {
+                        for (int i = 0; i < rows; i++)
+                        {
+                            id = (int)result.Rows[i]["mitarbeiter_id"];
+                            vorname = (String)result.Rows[i]["vorname"];
+                            nachname = (String)result.Rows[i]["nachname"];
+                            string vollerName = "(" + id.ToString() + ") " + vorname + ", " + nachname;
+                            cbKursleiter.Items.Add(vollerName);
+
+                            if (vollerName == kursleiter)
+                            {
+                                cbKursleiter.SelectedIndex = i;
+                            }
+                        }
+                    }
+                }
+                c.closeConnection();
+            }
+            else
+            {
+                MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
     }
 }

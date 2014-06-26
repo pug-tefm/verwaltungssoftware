@@ -141,14 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Fenster\winMitarbeiterOeffnen.resx">
       <DependentUpon>winMitarbeiterOeffnen.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +151,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -166,7 +166,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ressources\Images\check_icon.png" />
+    <None Include="Ressources\Images\pug_delete.png" />
+    <None Include="Ressources\Images\pug_new.png" />
+    <None Include="Ressources\Images\pug_open.png" />
+    <None Include="Ressources\Images\pug_refresh.png" />
+    <Content Include="Ressources\Images\pug_check.png" />
     <Content Include="Ressources\Images\pug_runner.ico" />
     <Content Include="Ressources\Images\pug_runner.png" />
   </ItemGroup>

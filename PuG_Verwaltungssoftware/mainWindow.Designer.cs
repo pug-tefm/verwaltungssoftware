@@ -393,6 +393,8 @@
             // scKurse
             // 
             this.scKurse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scKurse.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scKurse.IsSplitterFixed = true;
             this.scKurse.Location = new System.Drawing.Point(0, 0);
             this.scKurse.Name = "scKurse";
             this.scKurse.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -416,12 +418,14 @@
             // 
             this.gridKurse.AllowUserToAddRows = false;
             this.gridKurse.AllowUserToDeleteRows = false;
+            this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.gridKurse.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridKurse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKurse.Location = new System.Drawing.Point(0, 0);
-            this.gridKurse.MultiSelect = false;
             this.gridKurse.Name = "gridKurse";
             this.gridKurse.ReadOnly = true;
+            this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridKurse.Size = new System.Drawing.Size(560, 375);
             this.gridKurse.TabIndex = 2;

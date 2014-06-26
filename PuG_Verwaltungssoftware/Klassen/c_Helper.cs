@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -205,6 +206,40 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
                 bindingSource.Filter = string.Format(suchen, textBox.Text);
             }
+        }
+
+        public static bool changeColumnDataType(DataTable table, string columnname, Type newtype, int position)
+        {
+            if (table.Columns.Contains(columnname) == false)
+                return false;
+
+            DataColumn column = table.Columns[columnname];
+            if (column.DataType == newtype)
+                return true;
+
+            try
+            {
+                DataColumn newcolumn = new DataColumn("temp", newtype);
+                table.Columns.Add(newcolumn);
+                foreach (DataRow row in table.Rows)
+                {
+                    try
+                    {
+                        row["temp"] = Convert.ChangeType(row[columnname], newtype);
+                    }
+                    catch
+                    {
+                    }
+                }
+                table.Columns.Remove(columnname);
+                newcolumn.ColumnName = columnname;
+                table.Columns[columnname].SetOrdinal(position - 1);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

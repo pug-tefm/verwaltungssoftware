@@ -31,7 +31,7 @@ namespace PuG_Verwaltungssoftware
             myKurs      =  myKurse;
             myGridKurse = dataGridViewKurse;
 
-            cbKursleiter.Items.Add(myKurs.getKursleiter());
+            c_Mitarbeiter.comboBoxFill(cbKursleiter, myKurs.getKursleiter());
 
             tbKursleiter.Text    = myKurs.getKursleiter();
             tbBezeichnung.Text   = myKurs.getBezeichnung();
@@ -93,10 +93,10 @@ namespace PuG_Verwaltungssoftware
             tbMaxTeilnehmer.Text = myKurs.getMaxTeilnehmer().ToString();
 
             dtpDatumVon.Visible = true;
-            dtpDatumVon.Value = myKurs.getDatumVon();
+            dtpDatumVon.Value   = myKurs.getDatumVon();
 
             dtpDatumBis.Visible = true;
-            dtpDatumBis.Value = myKurs.getDatumBis();
+            dtpDatumBis.Value   = myKurs.getDatumBis();
 
             cbWochentag.Visible = true;
             for (int i = 0; i < cbWochentag.Items.Count; i++)
@@ -147,6 +147,12 @@ namespace PuG_Verwaltungssoftware
                 {
                     fehlerGefunden = true;
                     MessageBox.Show("'" + tbMaxTeilnehmer.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                if (Convert.ToInt32(tbAktTeilnehmer.Text) > Convert.ToInt32(tbMaxTeilnehmer.Text))
+                {
+                    fehlerGefunden = true;
+                    MessageBox.Show("Max. Teilnehmer kann nicht kleiner als Akt. Teilnehmer sein", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 if (dtpDatumVon.Value.Date > dtpDatumBis.Value.Date)

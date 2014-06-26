@@ -21,32 +21,7 @@ namespace PuG_Verwaltungssoftware
 
             myGridKurse = dataGridViewKurse;
 
-            int    id         = 0;
-            string vorname    = "";
-            string nachname   = "";
-            c_DBConnect c = new c_DBConnect();
- 
-            int dBConnectOk = c.openConnection();
-            if (dBConnectOk == 0)
-            {
-                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
-                if (rows > 0)
-                {
-                    DataTable result = c.select("SELECT mitarbeiter_id, vorname, nachname FROM mitarbeiter;");
-                    if (result != null)
-                    {
-                        for (int i = 0; i < rows; i++)
-                        {
-                            id       =  (int)result.Rows[i]["mitarbeiter_id"];
-                            vorname  = (String)result.Rows[i]["vorname"];
-                            nachname = (String)result.Rows[i]["nachname"];
-                            string vollerName = "(" + id.ToString() + ") " + vorname + " " + nachname;
-                            cbKursleiter.Items.Add(vollerName);
-                        }
-                    }
-                }
-                c.closeConnection();
-            }
+            c_Mitarbeiter.comboBoxFill(cbKursleiter, "");
 
             gueltigerWochentagPruefen();
         }
@@ -143,6 +118,27 @@ namespace PuG_Verwaltungssoftware
                                               "AS kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
                                               "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", myGridKurse);
                                 myConnection.closeConnection();
+
+                                // Headertexte anpassen
+                                DataTable gridKurseTable = (DataTable)(myGridKurse.DataSource);
+                                gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
+                                gridKurseTable.Columns["kursleiter"].ColumnName     = "Kursleiter";
+                                gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                                gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
+                                gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
+                                gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
+                                gridKurseTable.Columns["datum_bis"].ColumnName      = "Datum Bis";
+                                gridKurseTable.Columns["wochentag"].ColumnName      = "Wochentag";
+                                gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
+                                gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
+
+                                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9);
+
+                                for (int i = 0; i < gridKurseTable.Rows.Count; i++)
+                                {
+                                    String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
+                                    gridKurseTable.Rows[i]["Wochentag"] = wert;
+                                }
                             }
                             else
                             {
