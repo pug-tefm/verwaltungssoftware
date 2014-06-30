@@ -13,8 +13,9 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winKursOeffnen : Form
     {
-        private bool         speichernBool  = false;
-        private bool         bearbeitenBool = false;
+        // Klassenvariablen deklarieren
+        private bool         speichernBool  = false; // + initialisieren
+        private bool         bearbeitenBool = false; // + initialisieren
         private c_Kurse      myKurs;
         private DataGridView myGridKurse;
 
@@ -28,11 +29,13 @@ namespace PuG_Verwaltungssoftware
             dtpDatumVon.Visible  = false;
             cbWochentag.Visible  = false;
 
+            // Klassenvariablen initialisieren
             myKurs      =  myKurse;
             myGridKurse = dataGridViewKurse;
 
-            c_Mitarbeiter.comboBoxFill(cbKursleiter, myKurs.getKursleiter());
+            c_Mitarbeiter.comboBoxFill(cbKursleiter, myKurs.getKursleiter()); // ComboBox mit den Mitarbeitern befüllen
 
+            // Format anpassen
             tbKursleiter.Text    = myKurs.getKursleiter();
             tbBezeichnung.Text   = myKurs.getBezeichnung();
             tbPreis.Text         = myKurs.getPreis().ToString("N2");
@@ -45,14 +48,29 @@ namespace PuG_Verwaltungssoftware
             tbUhrzeitBis.Text    = myKurs.getUhrzeitBis().TimeOfDay.ToString("hh\\:mm");
         }
 
+
+        /**************************************************************************/
+        /* private void btSchliessen_Click(object sender, EventArgs e)            */
+        /**************************************************************************/
+        /* Form schliesen. Die Funktion                                           */
+        /* winKursOeffnen_FormClosing(object sender, FormClosingEventArgs e)      */
+        /* wird dadurch indirekt ausgerufen.                                      */
+        /**************************************************************************/
         private void btSchliessen_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /**********************************************************************************/
+        /* private void winKursOeffnen_FormClosing(object sender, FormClosingEventArgs e) */
+        /**********************************************************************************/
+        /* Wenn das Fenster geschlossen wird, wird überprüft ob es änderungen             */
+        /* gab. Wenn dies der Fall war wird eine MessageBox ausgegeben sonst das          */
+        /* Fenster geschlossen.                                                           */
+        /**********************************************************************************/
         private void winKursOeffnen_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (bearbeitenBool == true)
+            if (bearbeitenBool == true) // Wenn im Bearbeitungsmodus
             {
                 // Wurden Daten geändert ?
                 if (myKurs.getKursleiter() != cbKursleiter.Text || myKurs.getBezeichnung() != tbBezeichnung.Text
@@ -70,11 +88,16 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        /**************************************************************************/
+        /* private void btBearbeiten_Click(object sender, EventArgs e)            */
+        /**************************************************************************/
+        /*      */
+        /**************************************************************************/
         private void btBearbeiten_Click(object sender, EventArgs e)
         {
-            bearbeitenBool = true;
+            bearbeitenBool = true; // Bearbeitungsmodus setzen
 
-            btBearbeiten.Text = "Zurücksetzen";
+            btBearbeiten.Text = "Zurücksetzen"; // Text ändern
 
             tbKursleiter.Visible = false;
             tbDatumVon.Visible   = false;
@@ -84,7 +107,6 @@ namespace PuG_Verwaltungssoftware
             tbUhrzeitBis.Visible = false;   
             
             cbKursleiter.Visible = true;
-            cbKursleiter.SelectedIndex = 0;
 
             tbBezeichnung.Text = myKurs.getBezeichnung();
 
@@ -121,6 +143,11 @@ namespace PuG_Verwaltungssoftware
             tbUhrzeitBis.ReadOnly    = false;
         }
 
+        /**************************************************************************/
+        /* private void btSpeichern_Click(object sender, EventArgs e)             */
+        /**************************************************************************/
+        /*      */
+        /**************************************************************************/
         private void btSpeichern_Click(object sender, EventArgs e)
         {
             if (bearbeitenBool == true)
@@ -265,56 +292,58 @@ namespace PuG_Verwaltungssoftware
                     int connected = myConnection.openConnection();
                     if (connected == 0)
                     {
-                        String datumVon = dtpDatumVon.Value.ToString("yyyy-MM-dd");
-                        String datumBis = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String preis      = tbPreis.Text.Replace(",", ".");
+                        String datumVon   = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis   = dtpDatumBis.Value.ToString("yyyy-MM-dd");
                         String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
                         String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
                         String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
-                        String preis = tbPreis.Text.Replace(",", ".");
+                        String kursID     = myKurs.getKursId().ToString();
+                        
 
                         String query = "UPDATE kurse SET bezeichnung = '" + tbBezeichnung.Text + "', kursleiter_id = " + kursleiter +
                                        ", preis = " + preis + ", max_teilnehmer = " + tbMaxTeilnehmer.Text +
                                        ", datum_von = '" + datumVon + "', datum_bis = '" + datumBis + "', wochentag = " + cbWochentag.SelectedIndex +
-                                       ", uhrzeit_von = '" + uhrzeitVon + "', uhrzeit_bis = '" + uhrzeitBis + "';";
+                                       ", uhrzeit_von = '" + uhrzeitVon + "', uhrzeit_bis = '" + uhrzeitBis + "' WHERE kurs_id = " + kursID + ";";
 
                         bool ok = myConnection.update(query, "Kurs");
                         if (ok == true)
                         {
                             myGridKurse.Refresh();
 
-                            cbKursleiter.Visible = false;
-                            dtpDatumVon.Visible = false;
-                            dtpDatumBis.Visible = false;
-                            cbWochentag.Visible = false;
+                            cbKursleiter.Visible  = false;
+                            dtpDatumVon.Visible   = false;
+                            dtpDatumBis.Visible   = false;
+                            cbWochentag.Visible   = false;
                             dtpUhrzeitVon.Visible = false;
                             dtpUhrzeitBis.Visible = false;
 
                             tbKursleiter.Visible = true;
-                            tbKursleiter.Text = myKurs.getKursleiter();
+                            tbKursleiter.Text    =  myKurs.getKursleiter();
 
                             tbDatumVon.Visible = true;
-                            tbDatumVon.Text = myKurs.getDatumVon().Date.ToString("dd.MM.yyyy");
+                            tbDatumVon.Text    = myKurs.getDatumVon().Date.ToString("dd.MM.yyyy");
 
                             tbDatumBis.Visible = true;
-                            tbDatumBis.Text = myKurs.getDatumBis().Date.ToString("dd.MM.yyyy");
+                            tbDatumBis.Text    = myKurs.getDatumBis().Date.ToString("dd.MM.yyyy");
 
                             tbWochentag.Visible = true;
-                            tbWochentag.Text = c_Helper.umwandlungIntInWochentag(myKurs.getWochentag());
+                            tbWochentag.Text    = c_Helper.umwandlungIntInWochentag(myKurs.getWochentag());
 
                             tbUhrzeitVon.Visible = true;
-                            tbUhrzeitVon.Text = myKurs.getUhrzeitVon().TimeOfDay.ToString("hh\\:mm");
+                            tbUhrzeitVon.Text    = myKurs.getUhrzeitVon().TimeOfDay.ToString("hh\\:mm");
 
                             tbUhrzeitBis.Visible = true;
-                            tbUhrzeitBis.Text = myKurs.getUhrzeitBis().TimeOfDay.ToString("hh\\:mm");
+                            tbUhrzeitBis.Text    = myKurs.getUhrzeitBis().TimeOfDay.ToString("hh\\:mm");
 
-                            tbBezeichnung.ReadOnly = true;
-                            tbPreis.ReadOnly = true;
+                            tbBezeichnung.ReadOnly   = true;
+                            tbPreis.ReadOnly         = true;
                             tbMaxTeilnehmer.ReadOnly = true;
-                            tbWochentag.ReadOnly = true;
-                            tbUhrzeitVon.ReadOnly = true;
-                            tbUhrzeitBis.ReadOnly = true;
+                            tbWochentag.ReadOnly     = true;
+                            tbUhrzeitVon.ReadOnly    = true;
+                            tbUhrzeitBis.ReadOnly    = true;
 
-                            speichernBool = false;
+                            speichernBool  = false;
                             bearbeitenBool = false;
                             btBearbeiten.Text = "Bearbeiten";
                         }
@@ -327,6 +356,14 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        /**************************************************************************/
+        /* private void gueltigerWochentagPruefen()                               */
+        /**************************************************************************/
+        /* Es wird geprüft ob der ausgewählte Wochentag in dem eingebenen Von     */
+        /* und Bis Datum überhaupt möglich ist. Diese Überprüfeung ist natürlich  */
+        /* nur bei einem Datumsunterschied kleiner 7 Tage notwendig, sonst werden */
+        /*  alle Wochentag zur Auswahl angeboten.                                 */
+        /**************************************************************************/
         private void gueltigerWochentagPruefen()
         {
             String item = "";
@@ -341,6 +378,7 @@ namespace PuG_Verwaltungssoftware
             TimeSpan myTimeSpan = dtpDatumBis.Value.Date - dtpDatumVon.Value.Date;
             if (myTimeSpan.Days < 7)
             {
+                // Nur die möglichen Wochentag anzeigen 
                 cbWochentag.Items.Clear();
                 DateTime myDateTime = dtpDatumVon.Value.Date;
                 while (myDateTime.Date <= dtpDatumBis.Value.Date)
@@ -350,7 +388,7 @@ namespace PuG_Verwaltungssoftware
                     myDateTime = myDateTime.AddDays(+1);
                 }
 
-                if (cbWochentag.SelectedIndex != -1)
+                if (cbWochentag.SelectedIndex != -1) // Selectieren des Wochentages
                 {
                     cbWochentag.SelectedItem = c_Helper.umwandlungIntInWochentag(myKurs.getWochentag());
                 }
@@ -362,7 +400,7 @@ namespace PuG_Verwaltungssoftware
                     }
                 }
             }
-            else
+            else // sonst alle anzeigen
             {
                 cbWochentag.Items.Add("Montag");
                 cbWochentag.Items.Add("Dienstag");
@@ -372,7 +410,7 @@ namespace PuG_Verwaltungssoftware
                 cbWochentag.Items.Add("Samstag");
                 cbWochentag.Items.Add("Sonntag");
 
-                if (cbWochentag.Items.Count != -1)
+                if (cbWochentag.Items.Count != -1) // Selectieren des Wochentages
                 {
                     if (speichernBool == true)
                     {
@@ -386,11 +424,23 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        /**************************************************************************/
+        /* private void dtpDatumVon_ValueChanged(object sender, EventArgs e)      */
+        /**************************************************************************/
+        /* Methode aufrufen, die prüft ob der ausgewählte Wochentag in dem        */
+        /* eingebenen Von und Bis Datum überhaupt möglich ist.                    */
+        /**************************************************************************/
         private void dtpDatumVon_ValueChanged(object sender, EventArgs e)
         {
             gueltigerWochentagPruefen();
         }
 
+        /**************************************************************************/
+        /* private void dtpDatumBis_ValueChanged(object sender, EventArgs e)      */
+        /**************************************************************************/
+        /* Methode aufrufen, die prüft ob der ausgewählte Wochentag in dem        */
+        /* eingebenen Von und Bis Datum überhaupt möglich ist.                    */
+        /**************************************************************************/
         private void dtpDatumBis_ValueChanged(object sender, EventArgs e)
         {
             gueltigerWochentagPruefen();

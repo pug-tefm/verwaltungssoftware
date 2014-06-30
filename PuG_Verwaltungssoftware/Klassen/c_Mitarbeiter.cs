@@ -58,7 +58,12 @@ namespace PuG_Verwaltungssoftware.Klassen
             return this.posId;
         }
 
-        // ComboBox Fill Kurse
+        /*****************************************************************************/
+        /* public static void comboBoxFill(ComboBox cbKursleiter, string kursleiter) */
+        /*****************************************************************************/
+        /* Befüllt die ComboBoxen mit den Mitarbeitern und selektiert den            */
+        /* Kursleiter.                                                               */
+        /*****************************************************************************/
         public static void comboBoxFill(ComboBox cbKursleiter, string kursleiter)
         {
             int id = 0;
@@ -67,23 +72,23 @@ namespace PuG_Verwaltungssoftware.Klassen
             c_DBConnect c = new c_DBConnect();
 
             int dBConnectOk = c.openConnection();
-            if (dBConnectOk == 0)
+            if (dBConnectOk == 0) // Kein Fehler Connect
             {
-                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
-                if (rows > 0)
+                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;"); // Zeilen zäheln
+                if (rows > 0) // Daten vorhanden ?
                 {
-                    DataTable result = c.select("SELECT mitarbeiter_id, vorname, nachname FROM mitarbeiter;");
+                    DataTable result = c.select("SELECT mitarbeiter_id, vorname, nachname FROM mitarbeiter;"); // Abfragestring abschicken
                     if (result != null)
                     {
                         for (int i = 0; i < rows; i++)
                         {
-                            id = (int)result.Rows[i]["mitarbeiter_id"];
-                            vorname = (String)result.Rows[i]["vorname"];
+                            id       = (int)result.Rows[i]["mitarbeiter_id"];
+                            vorname  = (String)result.Rows[i]["vorname"];
                             nachname = (String)result.Rows[i]["nachname"];
                             string vollerName = "(" + id.ToString() + ") " + vorname + ", " + nachname;
                             cbKursleiter.Items.Add(vollerName);
 
-                            if (vollerName == kursleiter)
+                            if (vollerName == kursleiter) // Kursleiter selektieren
                             {
                                 cbKursleiter.SelectedIndex = i;
                             }
@@ -92,7 +97,7 @@ namespace PuG_Verwaltungssoftware.Klassen
                 }
                 c.closeConnection();
             }
-            else
+            else // Fehler Connect
             {
                 MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
