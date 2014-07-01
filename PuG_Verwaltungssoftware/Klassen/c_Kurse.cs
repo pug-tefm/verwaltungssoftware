@@ -8,17 +8,18 @@ namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Kurse
     {
-        private int kursID;
-        private String bezeichnung;
-        private double preis;
-        private int aktTeilnehmer;
-        private int maxTeilnehmer;
+        // Klassenvarialen deklarieren
+        private int      kursID;
+        private String   bezeichnung;
+        private double   preis;
+        private int      aktTeilnehmer;
+        private int      maxTeilnehmer;
         private DateTime datumVon;
         private DateTime datumBis;
         private DateTime uhrzeitVon;
         private DateTime uhrzeitBis;
-        private int wochentag;
-        private String kursleiter;
+        private int      wochentag;
+        private String   kursleiter;
 
         // set-Methoden
         public void setKursId(int pKursID)

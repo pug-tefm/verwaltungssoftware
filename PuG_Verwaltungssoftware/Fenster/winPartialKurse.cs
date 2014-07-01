@@ -12,6 +12,7 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
+        // Klassenvariablen deklarieren
         private BindingSource bindingSourceKurse = new BindingSource();
         private bool          kommendeKurse      = false; // Initialiesierung
         private bool          laufendeKurse      = false; // der die drei Zustände
@@ -23,15 +24,15 @@ namespace PuG_Verwaltungssoftware
             if (connected == 0)
             {          
                 c.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " + 
-                          "AS kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " + 
+                          "AS Kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " + 
                           "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", gridKurse);
                 c.closeConnection(); // Datenbank schliessen
 
                 // Headertexte anpassen
                 DataTable gridKurseTable = (DataTable)(gridKurse.DataSource);
                 gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
-                gridKurseTable.Columns["kursleiter"].ColumnName     = "Kursleiter";
                 gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                gridKurseTable.Columns["preis"].ColumnName          = "Preis";
                 gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
                 gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
                 gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
@@ -59,8 +60,7 @@ namespace PuG_Verwaltungssoftware
             }
 
             bindingSourceKurse.DataSource = gridKurse.DataSource;
-            gridKurse.DataSource = bindingSourceKurse;
-            
+            gridKurse.DataSource = bindingSourceKurse;            
         }
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
@@ -390,15 +390,15 @@ namespace PuG_Verwaltungssoftware
             if (connected == 0)
             {
                 c.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " +
-                          "AS kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
+                          "AS Kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
                           "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", gridKurse);
                 c.closeConnection();
 
                 // Headertexte anpassen
                 DataTable gridKurseTable = (DataTable)(gridKurse.DataSource);
                 gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
-                gridKurseTable.Columns["kursleiter"].ColumnName     = "Kursleiter";
                 gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                gridKurseTable.Columns["preis"].ColumnName          = "Preis";
                 gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
                 gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
                 gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
