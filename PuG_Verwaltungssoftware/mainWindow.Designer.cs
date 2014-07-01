@@ -123,7 +123,7 @@
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(678, 442);
+            this.mainTabControl.Size = new System.Drawing.Size(679, 442);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 1;
             this.mainTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.mainTabControl_DrawItem);
@@ -135,7 +135,7 @@
             this.tabPageHome.Location = new System.Drawing.Point(114, 4);
             this.tabPageHome.Name = "tabPageHome";
             this.tabPageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHome.Size = new System.Drawing.Size(560, 434);
+            this.tabPageHome.Size = new System.Drawing.Size(561, 434);
             this.tabPageHome.TabIndex = 0;
             this.tabPageHome.Text = "Home";
             this.tabPageHome.Enter += new System.EventHandler(this.tabPageHome_Enter);
@@ -157,7 +157,7 @@
             // scHome.Panel2
             // 
             this.scHome.Panel2.Controls.Add(this.lvNachrichten);
-            this.scHome.Size = new System.Drawing.Size(554, 428);
+            this.scHome.Size = new System.Drawing.Size(555, 428);
             this.scHome.SplitterDistance = 127;
             this.scHome.TabIndex = 0;
             // 
@@ -165,7 +165,7 @@
             // 
             this.lbAngemeldet.AutoSize = true;
             this.lbAngemeldet.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbAngemeldet.Location = new System.Drawing.Point(381, 0);
+            this.lbAngemeldet.Location = new System.Drawing.Point(382, 0);
             this.lbAngemeldet.Name = "lbAngemeldet";
             this.lbAngemeldet.Size = new System.Drawing.Size(115, 18);
             this.lbAngemeldet.TabIndex = 3;
@@ -175,7 +175,7 @@
             // 
             this.lbTimer.AutoSize = true;
             this.lbTimer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbTimer.Location = new System.Drawing.Point(496, 0);
+            this.lbTimer.Location = new System.Drawing.Point(497, 0);
             this.lbTimer.Name = "lbTimer";
             this.lbTimer.Size = new System.Drawing.Size(58, 18);
             this.lbTimer.TabIndex = 2;
@@ -205,7 +205,7 @@
             this.lvNachrichten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNachrichten.Location = new System.Drawing.Point(0, 0);
             this.lvNachrichten.Name = "lvNachrichten";
-            this.lvNachrichten.Size = new System.Drawing.Size(554, 297);
+            this.lvNachrichten.Size = new System.Drawing.Size(555, 297);
             this.lvNachrichten.TabIndex = 0;
             this.lvNachrichten.UseCompatibleStateImageBehavior = false;
             this.lvNachrichten.View = System.Windows.Forms.View.List;
@@ -612,7 +612,7 @@
             this.loginPanel.Controls.Add(this.btLogin);
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(677, 442);
+            this.loginPanel.Size = new System.Drawing.Size(678, 442);
             this.loginPanel.TabIndex = 2;
             // 
             // lbLoginMessage
@@ -628,7 +628,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(119, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(170, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(347, 148);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -638,7 +638,7 @@
             // btExit
             // 
             this.btExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btExit.Location = new System.Drawing.Point(373, 275);
+            this.btExit.Location = new System.Drawing.Point(424, 261);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(93, 32);
             this.btExit.TabIndex = 3;
@@ -649,7 +649,7 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(116, 239);
+            this.tbPassword.Location = new System.Drawing.Point(167, 229);
             this.tbPassword.MaxLength = 50;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(350, 26);
@@ -662,7 +662,7 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(116, 203);
+            this.tbUsername.Location = new System.Drawing.Point(167, 197);
             this.tbUsername.MaxLength = 50;
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(350, 26);
@@ -674,7 +674,7 @@
             // 
             // btLogin
             // 
-            this.btLogin.Location = new System.Drawing.Point(116, 275);
+            this.btLogin.Location = new System.Drawing.Point(167, 261);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(251, 32);
             this.btLogin.TabIndex = 0;
@@ -688,13 +688,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
-            this.ClientSize = new System.Drawing.Size(678, 442);
+            this.ClientSize = new System.Drawing.Size(679, 442);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(600, 450);
+            this.MinimumSize = new System.Drawing.Size(695, 480);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";

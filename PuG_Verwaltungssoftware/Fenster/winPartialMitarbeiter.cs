@@ -34,10 +34,10 @@ namespace PuG_Verwaltungssoftware
             {
                 // Mitarbeiter ist "normaler" Benutzer
                 c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + loginMaId + "';", gridMitarbeiter);
-                btMaLoeschen.Enabled = false;
-                btMaNeu.Enabled = false;
+                btMaLoeschen.Enabled         = false;
+                btMaNeu.Enabled              = false;
                 ddlMitarbeiterSuchen.Enabled = false;
-                tbMitarbeiterSuchen.Enabled = false;
+                tbMitarbeiterSuchen.Enabled  = false;
                 
             }
             c.closeConnection(); // Datenbank schliessen
@@ -46,10 +46,14 @@ namespace PuG_Verwaltungssoftware
                 // Headertexte anpassen
                 DataTable gridMitarbeiterTable = (DataTable)(gridMitarbeiter.DataSource);
                 //gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter-Nr.";
-                gridMitarbeiterTable.Columns["vorname"].ColumnName = "Vorname";
-                gridMitarbeiterTable.Columns["nachname"].ColumnName = "Nachname";
-                gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
-            }
+                gridMitarbeiterTable.Columns["vorname"].ColumnName        = "Vorname";
+                gridMitarbeiterTable.Columns["nachname"].ColumnName       = "Nachname";
+                gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName   = "Geburtsdatum";
+            }  
+            
+            // Binding Objekt zuweisen
+            bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
+            gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
 
             if (initMitarbeiter == false)
             {
@@ -63,10 +67,6 @@ namespace PuG_Verwaltungssoftware
                 }
                 initMitarbeiter = true;
             }
-
-            // Binding Objekt zuweisen
-            bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
-            gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
         }
 
 
@@ -143,13 +143,15 @@ namespace PuG_Verwaltungssoftware
             {
                 // ContextMenuStrip mit ToolStipMenuItem erzeugen
                 ContextMenuStrip myContextMenu = new ContextMenuStrip();
-                ToolStripMenuItem toolStripItemOne = new ToolStripMenuItem("Aktualisieren");
+                ToolStripMenuItem toolStripItemAktualisierenMA = new ToolStripMenuItem("Aktualisieren");
 
                 // Items hinzufügen
-                myContextMenu.Items.Add(toolStripItemOne);
+                myContextMenu.Items.Add(toolStripItemAktualisierenMA);
+
+                toolStripItemAktualisierenMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
 
                 // Handler der Items
-                toolStripItemOne.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+                toolStripItemAktualisierenMA.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
 
                 int currentMouseOverRow = gridMitarbeiter.HitTest(e.X, e.Y).RowIndex;
 

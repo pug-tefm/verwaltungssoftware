@@ -50,6 +50,9 @@ namespace PuG_Verwaltungssoftware
                     gridKurseTable.Rows[i]["Wochentag"] = wert;
                 }
             }
+            
+            bindingSourceKurse.DataSource = gridKurse.DataSource;
+            gridKurse.DataSource = bindingSourceKurse; 
 
             if (initKurse == false)
             {
@@ -62,10 +65,7 @@ namespace PuG_Verwaltungssoftware
                     ddlKursSuchen.SelectedIndex = 0;
                 }
                 initKurse = true;
-            }
-
-            bindingSourceKurse.DataSource = gridKurse.DataSource;
-            gridKurse.DataSource = bindingSourceKurse;            
+            }           
         }
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
