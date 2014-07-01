@@ -17,21 +17,27 @@ namespace PuG_Verwaltungssoftware
         private int m = 0;
         private int h = 0;
 
-
-        private void tabPageHome_Enter(object sender, EventArgs e)
+        private void listViewsLaden(int reload = 0)
         {
-            if (initHome == false)
+            if (initHome == false || reload != 0)
             {
                 // Listview initialisieren
-                initializeListView();
+                if (initHome == false)
+                {
+                    initializeListView();
+                    initHome = true;
+                }
 
                 // Listview-Eintraege hinzufuegen
                 loadListAktuell();
                 loadListHeute();
                 loadListKommend();
+            } 
+        }
 
-                initHome = true;
-            }         
+        private void tabPageHome_Enter(object sender, EventArgs e)
+        {
+            listViewsLaden();
         }
 
         private void TimerEvent(object sender, EventArgs e)
@@ -123,7 +129,6 @@ namespace PuG_Verwaltungssoftware
             int connected = c.openConnection();
             if (connected == 0)
             {
-
                 // Clear the ListView control
                 lvNewsAktuell.Items.Clear();
 
@@ -153,11 +158,11 @@ namespace PuG_Verwaltungssoftware
                                 {
                                     // Define the list items
                                     ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
-                                    lvi.SubItems.Add(drow["datum_von"].ToString());
-                                    lvi.SubItems.Add(drow["datum_bis"].ToString());
-                                    lvi.SubItems.Add(drow["uhrzeit_von"].ToString());
-                                    lvi.SubItems.Add(drow["uhrzeit_bis"].ToString());
-                                    lvi.SubItems.Add(drow["wochentag"].ToString());
+                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                                    lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
                                     lvi.BackColor = Color.Aqua;
 
                                     // Add the list items to the ListView
@@ -176,7 +181,6 @@ namespace PuG_Verwaltungssoftware
             int connected = c.openConnection();
             if (connected == 0)
             {
-
                 // Clear the ListView control
                 lvNewsHeute.Items.Clear();
 
@@ -205,12 +209,13 @@ namespace PuG_Verwaltungssoftware
                                 {
                                     // Define the list items
                                     ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
-                                    lvi.SubItems.Add(drow["datum_von"].ToString());
-                                    lvi.SubItems.Add(drow["datum_bis"].ToString());
-                                    lvi.SubItems.Add(drow["uhrzeit_von"].ToString());
-                                    lvi.SubItems.Add(drow["uhrzeit_bis"].ToString());
-                                    lvi.SubItems.Add(drow["wochentag"].ToString());
+                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                                    lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
                                     lvi.BackColor = Color.Red;
+                                        
 
                                     // Add the list items to the ListView
                                     lvNewsHeute.Items.Add(lvi);
@@ -228,7 +233,6 @@ namespace PuG_Verwaltungssoftware
             int connected = c.openConnection();
             if (connected == 0)
             {
-
                 // Clear the ListView control
                 lvNewsKommend.Items.Clear();
 
@@ -250,11 +254,11 @@ namespace PuG_Verwaltungssoftware
                         {
                             // Define the list items
                             ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
-                            lvi.SubItems.Add(drow["datum_von"].ToString());
-                            lvi.SubItems.Add(drow["datum_bis"].ToString());
-                            lvi.SubItems.Add(drow["uhrzeit_von"].ToString());
-                            lvi.SubItems.Add(drow["uhrzeit_bis"].ToString());
-                            lvi.SubItems.Add(drow["wochentag"].ToString());
+                            lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
+                            lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
+                            lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                            lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                            lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
                             lvi.BackColor = Color.Yellow;
 
                             // Add the list items to the ListView
@@ -262,6 +266,132 @@ namespace PuG_Verwaltungssoftware
                         }
                     }
                 }
+            }
+        } 
+
+        private void lvNewsAktuell_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemAktualisieren);
+
+                // Und bei auswahl mit einem Bild versehen 
+                toolStripItemAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemAktualisieren.Click += new EventHandler(toolStripItemAktualisiereNewsAktuell_Click);
+
+                int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(lvNewsAktuell, new Point(e.X, e.Y));
+            }
+        }
+
+        private void lvNewsHeute_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemAktualisieren);
+
+                // Und bei auswahl mit einem Bild versehen 
+                toolStripItemAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemAktualisieren.Click += new EventHandler(toolStripItemAktualisiereNewsHeute_Click);
+
+                int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(lvNewsAktuell, new Point(e.X, e.Y));
+            }
+        }
+
+        private void lvNewsKommend_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemAktualisieren);
+
+                // Und bei auswahl mit einem Bild versehen 
+                toolStripItemAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemAktualisieren.Click += new EventHandler(toolStripItemAktualisiereNewsKommend_Click);
+
+                int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(lvNewsAktuell, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemAktualisiereNewsAktuell_Click(object sender, EventArgs e)
+        {
+            listViewsLaden(1);
+        }
+
+        private void toolStripItemAktualisiereNewsHeute_Click(object sender, EventArgs e)
+        {
+            listViewsLaden(1);
+        }
+
+        private void toolStripItemAktualisiereNewsKommend_Click(object sender, EventArgs e)
+        {
+            listViewsLaden(1);
+        }
+
+        private void lvNewsAktuell_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                listViewsLaden(1);
+            }
+        }
+
+        private void lvNewsHeute_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                listViewsLaden(1);
+            }
+        }
+
+        private void lvNewsKommend_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                listViewsLaden(1);
             }
         }
     }

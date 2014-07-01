@@ -36,7 +36,13 @@
             this.lbTimer = new System.Windows.Forms.Label();
             this.lbMitarbeiterName = new System.Windows.Forms.Label();
             this.lbWillkommen = new System.Windows.Forms.Label();
+            this.newsTabControl = new System.Windows.Forms.TabControl();
+            this.tabPageAktuell = new System.Windows.Forms.TabPage();
             this.lvNewsAktuell = new System.Windows.Forms.ListView();
+            this.tabPageHeute = new System.Windows.Forms.TabPage();
+            this.lvNewsHeute = new System.Windows.Forms.ListView();
+            this.tabPageKommend = new System.Windows.Forms.TabPage();
+            this.lvNewsKommend = new System.Windows.Forms.ListView();
             this.tabPageMitarbeiter = new System.Windows.Forms.TabPage();
             this.scMitarbeiter = new System.Windows.Forms.SplitContainer();
             this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
@@ -74,18 +80,16 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
-            this.newsTabControl = new System.Windows.Forms.TabControl();
-            this.tabPageAktuell = new System.Windows.Forms.TabPage();
-            this.tabPageHeute = new System.Windows.Forms.TabPage();
-            this.tabPageKommend = new System.Windows.Forms.TabPage();
-            this.lvNewsHeute = new System.Windows.Forms.ListView();
-            this.lvNewsKommend = new System.Windows.Forms.ListView();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
             this.scHome.Panel1.SuspendLayout();
             this.scHome.Panel2.SuspendLayout();
             this.scHome.SuspendLayout();
+            this.newsTabControl.SuspendLayout();
+            this.tabPageAktuell.SuspendLayout();
+            this.tabPageHeute.SuspendLayout();
+            this.tabPageKommend.SuspendLayout();
             this.tabPageMitarbeiter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitarbeiter)).BeginInit();
             this.scMitarbeiter.Panel1.SuspendLayout();
@@ -112,10 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridKursUebersicht)).BeginInit();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.newsTabControl.SuspendLayout();
-            this.tabPageAktuell.SuspendLayout();
-            this.tabPageHeute.SuspendLayout();
-            this.tabPageKommend.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
@@ -210,6 +210,29 @@
             this.lbWillkommen.TabIndex = 0;
             this.lbWillkommen.Text = "Willkommen,";
             // 
+            // newsTabControl
+            // 
+            this.newsTabControl.Controls.Add(this.tabPageAktuell);
+            this.newsTabControl.Controls.Add(this.tabPageHeute);
+            this.newsTabControl.Controls.Add(this.tabPageKommend);
+            this.newsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsTabControl.Location = new System.Drawing.Point(0, 0);
+            this.newsTabControl.Name = "newsTabControl";
+            this.newsTabControl.SelectedIndex = 0;
+            this.newsTabControl.Size = new System.Drawing.Size(555, 297);
+            this.newsTabControl.TabIndex = 1;
+            // 
+            // tabPageAktuell
+            // 
+            this.tabPageAktuell.Controls.Add(this.lvNewsAktuell);
+            this.tabPageAktuell.Location = new System.Drawing.Point(4, 27);
+            this.tabPageAktuell.Name = "tabPageAktuell";
+            this.tabPageAktuell.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAktuell.Size = new System.Drawing.Size(547, 266);
+            this.tabPageAktuell.TabIndex = 0;
+            this.tabPageAktuell.Text = "Aktuelle Kurse";
+            this.tabPageAktuell.UseVisualStyleBackColor = true;
+            // 
             // lvNewsAktuell
             // 
             this.lvNewsAktuell.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,6 +242,54 @@
             this.lvNewsAktuell.TabIndex = 0;
             this.lvNewsAktuell.UseCompatibleStateImageBehavior = false;
             this.lvNewsAktuell.View = System.Windows.Forms.View.List;
+            this.lvNewsAktuell.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsAktuell_KeyDown);
+            this.lvNewsAktuell.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsAktuell_MouseDown);
+            // 
+            // tabPageHeute
+            // 
+            this.tabPageHeute.Controls.Add(this.lvNewsHeute);
+            this.tabPageHeute.Location = new System.Drawing.Point(4, 27);
+            this.tabPageHeute.Name = "tabPageHeute";
+            this.tabPageHeute.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHeute.Size = new System.Drawing.Size(547, 266);
+            this.tabPageHeute.TabIndex = 1;
+            this.tabPageHeute.Text = "Heutige Kurse";
+            this.tabPageHeute.UseVisualStyleBackColor = true;
+            // 
+            // lvNewsHeute
+            // 
+            this.lvNewsHeute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvNewsHeute.Location = new System.Drawing.Point(3, 3);
+            this.lvNewsHeute.Name = "lvNewsHeute";
+            this.lvNewsHeute.Size = new System.Drawing.Size(541, 260);
+            this.lvNewsHeute.TabIndex = 1;
+            this.lvNewsHeute.UseCompatibleStateImageBehavior = false;
+            this.lvNewsHeute.View = System.Windows.Forms.View.List;
+            this.lvNewsHeute.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsHeute_KeyDown);
+            this.lvNewsHeute.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsHeute_MouseDown);
+            // 
+            // tabPageKommend
+            // 
+            this.tabPageKommend.Controls.Add(this.lvNewsKommend);
+            this.tabPageKommend.Location = new System.Drawing.Point(4, 27);
+            this.tabPageKommend.Name = "tabPageKommend";
+            this.tabPageKommend.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageKommend.Size = new System.Drawing.Size(547, 266);
+            this.tabPageKommend.TabIndex = 2;
+            this.tabPageKommend.Text = "Kommende Kurse (3 Tage)";
+            this.tabPageKommend.UseVisualStyleBackColor = true;
+            // 
+            // lvNewsKommend
+            // 
+            this.lvNewsKommend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvNewsKommend.Location = new System.Drawing.Point(3, 3);
+            this.lvNewsKommend.Name = "lvNewsKommend";
+            this.lvNewsKommend.Size = new System.Drawing.Size(541, 260);
+            this.lvNewsKommend.TabIndex = 1;
+            this.lvNewsKommend.UseCompatibleStateImageBehavior = false;
+            this.lvNewsKommend.View = System.Windows.Forms.View.List;
+            this.lvNewsKommend.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsKommend_KeyDown);
+            this.lvNewsKommend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsKommend_MouseDown);
             // 
             // tabPageMitarbeiter
             // 
@@ -693,71 +764,6 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
-            // newsTabControl
-            // 
-            this.newsTabControl.Controls.Add(this.tabPageAktuell);
-            this.newsTabControl.Controls.Add(this.tabPageHeute);
-            this.newsTabControl.Controls.Add(this.tabPageKommend);
-            this.newsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newsTabControl.Location = new System.Drawing.Point(0, 0);
-            this.newsTabControl.Name = "newsTabControl";
-            this.newsTabControl.SelectedIndex = 0;
-            this.newsTabControl.Size = new System.Drawing.Size(555, 297);
-            this.newsTabControl.TabIndex = 1;
-            // 
-            // tabPageAktuell
-            // 
-            this.tabPageAktuell.Controls.Add(this.lvNewsAktuell);
-            this.tabPageAktuell.Location = new System.Drawing.Point(4, 27);
-            this.tabPageAktuell.Name = "tabPageAktuell";
-            this.tabPageAktuell.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAktuell.Size = new System.Drawing.Size(547, 266);
-            this.tabPageAktuell.TabIndex = 0;
-            this.tabPageAktuell.Text = "Aktuelle Kurse";
-            this.tabPageAktuell.UseVisualStyleBackColor = true;
-            // 
-            // tabPageHeute
-            // 
-            this.tabPageHeute.Controls.Add(this.lvNewsHeute);
-            this.tabPageHeute.Location = new System.Drawing.Point(4, 27);
-            this.tabPageHeute.Name = "tabPageHeute";
-            this.tabPageHeute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHeute.Size = new System.Drawing.Size(547, 266);
-            this.tabPageHeute.TabIndex = 1;
-            this.tabPageHeute.Text = "Heutige Kurse";
-            this.tabPageHeute.UseVisualStyleBackColor = true;
-            // 
-            // tabPageKommend
-            // 
-            this.tabPageKommend.Controls.Add(this.lvNewsKommend);
-            this.tabPageKommend.Location = new System.Drawing.Point(4, 27);
-            this.tabPageKommend.Name = "tabPageKommend";
-            this.tabPageKommend.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageKommend.Size = new System.Drawing.Size(547, 266);
-            this.tabPageKommend.TabIndex = 2;
-            this.tabPageKommend.Text = "Kommende Kurse (3 Tage)";
-            this.tabPageKommend.UseVisualStyleBackColor = true;
-            // 
-            // lvNewsHeute
-            // 
-            this.lvNewsHeute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvNewsHeute.Location = new System.Drawing.Point(3, 3);
-            this.lvNewsHeute.Name = "lvNewsHeute";
-            this.lvNewsHeute.Size = new System.Drawing.Size(541, 260);
-            this.lvNewsHeute.TabIndex = 1;
-            this.lvNewsHeute.UseCompatibleStateImageBehavior = false;
-            this.lvNewsHeute.View = System.Windows.Forms.View.List;
-            // 
-            // lvNewsKommend
-            // 
-            this.lvNewsKommend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvNewsKommend.Location = new System.Drawing.Point(3, 3);
-            this.lvNewsKommend.Name = "lvNewsKommend";
-            this.lvNewsKommend.Size = new System.Drawing.Size(541, 260);
-            this.lvNewsKommend.TabIndex = 1;
-            this.lvNewsKommend.UseCompatibleStateImageBehavior = false;
-            this.lvNewsKommend.View = System.Windows.Forms.View.List;
-            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -782,6 +788,10 @@
             this.scHome.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).EndInit();
             this.scHome.ResumeLayout(false);
+            this.newsTabControl.ResumeLayout(false);
+            this.tabPageAktuell.ResumeLayout(false);
+            this.tabPageHeute.ResumeLayout(false);
+            this.tabPageKommend.ResumeLayout(false);
             this.tabPageMitarbeiter.ResumeLayout(false);
             this.scMitarbeiter.Panel1.ResumeLayout(false);
             this.scMitarbeiter.Panel2.ResumeLayout(false);
@@ -812,10 +822,6 @@
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.newsTabControl.ResumeLayout(false);
-            this.tabPageAktuell.ResumeLayout(false);
-            this.tabPageHeute.ResumeLayout(false);
-            this.tabPageKommend.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
