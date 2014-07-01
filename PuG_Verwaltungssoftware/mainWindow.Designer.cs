@@ -60,6 +60,13 @@
             this.btKursNeu = new System.Windows.Forms.Button();
             this.btKursOeffnen = new System.Windows.Forms.Button();
             this.tabPageKursUebersicht = new System.Windows.Forms.TabPage();
+            this.scKursUebersicht = new System.Windows.Forms.SplitContainer();
+            this.gridKursUebersicht = new System.Windows.Forms.DataGridView();
+            this.btKursUebersichtOeffnen = new System.Windows.Forms.Button();
+            this.tbKursUebersichtSuchen = new System.Windows.Forms.TextBox();
+            this.ddlKursUebersichtSuchen = new System.Windows.Forms.ComboBox();
+            this.btKursUebersichtLoeschen = new System.Windows.Forms.Button();
+            this.btKursUebersichtNeu = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.lbLoginMessage = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -91,6 +98,12 @@
             this.scKurse.Panel2.SuspendLayout();
             this.scKurse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridKurse)).BeginInit();
+            this.tabPageKursUebersicht.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scKursUebersicht)).BeginInit();
+            this.scKursUebersicht.Panel1.SuspendLayout();
+            this.scKursUebersicht.Panel2.SuspendLayout();
+            this.scKursUebersicht.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKursUebersicht)).BeginInit();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -493,6 +506,7 @@
             // 
             // tabPageKursUebersicht
             // 
+            this.tabPageKursUebersicht.Controls.Add(this.scKursUebersicht);
             this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
             this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
             this.tabPageKursUebersicht.Size = new System.Drawing.Size(560, 434);
@@ -500,6 +514,90 @@
             this.tabPageKursUebersicht.Text = "Kurs Übersicht";
             this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
             this.tabPageKursUebersicht.Enter += new System.EventHandler(this.tabPageKursUebersicht_Enter);
+            // 
+            // scKursUebersicht
+            // 
+            this.scKursUebersicht.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scKursUebersicht.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scKursUebersicht.Location = new System.Drawing.Point(0, 0);
+            this.scKursUebersicht.Name = "scKursUebersicht";
+            this.scKursUebersicht.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scKursUebersicht.Panel1
+            // 
+            this.scKursUebersicht.Panel1.Controls.Add(this.gridKursUebersicht);
+            // 
+            // scKursUebersicht.Panel2
+            // 
+            this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtOeffnen);
+            this.scKursUebersicht.Panel2.Controls.Add(this.tbKursUebersichtSuchen);
+            this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
+            this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtLoeschen);
+            this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtNeu);
+            this.scKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.scKursUebersicht.SplitterDistance = 375;
+            this.scKursUebersicht.TabIndex = 0;
+            // 
+            // gridKursUebersicht
+            // 
+            this.gridKursUebersicht.AllowUserToAddRows = false;
+            this.gridKursUebersicht.AllowUserToDeleteRows = false;
+            this.gridKursUebersicht.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridKursUebersicht.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);
+            this.gridKursUebersicht.Name = "gridKursUebersicht";
+            this.gridKursUebersicht.ReadOnly = true;
+            this.gridKursUebersicht.Size = new System.Drawing.Size(560, 375);
+            this.gridKursUebersicht.TabIndex = 0;
+            // 
+            // btKursUebersichtOeffnen
+            // 
+            this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";
+            this.btKursUebersichtOeffnen.Size = new System.Drawing.Size(126, 55);
+            this.btKursUebersichtOeffnen.TabIndex = 14;
+            this.btKursUebersichtOeffnen.Text = "Öffnen";
+            this.btKursUebersichtOeffnen.UseVisualStyleBackColor = true;
+            // 
+            // tbKursUebersichtSuchen
+            // 
+            this.tbKursUebersichtSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(301, 14);
+            this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
+            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(127, 26);
+            this.tbKursUebersichtSuchen.TabIndex = 13;
+            // 
+            // ddlKursUebersichtSuchen
+            // 
+            this.ddlKursUebersichtSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlKursUebersichtSuchen.FormattingEnabled = true;
+            this.ddlKursUebersichtSuchen.Location = new System.Drawing.Point(190, 14);
+            this.ddlKursUebersichtSuchen.Name = "ddlKursUebersichtSuchen";
+            this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 26);
+            this.ddlKursUebersichtSuchen.TabIndex = 12;
+            // 
+            // btKursUebersichtLoeschen
+            // 
+            this.btKursUebersichtLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btKursUebersichtLoeschen.Location = new System.Drawing.Point(92, 0);
+            this.btKursUebersichtLoeschen.Name = "btKursUebersichtLoeschen";
+            this.btKursUebersichtLoeschen.Size = new System.Drawing.Size(92, 55);
+            this.btKursUebersichtLoeschen.TabIndex = 11;
+            this.btKursUebersichtLoeschen.Text = "Löschen";
+            this.btKursUebersichtLoeschen.UseVisualStyleBackColor = true;
+            // 
+            // btKursUebersichtNeu
+            // 
+            this.btKursUebersichtNeu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btKursUebersichtNeu.Location = new System.Drawing.Point(0, 0);
+            this.btKursUebersichtNeu.Name = "btKursUebersichtNeu";
+            this.btKursUebersichtNeu.Size = new System.Drawing.Size(92, 55);
+            this.btKursUebersichtNeu.TabIndex = 10;
+            this.btKursUebersichtNeu.Text = "Neu";
+            this.btKursUebersichtNeu.UseVisualStyleBackColor = true;
             // 
             // loginPanel
             // 
@@ -628,6 +726,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.scKurse)).EndInit();
             this.scKurse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridKurse)).EndInit();
+            this.tabPageKursUebersicht.ResumeLayout(false);
+            this.scKursUebersicht.Panel1.ResumeLayout(false);
+            this.scKursUebersicht.Panel2.ResumeLayout(false);
+            this.scKursUebersicht.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scKursUebersicht)).EndInit();
+            this.scKursUebersicht.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridKursUebersicht)).EndInit();
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -675,6 +780,13 @@
         private System.Windows.Forms.ComboBox ddlMitarbeiterSuchen;
         private System.Windows.Forms.TextBox tbMitarbeiterSuchen;
         private System.Windows.Forms.TabPage tabPageKursUebersicht;
+        private System.Windows.Forms.SplitContainer scKursUebersicht;
+        private System.Windows.Forms.DataGridView gridKursUebersicht;
+        private System.Windows.Forms.Button btKursUebersichtOeffnen;
+        private System.Windows.Forms.TextBox tbKursUebersichtSuchen;
+        private System.Windows.Forms.ComboBox ddlKursUebersichtSuchen;
+        private System.Windows.Forms.Button btKursUebersichtLoeschen;
+        private System.Windows.Forms.Button btKursUebersichtNeu;
     }
 }
 
