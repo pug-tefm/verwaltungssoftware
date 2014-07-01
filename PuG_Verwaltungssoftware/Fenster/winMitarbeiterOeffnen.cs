@@ -66,10 +66,10 @@ namespace PuG_Verwaltungssoftware
                     nachname = (String)result.Rows[0]["nachname"];
                     gebDatum = (result.Rows[0]["geburtsdatum"]).ToString();
                     strasse = (String)result.Rows[0]["strasse"];
-                    hausnummer = (result.Rows[0]["hausnummer"]).ToString();
+                    //hausnummer = Convert.ToInt32((result.Rows[0]["hausnummer"])).ToString();
                     plz = (result.Rows[0]["plz"]).ToString();
                     ort = (String)result.Rows[0]["ort"];
-                    gehalt = (result.Rows[0]["gehalt"]).ToString();
+                    gehalt = Convert.ToDouble((result.Rows[0]["gehalt"])).ToString();
                     benutzername = (String)result.Rows[0]["benutzername"];
                     position = (result.Rows[0]["position_id"]).ToString();
                     gPosId = Convert.ToInt32(position);
@@ -133,13 +133,13 @@ namespace PuG_Verwaltungssoftware
             editMode = true;
             
             // Textboxen readOnly --> false
-            foreach (Control control in gbDaten.Controls)
-            {
-                if (control.GetType() == typeof(TextBox))
-                {
-                    ((TextBox)control).ReadOnly = false;
-                }
-            }
+            //foreach (Control control in gbDaten.Controls)
+            //{
+            //    if (control.GetType() == typeof(TextBox))
+            //    {
+            //        ((TextBox)control).ReadOnly = false;
+            //    }
+            //}
             foreach (Control control in gbAnschrift.Controls)
             {
                 if (control.GetType() == typeof(TextBox))

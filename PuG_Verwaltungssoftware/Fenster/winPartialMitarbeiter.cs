@@ -18,6 +18,8 @@ namespace PuG_Verwaltungssoftware
         String loginMaVorname = String.Empty;
         String loginMaNachname = String.Empty;
 
+        private BindingSource bindingSourceMitarbeiter = new BindingSource();
+
         private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
         {
             int dBConnectOk = c.openConnection();  // Datenbank oeffnen
@@ -38,14 +40,14 @@ namespace PuG_Verwaltungssoftware
                 
             }
             c.closeConnection(); // Datenbank schliessen
-
             if (dBConnectOk == 0)
             {
                 // Headertexte anpassen
-                gridMitarbeiter.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
-                gridMitarbeiter.Columns["vorname"].HeaderText = "Vorname";
-                gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
-                gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
+                DataTable gridMitarbeiterTable = (DataTable)(gridMitarbeiter.DataSource);
+                //gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter-Nr.";
+                gridMitarbeiterTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitarbeiterTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
             }
 
             if (gridMitarbeiter.ColumnCount > 0)
@@ -58,8 +60,8 @@ namespace PuG_Verwaltungssoftware
             }
 
             // Binding Objekt zuweisen
-            bindingSource.DataSource = gridMitarbeiter.DataSource;
-            gridMitarbeiter.DataSource = bindingSource;
+            bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
+            gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
         }
 
 
@@ -73,18 +75,7 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaOeffnen_Click(object sender, EventArgs e)
         {
-            if (gridMitarbeiter.RowCount > 0)
-            {
-                int row = gridMitarbeiter.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
-                window.Show();
-            }
-            else
-            {
-                MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
+            mitarbeiterOeffnen();
         }
 
 
@@ -130,14 +121,14 @@ namespace PuG_Verwaltungssoftware
         private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
             c_Helper c = new c_Helper();
-            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
+            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
         }
 
 
         private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper c = new c_Helper();
-            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
+            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
         }
 
 
@@ -177,6 +168,32 @@ namespace PuG_Verwaltungssoftware
             else
             {
                 MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void gridMitarbeiter_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            mitarbeiterOeffnen();
+        }
+
+        private void mitarbeiterOeffnen()
+        {
+            if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            {
+                foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Damit mehrere Zeilen per Multiselect geöffnet werden können
+                {
+                    if (gridMitarbeiter.RowCount > 0) // Wenn Zeilenanzahl größer 0
+                    {
+                        int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                        winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
+                        window.Show();
+
+                    }
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

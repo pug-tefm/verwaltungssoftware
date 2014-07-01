@@ -203,7 +203,6 @@
             this.tabPageMitarbeiter.Controls.Add(this.scMitarbeiter);
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
-            this.tabPageMitarbeiter.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageMitarbeiter.Size = new System.Drawing.Size(560, 434);
             this.tabPageMitarbeiter.TabIndex = 1;
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
@@ -212,8 +211,9 @@
             // scMitarbeiter
             // 
             this.scMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMitarbeiter.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.scMitarbeiter.IsSplitterFixed = true;
-            this.scMitarbeiter.Location = new System.Drawing.Point(3, 3);
+            this.scMitarbeiter.Location = new System.Drawing.Point(0, 0);
             this.scMitarbeiter.Name = "scMitarbeiter";
             this.scMitarbeiter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -228,8 +228,8 @@
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
-            this.scMitarbeiter.Size = new System.Drawing.Size(554, 428);
-            this.scMitarbeiter.SplitterDistance = 376;
+            this.scMitarbeiter.Size = new System.Drawing.Size(560, 434);
+            this.scMitarbeiter.SplitterDistance = 375;
             this.scMitarbeiter.TabIndex = 2;
             // 
             // gridMitarbeiter
@@ -243,8 +243,9 @@
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(554, 376);
+            this.gridMitarbeiter.Size = new System.Drawing.Size(560, 375);
             this.gridMitarbeiter.TabIndex = 0;
+            this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
             this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
             this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
@@ -254,7 +255,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMitarbeiterSuchen.Location = new System.Drawing.Point(305, 12);
             this.tbMitarbeiterSuchen.Name = "tbMitarbeiterSuchen";
-            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(117, 26);
+            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(123, 26);
             this.tbMitarbeiterSuchen.TabIndex = 5;
             this.tbMitarbeiterSuchen.TextChanged += new System.EventHandler(this.tbMitarbeiterSuchen_TextChanged);
             // 
@@ -273,7 +274,7 @@
             this.btMaLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMaLoeschen.Location = new System.Drawing.Point(92, 0);
             this.btMaLoeschen.Name = "btMaLoeschen";
-            this.btMaLoeschen.Size = new System.Drawing.Size(92, 48);
+            this.btMaLoeschen.Size = new System.Drawing.Size(92, 55);
             this.btMaLoeschen.TabIndex = 3;
             this.btMaLoeschen.Text = "Löschen";
             this.btMaLoeschen.UseVisualStyleBackColor = true;
@@ -282,9 +283,9 @@
             // btMaOeffnen
             // 
             this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMaOeffnen.Location = new System.Drawing.Point(428, 0);
+            this.btMaOeffnen.Location = new System.Drawing.Point(434, 0);
             this.btMaOeffnen.Name = "btMaOeffnen";
-            this.btMaOeffnen.Size = new System.Drawing.Size(126, 48);
+            this.btMaOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMaOeffnen.TabIndex = 2;
             this.btMaOeffnen.Text = "Öffnen";
             this.btMaOeffnen.UseVisualStyleBackColor = true;
@@ -295,7 +296,7 @@
             this.btMaNeu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMaNeu.Location = new System.Drawing.Point(0, 0);
             this.btMaNeu.Name = "btMaNeu";
-            this.btMaNeu.Size = new System.Drawing.Size(92, 48);
+            this.btMaNeu.Size = new System.Drawing.Size(92, 55);
             this.btMaNeu.TabIndex = 1;
             this.btMaNeu.Text = "Neu";
             this.btMaNeu.UseVisualStyleBackColor = true;

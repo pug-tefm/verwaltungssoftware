@@ -76,7 +76,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         /************************************************************************/
         public static bool numFormatPunktKomma(String query, int laenge = 0)
         {
-            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
 
             int zaehler = 0;
             for (int i = 0; i < query.Length; i++)
@@ -104,7 +104,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         /**************************************************************/
         public static bool numFormat(String query, int laenge = 0)
         {
-            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
 
             for (int i = 0; i < query.Length; i++)
             {
@@ -125,7 +125,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         /********************************************************************/
         public static bool wrongCharacters(String query, int laenge = 0)
         {
-            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
 
             for (int i = 0; i < query.Length; i++)
             {
@@ -147,7 +147,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         /*************************************************************************/
         public static bool wrongCharNumberExtra(String query, int laenge = 0)
         {
-            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
 
             for (int i = 0; i < query.Length; i++)
             {

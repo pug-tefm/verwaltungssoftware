@@ -18,9 +18,6 @@ namespace PuG_Verwaltungssoftware
         int m = 0;
         int h = 0;     
 
-        private BindingSource bindingSource = new BindingSource();
-
-
         public mainWindow()
         {
             InitializeComponent();
@@ -271,6 +268,6 @@ namespace PuG_Verwaltungssoftware
         private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
         {
 
-        }  
+        } 
     }
 }
