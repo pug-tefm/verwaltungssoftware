@@ -13,10 +13,11 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
-        int loginMaId = 0;
-        int loginMaPosId = 0;
-        String loginMaVorname = String.Empty;
-        String loginMaNachname = String.Empty;
+        private int loginMaId = 0;
+        private int loginMaPosId = 0;
+        private bool initMitarbeiter = false;
+        private String loginMaVorname = String.Empty;
+        private String loginMaNachname = String.Empty;
 
         private BindingSource bindingSourceMitarbeiter = new BindingSource();
 
@@ -50,13 +51,17 @@ namespace PuG_Verwaltungssoftware
                 gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
             }
 
-            if (gridMitarbeiter.ColumnCount > 0)
+            if (initMitarbeiter == false)
             {
-                for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+                if (gridMitarbeiter.ColumnCount > 0)
                 {
-                    ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                    for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+                    {
+                        ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                    }
+                    ddlMitarbeiterSuchen.SelectedIndex = 0;
                 }
-                ddlMitarbeiterSuchen.SelectedIndex = 0;
+                initMitarbeiter = true;
             }
 
             // Binding Objekt zuweisen

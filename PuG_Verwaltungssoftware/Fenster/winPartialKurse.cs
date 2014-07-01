@@ -13,6 +13,7 @@ namespace PuG_Verwaltungssoftware
     public partial class mainWindow : Form
     {
         // Klassenvariablen deklarieren
+        private bool initKurse = false;
         private BindingSource bindingSourceKurse = new BindingSource();
         private bool          kommendeKurse      = false; // Initialiesierung
         private bool          laufendeKurse      = false; // der drei Zustände
@@ -50,13 +51,17 @@ namespace PuG_Verwaltungssoftware
                 }
             }
 
-            if (gridKurse.ColumnCount > 0)
+            if (initKurse == false)
             {
-                for (int i = 0; i < gridKurse.ColumnCount; i++)
+                if (gridKurse.ColumnCount > 0)
                 {
-                    ddlKursSuchen.Items.Add(gridKurse.Columns[i].HeaderText);
+                    for (int i = 0; i < gridKurse.ColumnCount; i++)
+                    {
+                        ddlKursSuchen.Items.Add(gridKurse.Columns[i].HeaderText);
+                    }
+                    ddlKursSuchen.SelectedIndex = 0;
                 }
-                ddlKursSuchen.SelectedIndex = 0;
+                initKurse = true;
             }
 
             bindingSourceKurse.DataSource = gridKurse.DataSource;
