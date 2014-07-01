@@ -86,7 +86,163 @@ namespace PuG_Verwaltungssoftware
 
         private void btMaLoeschen_Click(object sender, EventArgs e)
         {
+            mitarbeiterLoeschen();
+        }
 
+
+        private void btMaNeu_Click(object sender, EventArgs e)
+        {
+            neuerMitarbeiter();
+        }
+
+
+        private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            c_Helper myHelper = new c_Helper();
+            myHelper.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
+        }
+
+
+        private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
+        {
+            c_Helper myHelper = new c_Helper();
+            myHelper.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
+        }
+
+
+        private void gridMitarbeiter_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemNeuMA = new ToolStripMenuItem("Neu");
+                ToolStripMenuItem toolStripItemOeffnenMA = new ToolStripMenuItem("Öffnen");
+                ToolStripMenuItem toolStripItemLoeschenMA = new ToolStripMenuItem("Löschen");
+                ToolStripMenuItem toolStripItemAktualisierenMA = new ToolStripMenuItem("Aktualisieren (F5)");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemNeuMA);
+                myContextMenu.Items.Add(toolStripItemOeffnenMA);
+                myContextMenu.Items.Add(toolStripItemLoeschenMA);
+                myContextMenu.Items.Add("-");
+                myContextMenu.Items.Add(toolStripItemAktualisierenMA);
+
+                // Bild hinzufuegen
+                toolStripItemNeuMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_new;
+                toolStripItemOeffnenMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_open;
+                toolStripItemLoeschenMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_delete;
+                toolStripItemAktualisierenMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemNeuMA.Click += new EventHandler(toolStripItemNeuMA_Click);
+                toolStripItemOeffnenMA.Click += new EventHandler(toolStripItemOeffnenMA_Click);
+                toolStripItemLoeschenMA.Click += new EventHandler(toolStripItemLoeschenMA_Click);
+                toolStripItemAktualisierenMA.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+
+                int currentMouseOverRow = gridMitarbeiter.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridMitarbeiter, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemOneMitarbeiter_Click(object sender, EventArgs args)
+        {
+            gridMitarbeiterAktualisieren();
+        }
+
+        private void toolStripItemNeuMA_Click(object sender, EventArgs args)
+        {
+            neuerMitarbeiter();
+        }
+
+        private void toolStripItemOeffnenMA_Click(object sender, EventArgs args)
+        {
+            mitarbeiterOeffnen();
+        }
+
+        private void toolStripItemLoeschenMA_Click(object sender, EventArgs args)
+        {
+            mitarbeiterLoeschen();
+        }
+
+        private void gridMitarbeiter_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            mitarbeiterOeffnen();
+        }
+
+        private void gridMitarbeiter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete) // Entfernen Taste = Mitarbeiter löschen
+            {
+                mitarbeiterLoeschen();
+            }
+
+            if (e.KeyData == (Keys.Control | Keys.N)) // Steuerung + N = Neuen Miarbeiter
+            {
+                winMitarbeiterNeu window = new winMitarbeiterNeu();
+                window.Show();
+            }
+
+            if(e.KeyData == (Keys.Control | Keys.O))  // Steuerung + O = Mitarbeiter öffnen
+            {
+                mitarbeiterOeffnen();
+            }
+
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                gridMitarbeiterAktualisieren();
+            }
+        }
+
+        private void mitarbeiterOeffnen()
+        {
+            if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            {
+                foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Damit mehrere Zeilen per Multiselect geöffnet werden können
+                {
+                    if (gridMitarbeiter.RowCount > 0) // Wenn Zeilenanzahl größer 0
+                    {
+                        int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                        winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
+                        window.Show();
+
+                    }
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void neuerMitarbeiter()
+        {
+            winMitarbeiterNeu window = new winMitarbeiterNeu();
+            window.Show();
+        }
+
+        private void gridMitarbeiterAktualisieren()
+        {
+            int dbConnect = c.openConnection();
+            if (dbConnect == 0)
+            {
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+                c.closeConnection();
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void mitarbeiterLoeschen()
+        {
             if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
                 foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
@@ -105,96 +261,6 @@ namespace PuG_Verwaltungssoftware
                         gridMitarbeiter.Rows.RemoveAt(row.Index); // Row löschen
                         c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
                         c.closeConnection();
-                    }
-                }
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-
-
-        private void btMaNeu_Click(object sender, EventArgs e)
-        {
-            winMitarbeiterNeu window = new winMitarbeiterNeu();
-            window.Show();
-        }
-
-
-        private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            c_Helper c = new c_Helper();
-            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
-        }
-
-
-        private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
-        {
-            c_Helper c = new c_Helper();
-            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
-        }
-
-
-        private void gridMitarbeiter_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right) // Rechtsklick
-            {
-                // ContextMenuStrip mit ToolStipMenuItem erzeugen
-                ContextMenuStrip myContextMenu = new ContextMenuStrip();
-                ToolStripMenuItem toolStripItemAktualisierenMA = new ToolStripMenuItem("Aktualisieren");
-
-                // Items hinzufügen
-                myContextMenu.Items.Add(toolStripItemAktualisierenMA);
-
-                toolStripItemAktualisierenMA.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
-
-                // Handler der Items
-                toolStripItemAktualisierenMA.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
-
-                int currentMouseOverRow = gridMitarbeiter.HitTest(e.X, e.Y).RowIndex;
-
-                if (currentMouseOverRow >= 0) // In der Tabelle
-                {
-                    // Nix
-                }
-
-                myContextMenu.Show(gridMitarbeiter, new Point(e.X, e.Y));
-            }
-        }
-
-        private void toolStripItemOneMitarbeiter_Click(object sender, EventArgs args)
-        {
-            int dbConnect = c.openConnection();
-            if (dbConnect == 0)
-            {
-                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
-                c.closeConnection();
-            }
-            else
-            {
-                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void gridMitarbeiter_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            mitarbeiterOeffnen();
-        }
-
-        private void mitarbeiterOeffnen()
-        {
-            if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
-            {
-                foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Damit mehrere Zeilen per Multiselect geöffnet werden können
-                {
-                    if (gridMitarbeiter.RowCount > 0) // Wenn Zeilenanzahl größer 0
-                    {
-                        int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
-                        winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
-                        window.Show();
-
                     }
                 }
             }

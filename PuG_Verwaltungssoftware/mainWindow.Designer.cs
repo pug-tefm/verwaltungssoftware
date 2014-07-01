@@ -216,7 +216,7 @@
             this.tabPageMitarbeiter.Controls.Add(this.scMitarbeiter);
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
-            this.tabPageMitarbeiter.Size = new System.Drawing.Size(560, 434);
+            this.tabPageMitarbeiter.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitarbeiter.TabIndex = 1;
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
@@ -241,7 +241,7 @@
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
-            this.scMitarbeiter.Size = new System.Drawing.Size(560, 434);
+            this.scMitarbeiter.Size = new System.Drawing.Size(561, 434);
             this.scMitarbeiter.SplitterDistance = 375;
             this.scMitarbeiter.TabIndex = 2;
             // 
@@ -256,10 +256,11 @@
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(560, 375);
+            this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
             this.gridMitarbeiter.TabIndex = 0;
             this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
             this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
+            this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
             this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
@@ -268,7 +269,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMitarbeiterSuchen.Location = new System.Drawing.Point(305, 12);
             this.tbMitarbeiterSuchen.Name = "tbMitarbeiterSuchen";
-            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(123, 26);
+            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(124, 26);
             this.tbMitarbeiterSuchen.TabIndex = 5;
             this.tbMitarbeiterSuchen.TextChanged += new System.EventHandler(this.tbMitarbeiterSuchen_TextChanged);
             // 
@@ -296,7 +297,7 @@
             // btMaOeffnen
             // 
             this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMaOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btMaOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btMaOeffnen.Name = "btMaOeffnen";
             this.btMaOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMaOeffnen.TabIndex = 2;
@@ -321,7 +322,7 @@
             this.tabPageMitglieder.Controls.Add(this.scMitglieder);
             this.tabPageMitglieder.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitglieder.Name = "tabPageMitglieder";
-            this.tabPageMitglieder.Size = new System.Drawing.Size(560, 434);
+            this.tabPageMitglieder.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
             // 
@@ -341,7 +342,7 @@
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
-            this.scMitglieder.Size = new System.Drawing.Size(560, 434);
+            this.scMitglieder.Size = new System.Drawing.Size(561, 434);
             this.scMitglieder.SplitterDistance = 375;
             this.scMitglieder.TabIndex = 0;
             // 
@@ -357,7 +358,7 @@
             this.gridMitglieder.Name = "gridMitglieder";
             this.gridMitglieder.ReadOnly = true;
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitglieder.Size = new System.Drawing.Size(560, 375);
+            this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
             this.gridMitglieder.TabIndex = 1;
             // 
             // btMgLoeschen
@@ -385,7 +386,7 @@
             // btMgOeffnen
             // 
             this.btMgOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMgOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btMgOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btMgOeffnen.Name = "btMgOeffnen";
             this.btMgOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMgOeffnen.TabIndex = 5;
@@ -399,7 +400,7 @@
             this.tabPageKurse.Controls.Add(this.scKurse);
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
-            this.tabPageKurse.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKurse.Size = new System.Drawing.Size(561, 434);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
             this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
@@ -424,7 +425,7 @@
             this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
-            this.scKurse.Size = new System.Drawing.Size(560, 434);
+            this.scKurse.Size = new System.Drawing.Size(561, 434);
             this.scKurse.SplitterDistance = 375;
             this.scKurse.TabIndex = 0;
             // 
@@ -441,7 +442,7 @@
             this.gridKurse.ReadOnly = true;
             this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKurse.Size = new System.Drawing.Size(560, 375);
+            this.gridKurse.Size = new System.Drawing.Size(561, 375);
             this.gridKurse.TabIndex = 2;
             this.gridKurse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKurse_CellDoubleClick);
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
@@ -457,7 +458,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursSuchen.Name = "tbKursSuchen";
-            this.tbKursSuchen.Size = new System.Drawing.Size(127, 26);
+            this.tbKursSuchen.Size = new System.Drawing.Size(128, 26);
             this.tbKursSuchen.TabIndex = 11;
             this.tbKursSuchen.TextChanged += new System.EventHandler(this.textBoxSuchen_TextChanged);
             // 
@@ -496,7 +497,7 @@
             // btKursOeffnen
             // 
             this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btKursOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btKursOeffnen.Name = "btKursOeffnen";
             this.btKursOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursOeffnen.TabIndex = 8;
@@ -509,7 +510,7 @@
             this.tabPageKursUebersicht.Controls.Add(this.scKursUebersicht);
             this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
             this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
-            this.tabPageKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(561, 434);
             this.tabPageKursUebersicht.TabIndex = 4;
             this.tabPageKursUebersicht.Text = "Kurs Übersicht";
             this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
@@ -534,7 +535,7 @@
             this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtLoeschen);
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtNeu);
-            this.scKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.scKursUebersicht.Size = new System.Drawing.Size(561, 434);
             this.scKursUebersicht.SplitterDistance = 375;
             this.scKursUebersicht.TabIndex = 0;
             // 
@@ -547,13 +548,13 @@
             this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);
             this.gridKursUebersicht.Name = "gridKursUebersicht";
             this.gridKursUebersicht.ReadOnly = true;
-            this.gridKursUebersicht.Size = new System.Drawing.Size(560, 375);
+            this.gridKursUebersicht.Size = new System.Drawing.Size(561, 375);
             this.gridKursUebersicht.TabIndex = 0;
             // 
             // btKursUebersichtOeffnen
             // 
             this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";
             this.btKursUebersichtOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursUebersichtOeffnen.TabIndex = 14;
@@ -567,7 +568,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
-            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(127, 26);
+            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(128, 26);
             this.tbKursUebersichtSuchen.TabIndex = 13;
             // 
             // ddlKursUebersichtSuchen
