@@ -15,7 +15,7 @@ namespace PuG_Verwaltungssoftware
         // Klassenvariablen deklarieren
         private BindingSource bindingSourceKurse = new BindingSource();
         private bool          kommendeKurse      = false; // Initialiesierung
-        private bool          laufendeKurse      = false; // der die drei Zustände
+        private bool          laufendeKurse      = false; // der drei Zustände
         private bool          vergangeneKurse    = false; // des Filters
 
         private void tabPageKurse_Enter(object sender, EventArgs e)
