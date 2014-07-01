@@ -17,14 +17,16 @@ namespace PuG_Verwaltungssoftware
         bool save = false;
         int gId = 0;
         int gPosId = 0;
+        int gLoginMaId = 0;
         DataGridView gGridView;
 
-        public winMitarbeiterOeffnen(int id, DataGridView grid)
+        public winMitarbeiterOeffnen(int id, int loginId, DataGridView grid)
         {
             InitializeComponent();
             
             // ID festlegen
             gId = id;
+            gLoginMaId = loginId;
 
             // GridView zuweisen
             gGridView = grid;
@@ -33,8 +35,12 @@ namespace PuG_Verwaltungssoftware
 
         private void winMitarbeiterOeffnen_Load(object sender, EventArgs e)
         {
-            // DateTimePicker unsichtbar machen
-            dtpDatum.Visible = false;
+            if (gLoginMaId != 1)
+            {
+                // Benutzer ist "normaler" Mitarbeiter
+                gbGehalt.Visible = false;
+                gbLoginDaten.Visible = false;
+            }
 
             // Variablendeklaration
             String vorname = String.Empty;
@@ -81,7 +87,7 @@ namespace PuG_Verwaltungssoftware
 
                     tbVorname.Text = vorname;
                     tbNachname.Text = nachname;
-                    tbDatum.Text = gebDatum;
+                    tbGebDatum.Text = gebDatum;
                     tbStrasse.Text = strasse;
                     tbHausnummer.Text = hausnummer;
                     tbPlz.Text = plz;
@@ -203,16 +209,7 @@ namespace PuG_Verwaltungssoftware
             {
                 ddlMitarbeiterPosition.SelectedIndex = pos; 
             }
-                      
-
-            // Textbox Datum visible false und datepicker visible true und Position setzen
-            int xVal = tbDatum.Location.X;
-            int yVal = tbDatum.Location.Y;
-
-            dtpDatum.Visible = true;
-            tbDatum.Visible = false;
-            //dtpDatum.Location.X = xVal;
-            //dtpDatum.Location.Y = yVal;
+                  
         }
 
         private void btSpeichern_Click(object sender, EventArgs e)
@@ -243,7 +240,7 @@ namespace PuG_Verwaltungssoftware
                 // Wertzuweisungen
                 vorname = tbVorname.Text;
                 nachname = tbNachname.Text;
-                gebDatum = dtpDatum.Text;
+                gebDatum = tbGebDatum.Text;
                 strasse = tbStrasse.Text;
                 hausnummer = tbHausnummer.Text;
                 plz = tbPlz.Text;
@@ -300,6 +297,12 @@ namespace PuG_Verwaltungssoftware
                 }
             }
 
+        }
+
+        private void btPwAendern_Click(object sender, EventArgs e)
+        {
+            winMitarbeiterPasswort window = new winMitarbeiterPasswort(gLoginMaId, gId);
+            window.Show();
         }
 
     }

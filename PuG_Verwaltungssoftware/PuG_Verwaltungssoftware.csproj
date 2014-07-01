@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fenster\winMitarbeiterPasswort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fenster\winMitarbeiterPasswort.Designer.cs">
+      <DependentUpon>winMitarbeiterPasswort.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fenster\winPartialKurse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fenster\winKursOeffnen.resx">
       <DependentUpon>winKursOeffnen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fenster\winMitarbeiterPasswort.resx">
+      <DependentUpon>winMitarbeiterPasswort.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fenster\winMitgliedNeu.resx">
       <DependentUpon>winMitgliedNeu.cs</DependentUpon>

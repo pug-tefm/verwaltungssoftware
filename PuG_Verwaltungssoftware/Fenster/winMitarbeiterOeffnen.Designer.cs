@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterOeffnen));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbLoginDaten = new System.Windows.Forms.GroupBox();
+            this.ddlMitarbeiterPosition = new System.Windows.Forms.ComboBox();
             this.tbPosition = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBenutzername = new System.Windows.Forms.TextBox();
@@ -48,17 +49,16 @@
             this.lbHausnummer = new System.Windows.Forms.Label();
             this.lbStrasse = new System.Windows.Forms.Label();
             this.gbDaten = new System.Windows.Forms.GroupBox();
-            this.tbDatum = new System.Windows.Forms.TextBox();
             this.lbVorname = new System.Windows.Forms.Label();
             this.lbNachname = new System.Windows.Forms.Label();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.tbVorname = new System.Windows.Forms.TextBox();
-            this.lbDatum = new System.Windows.Forms.Label();
             this.tbNachname = new System.Windows.Forms.TextBox();
+            this.btPwAendern = new System.Windows.Forms.Button();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            this.ddlMitarbeiterPosition = new System.Windows.Forms.ComboBox();
+            this.lbGebDatum = new System.Windows.Forms.Label();
+            this.tbGebDatum = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,10 +86,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btPwAendern);
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
             this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
-            this.splitContainer1.Size = new System.Drawing.Size(394, 492);
+            this.splitContainer1.Size = new System.Drawing.Size(523, 492);
             this.splitContainer1.SplitterDistance = 438;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -102,12 +103,24 @@
             this.gbLoginDaten.Controls.Add(this.label1);
             this.gbLoginDaten.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbLoginDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbLoginDaten.Location = new System.Drawing.Point(0, 359);
+            this.gbLoginDaten.Location = new System.Drawing.Point(0, 347);
             this.gbLoginDaten.Name = "gbLoginDaten";
-            this.gbLoginDaten.Size = new System.Drawing.Size(394, 82);
+            this.gbLoginDaten.Size = new System.Drawing.Size(523, 82);
             this.gbLoginDaten.TabIndex = 11;
             this.gbLoginDaten.TabStop = false;
             this.gbLoginDaten.Text = "Login - Daten";
+            // 
+            // ddlMitarbeiterPosition
+            // 
+            this.ddlMitarbeiterPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ddlMitarbeiterPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMitarbeiterPosition.FormattingEnabled = true;
+            this.ddlMitarbeiterPosition.Location = new System.Drawing.Point(119, 52);
+            this.ddlMitarbeiterPosition.Name = "ddlMitarbeiterPosition";
+            this.ddlMitarbeiterPosition.Size = new System.Drawing.Size(392, 23);
+            this.ddlMitarbeiterPosition.TabIndex = 11;
+            this.ddlMitarbeiterPosition.Visible = false;
             // 
             // tbPosition
             // 
@@ -130,11 +143,13 @@
             // 
             // tbBenutzername
             // 
+            this.tbBenutzername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBenutzername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBenutzername.Location = new System.Drawing.Point(119, 22);
             this.tbBenutzername.Name = "tbBenutzername";
             this.tbBenutzername.ReadOnly = true;
-            this.tbBenutzername.Size = new System.Drawing.Size(253, 26);
+            this.tbBenutzername.Size = new System.Drawing.Size(392, 26);
             this.tbBenutzername.TabIndex = 7;
             // 
             // label1
@@ -153,20 +168,22 @@
             this.gbGehalt.Controls.Add(this.lbGehalt);
             this.gbGehalt.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbGehalt.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGehalt.Location = new System.Drawing.Point(0, 291);
+            this.gbGehalt.Location = new System.Drawing.Point(0, 279);
             this.gbGehalt.Name = "gbGehalt";
-            this.gbGehalt.Size = new System.Drawing.Size(394, 68);
+            this.gbGehalt.Size = new System.Drawing.Size(523, 68);
             this.gbGehalt.TabIndex = 10;
             this.gbGehalt.TabStop = false;
             this.gbGehalt.Text = "Gehalt";
             // 
             // tbGehalt
             // 
+            this.tbGehalt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbGehalt.Location = new System.Drawing.Point(119, 22);
             this.tbGehalt.Name = "tbGehalt";
             this.tbGehalt.ReadOnly = true;
-            this.tbGehalt.Size = new System.Drawing.Size(253, 26);
+            this.tbGehalt.Size = new System.Drawing.Size(392, 26);
             this.tbGehalt.TabIndex = 7;
             // 
             // lbGehalt
@@ -191,47 +208,55 @@
             this.gbAnschrift.Controls.Add(this.lbStrasse);
             this.gbAnschrift.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbAnschrift.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAnschrift.Location = new System.Drawing.Point(0, 142);
+            this.gbAnschrift.Location = new System.Drawing.Point(0, 130);
             this.gbAnschrift.Name = "gbAnschrift";
-            this.gbAnschrift.Size = new System.Drawing.Size(394, 149);
+            this.gbAnschrift.Size = new System.Drawing.Size(523, 149);
             this.gbAnschrift.TabIndex = 9;
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
             // 
             // tbPlz
             // 
+            this.tbPlz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
             this.tbPlz.Name = "tbPlz";
             this.tbPlz.ReadOnly = true;
-            this.tbPlz.Size = new System.Drawing.Size(253, 26);
+            this.tbPlz.Size = new System.Drawing.Size(392, 26);
             this.tbPlz.TabIndex = 9;
             // 
             // tbOrt
             // 
+            this.tbOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOrt.Location = new System.Drawing.Point(119, 109);
             this.tbOrt.Name = "tbOrt";
             this.tbOrt.ReadOnly = true;
-            this.tbOrt.Size = new System.Drawing.Size(253, 26);
+            this.tbOrt.Size = new System.Drawing.Size(392, 26);
             this.tbOrt.TabIndex = 8;
             // 
             // tbHausnummer
             // 
+            this.tbHausnummer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
             this.tbHausnummer.Name = "tbHausnummer";
             this.tbHausnummer.ReadOnly = true;
-            this.tbHausnummer.Size = new System.Drawing.Size(253, 26);
+            this.tbHausnummer.Size = new System.Drawing.Size(392, 26);
             this.tbHausnummer.TabIndex = 7;
             // 
             // tbStrasse
             // 
+            this.tbStrasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStrasse.Location = new System.Drawing.Point(119, 22);
             this.tbStrasse.Name = "tbStrasse";
             this.tbStrasse.ReadOnly = true;
-            this.tbStrasse.Size = new System.Drawing.Size(253, 26);
+            this.tbStrasse.Size = new System.Drawing.Size(392, 26);
             this.tbStrasse.TabIndex = 6;
             // 
             // lbPlz
@@ -276,30 +301,20 @@
             // 
             // gbDaten
             // 
-            this.gbDaten.Controls.Add(this.tbDatum);
+            this.gbDaten.Controls.Add(this.lbGebDatum);
+            this.gbDaten.Controls.Add(this.tbGebDatum);
             this.gbDaten.Controls.Add(this.lbVorname);
             this.gbDaten.Controls.Add(this.lbNachname);
-            this.gbDaten.Controls.Add(this.dtpDatum);
             this.gbDaten.Controls.Add(this.tbVorname);
-            this.gbDaten.Controls.Add(this.lbDatum);
             this.gbDaten.Controls.Add(this.tbNachname);
             this.gbDaten.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(394, 142);
+            this.gbDaten.Size = new System.Drawing.Size(523, 130);
             this.gbDaten.TabIndex = 8;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
-            // 
-            // tbDatum
-            // 
-            this.tbDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDatum.Location = new System.Drawing.Point(119, 88);
-            this.tbDatum.Name = "tbDatum";
-            this.tbDatum.ReadOnly = true;
-            this.tbDatum.Size = new System.Drawing.Size(253, 26);
-            this.tbDatum.TabIndex = 6;
             // 
             // lbVorname
             // 
@@ -321,46 +336,45 @@
             this.lbNachname.TabIndex = 2;
             this.lbNachname.Text = "Nachname:";
             // 
-            // dtpDatum
-            // 
-            this.dtpDatum.Location = new System.Drawing.Point(119, 88);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(214, 23);
-            this.dtpDatum.TabIndex = 5;
-            // 
             // tbVorname
             // 
+            this.tbVorname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbVorname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
             this.tbVorname.Name = "tbVorname";
             this.tbVorname.ReadOnly = true;
-            this.tbVorname.Size = new System.Drawing.Size(253, 26);
+            this.tbVorname.Size = new System.Drawing.Size(392, 26);
             this.tbVorname.TabIndex = 1;
-            // 
-            // lbDatum
-            // 
-            this.lbDatum.AutoSize = true;
-            this.lbDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDatum.Location = new System.Drawing.Point(12, 92);
-            this.lbDatum.Name = "lbDatum";
-            this.lbDatum.Size = new System.Drawing.Size(101, 18);
-            this.lbDatum.TabIndex = 4;
-            this.lbDatum.Text = "Geburtsdatum:";
             // 
             // tbNachname
             // 
+            this.tbNachname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNachname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
             this.tbNachname.Name = "tbNachname";
             this.tbNachname.ReadOnly = true;
-            this.tbNachname.Size = new System.Drawing.Size(253, 26);
+            this.tbNachname.Size = new System.Drawing.Size(392, 26);
             this.tbNachname.TabIndex = 3;
+            // 
+            // btPwAendern
+            // 
+            this.btPwAendern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btPwAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPwAendern.Location = new System.Drawing.Point(210, 0);
+            this.btPwAendern.Name = "btPwAendern";
+            this.btPwAendern.Size = new System.Drawing.Size(105, 50);
+            this.btPwAendern.TabIndex = 3;
+            this.btPwAendern.Text = "Passwort ändern";
+            this.btPwAendern.UseVisualStyleBackColor = true;
+            this.btPwAendern.Click += new System.EventHandler(this.btPwAendern_Click);
             // 
             // btSchliessen
             // 
             this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(289, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(418, 0);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(105, 50);
             this.btSchliessen.TabIndex = 2;
@@ -392,21 +406,32 @@
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
-            // ddlMitarbeiterPosition
+            // lbGebDatum
             // 
-            this.ddlMitarbeiterPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlMitarbeiterPosition.FormattingEnabled = true;
-            this.ddlMitarbeiterPosition.Location = new System.Drawing.Point(119, 52);
-            this.ddlMitarbeiterPosition.Name = "ddlMitarbeiterPosition";
-            this.ddlMitarbeiterPosition.Size = new System.Drawing.Size(253, 23);
-            this.ddlMitarbeiterPosition.TabIndex = 11;
-            this.ddlMitarbeiterPosition.Visible = false;
+            this.lbGebDatum.AutoSize = true;
+            this.lbGebDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGebDatum.Location = new System.Drawing.Point(12, 90);
+            this.lbGebDatum.Name = "lbGebDatum";
+            this.lbGebDatum.Size = new System.Drawing.Size(101, 18);
+            this.lbGebDatum.TabIndex = 4;
+            this.lbGebDatum.Text = "Geburtsdatum:";
+            // 
+            // tbGebDatum
+            // 
+            this.tbGebDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbGebDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGebDatum.Location = new System.Drawing.Point(119, 82);
+            this.tbGebDatum.Name = "tbGebDatum";
+            this.tbGebDatum.ReadOnly = true;
+            this.tbGebDatum.Size = new System.Drawing.Size(392, 26);
+            this.tbGebDatum.TabIndex = 5;
             // 
             // winMitarbeiterOeffnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 492);
+            this.ClientSize = new System.Drawing.Size(523, 492);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(410, 530);
@@ -436,8 +461,6 @@
         private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btSpeichern;
         private System.Windows.Forms.Button btBearbeiten;
-        private System.Windows.Forms.DateTimePicker dtpDatum;
-        private System.Windows.Forms.Label lbDatum;
         private System.Windows.Forms.TextBox tbNachname;
         private System.Windows.Forms.Label lbNachname;
         private System.Windows.Forms.TextBox tbVorname;
@@ -455,12 +478,14 @@
         private System.Windows.Forms.TextBox tbOrt;
         private System.Windows.Forms.TextBox tbHausnummer;
         private System.Windows.Forms.TextBox tbStrasse;
-        private System.Windows.Forms.TextBox tbDatum;
         private System.Windows.Forms.GroupBox gbLoginDaten;
         private System.Windows.Forms.TextBox tbBenutzername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPosition;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox ddlMitarbeiterPosition;
+        private System.Windows.Forms.Button btPwAendern;
+        private System.Windows.Forms.Label lbGebDatum;
+        private System.Windows.Forms.TextBox tbGebDatum;
     }
 }

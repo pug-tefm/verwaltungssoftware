@@ -16,13 +16,9 @@ namespace PuG_Verwaltungssoftware
         c_DBConnect c = new c_DBConnect();
         int s = 0;
         int m = 0;
-        int h = 0;
-        int loginMaId = 0;
-        int loginMaPosId = 0;
-        String loginMaVorname = String.Empty;
-        String loginMaNachname = String.Empty;
+        int h = 0;     
 
-        private BindingSource bindingSource;
+        private BindingSource bindingSource = new BindingSource();
 
 
         public mainWindow()
