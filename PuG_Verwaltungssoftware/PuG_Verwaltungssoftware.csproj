@@ -71,6 +71,9 @@
     <Compile Include="Fenster\winMitarbeiterPasswort.Designer.cs">
       <DependentUpon>winMitarbeiterPasswort.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fenster\winPartialHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Fenster\winPartialKurse.cs">
       <SubType>Form</SubType>
     </Compile>
