@@ -16,15 +16,10 @@ namespace PuG_Verwaltungssoftware
         c_DBConnect c = new c_DBConnect();
         int s = 0;
         int m = 0;
-        int h = 0;
-        int loginMaId = 0;
-        int loginMaPosId = 0;
-        String loginMaVorname = String.Empty;
-        String loginMaNachname = String.Empty;
+        int h = 0;     
+
+        private BindingSource bindingSource = new BindingSource();
         private BindingSource bindingSourceKursUebersicht = new BindingSource();
-
-        private BindingSource bindingSource;
-
 
         public mainWindow()
         {
@@ -264,7 +259,7 @@ namespace PuG_Verwaltungssoftware
 
             else
             {
-                // Messagebox
+                // Meesagebox
             }
         }
 
@@ -305,7 +300,7 @@ namespace PuG_Verwaltungssoftware
                 }
 
                 gridKursUebersicht.Refresh();
-               
+
             }
 
             if (gridKursUebersicht.ColumnCount > 0)
@@ -326,6 +321,6 @@ namespace PuG_Verwaltungssoftware
 
         }
 
-        
+
     }
 }

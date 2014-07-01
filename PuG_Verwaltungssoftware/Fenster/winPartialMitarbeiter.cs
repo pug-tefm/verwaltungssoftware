@@ -13,6 +13,11 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
+        int loginMaId = 0;
+        int loginMaPosId = 0;
+        String loginMaVorname = String.Empty;
+        String loginMaNachname = String.Empty;
+
         private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
         {
             int dBConnectOk = c.openConnection();  // Datenbank oeffnen
@@ -30,6 +35,7 @@ namespace PuG_Verwaltungssoftware
                 btMaNeu.Enabled = false;
                 ddlMitarbeiterSuchen.Enabled = false;
                 tbMitarbeiterSuchen.Enabled = false;
+                
             }
             c.closeConnection(); // Datenbank schliessen
 
@@ -52,8 +58,8 @@ namespace PuG_Verwaltungssoftware
             }
 
             // Binding Objekt zuweisen
-            //bindingSource.DataSource = (DataTable)gridMitarbeiter.DataSource;
-            //gridMitarbeiter.DataSource = bindingSource;
+            bindingSource.DataSource = gridMitarbeiter.DataSource;
+            gridMitarbeiter.DataSource = bindingSource;
         }
 
 
@@ -71,7 +77,7 @@ namespace PuG_Verwaltungssoftware
             {
                 int row = gridMitarbeiter.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, gridMitarbeiter);
+                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
                 window.Show();
             }
             else

@@ -597,7 +597,7 @@
             this.btKursUebersichtNeu.TabIndex = 10;
             this.btKursUebersichtNeu.Text = "Neu";
             this.btKursUebersichtNeu.UseVisualStyleBackColor = true;
-            this.btKursUebersichtNeu.Click += new System.EventHandler(this.btKursUebersichtNeu_Click);
+        
             // 
             // loginPanel
             // 

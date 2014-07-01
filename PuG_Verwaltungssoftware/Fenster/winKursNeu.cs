@@ -29,7 +29,7 @@ namespace PuG_Verwaltungssoftware
 
             c_Mitarbeiter.comboBoxFill(cbKursleiter, ""); // ComboBox mit den Mitarbeitern befüllen
 
-            //gueltigerWochentagPruefen();
+            gueltigerWochentagPruefen();
         }
 
         /**************************************************************************/
@@ -58,14 +58,10 @@ namespace PuG_Verwaltungssoftware
                 || tbMaxTeilnehmer.Text.Trim().Length != 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Cancel)
                 {
-                    this.Close();
+                    e.Cancel = true;
                 }
-            }
-            else
-            {
-                this.Close();
             }
         }
 
