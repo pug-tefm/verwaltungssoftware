@@ -13,45 +13,47 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winKursNeu : Form
     {
-        private DataGridView myDataGridViewKurse;
+        // Klassenvariablen deklarieren
+        private DataGridView  myGridKurse;
+        private BindingSource myBindingSourceKurse;
 
-        public winKursNeu(DataGridView dataGridViewKurse)
+        public winKursNeu(DataGridView dataGridViewKurse, BindingSource bindingSourceKurse)
         {
             InitializeComponent();
 
-            myDataGridViewKurse = dataGridViewKurse;
+            // Klassenvariablen initialisieren
+            myGridKurse          = dataGridViewKurse;
+            myBindingSourceKurse = bindingSourceKurse;
 
-            string vorname    = "";
-            string nachname   = "";
-            c_DBConnect c = new c_DBConnect();
- 
-            int dBConnectOk = c.openConnection();
-            if (dBConnectOk == 0)
-            {
-                int rows = c.countRows("SELECT COUNT(*) FROM mitarbeiter;");
-                if (rows > 0)
-                {
-                    DataTable result = c.select("SELECT vorname, nachname FROM mitarbeiter;");
-                    if (result != null)
-                    {
-                        for (int i = 0; i < rows; i++)
-                        {
-                            vorname  = (String)result.Rows[i]["vorname"];
-                            nachname = (String)result.Rows[i]["nachname"];
-                            string vollerName = vorname + " " + nachname;
-                            cbKursleiter.Items.Add(vollerName);
-                        }
-                    }
-                }
-                c.closeConnection();
-            }
+            dtpUhrzeitBis.Value = dtpUhrzeitBis.Value.AddHours(+1); // Stunde um 1 erhöhen
 
-            gueltigerWochentagPruefen();
+            c_Mitarbeiter.comboBoxFill(cbKursleiter, ""); // ComboBox mit den Mitarbeitern befüllen
+
+            //gueltigerWochentagPruefen();
         }
 
+        /**************************************************************************/
+        /* private void btSchliessen_Click(object sender, EventArgs e)            */
+        /**************************************************************************/
+        /* Form schliesen. Die Funktion                                           */
+        /* winKursOeffnen_FormClosing(object sender, FormClosingEventArgs e)      */
+        /* wird dadurch indirekt ausgerufen.                                      */
+        /**************************************************************************/
         private void btSchliessen_Click(object sender, EventArgs e)
         {
-            // Fenster schliessen
+            this.Close();
+        }
+
+        /******************************************************************************/
+        /* private void winKursNeu_FormClosing(object sender, FormClosingEventArgs e) */
+        /******************************************************************************/
+        /* Wenn das Fenster geschlossen wird, wird überprüft ob es Eingaben gab.      */
+        /* Wenn dies der Fall war wird eine MessageBox ausgegeben sonst das           */
+        /* Fenster geschlossen.                                                       */
+        /******************************************************************************/
+        private void winKursNeu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Sind Felder ausgefüllt worden ?
             if (tbBezeichnung.Text.Trim().Length != 0 || cbKursleiter.SelectedIndex != -1 || tbPreis.Text.Trim().Length != 0
                 || tbMaxTeilnehmer.Text.Trim().Length != 0)
             {
@@ -67,26 +69,37 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        /**************************************************************************/
+        /* private void btSpeichern_Click(object sender, EventArgs e)             */
+        /**************************************************************************/
+        /* Wenn der Button speichern gedrückt wurde werden alle Felder auf ihr    */
+        /* korrektes Format überprüft. Bei einem falschen Format wird ein Fehler  */
+        /* ausgegeben und die Eingabe wird nicht gespeichert. Wenn keine Fehler   */
+        /* vorhanden, wird das Von und Bis Datum an den Wochentag angepasst. Dann */
+        /* werden die Daten für SQL Formatiert und der INSERT Befehl wird         */
+        /* abgeschickt.  Dannach wird das gridView aktualisiert und man wird      */
+        /* gefragt ob man einen weiteren Kurs erfassen möchte.                    */
+        /**************************************************************************/
         private void btSpeichern_Click(object sender, EventArgs e)
         {
             bool fehlerGefunden = false;
 
             // Fehlerüberprüfung Anfang
-            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text);
+            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text, 100);
             if (fehlerBezeichnung == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbBezeichnung.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text);
+            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text, 6);
             if (fehlerPreis == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbPreis.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text);
+            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text, 3);
             if (fehlerMaxTeilnehmer == true)
             {
                 fehlerGefunden = true;
@@ -112,60 +125,151 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                if (tbBezeichnung.Text.Trim().Length != 0 || /*cbKursleiter.SelectedIndex != -1 ||*/ tbPreis.Text.Trim().Length != 0
+                if (tbBezeichnung.Text.Trim().Length != 0 || cbKursleiter.SelectedIndex != -1 || tbPreis.Text.Trim().Length != 0
                     || tbMaxTeilnehmer.Text.Trim().Length != 0 || cbWochentag.SelectedIndex != -1)
                 {
-                    myDataGridViewKurse.Rows.Add("Hans, Müller", tbBezeichnung.Text, double.Parse(tbPreis.Text), int.Parse(tbMaxTeilnehmer.Text),
-                                                 dtpDatumVon.Text, dtpDatumBis.Text, cbWochentag.Text, dtpUhrzeitVon.Value.TimeOfDay,
-                                                 dtpUhrzeitBis.Value.TimeOfDay);
+                    // Anfang Datum Von und Bis an Wochentag anpassen
+                    DateTime myDateTimeVon = dtpDatumVon.Value.Date;
+                    DateTime myDateTimeBis = dtpDatumBis.Value.Date;
+                    String wochentag = c_Helper.umwandlungWochentagGerToEng(cbWochentag.Text);
 
-                    //c_DBConnect myConnection = new c_DBConnect();
-                    //myConnection.openConnection();
-                    //String query = "INSERT INTO kurse (bezeichnung , kursleiter, preis, max_teilnehmerzahl, datum_von, datum_bis, wochentag, " +
-                    //         "uhrzeit_von, uhzeit_bis) VALUES (" + tbBezeichnung.Text + ", " + "Hans, Müller" +", " + int.Parse(tbMaxTeilnehmer.Text) +
-                    //         ", " + dtpDatumVon.Text + ", " + dtpDatumBis.Text + ", " + cbWochentag.Text + ", " + dtpUhrzeitVon.Value.TimeOfDay +
-                    //         ", " + dtpUhrzeitBis.Value.TimeOfDay + ");";
-                    //myConnection.update(query, "Kurs");
-                    //myConnection.closeConnection();
-
-                    myDataGridViewKurse.Refresh();
-
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
+                    while (dtpDatumVon.Value.DayOfWeek.ToString() != wochentag)
                     {
-                        cbKursleiter.SelectedIndex = -1;
-                        cbWochentag.SelectedIndex = -1;
-
-                        tbBezeichnung.Text = "";
-                        tbPreis.Text = "";
-                        tbMaxTeilnehmer.Text = "";
-
-                        DateTime today = DateTime.Now;
-                        dtpDatumVon.Value = today.Date;
-                        dtpDatumBis.Value = today.Date;
-                        dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
-                        dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                        myDateTimeVon = myDateTimeVon.AddDays(+1);
+                        if (myDateTimeVon.DayOfWeek.ToString() == wochentag)
+                        {
+                            dtpDatumVon.Value = myDateTimeVon.Date;
+                            break;
+                        }
                     }
-                    if (dialogResult == DialogResult.No)
+
+                    while (dtpDatumBis.Value.DayOfWeek.ToString() != wochentag)
                     {
-                        this.Close();
+                        myDateTimeBis = myDateTimeBis.AddDays(-1);
+                        if (myDateTimeBis.DayOfWeek.ToString() == wochentag)
+                        {
+                            dtpDatumBis.Value = myDateTimeBis.Date;
+                            break;
+                        }
                     }
+                    // Ende Datum Von und Bis an Wochentag anpassen
+
+                    c_DBConnect myConnection = new c_DBConnect();
+                    int connected = myConnection.openConnection();
+                    if (connected == 0) // Kein Fehler Connect
+                    {
+                        // Format für SQL anpassen
+                        String datumVon   = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis   = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
+                        String preis      = tbPreis.Text.Replace(",", ".");
+                        
+                        // Abfrage String generieren
+                        String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, " +
+                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" + 
+                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
+                                        "', '" + uhrzeitBis + "');";
+
+                        bool ok = myConnection.insert(query, "Kurs"); // SQL Befehl ausführen
+                        if (ok == true) // Kein Fehler
+                        {
+                            myConnection.closeConnection();
+                            int connectedZwei = myConnection.openConnection();
+                            if (connectedZwei == 0) // Kein Fehler Connect
+                            {
+                                // DridView aktualisieren
+                                myConnection.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " +
+                                              "AS Kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
+                                              "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", myGridKurse);
+                                myConnection.closeConnection();
+
+                                // Headertexte anpassen
+                                DataTable gridKurseTable = (DataTable)(myGridKurse.DataSource);
+                                gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
+                                gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                                gridKurseTable.Columns["preis"].ColumnName          = "Preis";
+                                gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
+                                gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
+                                gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
+                                gridKurseTable.Columns["datum_bis"].ColumnName      = "Datum Bis";
+                                gridKurseTable.Columns["wochentag"].ColumnName      = "Wochentag";
+                                gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
+                                gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
+
+                                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9); // Type von Wochentag ändern (int to string)
+
+                                for (int i = 0; i < gridKurseTable.Rows.Count; i++)
+                                {
+                                    String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
+                                    gridKurseTable.Rows[i]["Wochentag"] = wert;
+                                }
+
+                                // Aktualisierten Inhalt binden (für die Suche)
+                                myBindingSourceKurse.DataSource = myGridKurse.DataSource;
+                                myGridKurse.DataSource = myBindingSourceKurse;
+                            }
+                            else // Fehler Connect
+                            {
+                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                            DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                // Werte auf default setzen
+                                cbKursleiter.SelectedIndex = -1;
+                                cbWochentag.SelectedIndex  = -1;
+
+                                tbBezeichnung.Text   = "";
+                                tbPreis.Text         = "";
+                                tbMaxTeilnehmer.Text = "";
+
+                                DateTime today      = DateTime.Now;
+                                dtpDatumVon.Value   = today.Date;
+                                dtpDatumBis.Value   = today.Date;
+                                dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                                dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                            }
+                            if (dialogResult == DialogResult.No)
+                            {
+                                this.Close();
+                            }
+                        }
+                        myConnection.closeConnection();
+                    }
+                    else // Fehler Connect
+                    {
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
                 }
-                else
+                else // Fehler leere Eingabe
                 {
                     DialogResult dialogResult = MessageBox.Show("Bitte füllen Sie alle Felder aus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
 
+        /**************************************************************************/
+        /* private void gueltigerWochentagPruefen()                               */
+        /**************************************************************************/
+        /* Es wird geprüft ob der ausgewählte Wochentag in dem eingebenen Von     */
+        /* und Bis Datum überhaupt möglich ist. Diese Überprüfeung ist natürlich  */
+        /* nur bei einem Datumsunterschied kleiner 7 Tage notwendig, sonst werden */
+        /*  alle Wochentag zur Auswahl angeboten.                                 */
+        /**************************************************************************/
         private void gueltigerWochentagPruefen()
         {
             cbWochentag.Items.Clear();
 
             // Nur gültige Wochentag auswählbar machen
             TimeSpan myTimeSpan = dtpDatumBis.Value.Date - dtpDatumVon.Value.Date;
-            if (myTimeSpan.Days < 7)
+            if (myTimeSpan.Days < 7) // Wenn kleiner 7 Tage
             {
+                // Nur die möglichen Wochentag anzeigen 
                 cbWochentag.Items.Clear();
                 DateTime myDateTime = dtpDatumVon.Value.Date;
                 while (myDateTime.Date <= dtpDatumBis.Value.Date)
@@ -180,7 +284,7 @@ namespace PuG_Verwaltungssoftware
                     cbWochentag.SelectedIndex = 0;
                 }
             }
-            else
+            else // sonst alle anzeigen
             {
                 cbWochentag.Items.Add("Montag");
                 cbWochentag.Items.Add("Dienstag");
@@ -192,11 +296,23 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        /**************************************************************************/
+        /* private void dtpDatumVon_ValueChanged(object sender, EventArgs e)      */
+        /**************************************************************************/
+        /* Methode aufrufen, die prüft ob der ausgewählte Wochentag in dem        */
+        /* eingebenen Von und Bis Datum überhaupt möglich ist.                    */
+        /**************************************************************************/
         private void dtpDatumVon_ValueChanged(object sender, EventArgs e)
         {
             gueltigerWochentagPruefen();
         }
 
+        /**************************************************************************/
+        /* private void dtpDatumBis_ValueChanged(object sender, EventArgs e)      */
+        /**************************************************************************/
+        /* Methode aufrufen, die prüft ob der ausgewählte Wochentag in dem        */
+        /* eingebenen Von und Bis Datum überhaupt möglich ist.                    */
+        /**************************************************************************/
         private void dtpDatumBis_ValueChanged(object sender, EventArgs e)
         {
             gueltigerWochentagPruefen();

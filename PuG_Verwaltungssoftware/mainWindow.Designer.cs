@@ -59,6 +59,7 @@
             this.btKursLoeschen = new System.Windows.Forms.Button();
             this.btKursNeu = new System.Windows.Forms.Button();
             this.btKursOeffnen = new System.Windows.Forms.Button();
+            this.tabPageKursUebersicht = new System.Windows.Forms.TabPage();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.lbLoginMessage = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -101,6 +102,7 @@
             this.mainTabControl.Controls.Add(this.tabPageMitarbeiter);
             this.mainTabControl.Controls.Add(this.tabPageMitglieder);
             this.mainTabControl.Controls.Add(this.tabPageKurse);
+            this.mainTabControl.Controls.Add(this.tabPageKursUebersicht);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.mainTabControl.ItemSize = new System.Drawing.Size(80, 110);
@@ -238,13 +240,13 @@
             this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
-            this.gridMitarbeiter.MultiSelect = false;
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitarbeiter.Size = new System.Drawing.Size(554, 376);
             this.gridMitarbeiter.TabIndex = 0;
             this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
+            this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
             // 
@@ -391,6 +393,8 @@
             // scKurse
             // 
             this.scKurse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scKurse.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scKurse.IsSplitterFixed = true;
             this.scKurse.Location = new System.Drawing.Point(0, 0);
             this.scKurse.Name = "scKurse";
             this.scKurse.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -414,16 +418,18 @@
             // 
             this.gridKurse.AllowUserToAddRows = false;
             this.gridKurse.AllowUserToDeleteRows = false;
-            this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.gridKurse.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridKurse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKurse.Location = new System.Drawing.Point(0, 0);
-            this.gridKurse.MultiSelect = false;
             this.gridKurse.Name = "gridKurse";
             this.gridKurse.ReadOnly = true;
+            this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridKurse.Size = new System.Drawing.Size(560, 375);
             this.gridKurse.TabIndex = 2;
+            this.gridKurse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKurse_CellDoubleClick);
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
             this.gridKurse.Paint += new System.Windows.Forms.PaintEventHandler(this.gridKurse_Paint);
             this.gridKurse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridKurse_KeyDown);
@@ -483,6 +489,16 @@
             this.btKursOeffnen.Text = "Öffnen";
             this.btKursOeffnen.UseVisualStyleBackColor = true;
             this.btKursOeffnen.Click += new System.EventHandler(this.btKursOeffnen_Click);
+            // 
+            // tabPageKursUebersicht
+            // 
+            this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
+            this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKursUebersicht.TabIndex = 4;
+            this.tabPageKursUebersicht.Text = "Kurs Übersicht";
+            this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
+            this.tabPageKursUebersicht.Enter += new System.EventHandler(this.tabPageKursUebersicht_Enter);
             // 
             // loginPanel
             // 
@@ -574,8 +590,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(678, 442);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -583,6 +599,7 @@
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
+            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.mainTabControl.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
             this.scHome.Panel1.ResumeLayout(false);
@@ -656,6 +673,7 @@
         private System.Windows.Forms.ComboBox ddlKursSuchen;
         private System.Windows.Forms.ComboBox ddlMitarbeiterSuchen;
         private System.Windows.Forms.TextBox tbMitarbeiterSuchen;
+        private System.Windows.Forms.TabPage tabPageKursUebersicht;
     }
 }
 

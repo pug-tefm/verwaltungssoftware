@@ -35,12 +35,23 @@ namespace PuG_Verwaltungssoftware
         // Verbindung zur Datenbank herstellen
         public int openConnection()
         {
-            try
+            if (connection != null && connection.State == ConnectionState.Closed)
             {
-                connection.Open();
+                try
+                {
+                    connection.Open();
+                    return 0;
+                }
+                catch (MySqlException ex)
+                {
+                    return 1;
+                }
+            }
+            else if (connection != null && connection.State == ConnectionState.Open)
+            {
                 return 0;
             }
-            catch (MySqlException ex)
+            else
             {
                 return 1;
             }
@@ -62,7 +73,7 @@ namespace PuG_Verwaltungssoftware
         }
 
         //Insert statement
-        public void insert(string query, string textMB)
+        public bool insert(string query, string textMB)
         {
             try
             {
@@ -70,17 +81,19 @@ namespace PuG_Verwaltungssoftware
                 MySqlDataReader myReader;
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
-
-                MessageBox.Show(textMB, " wurde hinzugefügt"); // MSG bei success
+                
+                MessageBox.Show(textMB + " wurde hinzugefügt", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         //Update statement
-        public void update(string query, string textMB)
+        public bool update(string query, string textMB)
         {
             try
             {
@@ -89,16 +102,18 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + "wurde upgedated"); // MSG bei success
+                MessageBox.Show(textMB + " wurde geändert", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         //Delete statement
-        public void delete(string query, string textMB)
+        public bool delete(string query, string textMB)
         {
             try
             {
@@ -107,11 +122,13 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + " wurde gelöscht"); // MSG bei success
+                MessageBox.Show(textMB + " wurde gelöscht", "Information", MessageBoxButtons.OK); // MSG bei success
+                return true;
             }
             catch (Exception ex) // Fehler
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
@@ -171,7 +188,7 @@ namespace PuG_Verwaltungssoftware
             }
             catch (Exception ex) // Fehler
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 return false;
             }
         }

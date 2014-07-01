@@ -16,12 +16,9 @@ namespace PuG_Verwaltungssoftware
         c_DBConnect c = new c_DBConnect();
         int s = 0;
         int m = 0;
-        int h = 0;
-        int loginMaId = 0;
-        String loginMaVorname = String.Empty;
-        String loginMaNachname = String.Empty;
+        int h = 0;     
 
-        private BindingSource bindingSource;
+        private BindingSource bindingSource = new BindingSource();
 
 
         public mainWindow()
@@ -91,6 +88,7 @@ namespace PuG_Verwaltungssoftware
                 if (benutzer == "Benutzername" || passwort == "Passwort")
                 {
                     lbLoginMessage.Text = "Bitte Benutzer und Passwort eingeben.";
+                    c.closeConnection();
                 }
                 else
                 {
@@ -109,6 +107,7 @@ namespace PuG_Verwaltungssoftware
                                 loginMaId = (int)result.Rows[0]["mitarbeiter_id"];
                                 loginMaVorname = (String)result.Rows[0]["vorname"];
                                 loginMaNachname = (String)result.Rows[0]["nachname"];
+                                loginMaPosId = (int)result.Rows[0]["position_id"];
                             }
 
                         }
@@ -139,6 +138,7 @@ namespace PuG_Verwaltungssoftware
                     else
                     {
                         lbLoginMessage.Text = "Benutzername oder Passwort falsch.";
+                        c.closeConnection();
                     }
 
                 }
@@ -146,6 +146,7 @@ namespace PuG_Verwaltungssoftware
             else
             {
                 lbLoginMessage.Text = "Verbindung zum Server fehlgeschlagen.";
+                c.closeConnection();
             }
 
         }
@@ -219,102 +220,6 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
-        {
-            int dBConnectOk = c.openConnection();  // Datenbank oeffnen
-            c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
-            c.closeConnection(); // Datenbank schliessen
-
-            if (dBConnectOk == 0)
-            {
-                // Headertexte anpassen
-                gridMitarbeiter.Columns["mitarbeiter_id"].HeaderText = "Mitarbeiter-Nr.";
-                gridMitarbeiter.Columns["vorname"].HeaderText = "Vorname";
-                gridMitarbeiter.Columns["nachname"].HeaderText = "Nachname";
-                gridMitarbeiter.Columns["geburtsdatum"].HeaderText = "Geburtsdatum";
-            }
-
-            if (gridMitarbeiter.ColumnCount > 0)
-            {
-                for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
-                {
-                    ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
-                }
-                ddlMitarbeiterSuchen.SelectedIndex = 0;
-            }
-       
-            // Binding Objekt zuweisen
-            //bindingSource.DataSource = (DataTable)gridMitarbeiter.DataSource;
-            //gridMitarbeiter.DataSource = bindingSource;
-        }
-
-        private void gridMitarbeiter_SelectionChanged(object sender, EventArgs e)
-        {
-            int row = gridMitarbeiter.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-            //MessageBox.Show(id.ToString());
-        }
-
-        private void btMaOeffnen_Click(object sender, EventArgs e)
-        {
-            if (gridMitarbeiter.RowCount > 0)
-            {
-                int row = gridMitarbeiter.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-                winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id);
-                window.Show();
-            }
-            else
-            {
-                MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
-        }
-
-        private void btMaLoeschen_Click(object sender, EventArgs e)
-        {
-            //int row = gridMitarbeiter.CurrentCell.RowIndex;
-            //int id = Convert.ToInt32(gridMitarbeiter.Rows[row].Cells["mitarbeiter_id"].Value);
-
-            //DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    //do something
-            //    c.openConnection();
-            //    c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
-            //    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
-            //    c.closeConnection();
-            //}
-
-            if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
-            {
-                foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
-                {
-                    int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["mitarbeiter_id"].Value);
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        c.openConnection();
-                        gridMitarbeiter.Rows.RemoveAt(row.Index); // Row löschen
-                        c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
-                        c.closeConnection();
-                    }
-                }
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-
-        private void btMaNeu_Click(object sender, EventArgs e)
-        {
-            winMitarbeiterNeu window = new winMitarbeiterNeu();
-            window.Show();
-        }
-
         private void tabPageHome_Enter(object sender, EventArgs e)
         {
 
@@ -358,16 +263,14 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
+        private void mainWindow_Load(object sender, EventArgs e)
         {
-            c_Helper c = new c_Helper();
-            c.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
-        }
 
-        private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
-        {
-            c_Helper c = new c_Helper();
-            c.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSource);
         }
+        //*************************Maxi**********************************
+        private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
+        {
+
+        }  
     }
 }

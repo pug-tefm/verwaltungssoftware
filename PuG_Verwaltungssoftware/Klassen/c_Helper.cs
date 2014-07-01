@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -11,12 +12,16 @@ namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Helper
     {
-
+        // Klassenvariablen deklarieren und initialisieren
         static readonly string PasswordHash = "P@@Sw0rd";
         static readonly string SaltKey = "S@LT&KEY";
         static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
-        // Methode zum Verschluesseln von Strings
+        /**********************************************/
+        /* public static String encrypt(String query) */
+        /**********************************************/
+        /* Verschlüssel eines Strings                 */
+        /**********************************************/
         public static String encrypt(String query)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(query);
@@ -41,7 +46,11 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Convert.ToBase64String(cipherTextBytes);
         }
 
-        // Methode zum Entschluesseln von Strings
+        /**********************************************/
+        /* public static String decrypt(String query) */
+        /**********************************************/
+        /* Entschlüssel eines Strings                 */
+        /**********************************************/
         public static String decrypt(String query)
         {
             byte[] cipherTextBytes = Convert.FromBase64String(query);
@@ -59,9 +68,16 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
 
-        // Methode zum Ueberpruefen, ob nur Nummern, Komma oder Punkt im String enthalten sind
-        public static bool numFormatPunktKomma(String query)
+        /************************************************************************/
+        /* public static bool numFormatPunktKomma(String query, int laenge = 0) */
+        /************************************************************************/
+        /* Überprüfen ob nur Nummer, Komma oder Punkt im String enthalten sind. */
+        /* Zusätzlich wird die Länge optional abgefragt                         */
+        /************************************************************************/
+        public static bool numFormatPunktKomma(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             int zaehler = 0;
             for (int i = 0; i < query.Length; i++)
             {
@@ -80,9 +96,16 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
-        // Methode zum Ueberpruefen, ob nur Nummern im String enthalten sind
-        public static bool numFormat(String query)
+        /**************************************************************/
+        /* public static bool numFormat(String query, int laenge = 0) */
+        /**************************************************************/
+        /* Überprüfen ob nur Nummer im String enthalten sind.         */
+        /* Zusätzlich wird die Länge optional abgefragt               */
+        /**************************************************************/
+        public static bool numFormat(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
@@ -94,13 +117,20 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
-        // Methode zum Ueberpruefen ob nur Buchstaben im String enthalten sind
-        public static bool wrongCharacters(String query)
+        /********************************************************************/
+        /* public static bool wrongCharacters(String query, int laenge = 0) */
+        /********************************************************************/
+        /* Überprüfen ob nur Buchstaben im String enthalten sind.           */
+        /* Zusätzlich wird die Länge optional abgefragt                     */
+        /********************************************************************/
+        public static bool wrongCharacters(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
-                if ((character < 65 || character > 90) && (character < 97 || character > 122)) // Großbuchstaben && Kleinbuchstaben
+                if ((character < 65 || character > 90) && (character < 97 || character > 122)) // Großbuchstaben && Kleinbuchstaben // TODO eventeull ä,ö,ü
                 {
                     return true;
                 }
@@ -108,13 +138,21 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
-        // Methode zum Ueberpruefen ob nur Buchstaben Zahlen und einige extra Zeichen im String enthalten sind
-        public static bool wrongCharNumberExtra(String query)
+        /*************************************************************************/
+        /* public static bool wrongCharNumberExtra(String query, int laenge = 0) */
+        /*************************************************************************/
+        /* Überprüfen ob nur Buchstaben, Zahlen und einige extra Zeichen         */
+        /* im String enthalten sind.                                             */
+        /* Zusätzlich wird die Länge optional abgefragt                          */
+        /*************************************************************************/
+        public static bool wrongCharNumberExtra(String query, int laenge = 0)
         {
+            if (query.Trim().Length <= 0 || query.Length > laenge) return true; // Länge falsch
+
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
-                if ((character < 65 || character > 90) && (character < 97 || character > 122) && (character < 48 || character > 57) // Großbuchstaben && Kleinbuchstaben && 0 bis 9
+                if ((character < 65 || character > 90) && (character < 97 || character > 122) && (character < 32 || character > 57) // Großbuchstaben && Kleinbuchstaben && 0 bis 9
                   && character != 45) // - + & / #
                 {
                     return true;
@@ -123,9 +161,15 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        /****************************************************************/
+        /* public static String umwandlungIntInWochentag(int wochentag) */
+        /****************************************************************/
+        /* Der Wochentag wurd von einem int Wert (0-6) in Wochentage    */
+        /* (Strings umgewandelt)                                        */
+        /****************************************************************/
         public static String umwandlungIntInWochentag(int wochentag)
         {
-            if (wochentag == 0) return "Montag";
+            if      (wochentag == 0) return "Montag";
             else if (wochentag == 1) return "Dienstag";
             else if (wochentag == 2) return "Mittwoch";
             else if (wochentag == 3) return "Donnerstag";
@@ -135,42 +179,63 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return "-1";
         }
 
+        /****************************************************************/
+        /* public static int umwandlungWochentagInInt(String wochentag) */
+        /****************************************************************/
+        /* Der Wochentag wurd von einem String in einen int Wert (0-6)  */
+        /* umgewandelt                                                  */
+        /****************************************************************/
         public static int umwandlungWochentagInInt(String wochentag)
         {
-            if (wochentag == "Montag") return 0;
-            else if (wochentag == "Dienstag") return 1;
-            else if (wochentag == "Mittwoch") return 2;
+            if      (wochentag == "Montag")     return 0;
+            else if (wochentag == "Dienstag")   return 1;
+            else if (wochentag == "Mittwoch")   return 2;
             else if (wochentag == "Donnerstag") return 3;
-            else if (wochentag == "Freitag") return 4;
-            else if (wochentag == "Samstag") return 5;
-            else if (wochentag == "Sonntag") return 6;
+            else if (wochentag == "Freitag")    return 4;
+            else if (wochentag == "Samstag")    return 5;
+            else if (wochentag == "Sonntag")    return 6;
             else return -1;
         }
 
+        /**********************************************************************/
+        /* public static String umwandlungWochentagEngToGer(String wochentag) */
+        /**********************************************************************/
+        /* Der Wochentag wird von Englisch nach Deutsch übersetzt.            */
+        /**********************************************************************/
         public static String umwandlungWochentagEngToGer(String wochentag)
         {
-            if (wochentag == "Monday") return "Montag";
-            else if (wochentag == "Tuesday") return "Dienstag";
+            if      (wochentag == "Monday")    return "Montag";
+            else if (wochentag == "Tuesday")   return "Dienstag";
             else if (wochentag == "Wednesday") return "Mittwoch";
-            else if (wochentag == "Thursday") return "Donnerstag";
-            else if (wochentag == "Friday") return "Freitag";
-            else if (wochentag == "Saturday") return "Samstag";
-            else if (wochentag == "Sunday") return "Sonntag";
+            else if (wochentag == "Thursday")  return "Donnerstag";
+            else if (wochentag == "Friday")    return "Freitag";
+            else if (wochentag == "Saturday")  return "Samstag";
+            else if (wochentag == "Sunday")    return "Sonntag";
             else return "-1";
         }
 
+        /**********************************************************************/
+        /* public static String umwandlungWochentagGerToEng(String wochentag) */
+        /**********************************************************************/
+        /* Der Wochentag wird von Deutsch nach Englisch übersetzt.            */
+        /**********************************************************************/
         public static String umwandlungWochentagGerToEng(String wochentag)
         {
-            if (wochentag == "Montag") return "Monday";
-            else if (wochentag == "Dienstag") return "Tuesday";
-            else if (wochentag == "Mittwoch") return "Wednesday";
+            if       (wochentag == "Montag")    return "Monday";
+            else if (wochentag == "Dienstag")   return "Tuesday";
+            else if (wochentag == "Mittwoch")   return "Wednesday";
             else if (wochentag == "Donnerstag") return "Thursday";
-            else if (wochentag == "Freitag") return "Friday";
-            else if (wochentag == "Samstag") return "Saturday";
-            else if (wochentag == "Sonntag") return "Sunday";
+            else if (wochentag == "Freitag")    return "Friday";
+            else if (wochentag == "Samstag")    return "Saturday";
+            else if (wochentag == "Sonntag")    return "Sunday";
             else return "-1";
         }
 
+        /************************************************************************************************************************************/
+        /* public void textBoxSuchenTextChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource) */
+        /************************************************************************************************************************************/
+        /* Wenn sich er TextBox Text geändert haben sollte, wird der Filter angepasst                                                        */
+        /************************************************************************************************************************************/
         public void textBoxSuchenTextChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource)
         {
             string suchen = "";
@@ -184,12 +249,13 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
             }
             bindingSource.Filter = string.Format(suchen, textBox.Text);
-
-            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
-            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-            //sortieren();
         }
 
+        /**********************************************************************************************************************************************/
+        /* public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource) */
+        /**********************************************************************************************************************************************/
+        /* Wenn sich der ComboBox Index geändert haben sollte, wird der Filter angepasst.                                                             */
+        /**********************************************************************************************************************************************/
         public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource)
         {
             if (!String.IsNullOrEmpty(textBox.Text))
@@ -200,11 +266,46 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen += dataGridView.Columns[comboBox.SelectedIndex].HeaderText.ToString();
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
                 bindingSource.Filter = string.Format(suchen, textBox.Text);
-
-                // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
-                // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-                //sortieren();
             }
+        }
+
+        /***********************************************************************************************************/
+        /* public static bool changeColumnDataType(DataTable table, string columnname, Type newtype, int position) */
+        /***********************************************************************************************************/
+        /*  Der Datentyp von einer Spalte wird zur Laufzeit verändert                                              */
+        /***********************************************************************************************************/
+        public static bool changeColumnDataType(DataTable table, string columnname, Type newtype, int position)
+        {
+            if (table.Columns.Contains(columnname) == false)
+                return false;
+
+            DataColumn column = table.Columns[columnname];
+            if (column.DataType == newtype)
+                return true;
+
+            try
+            {
+                DataColumn newcolumn = new DataColumn("temp", newtype);
+                table.Columns.Add(newcolumn);
+                foreach (DataRow row in table.Rows)
+                {
+                    try
+                    {
+                        row["temp"] = Convert.ChangeType(row[columnname], newtype);
+                    }
+                    catch
+                    {
+                    }
+                }
+                table.Columns.Remove(columnname);
+                newcolumn.ColumnName = columnname;
+                table.Columns[columnname].SetOrdinal(position - 1);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

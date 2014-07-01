@@ -1,6 +1,7 @@
 ﻿using PuG_Verwaltungssoftware.Klassen;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,29 +12,42 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
-        private bool kommendeKurse   = false; // Initialiesierung
-        private bool laufendeKurse   = false; // der die drei Zustände
-        private bool vergangeneKurse = false; // des Filters
+        // Klassenvariablen deklarieren
+        private BindingSource bindingSourceKurse = new BindingSource();
+        private bool          kommendeKurse      = false; // Initialiesierung
+        private bool          laufendeKurse      = false; // der die drei Zustände
+        private bool          vergangeneKurse    = false; // des Filters
 
         private void tabPageKurse_Enter(object sender, EventArgs e)
         {
-            int dBConnectOk = c.openConnection();  // Datenbank oeffnen
-            c.displayData("SELECT * FROM kurse;", gridKurse);
-            c.closeConnection(); // Datenbank schliessen
+            int connected = c.openConnection();  // Datenbank oeffnen
+            if (connected == 0)
+            {          
+                c.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " + 
+                          "AS Kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " + 
+                          "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", gridKurse);
+                c.closeConnection(); // Datenbank schliessen
 
-            if (dBConnectOk == 0)
-            {
                 // Headertexte anpassen
-                //gridMitarbeiter.Columns["kurs_id"].HeaderText = "Kurs-ID";
-                //gridMitarbeiter.Columns["kursleiter"].HeaderText = "Kursleiter";
-                //gridMitarbeiter.Columns["bezeichnung"].HeaderText = "Bezeichnung";
-                //gridMitarbeiter.Columns["akt_teilnehmer"].HeaderText = "Akt. Teilnehmer";
-                //gridMitarbeiter.Columns["max_teilnehmer"].HeaderText = "Max. Teilnehmer";
-                //gridMitarbeiter.Columns["datuum_von"].HeaderText = "Datum Von";
-                //gridMitarbeiter.Columns["datum_bis"].HeaderText = "Datum Bis";
-                //gridMitarbeiter.Columns["wochentag"].HeaderText = "Wochentag";
-                //gridMitarbeiter.Columns["uhrzeit_von"].HeaderText = "Uhrzeit Von";
-                //gridMitarbeiter.Columns["uhrzeit_bis"].HeaderText = "Uhrzeit Bis";
+                DataTable gridKurseTable = (DataTable)(gridKurse.DataSource);
+                gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
+                gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                gridKurseTable.Columns["preis"].ColumnName          = "Preis";
+                gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
+                gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
+                gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
+                gridKurseTable.Columns["datum_bis"].ColumnName      = "Datum Bis";
+                gridKurseTable.Columns["wochentag"].ColumnName      = "Wochentag";
+                gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
+                gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
+
+                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9);
+
+                for (int i = 0; i < gridKurseTable.Rows.Count; i++)
+                {
+                    String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
+                    gridKurseTable.Rows[i]["Wochentag"] = wert;
+                }
             }
 
             if (gridKurse.ColumnCount > 0)
@@ -44,17 +58,19 @@ namespace PuG_Verwaltungssoftware
                 }
                 ddlKursSuchen.SelectedIndex = 0;
             }
-            
+
+            bindingSourceKurse.DataSource = gridKurse.DataSource;
+            gridKurse.DataSource = bindingSourceKurse;            
         }
 
         private void rowsLoeschenKurse(DataGridView dataGridView)
         {
-            if (gridKurse.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            if (dataGridView.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
                 foreach (DataGridViewRow row in dataGridView.SelectedRows) // Wegen Multiselect
                 {
                     int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value);
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-ID. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -75,7 +91,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void oeffnen()
+        private void kurseOeffnen()
         {
             if (gridKurse.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
@@ -89,7 +105,7 @@ namespace PuG_Verwaltungssoftware
                         myKurse.setKursId(int.Parse(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value.ToString()));
                         myKurse.setKursleiter(gridKurse.Rows[row.Index].Cells["Kursleiter"].Value.ToString());
                         myKurse.setBezeichnung(gridKurse.Rows[row.Index].Cells["Bezeichnung"].Value.ToString());
-                        myKurse.setPreis(double.Parse(gridKurse.Rows[row.Index].Cells["Preis"].Value.ToString()));
+                        myKurse.setPreis(double.Parse(gridKurse.Rows[row.Index].Cells["preis"].Value.ToString()));
                         myKurse.setAktTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["Akt. Teilnehmer"].Value.ToString()));
                         myKurse.setMaxTeilnehmer(int.Parse(gridKurse.Rows[row.Index].Cells["Max. Teilnehmer"].Value.ToString()));
                         myKurse.setDatumVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Datum Von"].Value.ToString()));
@@ -98,7 +114,7 @@ namespace PuG_Verwaltungssoftware
                         myKurse.setUhrzeitVon(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Uhrzeit Von"].Value.ToString()));
                         myKurse.setUhrzeitBis(DateTime.Parse(gridKurse.Rows[row.Index].Cells["Uhrzeit Bis"].Value.ToString()));
 
-                        winKursOeffnen myKurseOeffnen = new winKursOeffnen(ref myKurse, ref gridKurse); // und an neues Fenster übergeben
+                        winKursOeffnen myKurseOeffnen = new winKursOeffnen(myKurse, gridKurse); // und an neues Fenster übergeben
                         myKurseOeffnen.Visible = true;
                     }
                 }
@@ -112,13 +128,21 @@ namespace PuG_Verwaltungssoftware
         private void comboBoxSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+            myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
+
+            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
+            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
+            kurseSortieren();
         }
 
         private void textBoxSuchen_TextChanged(object sender, EventArgs e)
         {
             c_Helper myHelper = new c_Helper();
-            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSource);
+            myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
+
+            // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
+            // diese wieder ausgeblendet werden, wenn ein Filter vorliget
+            kurseSortieren();
         }
 
         private void btKursLoeschen_Click(object sender, EventArgs e)
@@ -128,43 +152,72 @@ namespace PuG_Verwaltungssoftware
 
         private void btKursNeu_Click(object sender, EventArgs e)
         {
-            winKursNeu window = new winKursNeu(gridKurse);
+            winKursNeu window = new winKursNeu(gridKurse, bindingSourceKurse);
             window.Show();
         }
 
         private void btKursOeffnen_Click(object sender, EventArgs e)
         {
-            oeffnen();
+            kurseOeffnen();
         }
 
+        private void gridKurse_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kurseOeffnen();
+        }
 
         private void gridKurse_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) // Rechtsklick
             {
                 // ContextMenuStrip mit ToolStipMenuItem erzeugen
-                ContextMenuStrip  myContextMenu      = new ContextMenuStrip();
-                ToolStripMenuItem toolStripItemOne   = new ToolStripMenuItem("Kommende Kurse");
-                ToolStripMenuItem toolStripItemTwo   = new ToolStripMenuItem("Laufende Kurse");
-                ToolStripMenuItem toolStripItemThree = new ToolStripMenuItem("Vergangene Kurse");
-                ToolStripMenuItem toolStripItemFour  = new ToolStripMenuItem("Keine Einschränkung");
+                ContextMenuStrip myContextMenu              = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemNeu          = new ToolStripMenuItem("Neu");
+                ToolStripMenuItem toolStripItemOeffnen      = new ToolStripMenuItem("Öffnen");
+                ToolStripMenuItem toolStripItemLoeschen     = new ToolStripMenuItem("Löschen");
+                ToolStripMenuItem toolStripItemKommende     = new ToolStripMenuItem("Kommende Kurse");
+                ToolStripMenuItem toolStripItemLaufenden    = new ToolStripMenuItem("Laufende Kurse");
+                ToolStripMenuItem toolStripItemVergangene   = new ToolStripMenuItem("Vergangene Kurse");
+                ToolStripMenuItem toolStripItemKeineEinsch  = new ToolStripMenuItem("Keine Einschränkung");
+                ToolStripMenuItem toolStripItemAktualisiere = new ToolStripMenuItem("Aktualisieren (F5)");
 
                 // Items hinzufügen
-                myContextMenu.Items.Add(toolStripItemOne);
-                myContextMenu.Items.Add(toolStripItemTwo);
-                myContextMenu.Items.Add(toolStripItemThree);
-                myContextMenu.Items.Add(toolStripItemFour);
+                myContextMenu.Items.Add(toolStripItemNeu);
+                myContextMenu.Items.Add(toolStripItemOeffnen);
+                myContextMenu.Items.Add(toolStripItemLoeschen);
+                myContextMenu.Items.Add("-");
+                myContextMenu.Items.Add(toolStripItemKommende);
+                myContextMenu.Items.Add(toolStripItemLaufenden);
+                myContextMenu.Items.Add(toolStripItemVergangene);
+                myContextMenu.Items.Add(toolStripItemKeineEinsch);
+                myContextMenu.Items.Add("-");
+                myContextMenu.Items.Add(toolStripItemAktualisiere);
 
                 // Und bei auswahl mit einem Bild versehen 
-                if (kommendeKurse == true)   toolStripItemOne.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (laufendeKurse == true)   toolStripItemTwo.Image   = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
-                if (vergangeneKurse == true) toolStripItemThree.Image = Bitmap.FromFile("C:\\Users\\User\\Source\\Repos\\Verwaltungssoftware\verwaltungssoftware_\\PuG_Verwaltungssoftware\\Ressources\\Images\\haken_gruen.png");
+                toolStripItemNeu.Image      = PuG_Verwaltungssoftware.Properties.Resources.pug_new;
+                toolStripItemOeffnen.Image  = PuG_Verwaltungssoftware.Properties.Resources.pug_open;
+                toolStripItemLoeschen.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_delete;
+
+                if (kommendeKurse == true) toolStripItemKommende.Image     = PuG_Verwaltungssoftware.Properties.Resources.pug_check;
+                if (laufendeKurse == true) toolStripItemLaufenden.Image    = PuG_Verwaltungssoftware.Properties.Resources.pug_check;
+                if (vergangeneKurse == true) toolStripItemVergangene.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_check;
+
+                if (kommendeKurse == false && laufendeKurse == false && vergangeneKurse == false)
+                {
+                    toolStripItemKeineEinsch.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_check;
+                }
+
+                toolStripItemAktualisiere.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
 
                 // Handler der Items
-                toolStripItemOne.Click   += new EventHandler(toolStripItemOne_Click);
-                toolStripItemTwo.Click   += new EventHandler(toolStripItemTwo_Click);
-                toolStripItemThree.Click += new EventHandler(toolStripItemThree_Click);
-                toolStripItemFour.Click  += new EventHandler(toolStripItemFour_Click);
+                toolStripItemNeu.Click          += new EventHandler(toolStripItemNeuKurse_Click);
+                toolStripItemOeffnen.Click      += new EventHandler(toolStripItemOeffnenKurse_Click);
+                toolStripItemLoeschen.Click     += new EventHandler(toolStripItemLoeschenKurse_Click);
+                toolStripItemKommende.Click     += new EventHandler(toolStripItemKommendeKurse_Click);
+                toolStripItemLaufenden.Click    += new EventHandler(toolStripItemLaufendeKurse_Click);
+                toolStripItemVergangene.Click   += new EventHandler(toolStripItemVergangeneKurse_Click);
+                toolStripItemKeineEinsch.Click  += new EventHandler(toolStripItemKeineEinschKurse_Click);
+                toolStripItemAktualisiere.Click += new EventHandler(toolStripItemAktualisierenKurse_Click);
 
                 int currentMouseOverRow = gridKurse.HitTest(e.X, e.Y).RowIndex;
 
@@ -186,8 +239,13 @@ namespace PuG_Verwaltungssoftware
 
             if (e.KeyData == (Keys.Control | Keys.N)) // Steuerung + N = Neuer Kurs
             {
-                winKursNeu myKurseNeu = new winKursNeu(gridKurse);
+                winKursNeu myKurseNeu = new winKursNeu(gridKurse, bindingSourceKurse);
                 myKurseNeu.Visible = true;
+            }
+
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                aktualisieren();
             }
         }
 
@@ -230,7 +288,7 @@ namespace PuG_Verwaltungssoftware
         {
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
             // diese wieder ausgeblendet werden, wenn ein Filter vorliget
-            sortieren();
+            kurseSortieren();
         }
 
         private void gridKurse_Paint(object sender, PaintEventArgs e)
@@ -240,14 +298,14 @@ namespace PuG_Verwaltungssoftware
             for (int i = 0; i < gridKurse.RowCount; i++) // Alle Zeilen anschauen
             {
                 DateTime beginnDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Von"].Value.ToString());
-                DateTime endDate = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Bis"].Value.ToString());
-                if (today >= beginnDate && today <= endDate) // Wenn ein laufender Kurs
+                DateTime endDate    = DateTime.Parse(gridKurse.Rows[i].Cells["Datum Bis"].Value.ToString());
+                if (today >= beginnDate && today <= endDate || beginnDate == endDate) // Wenn ein laufender Kurs
                 {
                     String wochentag = gridKurse.Rows[i].Cells["Wochentag"].Value.ToString();
                     if (c_Helper.umwandlungWochentagEngToGer(today.DayOfWeek.ToString()) == wochentag) // Wenn Tag = Heute
                     {
                         DateTime beginnUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["Uhrzeit Von"].Value.ToString());
-                        DateTime endUhrzeit = DateTime.Parse(gridKurse.Rows[i].Cells["Uhrzeit Bis"].Value.ToString());
+                        DateTime endUhrzeit    = DateTime.Parse(gridKurse.Rows[i].Cells["Uhrzeit Bis"].Value.ToString());
                         if (today.TimeOfDay > beginnUhrzeit.TimeOfDay && today.TimeOfDay < endUhrzeit.TimeOfDay) // Wenn Uhrzeit passt
                         {
                             gridKurse.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen; // Kurs als gerade laufend kennzeichnen
@@ -257,31 +315,55 @@ namespace PuG_Verwaltungssoftware
                             gridKurse.Rows[i].DefaultCellStyle.BackColor = Color.White; // Default Farbe zuweisen
                         }
                     }
+                    else
+                    {
+                        gridKurse.Rows[i].DefaultCellStyle.BackColor = Color.White; // Default Farbe zuweisen
+                    }
+                }
+                else
+                {
+                    gridKurse.Rows[i].DefaultCellStyle.BackColor = Color.White; // Default Farbe zuweisen
                 }
             }
         }
 
-        private void toolStripItemOne_Click(object sender, EventArgs args)
+        private void toolStripItemNeuKurse_Click(object sender, EventArgs args)
+        {
+            winKursNeu myKurseNeu = new winKursNeu(gridKurse, bindingSourceKurse);
+            myKurseNeu.Visible = true;
+        }
+
+        private void toolStripItemOeffnenKurse_Click(object sender, EventArgs args)
+        {
+            kurseOeffnen();
+        }
+
+        private void toolStripItemLoeschenKurse_Click(object sender, EventArgs args)
+        {
+            rowsLoeschenKurse(gridKurse);
+        }
+
+        private void toolStripItemKommendeKurse_Click(object sender, EventArgs args)
         {
             if (kommendeKurse == false)
             {
-                if (laufendeKurse   == true) laufendeKurseFilter();
+                if (laufendeKurse == true) laufendeKurseFilter();
                 if (vergangeneKurse == true) vergangeneKurseFilter();
                 kommendeKurseFilter();
             }
         }
 
-        private void toolStripItemTwo_Click(object sender, EventArgs args)
+        private void toolStripItemLaufendeKurse_Click(object sender, EventArgs args)
         {
             if (laufendeKurse == false)
             {
-                if (kommendeKurse   == true) kommendeKurseFilter();
+                if (kommendeKurse == true) kommendeKurseFilter();
                 if (vergangeneKurse == true) vergangeneKurseFilter();
                 laufendeKurseFilter();
             }
         }
 
-        private void toolStripItemThree_Click(object sender, EventArgs args)
+        private void toolStripItemVergangeneKurse_Click(object sender, EventArgs args)
         {
             if (vergangeneKurse == false)
             {
@@ -291,9 +373,55 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemFour_Click(object sender, EventArgs args)
+        private void toolStripItemKeineEinschKurse_Click(object sender, EventArgs args)
         {
             keineEinschraenkungen();
+        }
+
+        private void toolStripItemAktualisierenKurse_Click(object sender, EventArgs args)
+        {
+            aktualisieren();
+        }
+
+        private void aktualisieren()
+        {
+            // gridKurse aktualisieren
+            int connected = c.openConnection();
+            if (connected == 0)
+            {
+                c.displayData("SELECT kurs_id, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) " +
+                          "AS Kursleiter, bezeichnung, preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, uhrzeit_von, uhrzeit_bis " +
+                          "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id;", gridKurse);
+                c.closeConnection();
+
+                // Headertexte anpassen
+                DataTable gridKurseTable = (DataTable)(gridKurse.DataSource);
+                gridKurseTable.Columns["kurs_id"].ColumnName        = "Kurs-ID";
+                gridKurseTable.Columns["bezeichnung"].ColumnName    = "Bezeichnung";
+                gridKurseTable.Columns["preis"].ColumnName          = "Preis";
+                gridKurseTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
+                gridKurseTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
+                gridKurseTable.Columns["datum_von"].ColumnName      = "Datum Von";
+                gridKurseTable.Columns["datum_bis"].ColumnName      = "Datum Bis";
+                gridKurseTable.Columns["wochentag"].ColumnName      = "Wochentag";
+                gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
+                gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
+
+                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9);
+
+                for (int i = 0; i < gridKurseTable.Rows.Count; i++)
+                {
+                    String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKurseTable.Rows[i]["Wochentag"]));
+                    gridKurseTable.Rows[i]["Wochentag"] = wert;
+                }
+
+                bindingSourceKurse.DataSource = gridKurse.DataSource;
+                gridKurse.DataSource = bindingSourceKurse;
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void kommendeKurseFilter(bool kommendeKurseExtra = false)
@@ -406,7 +534,7 @@ namespace PuG_Verwaltungssoftware
             if (vergangeneKurse == true) vergangeneKurseFilter();
         }
 
-        private void sortieren()
+        private void kurseSortieren()
         {
             if (kommendeKurse == true)
             {
