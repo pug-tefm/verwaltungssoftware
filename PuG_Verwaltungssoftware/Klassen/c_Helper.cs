@@ -248,7 +248,16 @@ namespace PuG_Verwaltungssoftware.Klassen
                 suchen += dataGridView.Columns[comboBox.SelectedIndex].HeaderText.ToString();
                 suchen = "Convert([" + suchen + "], 'System.String') LIKE '*{0}*'";
             }
-            bindingSource.Filter = string.Format(suchen, textBox.Text);
+            try
+            {
+                bindingSource.Filter = string.Format(suchen, textBox.Text);
+            }
+            catch (Exception ex)
+            {
+                // Do nothing
+                // Problem --> Gridview Mitarbeiter Filter bei n.v. Werten
+            }
+            
         }
 
         /**********************************************************************************************************************************************/

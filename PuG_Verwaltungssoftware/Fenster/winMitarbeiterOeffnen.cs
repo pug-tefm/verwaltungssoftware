@@ -13,25 +13,43 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winMitarbeiterOeffnen : Form
     {
+        /*
+         * ******************************
+         *     Variablendeklarationen
+         * ******************************
+         * */
+        
         bool editMode = false;
-        bool save = false;
-        int gId = 0;
-        int gPosId = 0;
-        int gLoginMaId = 0;
-        DataGridView gGridView;
+        int gId = 0;          // Mitarbeiter-Nr. des zu oeffnenden Users
+        int gPosId = 0;       // Positions-ID des zu oeffnenden Users
+        int gLoginMaId = 0;   // Mitarbeiter-Nr. des angemeldeten Users
+        int gLoginPosId = 0;  // Positions-ID des angemeldeten Users
 
-        public winMitarbeiterOeffnen(int id, int loginId, DataGridView grid)
+        c_DBConnect c = new c_DBConnect();
+        
+        DataGridView gGridView;
+        private BindingSource bindingSourceMitarbeiter = new BindingSource();
+
+        public winMitarbeiterOeffnen(int id, int loginId, int loginPosId, DataGridView grid)
         {
             InitializeComponent();
             
             // ID festlegen
             gId = id;
             gLoginMaId = loginId;
+            gLoginPosId = loginPosId;
 
             // GridView zuweisen
             gGridView = grid;
 
         }
+
+
+        /*
+         * ******************************
+         *         Control Events
+         * ******************************
+         * */
 
         private void winMitarbeiterOeffnen_Load(object sender, EventArgs e)
         {
@@ -55,7 +73,6 @@ namespace PuG_Verwaltungssoftware
             String position = String.Empty;
 
             // Mitarbeiter-Daten abrufen
-            c_DBConnect c = new c_DBConnect();
             int dbConnectOk = c.openConnection();
             if (dbConnectOk == 0)
             {
@@ -66,7 +83,7 @@ namespace PuG_Verwaltungssoftware
                     nachname = (String)result.Rows[0]["nachname"];
                     gebDatum = (result.Rows[0]["geburtsdatum"]).ToString();
                     strasse = (String)result.Rows[0]["strasse"];
-                    //hausnummer = Convert.ToInt32((result.Rows[0]["hausnummer"])).ToString();
+                    hausnummer = (result.Rows[0]["hausnummer"]).ToString();
                     plz = (result.Rows[0]["plz"]).ToString();
                     ort = (String)result.Rows[0]["ort"];
                     gehalt = Convert.ToDouble((result.Rows[0]["gehalt"])).ToString();
@@ -88,6 +105,7 @@ namespace PuG_Verwaltungssoftware
                     tbVorname.Text = vorname;
                     tbNachname.Text = nachname;
                     tbGebDatum.Text = gebDatum;
+                    dtpGebDatum.Text = gebDatum;
                     tbStrasse.Text = strasse;
                     tbHausnummer.Text = hausnummer;
                     tbPlz.Text = plz;
@@ -109,7 +127,6 @@ namespace PuG_Verwaltungssoftware
             if (editMode == true)
             {
                 // MessageBox schliessen ohne speichern
-                // ######## unvollständig ##########
                 DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -131,15 +148,19 @@ namespace PuG_Verwaltungssoftware
         {
             // Globale Variable true setzen
             editMode = true;
-            
-            // Textboxen readOnly --> false
-            //foreach (Control control in gbDaten.Controls)
-            //{
-            //    if (control.GetType() == typeof(TextBox))
-            //    {
-            //        ((TextBox)control).ReadOnly = false;
-            //    }
-            //}
+
+            if (gLoginPosId == 1)
+            {
+                // Textboxen readOnly --> false
+                // Nur Chef darf Persoenliche Daten aendern
+                foreach (Control control in gbDaten.Controls)
+                {
+                    if (control.GetType() == typeof(TextBox))
+                    {
+                        ((TextBox)control).ReadOnly = false;
+                    }
+                }
+            }      
             foreach (Control control in gbAnschrift.Controls)
             {
                 if (control.GetType() == typeof(TextBox))
@@ -162,8 +183,16 @@ namespace PuG_Verwaltungssoftware
                 }
             }
 
+            // Controls visible 
             tbPosition.Visible = false;
             ddlMitarbeiterPosition.Visible = true;
+
+            if (gLoginPosId == 1)
+            {
+                tbGebDatum.Visible = false;
+                dtpGebDatum.Visible = true;
+            }
+            
 
             // =====================================
             //     Combobox mit Werten befuellen
@@ -172,9 +201,7 @@ namespace PuG_Verwaltungssoftware
             string bezeichnung = "";
             int pos = 0;
 
-            c_DBConnect c = new c_DBConnect();
             int dBConnectOk = c.openConnection();
-            //int dBConnectOk = 0;
             if (dBConnectOk == 0)
             {
                 int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
@@ -214,8 +241,6 @@ namespace PuG_Verwaltungssoftware
 
         private void btSpeichern_Click(object sender, EventArgs e)
         {
-            // Globale Variable true setzen
-            save = true;
 
             if (editMode == true)
             {
@@ -225,9 +250,9 @@ namespace PuG_Verwaltungssoftware
                 String gebDatum = String.Empty;
                 String strasse = String.Empty;
                 String hausnummer = String.Empty;
-                String plz = String.Empty;
+                int plz = 0;
                 String ort = String.Empty;
-                String gehalt = String.Empty;
+                double gehalt = 0.0;
                 String benutzername = String.Empty;
                 String position = String.Empty;
 
@@ -237,41 +262,90 @@ namespace PuG_Verwaltungssoftware
                 // Neues Mitarbeiter Objekt anlegen
                 c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
 
-                // Wertzuweisungen
-                vorname = tbVorname.Text;
-                nachname = tbNachname.Text;
-                gebDatum = tbGebDatum.Text;
-                strasse = tbStrasse.Text;
-                hausnummer = tbHausnummer.Text;
-                plz = tbPlz.Text;
-                ort = tbOrt.Text;
-                gehalt = tbGehalt.Text;
-                benutzername = tbBenutzername.Text;
-                position = ddlMitarbeiterPosition.SelectedItem.ToString();
-                if (position == "Chef")
+
+                // =====================================
+                //   Ueberpruefung auf leere Textfelder
+                // =====================================
+
+                // Persoenliche Daten
+                if (tbVorname.Text != "" && tbNachname.Text != "" && dtpGebDatum.Text != "")
                 {
-                    position = "1";
+                    vorname = tbVorname.Text;
+                    nachname = tbNachname.Text;
+                    // GebDatum umformatieren
+                    gebDatum = dtpGebDatum.Text;
+                    DateTime date = Convert.ToDateTime(gebDatum);
+                    gebDatum = date.ToString("yyyy-MM-dd");
                 }
                 else
                 {
-                    position = "2";
+                    MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.");
+                    return;
                 }
 
-                strSQL = String.Empty;
-                posId = 0;
-
-                // Formatierungen und Konvertierungen
-                DateTime date = Convert.ToDateTime(gebDatum);
-                gebDatum = date.ToString("yyyy-MM-dd");
-
-                if (tbPosition.Text == "Normal")
+                // Anschrift
+                if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbOrt.Text != "" && tbPlz.Text != "")
                 {
-                    posId = 2;
+                    strasse = tbStrasse.Text;
+                    ort = tbOrt.Text;
+                    if (c_Helper.wrongCharNumberExtra(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
+                    {
+                        hausnummer = tbHausnummer.Text;
+                        plz = Convert.ToInt32(tbPlz.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.");
+                        return;
+                    }
                 }
-                else if (tbPosition.Text == "Chef")
+                else
                 {
-                    posId = 1;
+                    MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.");
+                    return;
                 }
+
+                // Gehalt
+                if (tbGehalt.Text != "")
+                {
+                    gehalt = Convert.ToDouble(tbGehalt.Text);
+                    if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
+                    {
+                        MessageBox.Show("Falsches Format für das Feld Gehalt.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bitte Feld Gehalt ausfüllen.");
+                    return;
+                }
+
+                // Login - Daten
+                if (tbBenutzername.Text != "" && ddlMitarbeiterPosition.Text != "")
+                {
+                    benutzername = tbBenutzername.Text;
+                    // Ueberpruefen welche Position ausgewaehlt wurde
+                    if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Normal")
+                    {
+                        posId = 2;
+                    }
+                    else if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Chef")
+                    {
+                        posId = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Keine Position ausgewählt.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Login-Daten ausfüllen.");
+                    return;
+                }
+
+            
 
                 myMitarbeiter.setVorname(vorname);
                 myMitarbeiter.setNachname(nachname);
@@ -279,20 +353,29 @@ namespace PuG_Verwaltungssoftware
                 myMitarbeiter.setStrasse(strasse);
                 myMitarbeiter.setOrt(ort);
                 myMitarbeiter.setHausnummer(hausnummer);
-                myMitarbeiter.setPlz(Convert.ToInt32(plz));
-                myMitarbeiter.setGehalt(Convert.ToDouble(gehalt));
+                myMitarbeiter.setPlz(plz);
+                myMitarbeiter.setGehalt(gehalt);
                 myMitarbeiter.setBenutzername(benutzername);
                 myMitarbeiter.setPositionId(posId);
 
-                c_DBConnect c = new c_DBConnect();
+
                 int dBConnectOk = c.openConnection();
                 if (dBConnectOk == 0)
                 {
-                    strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "', gehalt = '" + gehalt + "' WHERE mitarbeiter_id = " + gId.ToString() +";";
+                    if (gLoginPosId == 1)
+                    {
+                        // String fuer Chef
+                        strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "', gehalt = '" + (gehalt.ToString()).Replace(",", ".") + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
+                    }
+                    else
+                    {
+                        //String fuer Mitarbeiter
+                        strSQL = "UPDATE mitarbeiter SET strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
+                    }
                     c.update(strSQL, "Mitarbeiter");
                     c.closeConnection();
-                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gGridView);
 
+                    gridMitarbeiterAktualisieren();
                     this.Close();  // Fenster schliessen
                 }
             }
@@ -303,6 +386,67 @@ namespace PuG_Verwaltungssoftware
         {
             winMitarbeiterPasswort window = new winMitarbeiterPasswort(gLoginMaId, gId);
             window.Show();
+        }
+
+
+        /*
+         * ******************************
+         *        Eigene Methoden
+         * ******************************
+         * */
+
+        private void gridMitarbeiterAktualisieren()
+        {
+            if (gLoginPosId == 1)
+            {
+                int dbConnect = c.openConnection();
+                if (dbConnect == 0)
+                {
+                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gGridView);
+                    c.closeConnection();
+
+                    // Headertexte anpassen
+                    DataTable gridMitarbeiterTable = (DataTable)(gGridView.DataSource);
+                    gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter_ID";
+                    gridMitarbeiterTable.Columns["vorname"].ColumnName = "Vorname";
+                    gridMitarbeiterTable.Columns["nachname"].ColumnName = "Nachname";
+                    gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+
+
+                    // Binding Objekt zuweisen
+                    bindingSourceMitarbeiter.DataSource = gGridView.DataSource;
+                    gGridView.DataSource = bindingSourceMitarbeiter;
+                }
+                else
+                {
+                    MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                int dbConnect = c.openConnection();
+                if (dbConnect == 0)
+                {
+                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + gLoginMaId + "';", gGridView);
+                    c.closeConnection();
+
+                    // Headertexte anpassen
+                    DataTable gridMitarbeiterTable = (DataTable)(gGridView.DataSource);
+                    gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter_ID";
+                    gridMitarbeiterTable.Columns["vorname"].ColumnName = "Vorname";
+                    gridMitarbeiterTable.Columns["nachname"].ColumnName = "Nachname";
+                    gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+
+
+                    // Binding Objekt zuweisen
+                    bindingSourceMitarbeiter.DataSource = gGridView.DataSource;
+                    gGridView.DataSource = bindingSourceMitarbeiter;
+                }
+                else
+                {
+                    MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
     }

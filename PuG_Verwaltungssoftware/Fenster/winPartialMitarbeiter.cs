@@ -13,59 +13,74 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
-        private int loginMaId = 0;
-        private int loginMaPosId = 0;
+        /*
+         * ******************************
+         *     Variablendeklarationen
+         * ******************************
+         * */
+        
+        private int loginMaId = 0;  // Mitarbeiter-Nr. des angemeldeten Users
+        private int loginMaPosId = 0;   // Position-ID des angemeldeten Users
         private bool initMitarbeiter = false;
-        private String loginMaVorname = String.Empty;
-        private String loginMaNachname = String.Empty;
+        private String loginMaVorname = String.Empty;   // Vorname des angemeldeten Users
+        private String loginMaNachname = String.Empty;  // Nachname des angemeldeten Users
 
         private BindingSource bindingSourceMitarbeiter = new BindingSource();
+
+
+        /*
+         * ******************************
+         *         Control Events
+         * ******************************
+         * */
 
         private void tabPageMitarbeiter_Enter(object sender, EventArgs e)
         {
             int dBConnectOk = c.openConnection();  // Datenbank oeffnen
-
-            if (loginMaPosId == 1)
+            if(dBConnectOk == 0)
             {
-                // Mitarbeiter ist admin (chef)
-                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
-            }
-            else
-            {
-                // Mitarbeiter ist "normaler" Benutzer
-                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + loginMaId + "';", gridMitarbeiter);
-                btMaLoeschen.Enabled         = false;
-                btMaNeu.Enabled              = false;
-                ddlMitarbeiterSuchen.Enabled = false;
-                tbMitarbeiterSuchen.Enabled  = false;
-                
-            }
-            c.closeConnection(); // Datenbank schliessen
-            if (dBConnectOk == 0)
-            {
+                if (loginMaPosId == 1)
+                {
+                    // Mitarbeiter ist admin (chef)
+                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
+                    c.closeConnection(); // Datenbank schliessen
+                }
+                else
+                {
+                    // Mitarbeiter ist "normaler" Benutzer
+                    c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + loginMaId + "';", gridMitarbeiter);
+                    btMaLoeschen.Enabled = false;
+                    btMaNeu.Enabled = false;
+                    ddlMitarbeiterSuchen.Enabled = false;
+                    tbMitarbeiterSuchen.Enabled = false;
+                    c.closeConnection(); // Datenbank schliessen
+                }
+            
+ 
                 // Headertexte anpassen
                 DataTable gridMitarbeiterTable = (DataTable)(gridMitarbeiter.DataSource);
-                //gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter-Nr.";
+                gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter_ID";
                 gridMitarbeiterTable.Columns["vorname"].ColumnName        = "Vorname";
                 gridMitarbeiterTable.Columns["nachname"].ColumnName       = "Nachname";
                 gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName   = "Geburtsdatum";
-            }  
+             
             
-            // Binding Objekt zuweisen
-            bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
-            gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
+                // Binding Objekt zuweisen
+                bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
+                gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
 
-            if (initMitarbeiter == false)
-            {
-                if (gridMitarbeiter.ColumnCount > 0)
+                if (initMitarbeiter == false)
                 {
-                    for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+                    if (gridMitarbeiter.ColumnCount > 0)
                     {
-                        ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                        for (int i = 0; i < gridMitarbeiter.ColumnCount; i++)
+                        {
+                            ddlMitarbeiterSuchen.Items.Add(gridMitarbeiter.Columns[i].HeaderText);
+                        }
+                        ddlMitarbeiterSuchen.SelectedIndex = 0;
                     }
-                    ddlMitarbeiterSuchen.SelectedIndex = 0;
+                    initMitarbeiter = true;
                 }
-                initMitarbeiter = true;
             }
         }
 
@@ -185,8 +200,7 @@ namespace PuG_Verwaltungssoftware
 
             if (e.KeyData == (Keys.Control | Keys.N)) // Steuerung + N = Neuen Miarbeiter
             {
-                winMitarbeiterNeu window = new winMitarbeiterNeu();
-                window.Show();
+                neuerMitarbeiter();
             }
 
             if(e.KeyData == (Keys.Control | Keys.O))  // Steuerung + O = Mitarbeiter öffnen
@@ -200,6 +214,13 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+
+        /*
+         * ******************************
+         *        Eigene Methoden
+         * ******************************
+         * */
+
         private void mitarbeiterOeffnen()
         {
             if (gridMitarbeiter.CurrentCell != null) // Wenn eine Zelle ausgewählt
@@ -209,7 +230,7 @@ namespace PuG_Verwaltungssoftware
                     if (gridMitarbeiter.RowCount > 0) // Wenn Zeilenanzahl größer 0
                     {
                         int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
-                        winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, gridMitarbeiter);
+                        winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, loginMaPosId, gridMitarbeiter);
                         window.Show();
 
                     }
@@ -223,7 +244,7 @@ namespace PuG_Verwaltungssoftware
 
         private void neuerMitarbeiter()
         {
-            winMitarbeiterNeu window = new winMitarbeiterNeu();
+            winMitarbeiterNeu window = new winMitarbeiterNeu(loginMaPosId, loginMaPosId, gridMitarbeiter);
             window.Show();
         }
 
@@ -234,6 +255,18 @@ namespace PuG_Verwaltungssoftware
             {
                 c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);
                 c.closeConnection();
+
+                // Headertexte anpassen
+                DataTable gridMitarbeiterTable = (DataTable)(gridMitarbeiter.DataSource);
+                gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter_ID";
+                gridMitarbeiterTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitarbeiterTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+
+
+                // Binding Objekt zuweisen
+                bindingSourceMitarbeiter.DataSource = gridMitarbeiter.DataSource;
+                gridMitarbeiter.DataSource = bindingSourceMitarbeiter;
             }
             else
             {
@@ -248,12 +281,17 @@ namespace PuG_Verwaltungssoftware
                 foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
                 {
                     int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                    if (id == 1)
+                    {
+                        DialogResult dialogResultSelf = MessageBox.Show("Der Mitarbeiter mit der Mitarbeiter-Nr. '1' kann nicht gelöscht werden.", "Information", MessageBoxButtons.OK);
+                        return;
+                    }
                     if (id == loginMaId)
                     {
                         DialogResult dialogResultSelf = MessageBox.Show("Sie können sich nicht selbst löschen.", "Information", MessageBoxButtons.OK);
                         return;
                     }
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Achtung", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
                     {

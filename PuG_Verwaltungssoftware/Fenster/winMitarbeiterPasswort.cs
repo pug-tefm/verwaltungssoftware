@@ -13,6 +13,12 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winMitarbeiterPasswort : Form
     {
+        /*
+         * ******************************
+         *     Variablendeklarationen
+         * ******************************
+         * */     
+        
         c_DBConnect c = new c_DBConnect();
         int gLoginId = 0;
         int gId = 0;
@@ -24,6 +30,13 @@ namespace PuG_Verwaltungssoftware
             gLoginId = loginId;
             gId = id;
         }
+
+
+        /*
+         * ******************************
+         *         Control Events
+         * ******************************
+         * */
 
         private void winMitarbeiterPasswort_Load(object sender, EventArgs e)
         {
