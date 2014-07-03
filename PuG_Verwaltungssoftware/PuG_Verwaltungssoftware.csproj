@@ -87,6 +87,7 @@
     <Compile Include="Klassen\c_Helper.cs" />
     <Compile Include="Klassen\c_Kurse.cs" />
     <Compile Include="Klassen\c_Mitarbeiter.cs" />
+    <Compile Include="Klassen\c_Mitglieder.cs" />
     <Compile Include="Klassen\c_Person.cs" />
     <Compile Include="Fenster\winKursNeu.cs">
       <SubType>Form</SubType>
