@@ -208,6 +208,7 @@
     <Content Include="Ressources\Images\Icons\Buttons\pug_close_groß.png" />
     <Content Include="Ressources\Images\Icons\Buttons\pug_delete_groß.png" />
     <Content Include="Ressources\Images\Icons\Buttons\pug_edit_groß.png" />
+    <Content Include="Ressources\Images\Icons\Buttons\pug_logout_groß.png" />
     <Content Include="Ressources\Images\Icons\Buttons\pug_open_groß.png" />
     <Content Include="Ressources\Images\Icons\Buttons\pug_refresh_groß.png" />
     <Content Include="Ressources\Images\Icons\Buttons\pug_save_groß.png" />
@@ -216,6 +217,7 @@
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_close.png" />
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_delete.png" />
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_edit.png" />
+    <Content Include="Ressources\Images\Icons\Contextmenu\pug_logout.png" />
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_open.png" />
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_refresh.png" />
     <Content Include="Ressources\Images\Icons\Contextmenu\pug_save.png" />
