@@ -422,6 +422,8 @@
             // scMitglieder
             // 
             this.scMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMitglieder.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scMitglieder.IsSplitterFixed = true;
             this.scMitglieder.Location = new System.Drawing.Point(0, 0);
             this.scMitglieder.Name = "scMitglieder";
             this.scMitglieder.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -810,8 +812,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
