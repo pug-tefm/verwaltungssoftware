@@ -419,6 +419,7 @@
             this.ClientSize = new System.Drawing.Size(394, 522);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 560);
             this.Name = "winMitarbeiterNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

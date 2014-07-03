@@ -32,11 +32,6 @@ namespace PuG_Verwaltungssoftware
             Application.Exit();
         }
 
-        private void mitarbeiterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void mainTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -220,67 +215,6 @@ namespace PuG_Verwaltungssoftware
                 tbUsername.Font = new Font(tbUsername.Font, FontStyle.Italic);
                 tbUsername.Text = "Benutzername";
             }
-        }
-
-
-        //*************************Maxi**********************************
-        // private BindingSource bindingSourceKursUebersicht = new BindingSource();
-        private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
-        {
-            int connected = c.openConnection();  // Datenbank oeffnen
-            if (connected == 0)
-            {
-                c.displayData(
-                          "SELECT kurs_id, bezeichnung, akt_teilnehmer, max_teilnehmer, CONCAT('(', mitarbeiter_id,') ', vorname, ', ', nachname) AS Kursleiter, wochentag,  uhrzeit_von, uhrzeit_bis, datum_von, datum_bis, preis " +
-                          "FROM kurse k, mitarbeiter m WHERE k.kursleiter_id = m.mitarbeiter_id; ", gridKursUebersicht);
-                c.closeConnection(); // Datenbank schliessen
-
-                // Headertexte anpassen
-                DataTable gridKursUebersichtTable = (DataTable)(gridKursUebersicht.DataSource);
-                gridKursUebersichtTable.Columns["kurs_id"].ColumnName = "Kurs-ID";
-                gridKursUebersichtTable.Columns["bezeichnung"].ColumnName = "Kurs-Name";
-                gridKursUebersichtTable.Columns["preis"].ColumnName = "Preis in Euro";
-                gridKursUebersichtTable.Columns["akt_teilnehmer"].ColumnName = "Akt. Teilnehmer";
-                gridKursUebersichtTable.Columns["max_teilnehmer"].ColumnName = "Max. Teilnehmer";
-                gridKursUebersichtTable.Columns["datum_von"].ColumnName = "Datum Von";
-                gridKursUebersichtTable.Columns["datum_bis"].ColumnName = "Datum Bis";
-                gridKursUebersichtTable.Columns["wochentag"].ColumnName = "Wochentag";
-                gridKursUebersichtTable.Columns["uhrzeit_von"].ColumnName = "Uhrzeit Von";
-                gridKursUebersichtTable.Columns["uhrzeit_bis"].ColumnName = "Uhrzeit Bis";
-
-                c_Helper.changeColumnDataType(gridKursUebersichtTable, "Wochentag", typeof(String));
-                gridKursUebersicht.Columns["Wochentag"].DisplayIndex = 6; // Info an Maxi ist jetzt dadurch änderbar
-
-                for (int i = 0; i < gridKursUebersichtTable.Rows.Count; i++)
-                {
-                    String wert = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(gridKursUebersichtTable.Rows[i]["Wochentag"]));
-                    gridKursUebersichtTable.Rows[i]["Wochentag"] = wert;
-                }
-
-                gridKursUebersicht.Refresh();
-
-            }
-
-            if (initKursUebersicht == false)
-            {
-                if (gridKursUebersicht.ColumnCount > 0)
-                {
-                    for (int i = 0; i < gridKursUebersicht.ColumnCount; i++)
-                    {
-                        ddlKursUebersichtSuchen.Items.Add(gridKursUebersicht.Columns[i].HeaderText);
-                    }
-                    ddlKursUebersichtSuchen.SelectedIndex = 0;
-                }
-                initKursUebersicht = true;
-            }
-
-            bindingSourceKursUebersicht.DataSource = gridKursUebersicht.DataSource;
-            gridKursUebersicht.DataSource = bindingSourceKursUebersicht;
-        }
-
-        private void btKursUebersichtNeu_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btAbmelden_Click(object sender, EventArgs e)

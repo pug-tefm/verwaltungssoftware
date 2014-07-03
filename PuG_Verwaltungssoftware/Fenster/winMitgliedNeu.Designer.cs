@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedNeu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
+            this.dtpVertragsDatum = new System.Windows.Forms.DateTimePicker();
             this.cbGesperrt = new System.Windows.Forms.CheckBox();
             this.ddlVertragsart = new System.Windows.Forms.ComboBox();
             this.tbKommentar = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.tbNachname = new System.Windows.Forms.TextBox();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
-            this.dtpVertragsDatum = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -106,6 +106,14 @@
             this.gbVertrag.TabIndex = 10;
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
+            // 
+            // dtpVertragsDatum
+            // 
+            this.dtpVertragsDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 60);
+            this.dtpVertragsDatum.Name = "dtpVertragsDatum";
+            this.dtpVertragsDatum.Size = new System.Drawing.Size(263, 23);
+            this.dtpVertragsDatum.TabIndex = 16;
             // 
             // cbGesperrt
             // 
@@ -359,14 +367,6 @@
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
-            // dtpVertragsDatum
-            // 
-            this.dtpVertragsDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 60);
-            this.dtpVertragsDatum.Name = "dtpVertragsDatum";
-            this.dtpVertragsDatum.Size = new System.Drawing.Size(263, 23);
-            this.dtpVertragsDatum.TabIndex = 16;
-            // 
             // winMitgliedNeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,6 +374,7 @@
             this.ClientSize = new System.Drawing.Size(394, 522);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 560);
             this.Name = "winMitgliedNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
