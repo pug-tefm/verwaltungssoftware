@@ -55,6 +55,8 @@
             this.tabPageMitglieder = new System.Windows.Forms.TabPage();
             this.scMitglieder = new System.Windows.Forms.SplitContainer();
             this.gridMitglieder = new System.Windows.Forms.DataGridView();
+            this.tbMitgliederSuchen = new System.Windows.Forms.TextBox();
+            this.ddlMitgliederSuchen = new System.Windows.Forms.ComboBox();
             this.btMgLoeschen = new System.Windows.Forms.Button();
             this.btMgNeu = new System.Windows.Forms.Button();
             this.btMgOeffnen = new System.Windows.Forms.Button();
@@ -81,8 +83,6 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
-            this.ddlMitgliederSuchen = new System.Windows.Forms.ComboBox();
-            this.tbMitgliederSuchen = new System.Windows.Forms.TextBox();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -417,6 +417,7 @@
             this.tabPageMitglieder.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
+            this.tabPageMitglieder.Enter += new System.EventHandler(this.tabPageMitglieder_Enter);
             // 
             // scMitglieder
             // 
@@ -454,6 +455,26 @@
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
             this.gridMitglieder.TabIndex = 1;
+            // 
+            // tbMitgliederSuchen
+            // 
+            this.tbMitgliederSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
+            this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
+            this.tbMitgliederSuchen.Size = new System.Drawing.Size(126, 26);
+            this.tbMitgliederSuchen.TabIndex = 8;
+            this.tbMitgliederSuchen.TextChanged += new System.EventHandler(this.tbMitgliederSuchen_TextChanged);
+            // 
+            // ddlMitgliederSuchen
+            // 
+            this.ddlMitgliederSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMitgliederSuchen.FormattingEnabled = true;
+            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
+            this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
+            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 26);
+            this.ddlMitgliederSuchen.TabIndex = 7;
+            this.ddlMitgliederSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlMitgliederSuchen_SelectedIndexChanged);
             // 
             // btMgLoeschen
             // 
@@ -777,24 +798,6 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
-            // ddlMitgliederSuchen
-            // 
-            this.ddlMitgliederSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlMitgliederSuchen.FormattingEnabled = true;
-            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
-            this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
-            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 26);
-            this.ddlMitgliederSuchen.TabIndex = 7;
-            // 
-            // tbMitgliederSuchen
-            // 
-            this.tbMitgliederSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
-            this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
-            this.tbMitgliederSuchen.Size = new System.Drawing.Size(124, 26);
-            this.tbMitgliederSuchen.TabIndex = 8;
-            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -802,8 +805,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
