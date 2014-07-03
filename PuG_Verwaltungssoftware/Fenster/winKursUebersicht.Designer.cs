@@ -152,6 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 427);
             this.Controls.Add(this.splitContainer1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(420, 465);
             this.MinimumSize = new System.Drawing.Size(420, 465);
             this.Name = "winKursUebersicht";

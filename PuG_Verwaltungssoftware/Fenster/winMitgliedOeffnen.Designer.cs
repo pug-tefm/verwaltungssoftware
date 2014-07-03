@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedOeffnen));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
+            this.tbKommentar = new System.Windows.Forms.TextBox();
+            this.lbKommentar = new System.Windows.Forms.Label();
+            this.tbGesperrt = new System.Windows.Forms.TextBox();
+            this.lbGesperrt = new System.Windows.Forms.Label();
+            this.tbVertragsdatum = new System.Windows.Forms.TextBox();
+            this.lbVertragsdatum = new System.Windows.Forms.Label();
             this.tbVertragsart = new System.Windows.Forms.TextBox();
             this.lbVertragsart = new System.Windows.Forms.Label();
             this.gbAnschrift = new System.Windows.Forms.GroupBox();
@@ -53,12 +59,6 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            this.tbVertragsdatum = new System.Windows.Forms.TextBox();
-            this.lbVertragsdatum = new System.Windows.Forms.Label();
-            this.tbGesperrt = new System.Windows.Forms.TextBox();
-            this.lbGesperrt = new System.Windows.Forms.Label();
-            this.tbKommentar = new System.Windows.Forms.TextBox();
-            this.lbKommentar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,6 +109,63 @@
             this.gbVertrag.TabIndex = 10;
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
+            // 
+            // tbKommentar
+            // 
+            this.tbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbKommentar.Location = new System.Drawing.Point(119, 123);
+            this.tbKommentar.Name = "tbKommentar";
+            this.tbKommentar.ReadOnly = true;
+            this.tbKommentar.Size = new System.Drawing.Size(214, 26);
+            this.tbKommentar.TabIndex = 13;
+            // 
+            // lbKommentar
+            // 
+            this.lbKommentar.AutoSize = true;
+            this.lbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbKommentar.Location = new System.Drawing.Point(12, 131);
+            this.lbKommentar.Name = "lbKommentar";
+            this.lbKommentar.Size = new System.Drawing.Size(85, 18);
+            this.lbKommentar.TabIndex = 12;
+            this.lbKommentar.Text = "Kommentar:";
+            // 
+            // tbGesperrt
+            // 
+            this.tbGesperrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGesperrt.Location = new System.Drawing.Point(119, 90);
+            this.tbGesperrt.Name = "tbGesperrt";
+            this.tbGesperrt.ReadOnly = true;
+            this.tbGesperrt.Size = new System.Drawing.Size(214, 26);
+            this.tbGesperrt.TabIndex = 11;
+            // 
+            // lbGesperrt
+            // 
+            this.lbGesperrt.AutoSize = true;
+            this.lbGesperrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGesperrt.Location = new System.Drawing.Point(12, 98);
+            this.lbGesperrt.Name = "lbGesperrt";
+            this.lbGesperrt.Size = new System.Drawing.Size(66, 18);
+            this.lbGesperrt.TabIndex = 10;
+            this.lbGesperrt.Text = "Gesperrt:";
+            // 
+            // tbVertragsdatum
+            // 
+            this.tbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVertragsdatum.Location = new System.Drawing.Point(119, 56);
+            this.tbVertragsdatum.Name = "tbVertragsdatum";
+            this.tbVertragsdatum.ReadOnly = true;
+            this.tbVertragsdatum.Size = new System.Drawing.Size(214, 26);
+            this.tbVertragsdatum.TabIndex = 9;
+            // 
+            // lbVertragsdatum
+            // 
+            this.lbVertragsdatum.AutoSize = true;
+            this.lbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVertragsdatum.Location = new System.Drawing.Point(12, 64);
+            this.lbVertragsdatum.Name = "lbVertragsdatum";
+            this.lbVertragsdatum.Size = new System.Drawing.Size(103, 18);
+            this.lbVertragsdatum.TabIndex = 8;
+            this.lbVertragsdatum.Text = "Vertragsdatum:";
             // 
             // tbVertragsart
             // 
@@ -342,63 +399,6 @@
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
-            // tbVertragsdatum
-            // 
-            this.tbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVertragsdatum.Location = new System.Drawing.Point(119, 56);
-            this.tbVertragsdatum.Name = "tbVertragsdatum";
-            this.tbVertragsdatum.ReadOnly = true;
-            this.tbVertragsdatum.Size = new System.Drawing.Size(214, 26);
-            this.tbVertragsdatum.TabIndex = 9;
-            // 
-            // lbVertragsdatum
-            // 
-            this.lbVertragsdatum.AutoSize = true;
-            this.lbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVertragsdatum.Location = new System.Drawing.Point(12, 64);
-            this.lbVertragsdatum.Name = "lbVertragsdatum";
-            this.lbVertragsdatum.Size = new System.Drawing.Size(103, 18);
-            this.lbVertragsdatum.TabIndex = 8;
-            this.lbVertragsdatum.Text = "Vertragsdatum:";
-            // 
-            // tbGesperrt
-            // 
-            this.tbGesperrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGesperrt.Location = new System.Drawing.Point(119, 90);
-            this.tbGesperrt.Name = "tbGesperrt";
-            this.tbGesperrt.ReadOnly = true;
-            this.tbGesperrt.Size = new System.Drawing.Size(214, 26);
-            this.tbGesperrt.TabIndex = 11;
-            // 
-            // lbGesperrt
-            // 
-            this.lbGesperrt.AutoSize = true;
-            this.lbGesperrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGesperrt.Location = new System.Drawing.Point(12, 98);
-            this.lbGesperrt.Name = "lbGesperrt";
-            this.lbGesperrt.Size = new System.Drawing.Size(66, 18);
-            this.lbGesperrt.TabIndex = 10;
-            this.lbGesperrt.Text = "Gesperrt:";
-            // 
-            // tbKommentar
-            // 
-            this.tbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKommentar.Location = new System.Drawing.Point(119, 123);
-            this.tbKommentar.Name = "tbKommentar";
-            this.tbKommentar.ReadOnly = true;
-            this.tbKommentar.Size = new System.Drawing.Size(214, 26);
-            this.tbKommentar.TabIndex = 13;
-            // 
-            // lbKommentar
-            // 
-            this.lbKommentar.AutoSize = true;
-            this.lbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbKommentar.Location = new System.Drawing.Point(12, 131);
-            this.lbKommentar.Name = "lbKommentar";
-            this.lbKommentar.Size = new System.Drawing.Size(85, 18);
-            this.lbKommentar.TabIndex = 12;
-            this.lbKommentar.Text = "Kommentar:";
-            // 
             // winMitgliedOeffnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,6 +406,7 @@
             this.ClientSize = new System.Drawing.Size(584, 512);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 550);
             this.Name = "winMitgliedOeffnen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
