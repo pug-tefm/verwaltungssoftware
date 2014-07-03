@@ -139,7 +139,6 @@ namespace PuG_Verwaltungssoftware
 
         private void comboBoxSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            c_Helper myHelper = new c_Helper();
             myHelper.comboBoxSuchenSelectedIndexChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
 
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 
@@ -149,7 +148,6 @@ namespace PuG_Verwaltungssoftware
 
         private void textBoxSuchen_TextChanged(object sender, EventArgs e)
         {
-            c_Helper myHelper = new c_Helper();
             myHelper.textBoxSuchenTextChanged(gridKurse, ddlKursSuchen, tbKursSuchen, bindingSourceKurse);
 
             // Sort blendet automatisch alle Zeilen wieder ein, daher müssen 

@@ -113,14 +113,12 @@ namespace PuG_Verwaltungssoftware
 
         private void ddlMitarbeiterSuchen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            c_Helper myHelper = new c_Helper();
             myHelper.comboBoxSuchenSelectedIndexChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
         }
 
 
         private void tbMitarbeiterSuchen_TextChanged(object sender, EventArgs e)
         {
-            c_Helper myHelper = new c_Helper();
             myHelper.textBoxSuchenTextChanged(gridMitarbeiter, ddlMitarbeiterSuchen, tbMitarbeiterSuchen, bindingSourceMitarbeiter);
         }
 

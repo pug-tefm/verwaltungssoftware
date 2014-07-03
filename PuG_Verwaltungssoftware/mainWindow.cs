@@ -13,6 +13,7 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
+        c_Helper myHelper = new c_Helper();
         c_DBConnect c = new c_DBConnect();
 
         private bool initHome = false;
