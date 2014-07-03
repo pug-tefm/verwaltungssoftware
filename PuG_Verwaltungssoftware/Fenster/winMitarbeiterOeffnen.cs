@@ -158,10 +158,6 @@ namespace PuG_Verwaltungssoftware
                 {
                     this.Close();
                 }
-                else
-                {
-
-                }
             }
             else
             {
@@ -288,23 +284,12 @@ namespace PuG_Verwaltungssoftware
 
             if (editMode == true)
             {
-                // Variablendeklaration
-                String vorname = String.Empty;
-                String nachname = String.Empty;
-                String gebDatum = String.Empty;
-                String strasse = String.Empty;
-                String hausnummer = String.Empty;
-                int plz = 0;
-                String ort = String.Empty;
-                double gehalt = 0.0;
-                String benutzername = String.Empty;
-                String position = String.Empty;
-
-                String strSQL;
-                int posId = 0;
 
                 // Neues Mitarbeiter Objekt anlegen
-                c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
+                c_Mitarbeiter speicherMitarbeiter = new c_Mitarbeiter();
+
+                // Variablendeklaration
+                String strSQL;
 
 
                 // =====================================
@@ -314,12 +299,12 @@ namespace PuG_Verwaltungssoftware
                 // Persoenliche Daten
                 if (tbVorname.Text != "" && tbNachname.Text != "" && dtpGebDatum.Text != "")
                 {
-                    vorname = tbVorname.Text;
-                    nachname = tbNachname.Text;
+                    speicherMitarbeiter.setVorname(tbVorname.Text);
+                    speicherMitarbeiter.setNachname(tbNachname.Text);
                     // GebDatum umformatieren
-                    gebDatum = dtpGebDatum.Text;
-                    DateTime date = Convert.ToDateTime(gebDatum);
-                    gebDatum = date.ToString("yyyy-MM-dd");
+                    speicherMitarbeiter.setGebDatum(dtpGebDatum.Text);
+                    DateTime date = Convert.ToDateTime(speicherMitarbeiter.getGebDatum());
+                    speicherMitarbeiter.setGebDatum(date.ToString("yyyy-MM-dd"));
                 }
                 else
                 {
@@ -330,12 +315,12 @@ namespace PuG_Verwaltungssoftware
                 // Anschrift
                 if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbOrt.Text != "" && tbPlz.Text != "")
                 {
-                    strasse = tbStrasse.Text;
-                    ort = tbOrt.Text;
+                    speicherMitarbeiter.setStrasse(tbStrasse.Text);
+                    speicherMitarbeiter.setOrt(tbOrt.Text);
                     if (c_Helper.wrongCharNumberExtra(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
                     {
-                        hausnummer = tbHausnummer.Text;
-                        plz = Convert.ToInt32(tbPlz.Text);
+                        speicherMitarbeiter.setHausnummer(tbHausnummer.Text);
+                        speicherMitarbeiter.setPlz(Convert.ToInt32(tbPlz.Text));
                     }
                     else
                     {
@@ -352,8 +337,8 @@ namespace PuG_Verwaltungssoftware
                 // Gehalt
                 if (tbGehalt.Text != "")
                 {
-                    gehalt = Convert.ToDouble(tbGehalt.Text);
-                    if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
+                    speicherMitarbeiter.setGehalt(Convert.ToDouble(tbGehalt.Text));
+                    if (c_Helper.numFormatPunktKomma(speicherMitarbeiter.getGehalt().ToString()) == true)
                     {
                         MessageBox.Show("Falsches Format für das Feld Gehalt.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     }
@@ -367,8 +352,8 @@ namespace PuG_Verwaltungssoftware
                 // Login - Daten
                 if (tbBenutzername.Text != "" && ddlMitarbeiterPosition.Text != "")
                 {
-                    benutzername = tbBenutzername.Text;
-                    position = ddlMitarbeiterPosition.SelectedItem.ToString();
+                    speicherMitarbeiter.setBenutzername(tbBenutzername.Text);
+                    speicherMitarbeiter.setPositionBezeichnung(ddlMitarbeiterPosition.SelectedItem.ToString());
 
                     // Ueberpruefen welche Position ausgewaehlt wurde
                     int dbConnectOk = c.openConnection();
@@ -393,26 +378,11 @@ namespace PuG_Verwaltungssoftware
 
                     for (int i = 0; i < arrPosId.Length; i++)
                     {
-                        if (position.Equals((arrPosBez[i]).ToString()))
+                        if (speicherMitarbeiter.getPositionBezeichnung().Equals((arrPosBez[i]).ToString()))
                         {
-                            posId = arrPosId[i];
+                            speicherMitarbeiter.setPositionId(arrPosId[i]);
                         }
                     }
-
-
-                    //if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Normal")
-                    //{
-                    //    posId = 2;
-                    //}
-                    //else if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Chef")
-                    //{
-                    //    posId = 1;
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Keine Position ausgewählt.");
-                    //    return;
-                    //}
                 }
                 else
                 {
@@ -420,30 +390,18 @@ namespace PuG_Verwaltungssoftware
                     return;
                 }
 
-                myMitarbeiter.setVorname(vorname);
-                myMitarbeiter.setNachname(nachname);
-                myMitarbeiter.setGebDatum(gebDatum);
-                myMitarbeiter.setStrasse(strasse);
-                myMitarbeiter.setOrt(ort);
-                myMitarbeiter.setHausnummer(hausnummer);
-                myMitarbeiter.setPlz(plz);
-                myMitarbeiter.setGehalt(gehalt);
-                myMitarbeiter.setBenutzername(benutzername);
-                myMitarbeiter.setPositionId(posId);
-
-
                 int dBConnectOk = c.openConnection();
                 if (dBConnectOk == 0)
                 {
                     if (gLoginPosId == 1)
                     {
                         // String fuer Chef
-                        strSQL = "UPDATE mitarbeiter SET position_id = '" + posId + "', benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "', gehalt = '" + (gehalt.ToString()).Replace(",", ".") + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
+                        strSQL = "UPDATE mitarbeiter SET position_id = '" + speicherMitarbeiter.getPositionId() + "', benutzername = '" + speicherMitarbeiter.getBenutzername() + "', vorname = '" + speicherMitarbeiter.getVorname() + "', nachname = '" + speicherMitarbeiter.getNachname() + "', geburtsdatum = '" + speicherMitarbeiter.getGebDatum() + "', strasse = '" + speicherMitarbeiter.getStrasse() + "', hausnummer = '" + speicherMitarbeiter.getHausnummer() + "', plz = '" + speicherMitarbeiter.getPlz() + "', ort = '" + speicherMitarbeiter.getOrt() + "', gehalt = '" + (speicherMitarbeiter.getGehalt().ToString()).Replace(",", ".") + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
                     }
                     else
                     {
                         //String fuer Mitarbeiter
-                        strSQL = "UPDATE mitarbeiter SET strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
+                        strSQL = "UPDATE mitarbeiter SET strasse = '" + speicherMitarbeiter.getStrasse() + "', hausnummer = '" + speicherMitarbeiter.getHausnummer() + "', plz = '" + speicherMitarbeiter.getPlz() + "', ort = '" + speicherMitarbeiter.getOrt() + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
                     }
                     c.update(strSQL, "Mitarbeiter");
                     c.closeConnection();

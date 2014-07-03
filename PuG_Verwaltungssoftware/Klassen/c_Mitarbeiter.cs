@@ -16,6 +16,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         private String benutzername;
         private String passwort;
         private int posId;
+        private String posBez;
 
         // Konstruktor
         public c_Mitarbeiter()
@@ -42,6 +43,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             this.posId = pId;
         }
+        public void setPositionBezeichnung(String pBez)
+        {
+            this.posBez = pBez;
+        }
 
         // Get-Methoden
         public int getMitarbeiterId()
@@ -63,6 +68,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         public int getPositionId()
         {
             return this.posId;
+        }
+        public String getPositionBezeichnung()
+        {
+            return this.posBez;
         }
 
         /*****************************************************************************/
