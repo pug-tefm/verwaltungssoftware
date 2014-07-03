@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedNeu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
+            this.cbGesperrt = new System.Windows.Forms.CheckBox();
+            this.ddlVertragsart = new System.Windows.Forms.ComboBox();
             this.tbKommentar = new System.Windows.Forms.TextBox();
             this.lbKommentar = new System.Windows.Forms.Label();
             this.lbGesperrt = new System.Windows.Forms.Label();
-            this.tbVertragsdatum = new System.Windows.Forms.TextBox();
             this.lbVertragsdatum = new System.Windows.Forms.Label();
             this.lbVertragsart = new System.Windows.Forms.Label();
             this.gbAnschrift = new System.Windows.Forms.GroupBox();
@@ -47,6 +48,7 @@
             this.lbHausnummer = new System.Windows.Forms.Label();
             this.lbStrasse = new System.Windows.Forms.Label();
             this.gbDaten = new System.Windows.Forms.GroupBox();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.lbVorname = new System.Windows.Forms.Label();
             this.lbNachname = new System.Windows.Forms.Label();
             this.tbVorname = new System.Windows.Forms.TextBox();
@@ -54,9 +56,7 @@
             this.tbNachname = new System.Windows.Forms.TextBox();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
-            this.ddlVertragsart = new System.Windows.Forms.ComboBox();
-            this.cbGesperrt = new System.Windows.Forms.CheckBox();
+            this.dtpVertragsDatum = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,12 +90,12 @@
             // 
             // gbVertrag
             // 
+            this.gbVertrag.Controls.Add(this.dtpVertragsDatum);
             this.gbVertrag.Controls.Add(this.cbGesperrt);
             this.gbVertrag.Controls.Add(this.ddlVertragsart);
             this.gbVertrag.Controls.Add(this.tbKommentar);
             this.gbVertrag.Controls.Add(this.lbKommentar);
             this.gbVertrag.Controls.Add(this.lbGesperrt);
-            this.gbVertrag.Controls.Add(this.tbVertragsdatum);
             this.gbVertrag.Controls.Add(this.lbVertragsdatum);
             this.gbVertrag.Controls.Add(this.lbVertragsart);
             this.gbVertrag.Dock = System.Windows.Forms.DockStyle.Top;
@@ -106,6 +106,24 @@
             this.gbVertrag.TabIndex = 10;
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
+            // 
+            // cbGesperrt
+            // 
+            this.cbGesperrt.AutoSize = true;
+            this.cbGesperrt.Location = new System.Drawing.Point(119, 97);
+            this.cbGesperrt.Name = "cbGesperrt";
+            this.cbGesperrt.Size = new System.Drawing.Size(15, 14);
+            this.cbGesperrt.TabIndex = 15;
+            this.cbGesperrt.UseVisualStyleBackColor = true;
+            // 
+            // ddlVertragsart
+            // 
+            this.ddlVertragsart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlVertragsart.FormattingEnabled = true;
+            this.ddlVertragsart.Location = new System.Drawing.Point(119, 23);
+            this.ddlVertragsart.Name = "ddlVertragsart";
+            this.ddlVertragsart.Size = new System.Drawing.Size(263, 23);
+            this.ddlVertragsart.TabIndex = 14;
             // 
             // tbKommentar
             // 
@@ -134,14 +152,6 @@
             this.lbGesperrt.Size = new System.Drawing.Size(66, 18);
             this.lbGesperrt.TabIndex = 10;
             this.lbGesperrt.Text = "Gesperrt:";
-            // 
-            // tbVertragsdatum
-            // 
-            this.tbVertragsdatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVertragsdatum.Location = new System.Drawing.Point(119, 56);
-            this.tbVertragsdatum.Name = "tbVertragsdatum";
-            this.tbVertragsdatum.Size = new System.Drawing.Size(263, 26);
-            this.tbVertragsdatum.TabIndex = 9;
             // 
             // lbVertragsdatum
             // 
@@ -271,6 +281,14 @@
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
             // 
+            // dtpDatum
+            // 
+            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatum.Location = new System.Drawing.Point(119, 88);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(263, 23);
+            this.dtpDatum.TabIndex = 7;
+            // 
             // lbVorname
             // 
             this.lbVorname.AutoSize = true;
@@ -339,32 +357,15 @@
             this.btSpeichern.TabIndex = 1;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
+            this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
-            // dtpDatum
+            // dtpVertragsDatum
             // 
-            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatum.Location = new System.Drawing.Point(119, 88);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(263, 23);
-            this.dtpDatum.TabIndex = 7;
-            // 
-            // ddlVertragsart
-            // 
-            this.ddlVertragsart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlVertragsart.FormattingEnabled = true;
-            this.ddlVertragsart.Location = new System.Drawing.Point(119, 23);
-            this.ddlVertragsart.Name = "ddlVertragsart";
-            this.ddlVertragsart.Size = new System.Drawing.Size(263, 23);
-            this.ddlVertragsart.TabIndex = 14;
-            // 
-            // cbGesperrt
-            // 
-            this.cbGesperrt.AutoSize = true;
-            this.cbGesperrt.Location = new System.Drawing.Point(119, 97);
-            this.cbGesperrt.Name = "cbGesperrt";
-            this.cbGesperrt.Size = new System.Drawing.Size(15, 14);
-            this.cbGesperrt.TabIndex = 15;
-            this.cbGesperrt.UseVisualStyleBackColor = true;
+            this.dtpVertragsDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 60);
+            this.dtpVertragsDatum.Name = "dtpVertragsDatum";
+            this.dtpVertragsDatum.Size = new System.Drawing.Size(263, 23);
+            this.dtpVertragsDatum.TabIndex = 16;
             // 
             // winMitgliedNeu
             // 
@@ -377,6 +378,7 @@
             this.Name = "winMitgliedNeu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mitglied anzeigen und bearbeiten";
+            this.Load += new System.EventHandler(this.winMitgliedNeu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -416,10 +418,10 @@
         private System.Windows.Forms.TextBox tbKommentar;
         private System.Windows.Forms.Label lbKommentar;
         private System.Windows.Forms.Label lbGesperrt;
-        private System.Windows.Forms.TextBox tbVertragsdatum;
         private System.Windows.Forms.Label lbVertragsdatum;
         private System.Windows.Forms.DateTimePicker dtpDatum;
         private System.Windows.Forms.CheckBox cbGesperrt;
         private System.Windows.Forms.ComboBox ddlVertragsart;
+        private System.Windows.Forms.DateTimePicker dtpVertragsDatum;
     }
 }
