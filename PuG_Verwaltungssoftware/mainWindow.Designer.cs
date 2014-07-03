@@ -74,8 +74,6 @@
             this.btKursUebersichtOeffnen = new System.Windows.Forms.Button();
             this.tbKursUebersichtSuchen = new System.Windows.Forms.TextBox();
             this.ddlKursUebersichtSuchen = new System.Windows.Forms.ComboBox();
-            this.btKursUebersichtLoeschen = new System.Windows.Forms.Button();
-            this.btKursUebersichtNeu = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.lbLoginMessage = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -661,11 +659,10 @@
             // 
             // scKursUebersicht.Panel2
             // 
+            this.scKursUebersicht.Panel2.BackColor = System.Drawing.Color.Silver;
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtOeffnen);
             this.scKursUebersicht.Panel2.Controls.Add(this.tbKursUebersichtSuchen);
             this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
-            this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtLoeschen);
-            this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtNeu);
             this.scKursUebersicht.Size = new System.Drawing.Size(561, 434);
             this.scKursUebersicht.SplitterDistance = 375;
             this.scKursUebersicht.TabIndex = 0;
@@ -682,6 +679,7 @@
             this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);
             this.gridKursUebersicht.Name = "gridKursUebersicht";
             this.gridKursUebersicht.ReadOnly = true;
+            this.gridKursUebersicht.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridKursUebersicht.Size = new System.Drawing.Size(561, 375);
             this.gridKursUebersicht.TabIndex = 0;
             // 
@@ -694,6 +692,7 @@
             this.btKursUebersichtOeffnen.TabIndex = 14;
             this.btKursUebersichtOeffnen.Text = "Öffnen";
             this.btKursUebersichtOeffnen.UseVisualStyleBackColor = true;
+            this.btKursUebersichtOeffnen.Click += new System.EventHandler(this.btKursUebersichtOeffnen_Click);
             // 
             // tbKursUebersichtSuchen
             // 
@@ -713,26 +712,6 @@
             this.ddlKursUebersichtSuchen.Name = "ddlKursUebersichtSuchen";
             this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 26);
             this.ddlKursUebersichtSuchen.TabIndex = 12;
-            // 
-            // btKursUebersichtLoeschen
-            // 
-            this.btKursUebersichtLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btKursUebersichtLoeschen.Location = new System.Drawing.Point(92, 0);
-            this.btKursUebersichtLoeschen.Name = "btKursUebersichtLoeschen";
-            this.btKursUebersichtLoeschen.Size = new System.Drawing.Size(92, 55);
-            this.btKursUebersichtLoeschen.TabIndex = 11;
-            this.btKursUebersichtLoeschen.Text = "Löschen";
-            this.btKursUebersichtLoeschen.UseVisualStyleBackColor = true;
-            // 
-            // btKursUebersichtNeu
-            // 
-            this.btKursUebersichtNeu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btKursUebersichtNeu.Location = new System.Drawing.Point(0, 0);
-            this.btKursUebersichtNeu.Name = "btKursUebersichtNeu";
-            this.btKursUebersichtNeu.Size = new System.Drawing.Size(92, 55);
-            this.btKursUebersichtNeu.TabIndex = 10;
-            this.btKursUebersichtNeu.Text = "Neu";
-            this.btKursUebersichtNeu.UseVisualStyleBackColor = true;
             // 
             // loginPanel
             // 
@@ -830,8 +809,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -929,8 +908,6 @@
         private System.Windows.Forms.Button btKursUebersichtOeffnen;
         private System.Windows.Forms.TextBox tbKursUebersichtSuchen;
         private System.Windows.Forms.ComboBox ddlKursUebersichtSuchen;
-        private System.Windows.Forms.Button btKursUebersichtLoeschen;
-        private System.Windows.Forms.Button btKursUebersichtNeu;
         private System.Windows.Forms.TabControl newsTabControl;
         private System.Windows.Forms.TabPage tabPageAktuell;
         private System.Windows.Forms.TabPage tabPageHeute;
