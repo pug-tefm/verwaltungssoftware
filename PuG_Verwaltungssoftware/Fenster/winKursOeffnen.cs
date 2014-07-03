@@ -350,7 +350,7 @@ namespace PuG_Verwaltungssoftware
                     }
                     else
                     {
-                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

@@ -270,7 +270,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -283,15 +283,15 @@ namespace PuG_Verwaltungssoftware
                     int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
                     if (id == 1)
                     {
-                        DialogResult dialogResultSelf = MessageBox.Show("Der Mitarbeiter mit der Mitarbeiter-Nr. '1' kann nicht gelöscht werden.", "Information", MessageBoxButtons.OK);
+                        DialogResult dialogResultSelf = MessageBox.Show("Der Mitarbeiter mit der Mitarbeiter-Nr. '1' kann nicht gelöscht werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (id == loginMaId)
                     {
-                        DialogResult dialogResultSelf = MessageBox.Show("Sie können sich nicht selbst löschen.", "Information", MessageBoxButtons.OK);
+                        DialogResult dialogResultSelf = MessageBox.Show("Sie können sich nicht selbst löschen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Achtung", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Mitarbeiter mit der Mitarbeiter-Nr. '" + id + "' wirklich löschen?", "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (dialogResult == DialogResult.Yes)
                     {

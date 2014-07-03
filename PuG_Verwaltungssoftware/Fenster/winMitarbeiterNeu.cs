@@ -143,7 +143,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.");
+                MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -159,13 +159,13 @@ namespace PuG_Verwaltungssoftware
                 }
                 else
                 {
-                    MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.");
+                    MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.");
+                MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -175,12 +175,12 @@ namespace PuG_Verwaltungssoftware
                 gehalt = Convert.ToDouble(tbGehalt.Text);
                 if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
                 {
-                    MessageBox.Show("Falsches Format für das Feld Gehalt.");
+                    MessageBox.Show("Falsches Format für das Feld Gehalt.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Feld Gehalt ausfüllen.");
+                MessageBox.Show("Bitte Feld Gehalt ausfüllen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -191,7 +191,7 @@ namespace PuG_Verwaltungssoftware
                 initPasswort = tbInitPasswort.Text;
                 if (initBenutzer.Length < 3 || initPasswort.Length < 8)
                 {
-                    MessageBox.Show("Mindeslänge Benutzername: 3 Zeichen.\nMindestlänge Passwort: 8 Zeichen.");
+                    MessageBox.Show("Mindeslänge Benutzername: 3 Zeichen.\nMindestlänge Passwort: 8 Zeichen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -226,7 +226,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                MessageBox.Show("Login-Daten ausfüllen.");
+                MessageBox.Show("Login-Daten ausfüllen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

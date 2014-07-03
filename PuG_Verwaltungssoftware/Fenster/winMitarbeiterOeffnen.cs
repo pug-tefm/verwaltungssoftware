@@ -150,7 +150,7 @@ namespace PuG_Verwaltungssoftware
             if (editMode == true)
             {
                 // MessageBox schliessen ohne speichern
-                DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
                 {
                     this.Close();
@@ -320,7 +320,7 @@ namespace PuG_Verwaltungssoftware
                 }
                 else
                 {
-                    MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.");
+                    MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -336,13 +336,13 @@ namespace PuG_Verwaltungssoftware
                     }
                     else
                     {
-                        MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.");
+                        MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.");
+                    MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -352,12 +352,12 @@ namespace PuG_Verwaltungssoftware
                     gehalt = Convert.ToDouble(tbGehalt.Text);
                     if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
                     {
-                        MessageBox.Show("Falsches Format für das Feld Gehalt.");
+                        MessageBox.Show("Falsches Format für das Feld Gehalt.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Bitte Feld Gehalt ausfüllen.");
+                    MessageBox.Show("Bitte Feld Gehalt ausfüllen.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -413,11 +413,9 @@ namespace PuG_Verwaltungssoftware
                 }
                 else
                 {
-                    MessageBox.Show("Login-Daten ausfüllen.");
+                    MessageBox.Show("Login-Daten ausfüllen.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     return;
                 }
-
-            
 
                 myMitarbeiter.setVorname(vorname);
                 myMitarbeiter.setNachname(nachname);

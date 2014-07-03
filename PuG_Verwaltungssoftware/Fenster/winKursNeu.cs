@@ -211,7 +211,7 @@ namespace PuG_Verwaltungssoftware
                             }
                             else // Fehler Connect
                             {
-                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                             DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -240,7 +240,7 @@ namespace PuG_Verwaltungssoftware
                     }
                     else // Fehler Connect
                     {
-                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
 
