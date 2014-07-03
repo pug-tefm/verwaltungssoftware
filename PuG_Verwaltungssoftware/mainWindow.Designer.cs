@@ -46,7 +46,6 @@
             this.lvNewsKommend = new System.Windows.Forms.ListView();
             this.tabPageMitarbeiter = new System.Windows.Forms.TabPage();
             this.scMitarbeiter = new System.Windows.Forms.SplitContainer();
-            this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
             this.tbMitarbeiterSuchen = new System.Windows.Forms.TextBox();
             this.ddlMitarbeiterSuchen = new System.Windows.Forms.ComboBox();
             this.btMaLoeschen = new System.Windows.Forms.Button();
@@ -81,6 +80,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -96,7 +96,6 @@
             this.scMitarbeiter.Panel1.SuspendLayout();
             this.scMitarbeiter.Panel2.SuspendLayout();
             this.scMitarbeiter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).BeginInit();
             this.tabPageMitglieder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitglieder)).BeginInit();
             this.scMitglieder.Panel1.SuspendLayout();
@@ -117,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridKursUebersicht)).BeginInit();
             this.loginPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTabControl
@@ -336,26 +336,6 @@
             this.scMitarbeiter.Size = new System.Drawing.Size(561, 434);
             this.scMitarbeiter.SplitterDistance = 375;
             this.scMitarbeiter.TabIndex = 2;
-            // 
-            // gridMitarbeiter
-            // 
-            this.gridMitarbeiter.AllowUserToAddRows = false;
-            this.gridMitarbeiter.AllowUserToDeleteRows = false;
-            this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridMitarbeiter.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
-            this.gridMitarbeiter.Name = "gridMitarbeiter";
-            this.gridMitarbeiter.ReadOnly = true;
-            this.gridMitarbeiter.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
-            this.gridMitarbeiter.TabIndex = 0;
-            this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
-            this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
-            this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
-            this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
             // 
@@ -777,6 +757,20 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
+            // gridMitarbeiter
+            // 
+            this.gridMitarbeiter.AllowUserToAddRows = false;
+            this.gridMitarbeiter.AllowUserToDeleteRows = false;
+            this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridMitarbeiter.Location = new System.Drawing.Point(0, 0);
+            this.gridMitarbeiter.Name = "gridMitarbeiter";
+            this.gridMitarbeiter.ReadOnly = true;
+            this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
+            this.gridMitarbeiter.TabIndex = 0;
+            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -811,7 +805,6 @@
             this.scMitarbeiter.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitarbeiter)).EndInit();
             this.scMitarbeiter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).EndInit();
             this.tabPageMitglieder.ResumeLayout(false);
             this.scMitglieder.Panel1.ResumeLayout(false);
             this.scMitglieder.Panel2.ResumeLayout(false);
@@ -835,6 +828,7 @@
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMitarbeiter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -854,7 +848,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbLoginMessage;
         private System.Windows.Forms.Button btMaNeu;
-        private System.Windows.Forms.DataGridView gridMitarbeiter;
         private System.Windows.Forms.SplitContainer scMitarbeiter;
         private System.Windows.Forms.Button btMaLoeschen;
         private System.Windows.Forms.Button btMaOeffnen;
@@ -893,6 +886,7 @@
         private System.Windows.Forms.TabPage tabPageKommend;
         private System.Windows.Forms.ListView lvNewsKommend;
         private System.Windows.Forms.Button btAbmelden;
+        private System.Windows.Forms.DataGridView gridMitarbeiter;
     }
 }
 
