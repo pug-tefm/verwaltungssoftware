@@ -81,6 +81,8 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
+            this.ddlMitgliederSuchen = new System.Windows.Forms.ComboBox();
+            this.tbMitgliederSuchen = new System.Windows.Forms.TextBox();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -429,6 +431,8 @@
             // 
             // scMitglieder.Panel2
             // 
+            this.scMitglieder.Panel2.Controls.Add(this.tbMitgliederSuchen);
+            this.scMitglieder.Panel2.Controls.Add(this.ddlMitgliederSuchen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
@@ -773,6 +777,24 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
+            // ddlMitgliederSuchen
+            // 
+            this.ddlMitgliederSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMitgliederSuchen.FormattingEnabled = true;
+            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
+            this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
+            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 26);
+            this.ddlMitgliederSuchen.TabIndex = 7;
+            // 
+            // tbMitgliederSuchen
+            // 
+            this.tbMitgliederSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
+            this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
+            this.tbMitgliederSuchen.Size = new System.Drawing.Size(124, 26);
+            this.tbMitgliederSuchen.TabIndex = 8;
+            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -780,8 +802,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -789,7 +811,6 @@
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
-            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.mainTabControl.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
             this.scHome.Panel1.ResumeLayout(false);
@@ -811,6 +832,7 @@
             this.tabPageMitglieder.ResumeLayout(false);
             this.scMitglieder.Panel1.ResumeLayout(false);
             this.scMitglieder.Panel2.ResumeLayout(false);
+            this.scMitglieder.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitglieder)).EndInit();
             this.scMitglieder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMitglieder)).EndInit();
@@ -889,6 +911,8 @@
         private System.Windows.Forms.ListView lvNewsKommend;
         private System.Windows.Forms.Button btAbmelden;
         private System.Windows.Forms.DataGridView gridMitarbeiter;
+        private System.Windows.Forms.TextBox tbMitgliederSuchen;
+        private System.Windows.Forms.ComboBox ddlMitgliederSuchen;
     }
 }
 
