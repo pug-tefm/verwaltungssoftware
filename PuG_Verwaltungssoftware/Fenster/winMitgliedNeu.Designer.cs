@@ -351,7 +351,6 @@
             this.btSchliessen.TabIndex = 2;
             this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
-            this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btSpeichern
             // 
@@ -363,7 +362,6 @@
             this.btSpeichern.TabIndex = 1;
             this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
-            this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
             // winMitgliedNeu
             // 

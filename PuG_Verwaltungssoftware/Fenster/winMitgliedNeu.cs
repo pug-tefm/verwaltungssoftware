@@ -12,8 +12,6 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winMitgliedNeu : Form
     {
-        bool editMode = false;
-        bool save = false;
 
         public winMitgliedNeu()
         {
@@ -21,34 +19,5 @@ namespace PuG_Verwaltungssoftware
 
         }
 
-        private void btSchliessen_Click(object sender, EventArgs e)
-        {
-            // Fenster schliessen
-            if (editMode == true)
-            {
-                // MessageBox schliessen ohne speichern
-                // ######## unvollständig ##########
-                DialogResult dialogResult = MessageBox.Show("Wollen Sie das Fenster ohne zu Speichern schließen?", "Information", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-                this.Close();
-            }
-            
-        }
-
-        private void btSpeichern_Click(object sender, EventArgs e)
-        {
-            // Globale Variable true setzen
-            save = true;
-        }
     }
 }
