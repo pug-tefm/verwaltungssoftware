@@ -151,7 +151,7 @@ namespace PuG_Verwaltungssoftware
                 toolStripItemNeuMA.Click += new EventHandler(toolStripItemNeuMA_Click);
                 toolStripItemOeffnenMA.Click += new EventHandler(toolStripItemOeffnenMA_Click);
                 toolStripItemLoeschenMA.Click += new EventHandler(toolStripItemLoeschenMA_Click);
-                toolStripItemAktualisierenMA.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+                toolStripItemAktualisierenMA.Click += new EventHandler(toolStripItemAktualisierenMA_Click);
 
                 int currentMouseOverRow = gridMitarbeiter.HitTest(e.X, e.Y).RowIndex;
 
@@ -164,7 +164,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void toolStripItemOneMitarbeiter_Click(object sender, EventArgs args)
+        private void toolStripItemAktualisierenMA_Click(object sender, EventArgs args)
         {
             gridMitarbeiterAktualisieren();
         }

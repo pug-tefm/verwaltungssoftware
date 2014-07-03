@@ -68,6 +68,11 @@ namespace PuG_Verwaltungssoftware
             myHelper.textBoxSuchenTextChanged(gridMitglieder, ddlMitgliederSuchen, tbMitgliederSuchen, bindingSourceMitglieder);
         }
 
+        private void gridMitglieder_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            mitgliedOeffnen();
+        }
+
         private void gridMitglieder_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) // Rechtsklick
@@ -96,7 +101,7 @@ namespace PuG_Verwaltungssoftware
                 toolStripItemNeuMG.Click += new EventHandler(toolStripItemNeuMG_Click);
                 toolStripItemOeffnenMG.Click += new EventHandler(toolStripItemOeffnenMG_Click);
                 toolStripItemLoeschenMG.Click += new EventHandler(toolStripItemLoeschenMG_Click);
-                toolStripItemAktualisierenMG.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+                toolStripItemAktualisierenMG.Click += new EventHandler(toolStripItemAktualisierenMG_Click);
 
                 int currentMouseOverRow = gridMitglieder.HitTest(e.X, e.Y).RowIndex;
 
@@ -139,8 +144,13 @@ namespace PuG_Verwaltungssoftware
             mitgliedLoeschen();
         }
 
+        private void toolStripItemAktualisierenMG_Click(object sender, EventArgs args)
+        {
+            mitgliederAktualisieren();
+        }
 
-        /****************************/
+
+        /************ Methoden ****************/
 
         private void mitgliedOeffnen()
         {
@@ -163,7 +173,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void gridMitgliederAktualisieren()
+        private void mitgliederAktualisieren()
         {
             int dbConnect = c.openConnection();
             if (dbConnect == 0)
