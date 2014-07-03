@@ -156,6 +156,8 @@
             // scHome
             // 
             this.scHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scHome.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.scHome.IsSplitterFixed = true;
             this.scHome.Location = new System.Drawing.Point(3, 3);
             this.scHome.Name = "scHome";
             this.scHome.Orientation = System.Windows.Forms.Orientation.Horizontal;
