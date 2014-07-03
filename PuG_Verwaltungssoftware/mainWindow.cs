@@ -222,48 +222,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-        private void btMgOeffnen_Click(object sender, EventArgs e)
-        {
-            winMitgliedOeffnen window = new winMitgliedOeffnen();
-            window.Show();
-        }
 
-        private void btMgNeu_Click(object sender, EventArgs e)
-        {
-            winMitgliedNeu window = new winMitgliedNeu();
-            window.Show();
-        }
-
-        private void btMgLoeschen_Click(object sender, EventArgs e)
-        {
-            if (gridMitglieder.RowCount >= 1)
-            {
-                int row = gridMitglieder.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(gridMitglieder.Rows[row].Cells["mitglieder_id"].Value);
-
-                DialogResult dialogResult = MessageBox.Show("Wollen Sie das ausgewählte Mitglied mit der Mitglieds-Nr. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-
-                    //do something
-                    c.openConnection();
-                    c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied");
-                    //c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gridMitarbeiter);  // GridView aktualisieren
-                    c.closeConnection();
-                }
-            }
-
-            else
-            {
-                // Meesagebox
-            }
-        }
-
-        private void mainWindow_Load(object sender, EventArgs e)
-        {
-
-        }
         //*************************Maxi**********************************
         // private BindingSource bindingSourceKursUebersicht = new BindingSource();
         private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
@@ -347,6 +306,7 @@ namespace PuG_Verwaltungssoftware
             loginPanel.Visible = true;
             loginPanel.BringToFront();
         }
+
 
     }
 }

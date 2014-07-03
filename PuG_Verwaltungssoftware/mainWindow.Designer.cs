@@ -55,6 +55,8 @@
             this.tabPageMitglieder = new System.Windows.Forms.TabPage();
             this.scMitglieder = new System.Windows.Forms.SplitContainer();
             this.gridMitglieder = new System.Windows.Forms.DataGridView();
+            this.tbMitgliederSuchen = new System.Windows.Forms.TextBox();
+            this.ddlMitgliederSuchen = new System.Windows.Forms.ComboBox();
             this.btMgLoeschen = new System.Windows.Forms.Button();
             this.btMgNeu = new System.Windows.Forms.Button();
             this.btMgOeffnen = new System.Windows.Forms.Button();
@@ -415,6 +417,7 @@
             this.tabPageMitglieder.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
+            this.tabPageMitglieder.Enter += new System.EventHandler(this.tabPageMitglieder_Enter);
             // 
             // scMitglieder
             // 
@@ -429,6 +432,8 @@
             // 
             // scMitglieder.Panel2
             // 
+            this.scMitglieder.Panel2.Controls.Add(this.tbMitgliederSuchen);
+            this.scMitglieder.Panel2.Controls.Add(this.ddlMitgliederSuchen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
@@ -450,6 +455,26 @@
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
             this.gridMitglieder.TabIndex = 1;
+            // 
+            // tbMitgliederSuchen
+            // 
+            this.tbMitgliederSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
+            this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
+            this.tbMitgliederSuchen.Size = new System.Drawing.Size(126, 26);
+            this.tbMitgliederSuchen.TabIndex = 8;
+            this.tbMitgliederSuchen.TextChanged += new System.EventHandler(this.tbMitgliederSuchen_TextChanged);
+            // 
+            // ddlMitgliederSuchen
+            // 
+            this.ddlMitgliederSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMitgliederSuchen.FormattingEnabled = true;
+            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
+            this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
+            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 26);
+            this.ddlMitgliederSuchen.TabIndex = 7;
+            this.ddlMitgliederSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlMitgliederSuchen_SelectedIndexChanged);
             // 
             // btMgLoeschen
             // 
@@ -794,7 +819,6 @@
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
-            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.mainTabControl.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
             this.scHome.Panel1.ResumeLayout(false);
@@ -816,6 +840,7 @@
             this.tabPageMitglieder.ResumeLayout(false);
             this.scMitglieder.Panel1.ResumeLayout(false);
             this.scMitglieder.Panel2.ResumeLayout(false);
+            this.scMitglieder.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitglieder)).EndInit();
             this.scMitglieder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMitglieder)).EndInit();
@@ -894,6 +919,8 @@
         private System.Windows.Forms.ListView lvNewsKommend;
         private System.Windows.Forms.Button btAbmelden;
         private System.Windows.Forms.DataGridView gridMitarbeiter;
+        private System.Windows.Forms.TextBox tbMitgliederSuchen;
+        private System.Windows.Forms.ComboBox ddlMitgliederSuchen;
     }
 }
 

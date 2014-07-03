@@ -15,7 +15,7 @@ namespace PuG_Verwaltungssoftware
         bool editMode = false;
         bool save = false;
 
-        public winMitgliedOeffnen()
+        public winMitgliedOeffnen(int id, DataGridView gridMitglieder)
         {
             InitializeComponent();
             
