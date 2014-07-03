@@ -345,6 +345,9 @@
             // 
             this.gridMitarbeiter.AllowUserToAddRows = false;
             this.gridMitarbeiter.AllowUserToDeleteRows = false;
+            this.gridMitarbeiter.AllowUserToOrderColumns = true;
+            this.gridMitarbeiter.AllowUserToResizeColumns = false;
+            this.gridMitarbeiter.AllowUserToResizeRows = false;
             this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -354,6 +357,9 @@
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
             this.gridMitarbeiter.TabIndex = 0;
+            this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
+            this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
+            this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
             // 
@@ -447,6 +453,9 @@
             // 
             this.gridMitglieder.AllowUserToAddRows = false;
             this.gridMitglieder.AllowUserToDeleteRows = false;
+            this.gridMitglieder.AllowUserToOrderColumns = true;
+            this.gridMitglieder.AllowUserToResizeColumns = false;
+            this.gridMitglieder.AllowUserToResizeRows = false;
             this.gridMitglieder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridMitglieder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -550,6 +559,9 @@
             // 
             this.gridKurse.AllowUserToAddRows = false;
             this.gridKurse.AllowUserToDeleteRows = false;
+            this.gridKurse.AllowUserToOrderColumns = true;
+            this.gridKurse.AllowUserToResizeColumns = false;
+            this.gridKurse.AllowUserToResizeRows = false;
             this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.gridKurse.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -660,6 +672,9 @@
             // 
             this.gridKursUebersicht.AllowUserToAddRows = false;
             this.gridKursUebersicht.AllowUserToDeleteRows = false;
+            this.gridKursUebersicht.AllowUserToOrderColumns = true;
+            this.gridKursUebersicht.AllowUserToResizeColumns = false;
+            this.gridKursUebersicht.AllowUserToResizeRows = false;
             this.gridKursUebersicht.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridKursUebersicht.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);
@@ -735,10 +750,11 @@
             // 
             // lbLoginMessage
             // 
+            this.lbLoginMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbLoginMessage.AutoSize = true;
             this.lbLoginMessage.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoginMessage.ForeColor = System.Drawing.Color.Red;
-            this.lbLoginMessage.Location = new System.Drawing.Point(119, 330);
+            this.lbLoginMessage.Location = new System.Drawing.Point(166, 308);
             this.lbLoginMessage.Name = "lbLoginMessage";
             this.lbLoginMessage.Size = new System.Drawing.Size(0, 19);
             this.lbLoginMessage.TabIndex = 5;
