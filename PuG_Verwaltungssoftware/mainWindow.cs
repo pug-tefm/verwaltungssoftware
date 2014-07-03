@@ -307,5 +307,6 @@ namespace PuG_Verwaltungssoftware
             loginPanel.Visible = true;
             loginPanel.BringToFront();
         }
+
     }
 }
