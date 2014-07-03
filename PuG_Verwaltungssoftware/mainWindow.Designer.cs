@@ -422,6 +422,8 @@
             // scMitglieder
             // 
             this.scMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMitglieder.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scMitglieder.IsSplitterFixed = true;
             this.scMitglieder.Location = new System.Drawing.Point(0, 0);
             this.scMitglieder.Name = "scMitglieder";
             this.scMitglieder.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -743,6 +745,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
             this.pictureBox1.Location = new System.Drawing.Point(170, 23);
             this.pictureBox1.Name = "pictureBox1";
@@ -753,6 +756,7 @@
             // 
             // btExit
             // 
+            this.btExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btExit.Location = new System.Drawing.Point(424, 261);
             this.btExit.Name = "btExit";
@@ -764,6 +768,7 @@
             // 
             // tbPassword
             // 
+            this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(167, 229);
             this.tbPassword.MaxLength = 50;
@@ -777,6 +782,7 @@
             // 
             // tbUsername
             // 
+            this.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.Location = new System.Drawing.Point(167, 197);
             this.tbUsername.MaxLength = 50;
@@ -790,6 +796,7 @@
             // 
             // btLogin
             // 
+            this.btLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btLogin.Location = new System.Drawing.Point(167, 261);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(251, 32);
@@ -805,8 +812,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);

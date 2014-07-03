@@ -294,8 +294,14 @@ namespace PuG_Verwaltungssoftware
                     if (dialogResult == DialogResult.Yes)
                     {
                         c.openConnection();
-                        gridMitarbeiter.Rows.RemoveAt(row.Index); // Row löschen
-                        c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter");
+                        if (c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter", 1) == false)
+                        {
+                            MessageBox.Show("Mitarbeiter kann nicht gelöscht werden, da der Mitarbeiter Kursleiter ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            gridMitarbeiter.Rows.RemoveAt(row.Index); // Row löschen
+                        }
                         c.closeConnection();
                     }
                 }
