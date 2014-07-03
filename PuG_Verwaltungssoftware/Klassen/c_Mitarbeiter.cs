@@ -11,6 +11,7 @@ namespace PuG_Verwaltungssoftware.Klassen
     public class c_Mitarbeiter : c_Person
     {
         // Deklaration
+        private int mitarbeiterId;
         private double gehalt;
         private String benutzername;
         private String passwort;
@@ -18,11 +19,13 @@ namespace PuG_Verwaltungssoftware.Klassen
 
         // Konstruktor
         public c_Mitarbeiter()
-        {
-            
-        }
+        {}
 
         // Set-Methoden
+        public void setMitarbeiterId(int pId)
+        {
+            this.mitarbeiterId = pId;
+        }
         public void setGehalt(double pGehalt)
         {
             this.gehalt = pGehalt;
@@ -41,6 +44,10 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Get-Methoden
+        public int getMitarbeiterId()
+        {
+            return this.mitarbeiterId;
+        }
         public double getGehalt()
         {
             return this.gehalt;

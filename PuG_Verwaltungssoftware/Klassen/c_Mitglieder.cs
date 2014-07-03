@@ -9,12 +9,18 @@ namespace PuG_Verwaltungssoftware.Klassen
     public class c_Mitglieder : c_Person
     {
         // Deklaration
+        private int mitgliederId;
         private int vertragsId;
         private int gesperrt;
         private String kommentar;
         private String vertragsDatum;
 
         // Setter
+        public void setMitgliederId(int pId)
+        {
+            this.mitgliederId = pId;
+        }
+
         public void setVertragsId(int pVertragsId)
         {
             this.vertragsId = pVertragsId;
@@ -36,6 +42,11 @@ namespace PuG_Verwaltungssoftware.Klassen
         }
 
         // Getter
+        public int getMitgliederId()
+        {
+            return this.mitgliederId;
+        }
+
         public int getVertragsId()
         {
             return this.vertragsId;
