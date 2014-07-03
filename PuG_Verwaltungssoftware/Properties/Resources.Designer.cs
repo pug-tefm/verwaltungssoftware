@@ -63,9 +63,59 @@ namespace PuG_Verwaltungssoftware.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pug_add {
+            get {
+                object obj = ResourceManager.GetObject("pug_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_add_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_add_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pug_check {
             get {
                 object obj = ResourceManager.GetObject("pug_check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_check_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_check_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_close {
+            get {
+                object obj = ResourceManager.GetObject("pug_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_close_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_close_groß", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +133,29 @@ namespace PuG_Verwaltungssoftware.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pug_new {
+        internal static System.Drawing.Bitmap pug_delete_groß {
             get {
-                object obj = ResourceManager.GetObject("pug_new", resourceCulture);
+                object obj = ResourceManager.GetObject("pug_delete_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_edit {
+            get {
+                object obj = ResourceManager.GetObject("pug_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_edit_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_edit_groß", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +173,16 @@ namespace PuG_Verwaltungssoftware.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pug_open_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_open_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pug_refresh {
             get {
                 object obj = ResourceManager.GetObject("pug_refresh", resourceCulture);
@@ -113,9 +193,39 @@ namespace PuG_Verwaltungssoftware.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pug_refresh_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_refresh_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pug_runner {
             get {
                 object obj = ResourceManager.GetObject("pug_runner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_save {
+            get {
+                object obj = ResourceManager.GetObject("pug_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_save_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_save_groß", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

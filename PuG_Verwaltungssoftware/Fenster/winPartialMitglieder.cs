@@ -92,7 +92,7 @@ namespace PuG_Verwaltungssoftware
                 myContextMenu.Items.Add(toolStripItemAktualisierenMG);
 
                 // Bild hinzufuegen
-                toolStripItemNeuMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_new;
+                toolStripItemNeuMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_add;
                 toolStripItemOeffnenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_open;
                 toolStripItemLoeschenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_delete;
                 toolStripItemAktualisierenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;

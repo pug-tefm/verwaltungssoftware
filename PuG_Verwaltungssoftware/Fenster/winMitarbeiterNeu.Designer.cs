@@ -402,14 +402,18 @@
             // 
             // btSpeichern
             // 
+            this.btSpeichern.BackColor = System.Drawing.Color.Transparent;
+            this.btSpeichern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSpeichern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btSpeichern.FlatAppearance.BorderSize = 0;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Location = new System.Drawing.Point(0, 0);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 53);
+            this.btSpeichern.Size = new System.Drawing.Size(64, 53);
             this.btSpeichern.TabIndex = 1;
-            this.btSpeichern.Text = "Speichern";
-            this.btSpeichern.UseVisualStyleBackColor = true;
+            this.btSpeichern.UseVisualStyleBackColor = false;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
             // winMitarbeiterNeu
