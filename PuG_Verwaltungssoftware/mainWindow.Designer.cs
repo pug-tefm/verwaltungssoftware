@@ -466,6 +466,7 @@
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
             this.gridMitglieder.TabIndex = 1;
+            this.gridMitglieder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitglieder_MouseDown);
             // 
             // tbMitgliederSuchen
             // 

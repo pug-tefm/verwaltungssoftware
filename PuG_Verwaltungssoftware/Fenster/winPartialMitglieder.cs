@@ -68,6 +68,62 @@ namespace PuG_Verwaltungssoftware
             myHelper.textBoxSuchenTextChanged(gridMitglieder, ddlMitgliederSuchen, tbMitgliederSuchen, bindingSourceMitglieder);
         }
 
+        private void gridMitglieder_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemNeuMG = new ToolStripMenuItem("Neu");
+                ToolStripMenuItem toolStripItemOeffnenMG = new ToolStripMenuItem("Öffnen");
+                ToolStripMenuItem toolStripItemLoeschenMG = new ToolStripMenuItem("Löschen");
+                ToolStripMenuItem toolStripItemAktualisierenMG = new ToolStripMenuItem("Aktualisieren (F5)");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemNeuMG);
+                myContextMenu.Items.Add(toolStripItemOeffnenMG);
+                myContextMenu.Items.Add(toolStripItemLoeschenMG);
+                myContextMenu.Items.Add("-");
+                myContextMenu.Items.Add(toolStripItemAktualisierenMG);
+
+                // Bild hinzufuegen
+                toolStripItemNeuMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_new;
+                toolStripItemOeffnenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_open;
+                toolStripItemLoeschenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_delete;
+                toolStripItemAktualisierenMG.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemNeuMG.Click += new EventHandler(toolStripItemNeuMG_Click);
+                toolStripItemOeffnenMG.Click += new EventHandler(toolStripItemOeffnenMG_Click);
+                toolStripItemLoeschenMG.Click += new EventHandler(toolStripItemLoeschenMG_Click);
+                toolStripItemAktualisierenMG.Click += new EventHandler(toolStripItemOneMitarbeiter_Click);
+
+                int currentMouseOverRow = gridMitglieder.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridMitglieder, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemNeuMG_Click(object sender, EventArgs args)
+        {
+            mitgliedNeu();
+        }
+
+        private void toolStripItemLoeschenMG_Click(object sender, EventArgs args)
+        {
+            mitgliedLoeschen();
+        }
+
+        private void toolStripItemOeffnenMG_Click(object sender, EventArgs args)
+        {
+            mitgliedOeffnen();
+        }
+
         private void btMgOeffnen_Click(object sender, EventArgs e)
         {
             mitgliedOeffnen();
@@ -75,40 +131,16 @@ namespace PuG_Verwaltungssoftware
 
         private void btMgNeu_Click(object sender, EventArgs e)
         {
-            winMitgliedNeu window = new winMitgliedNeu(gridMitglieder);
-            window.Show();
+            mitgliedNeu();
         }
 
         private void btMgLoeschen_Click(object sender, EventArgs e)
         {
-            if (gridMitglieder.CurrentCell != null) // Wenn eine Zelle ausgewählt
-            {
-                foreach (DataGridViewRow row in gridMitglieder.SelectedRows) // Wegen Multiselect
-                {
-                    int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["ID"].Value);
-
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie das asugewählte Mitglied mit der ID '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
-
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        c.openConnection();
-                        if (c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied", 1) == false)
-                        {
-                            MessageBox.Show("Mitglied kann nicht gelöscht werden, da des Mitglied in einem Kurs ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            gridMitglieder.Rows.RemoveAt(row.Index); // Row löschen
-                        }
-                        c.closeConnection();
-                    }
-                }
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            mitgliedLoeschen();
         }
+
+
+        /****************************/
 
         private void mitgliedOeffnen()
         {
@@ -157,6 +189,43 @@ namespace PuG_Verwaltungssoftware
             else
             {
                 MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void mitgliedNeu()
+        {
+            winMitgliedNeu window = new winMitgliedNeu(gridMitglieder);
+            window.Show();
+        }
+
+        private void mitgliedLoeschen()
+        {
+            if (gridMitglieder.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            {
+                foreach (DataGridViewRow row in gridMitglieder.SelectedRows) // Wegen Multiselect
+                {
+                    int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["ID"].Value);
+
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie das asugewählte Mitglied mit der ID '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        c.openConnection();
+                        if (c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied", 1) == false)
+                        {
+                            MessageBox.Show("Mitglied kann nicht gelöscht werden, da des Mitglied in einem Kurs ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            gridMitglieder.Rows.RemoveAt(row.Index); // Row löschen
+                        }
+                        c.closeConnection();
+                    }
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
