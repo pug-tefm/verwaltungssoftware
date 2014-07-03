@@ -52,6 +52,62 @@ namespace PuG_Verwaltungssoftware
                     openMitglied.setVertragsDatum(result.Rows[0]["vertragsdatum"].ToString());
                     openMitglied.setGesperrt(Convert.ToInt32(result.Rows[0]["gesperrt"]));
                     openMitglied.setKommentar((String)result.Rows[0]["kommentar"]);
+                    openMitglied.setGesperrt(Convert.ToInt32(result.Rows[0]["gesperrt"]));
+
+                    String mgPosBez = "";
+
+                    if (initOeffnen == true)
+                    {
+                        int dBConnectOk = c.openConnection();
+                        if (dBConnectOk == 0)
+                        {
+                            int rows = c.countRows("SELECT COUNT(*) FROM vertrag;");
+                            if (rows > 0)
+                            {
+                                DataTable result2 = c.select("SELECT vertrags_id, bezeichnung FROM vertrag;");
+                                if (result2 != null)
+                                {
+                                    string tempBezeichnung = "";
+                                    int tempId = 0;
+
+                                    // ddl füllen
+                                    for (int i = 0; i < rows; i++)
+                                    {
+                                        tempBezeichnung = (String)result2.Rows[i]["bezeichnung"];
+                                        tempId = (int)result2.Rows[i]["vertrags_id"];
+                                        ddlVertragsart.Items.Add(tempBezeichnung);
+                                    }
+
+
+                                }
+                                DataTable result3 = c.select("SELECT vertrags_id, bezeichnung FROM vertrag WHERE vertrags_id = '" + openMitglied.getVertragsId() + "';");
+                                if (result3 != null)
+                                {
+                                    // bezeichnung abfragen
+                                    mgPosBez = (result3.Rows[0]["bezeichnung"]).ToString();
+                                }
+                            }
+                        }
+                        initOeffnen = false;
+                    }
+
+                    int pos = 0;
+
+                    // Combobox preselected Item
+                    for (int i = 0; i < ddlVertragsart.Items.Count; i++)
+                    {
+                        if (ddlVertragsart.Items[i].ToString() == mgPosBez)
+                        {
+                            pos = i;
+                        }
+                    }
+
+                    ddlVertragsart.SelectedIndex = pos;
+
+                   
+
+
+                    /*
 
                     dbConnectOk = c.openConnection();
                     DataTable result2 = c.select("SELECT * FROM vertrag;");
@@ -77,10 +133,11 @@ namespace PuG_Verwaltungssoftware
                     {
                         if (openMitglied.getVertragsId().Equals((arrVertragId[i])))
                         {
-                            tbVertragsart.Text = (arrVertragBez[i]).ToString();
+                            //tbVertragsart.Text = (arrVertragBez[i]).ToString();
                         }
                     }
 
+                     * */
 
                     // Füllen der Textboxen
                     tbVorname.Text = openMitglied.getVorname();
@@ -92,15 +149,36 @@ namespace PuG_Verwaltungssoftware
                     tbOrt.Text = openMitglied.getOrt();
                     tbKommentar.Text = openMitglied.getKommentar();
 
-                    // Füllen der Textboxen (overlay)
-                    tbVertragsDatum.Text = openMitglied.getVertragsDatum().Substring(0, 10);
-                    tbDatum.Text = openMitglied.getGebDatum().Substring(0, 10);
+                    // Datum füllen
+                    dtpDatum.Text = openMitglied.getGebDatum();
+                    dtpVertragsDatum.Text = openMitglied.getVertragsDatum();
+
+                    if (openMitglied.getGesperrt() == 1)
+                    {
+                        cbGesperrt.CheckState = CheckState.Checked;
+                    }
+                    else
+                    {
+                        cbGesperrt.CheckState = CheckState.Unchecked;
+                    }
 
                 }
 
                 // Datenbankverbindung schliessen
                 c.closeConnection();
             }
+        }
+
+        private void btBearbeiten_Click(object sender, EventArgs e)
+        {
+            // Globale Variable true setzen
+            editMode = true;
+
+            // Sichtbarkeit setzen
+            dtpDatum.Enabled = true;
+            dtpVertragsDatum.Enabled = true;
+            ddlVertragsart.Enabled = true;
+
         }
 
     }

@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedOeffnen));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
-            this.tbVertragsart = new System.Windows.Forms.TextBox();
             this.ddlVertragsart = new System.Windows.Forms.ComboBox();
-            this.tbVertragsDatum = new System.Windows.Forms.TextBox();
             this.cbGesperrt = new System.Windows.Forms.CheckBox();
             this.dtpVertragsDatum = new System.Windows.Forms.DateTimePicker();
             this.tbKommentar = new System.Windows.Forms.TextBox();
@@ -51,7 +49,6 @@
             this.lbHausnummer = new System.Windows.Forms.Label();
             this.lbStrasse = new System.Windows.Forms.Label();
             this.gbDaten = new System.Windows.Forms.GroupBox();
-            this.tbDatum = new System.Windows.Forms.TextBox();
             this.lbVorname = new System.Windows.Forms.Label();
             this.lbNachname = new System.Windows.Forms.Label();
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
@@ -95,9 +92,7 @@
             // 
             // gbVertrag
             // 
-            this.gbVertrag.Controls.Add(this.tbVertragsart);
             this.gbVertrag.Controls.Add(this.ddlVertragsart);
-            this.gbVertrag.Controls.Add(this.tbVertragsDatum);
             this.gbVertrag.Controls.Add(this.cbGesperrt);
             this.gbVertrag.Controls.Add(this.dtpVertragsDatum);
             this.gbVertrag.Controls.Add(this.tbKommentar);
@@ -114,14 +109,6 @@
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
             // 
-            // tbVertragsart
-            // 
-            this.tbVertragsart.Location = new System.Drawing.Point(120, 0);
-            this.tbVertragsart.Name = "tbVertragsart";
-            this.tbVertragsart.ReadOnly = true;
-            this.tbVertragsart.Size = new System.Drawing.Size(361, 23);
-            this.tbVertragsart.TabIndex = 18;
-            // 
             // ddlVertragsart
             // 
             this.ddlVertragsart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -131,14 +118,6 @@
             this.ddlVertragsart.Name = "ddlVertragsart";
             this.ddlVertragsart.Size = new System.Drawing.Size(362, 23);
             this.ddlVertragsart.TabIndex = 17;
-            // 
-            // tbVertragsDatum
-            // 
-            this.tbVertragsDatum.Location = new System.Drawing.Point(119, 59);
-            this.tbVertragsDatum.Name = "tbVertragsDatum";
-            this.tbVertragsDatum.ReadOnly = true;
-            this.tbVertragsDatum.Size = new System.Drawing.Size(361, 23);
-            this.tbVertragsDatum.TabIndex = 16;
             // 
             // cbGesperrt
             // 
@@ -152,6 +131,8 @@
             // 
             // dtpVertragsDatum
             // 
+            this.dtpVertragsDatum.Enabled = false;
+            this.dtpVertragsDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 59);
             this.dtpVertragsDatum.Name = "dtpVertragsDatum";
             this.dtpVertragsDatum.Size = new System.Drawing.Size(362, 23);
@@ -303,7 +284,6 @@
             // 
             // gbDaten
             // 
-            this.gbDaten.Controls.Add(this.tbDatum);
             this.gbDaten.Controls.Add(this.lbVorname);
             this.gbDaten.Controls.Add(this.lbNachname);
             this.gbDaten.Controls.Add(this.dtpDatum);
@@ -318,14 +298,6 @@
             this.gbDaten.TabIndex = 8;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
-            // 
-            // tbDatum
-            // 
-            this.tbDatum.Location = new System.Drawing.Point(119, 88);
-            this.tbDatum.Name = "tbDatum";
-            this.tbDatum.ReadOnly = true;
-            this.tbDatum.Size = new System.Drawing.Size(361, 23);
-            this.tbDatum.TabIndex = 6;
             // 
             // lbVorname
             // 
@@ -349,6 +321,8 @@
             // 
             // dtpDatum
             // 
+            this.dtpDatum.Enabled = false;
+            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatum.Location = new System.Drawing.Point(119, 88);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(362, 23);
@@ -414,6 +388,7 @@
             this.btBearbeiten.TabIndex = 0;
             this.btBearbeiten.Text = "Bearbeiten";
             this.btBearbeiten.UseVisualStyleBackColor = true;
+            this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
             // winMitgliedOeffnen
             // 
@@ -470,9 +445,6 @@
         private System.Windows.Forms.Label lbVertragsdatum;
         private System.Windows.Forms.DateTimePicker dtpVertragsDatum;
         private System.Windows.Forms.CheckBox cbGesperrt;
-        private System.Windows.Forms.TextBox tbVertragsDatum;
-        private System.Windows.Forms.TextBox tbDatum;
         private System.Windows.Forms.ComboBox ddlVertragsart;
-        private System.Windows.Forms.TextBox tbVertragsart;
     }
 }
