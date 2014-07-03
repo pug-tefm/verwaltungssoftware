@@ -390,14 +390,17 @@
             // 
             // btSchliessen
             // 
+            this.btSchliessen.BackColor = System.Drawing.Color.Transparent;
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(289, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(329, 0);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 53);
+            this.btSchliessen.Size = new System.Drawing.Size(65, 53);
             this.btSchliessen.TabIndex = 2;
-            this.btSchliessen.Text = "Schließen";
-            this.btSchliessen.UseVisualStyleBackColor = true;
+            this.btSchliessen.UseVisualStyleBackColor = false;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btSpeichern
@@ -411,7 +414,7 @@
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Location = new System.Drawing.Point(0, 0);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(64, 53);
+            this.btSpeichern.Size = new System.Drawing.Size(65, 53);
             this.btSpeichern.TabIndex = 1;
             this.btSpeichern.UseVisualStyleBackColor = false;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
