@@ -142,6 +142,39 @@ namespace PuG_Verwaltungssoftware
             window.Show();
         }
 
+        private void gridKursUebersichtTeilnehmer_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemTeilnehmerAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemTeilnehmerAktualisieren);
+
+                // Bild hinzufuegen
+                toolStripItemTeilnehmerAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemTeilnehmerAktualisieren.Click += new EventHandler(toolStripItemTeilnehmerAktualisieren_Click);
+
+                int currentMouseOverRow = gridKursUebersichtTeilnehmer.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridKursUebersichtTeilnehmer, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemTeilnehmerAktualisieren_Click(object sender, EventArgs args)
+        {
+            
+        }
+
         private void kursUebersichtaktualisieren()
         {
             int connected = c.openConnection();  // Datenbank oeffnen
@@ -176,5 +209,45 @@ namespace PuG_Verwaltungssoftware
                 g.Refresh();
             }
         }
+
+        private void aktualisieren()
+        {
+            int connected = c.openConnection();  // Datenbank oeffnen
+            if (connected == 0)
+            {
+                c.displayData(
+                          "SELECT m.mitglieder_id, vorname, nachname, geburtsdatum FROM mitglieder m, kursuebersicht k WHERE m.mitglieder_id = k.mitglieder_id AND k.kurs_id = " + gmyKurs.getKursId().ToString() + ";", gridKursUebersichtTeilnehmer);
+                c.closeConnection(); // Datenbank schliessen
+
+                // Headertexte anpassen
+                DataTable gridMitgliederTable = (DataTable)(gridKursUebersichtTeilnehmer.DataSource);
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "Mitglieder-ID";
+                gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitgliederTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+
+                //Aktuelle Teilnehmerzahl aktualisieren
+                int aktuelleTeilnehmer = gridKursUebersichtTeilnehmer.Rows.Count;
+                int aktTeilnehmer = gmyKurs.getAktTeilnehmer();
+                if (aktTeilnehmer != aktuelleTeilnehmer)
+                {
+                    c.openConnection();
+                    string sql = "UPDATE kurse SET akt_teilnehmer = '" + aktuelleTeilnehmer + "' WHERE kurs_id = '" + gmyKurs.getKursId() + "';";
+                    c.update(sql, "");
+                    c.closeConnection();
+                }
+
+                int maxTeilnehmer = gmyKurs.getMaxTeilnehmer();
+                if (aktuelleTeilnehmer >= maxTeilnehmer)
+                {
+                    btKursUebersichtNeu.Enabled = false;
+                }
+                else
+                {
+                    btKursUebersichtNeu.Enabled = true;
+                }
+            }
+        }
+
     }
 }

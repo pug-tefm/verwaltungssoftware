@@ -682,6 +682,9 @@
             this.gridKursUebersicht.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridKursUebersicht.Size = new System.Drawing.Size(561, 375);
             this.gridKursUebersicht.TabIndex = 0;
+            this.gridKursUebersicht.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKursUebersicht_CellDoubleClick);
+            this.gridKursUebersicht.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridKursUebersicht_KeyDown);
+            this.gridKursUebersicht.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridKursUebersicht_MouseDown);
             // 
             // btKursUebersichtOeffnen
             // 
@@ -703,6 +706,7 @@
             this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
             this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(128, 26);
             this.tbKursUebersichtSuchen.TabIndex = 13;
+            this.tbKursUebersichtSuchen.TextChanged += new System.EventHandler(this.tbKursUebersichtSuchen_TextChanged);
             // 
             // ddlKursUebersichtSuchen
             // 
@@ -712,6 +716,7 @@
             this.ddlKursUebersichtSuchen.Name = "ddlKursUebersichtSuchen";
             this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 26);
             this.ddlKursUebersichtSuchen.TabIndex = 12;
+            this.ddlKursUebersichtSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlKursUebersichtSuchen_SelectedIndexChanged);
             // 
             // loginPanel
             // 
@@ -809,8 +814,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);

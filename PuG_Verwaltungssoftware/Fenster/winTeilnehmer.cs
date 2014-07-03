@@ -55,8 +55,21 @@ namespace PuG_Verwaltungssoftware
                 {
                     c.openConnection();
                     int teilnehmer_ID = Convert.ToInt32(gridTeilnehmerHinzufuegen.Rows[row.Index].Cells["Mitglieder-ID"].Value);
-                    c.insert("INSERT INTO kursuebersicht (kurs_id, mitglieder_id) VALUES (" + kurs_ID + ", " + teilnehmer_ID + ");", "Mitglied");
+                    // Ueberpruefen ob Mitglied schon in Kurs vorhanden
+                    bool vorhanden = c.count("SELECT * FROM kursuebersicht WHERE kurs_id = '" + kurs_ID + "' AND mitglieder_id = '" + teilnehmer_ID + "';");
                     c.closeConnection();
+                    if (vorhanden != true)
+                    {
+                        c.openConnection();
+                        c.insert("INSERT INTO kursuebersicht (kurs_id, mitglieder_id) VALUES (" + kurs_ID + ", " + teilnehmer_ID + ");", "Mitglied");
+                        c.closeConnection();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Einer der ausgewählten Teilnehmer ist bereits in dem gewünschten Kurs vorhanden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        c.closeConnection();
+                    }
+                    
                 }
             }
             else
@@ -65,6 +78,47 @@ namespace PuG_Verwaltungssoftware
             }
             this.Close();
             aktualisieren(g);
+        }
+
+        private void gridTeilnehmerHinzufuegen_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemTeilnehmerAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemTeilnehmerAktualisieren);
+
+                // Bild hinzufuegen
+                toolStripItemTeilnehmerAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemTeilnehmerAktualisieren.Click += new EventHandler(toolStripItemTeilnehmerAktualisieren_Click);
+
+                int currentMouseOverRow = gridTeilnehmerHinzufuegen.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridTeilnehmerHinzufuegen, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemTeilnehmerAktualisieren_Click(object sender, EventArgs args)
+        {
+            gridTeilnehmerUebersichtAktualisieren();
+        }
+
+        private void gridTeilnehmerHinzufuegen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                gridTeilnehmerUebersichtAktualisieren();
+            }
         }
 
         private void aktualisieren(DataGridView gridKursUebersichtTeilnehmer)
@@ -105,5 +159,28 @@ namespace PuG_Verwaltungssoftware
                 }
             }
         }
+
+        private void gridTeilnehmerUebersichtAktualisieren()
+        {
+            int connected = c.openConnection();  // Datenbank oeffnen
+            if (connected == 0)
+            {
+                c.displayData(
+                          "SELECT mitglieder_id, vorname, nachname, geburtsdatum FROM mitglieder ;", gridTeilnehmerHinzufuegen);
+                c.closeConnection(); // Datenbank schliessen
+
+                // Headertexte anpassen
+                DataTable gridMitgliederTable = (DataTable)(gridTeilnehmerHinzufuegen.DataSource);
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "Mitglieder-ID";
+                gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitgliederTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

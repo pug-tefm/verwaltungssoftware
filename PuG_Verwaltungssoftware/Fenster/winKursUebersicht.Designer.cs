@@ -64,7 +64,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btKursUebersichtLoeschen);
             this.splitContainer1.Panel2.Controls.Add(this.btKursUebersichtNeu);
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
-            this.splitContainer1.Size = new System.Drawing.Size(404, 427);
+            this.splitContainer1.Size = new System.Drawing.Size(434, 427);
             this.splitContainer1.SplitterDistance = 371;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -73,7 +73,7 @@
             this.gbTeilnehmer.Controls.Add(this.gridKursUebersichtTeilnehmer);
             this.gbTeilnehmer.Location = new System.Drawing.Point(12, 41);
             this.gbTeilnehmer.Name = "gbTeilnehmer";
-            this.gbTeilnehmer.Size = new System.Drawing.Size(380, 327);
+            this.gbTeilnehmer.Size = new System.Drawing.Size(410, 327);
             this.gbTeilnehmer.TabIndex = 3;
             this.gbTeilnehmer.TabStop = false;
             this.gbTeilnehmer.Text = "Teilnehmer:";
@@ -88,18 +88,20 @@
             this.gridKursUebersichtTeilnehmer.Name = "gridKursUebersichtTeilnehmer";
             this.gridKursUebersichtTeilnehmer.ReadOnly = true;
             this.gridKursUebersichtTeilnehmer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKursUebersichtTeilnehmer.Size = new System.Drawing.Size(374, 308);
+            this.gridKursUebersichtTeilnehmer.Size = new System.Drawing.Size(404, 308);
             this.gridKursUebersichtTeilnehmer.TabIndex = 0;
+            this.gridKursUebersichtTeilnehmer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridKursUebersichtTeilnehmer_MouseDown);
             // 
             // tbBezeichnung
             // 
             this.tbBezeichnung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBezeichnung.Enabled = false;
             this.tbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBezeichnung.Location = new System.Drawing.Point(124, 9);
+            this.tbBezeichnung.Location = new System.Drawing.Point(99, 9);
             this.tbBezeichnung.MaxLength = 100;
             this.tbBezeichnung.Name = "tbBezeichnung";
-            this.tbBezeichnung.Size = new System.Drawing.Size(268, 26);
+            this.tbBezeichnung.Size = new System.Drawing.Size(323, 26);
             this.tbBezeichnung.TabIndex = 2;
             // 
             // lbBezeichnung
@@ -138,7 +140,7 @@
             // 
             this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(299, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(329, 0);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(105, 52);
             this.btSchliessen.TabIndex = 23;
@@ -150,11 +152,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 427);
+            this.ClientSize = new System.Drawing.Size(434, 427);
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(420, 465);
-            this.MinimumSize = new System.Drawing.Size(420, 465);
+            this.MaximumSize = new System.Drawing.Size(450, 465);
+            this.MinimumSize = new System.Drawing.Size(450, 465);
             this.Name = "winKursUebersicht";
             this.Text = "Kurs Übersicht";
             this.splitContainer1.Panel1.ResumeLayout(false);

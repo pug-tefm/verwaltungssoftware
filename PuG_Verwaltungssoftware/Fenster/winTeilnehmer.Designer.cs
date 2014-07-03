@@ -72,6 +72,8 @@
             this.gridTeilnehmerHinzufuegen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridTeilnehmerHinzufuegen.Size = new System.Drawing.Size(334, 260);
             this.gridTeilnehmerHinzufuegen.TabIndex = 0;
+            this.gridTeilnehmerHinzufuegen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridTeilnehmerHinzufuegen_KeyDown);
+            this.gridTeilnehmerHinzufuegen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridTeilnehmerHinzufuegen_MouseDown);
             // 
             // btHinzufuegen
             // 

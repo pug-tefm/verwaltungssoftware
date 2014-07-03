@@ -68,28 +68,77 @@ namespace PuG_Verwaltungssoftware
 
         private void btKursUebersichtOeffnen_Click(object sender, EventArgs e)
         {
-            if (gridKursUebersicht.CurrentCell != null) // Wenn eine Zelle ausgewählt
-            {
-                foreach (DataGridViewRow row in gridKursUebersicht.SelectedRows) // Damit mehrere Zeilen per Multiselect geöffnet werden können
-                {
-                    if (gridKursUebersicht.RowCount > 0) // Wenn Zeilenanzahl größer 0
-                    {
-                        c_Kurse myKurs = new c_Kurse();
-                        myKurs.setKursId(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Kurs-ID"].Value.ToString()));
-                        myKurs.setBezeichnung(gridKursUebersicht.Rows[row.Index].Cells["Kurs-Name"].Value.ToString());
-                        myKurs.setMaxTeilnehmer(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Max. Teilnehmer"].Value.ToString()));
-                        winKursUebersicht window = new winKursUebersicht(myKurs, gridKursUebersicht);
-                        window.Show();
-                    }
-                }
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-
+            kursUebersichtOeffnen();
         }
+
+        private void gridKursUebersicht_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Rechtsklick
+            {
+                // ContextMenuStrip mit ToolStipMenuItem erzeugen
+                ContextMenuStrip myContextMenu = new ContextMenuStrip();
+                ToolStripMenuItem toolStripItemUebersichtAktualisieren = new ToolStripMenuItem("Aktualisieren (F5)");
+
+                // Items hinzufügen
+                myContextMenu.Items.Add(toolStripItemUebersichtAktualisieren);
+
+                // Bild hinzufuegen
+                toolStripItemUebersichtAktualisieren.Image = PuG_Verwaltungssoftware.Properties.Resources.pug_refresh;
+
+                // Handler der Items
+                toolStripItemUebersichtAktualisieren.Click += new EventHandler(toolStripItemUebersichtAktualisieren_Click);
+
+                int currentMouseOverRow = gridKursUebersicht.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0) // In der Tabelle
+                {
+                    // Nix
+                }
+
+                myContextMenu.Show(gridKursUebersicht, new Point(e.X, e.Y));
+            }
+        }
+
+        private void toolStripItemUebersichtAktualisieren_Click(object sender, EventArgs args)
+        {
+            kursUebersichtaktualisieren();
+        }
+
+        private void gridKursUebersicht_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == (Keys.Control | Keys.O))  // Steuerung + O = Kurs-Uebersicht öffnen
+            {
+                kursUebersichtOeffnen();
+            }
+
+            if (e.KeyData == Keys.F5) // Aktualisieren
+            {
+                kursUebersichtaktualisieren();
+            }  
+        }
+
+        private void gridKursUebersicht_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kursUebersichtOeffnen();
+        }
+
+        private void ddlKursUebersichtSuchen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            myHelper.comboBoxSuchenSelectedIndexChanged(gridKursUebersicht, ddlKursUebersichtSuchen, tbKursUebersichtSuchen, bindingSourceKursUebersicht);
+        }
+
+        private void tbKursUebersichtSuchen_TextChanged(object sender, EventArgs e)
+        {
+            myHelper.textBoxSuchenTextChanged(gridKursUebersicht, ddlKursUebersichtSuchen, tbKursUebersichtSuchen, bindingSourceKursUebersicht);
+        }
+
+
+        /*
+         * ******************************
+         *        Eigene Methoden
+         * ******************************
+         * */
+
         private void kursUebersichtaktualisieren()
         {
             int connected = c.openConnection();  // Datenbank oeffnen
@@ -125,7 +174,30 @@ namespace PuG_Verwaltungssoftware
                 gridKursUebersicht.Refresh();
 
             }
-
         }
+
+        private void kursUebersichtOeffnen()
+        {
+            if (gridKursUebersicht.CurrentCell != null) // Wenn eine Zelle ausgewählt
+            {
+                foreach (DataGridViewRow row in gridKursUebersicht.SelectedRows) // Damit mehrere Zeilen per Multiselect geöffnet werden können
+                {
+                    if (gridKursUebersicht.RowCount > 0) // Wenn Zeilenanzahl größer 0
+                    {
+                        c_Kurse myKurs = new c_Kurse();
+                        myKurs.setKursId(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Kurs-ID"].Value.ToString()));
+                        myKurs.setBezeichnung(gridKursUebersicht.Rows[row.Index].Cells["Kurs-Name"].Value.ToString());
+                        myKurs.setMaxTeilnehmer(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Max. Teilnehmer"].Value.ToString()));
+                        winKursUebersicht window = new winKursUebersicht(myKurs, gridKursUebersicht);
+                        window.Show();
+                    }
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
