@@ -718,6 +718,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
             this.pictureBox1.Location = new System.Drawing.Point(170, 23);
             this.pictureBox1.Name = "pictureBox1";
@@ -728,6 +729,7 @@
             // 
             // btExit
             // 
+            this.btExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btExit.Location = new System.Drawing.Point(424, 261);
             this.btExit.Name = "btExit";
@@ -739,6 +741,7 @@
             // 
             // tbPassword
             // 
+            this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(167, 229);
             this.tbPassword.MaxLength = 50;
@@ -752,6 +755,7 @@
             // 
             // tbUsername
             // 
+            this.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.Location = new System.Drawing.Point(167, 197);
             this.tbUsername.MaxLength = 50;
@@ -765,6 +769,7 @@
             // 
             // btLogin
             // 
+            this.btLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btLogin.Location = new System.Drawing.Point(167, 261);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(251, 32);
