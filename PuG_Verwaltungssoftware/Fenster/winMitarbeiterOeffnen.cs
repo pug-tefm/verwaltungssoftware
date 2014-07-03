@@ -20,6 +20,7 @@ namespace PuG_Verwaltungssoftware
          * */
         
         bool editMode = false;
+        bool initOeffnen = true;
         int gId = 0;          // Mitarbeiter-Nr. des zu oeffnenden Users
         int gPosId = 0;       // Positions-ID des zu oeffnenden Users
         int gLoginMaId = 0;   // Mitarbeiter-Nr. des angemeldeten Users
@@ -77,6 +78,7 @@ namespace PuG_Verwaltungssoftware
             if (dbConnectOk == 0)
             {
                 DataTable result = c.select("SELECT * FROM mitarbeiter WHERE mitarbeiter_id = '" + gId + "'");
+                c.closeConnection();
                 if (result != null)
                 {
                     vorname = (String)result.Rows[0]["vorname"];
@@ -90,14 +92,35 @@ namespace PuG_Verwaltungssoftware
                     benutzername = (String)result.Rows[0]["benutzername"];
                     position = (result.Rows[0]["position_id"]).ToString();
                     gPosId = Convert.ToInt32(position);
-                    if (position == "1")
+
+                    dbConnectOk = c.openConnection();
+                    DataTable result2 = c.select("SELECT * FROM positionen;");
+                    c.closeConnection();
+
+                    int[] arrPosId = new int[result2.Rows.Count];
+                    string[] arrPosBez = new string[result2.Rows.Count];
+
+                    if (dbConnectOk == 0)
                     {
-                        position = "Chef";
+                        
+                        if (result2 != null)
+                        {
+                            for (int i = 0; i < result2.Rows.Count; i++)
+                            {
+                                arrPosId[i] = Convert.ToInt32(result2.Rows[i]["pos_id"]);
+                                arrPosBez[i] = (result2.Rows[i]["bezeichnung"]).ToString();
+                            }
+                        }
                     }
-                    else
+
+                    for (int i = 0; i < arrPosId.Length; i++)
                     {
-                        position = "Normal";
+                        if (position.Equals((arrPosId[i]).ToString()))
+                        {
+                            position = (arrPosBez[i]).ToString();
+                        }
                     }
+               
 
                     // Formatierungen
                     gebDatum = gebDatum.Substring(0, 10);
@@ -199,31 +222,49 @@ namespace PuG_Verwaltungssoftware
             // =====================================
 
             string bezeichnung = "";
+            int id = 0;
             int pos = 0;
 
-            int dBConnectOk = c.openConnection();
-            if (dBConnectOk == 0)
+            if (initOeffnen == true)
             {
-                int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
-                if (rows > 0)
+                int dBConnectOk = c.openConnection();
+                if (dBConnectOk == 0)
                 {
-                    DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
-                    if (result != null)
+                    int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
+                    if (rows > 0)
                     {
-                        for (int i = 0; i < rows; i++)
+                        DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
+                        if (result != null)
                         {
-                            bezeichnung = (String)result.Rows[i]["bezeichnung"];
-                            ddlMitarbeiterPosition.Items.Add(bezeichnung);
+                            for (int i = 0; i < rows; i++)
+                            {
+                                bezeichnung = (String)result.Rows[i]["bezeichnung"];
+                                id = (int)result.Rows[i]["pos_id"];
+                                ddlMitarbeiterPosition.Items.Add(bezeichnung);
+
+                            }
                         }
                     }
+                    c.closeConnection();
                 }
-                c.closeConnection();
+                initOeffnen = false;
+            }
+            
+
+            // Positionsbezeichnung abfragen
+            string maPosBez = "";
+            c.openConnection();  // Datenbank oeffnen
+            DataTable result2 = c.select("SELECT pos_id, bezeichnung FROM positionen WHERE pos_id = '" + gPosId +"';");
+            c.closeConnection(); // Datenbank schliessen
+            if (result2 != null)
+            {
+                maPosBez = (result2.Rows[0]["bezeichnung"]).ToString();
             }
 
             // Combobox preselected Item
             for (int i = 0; i < ddlMitarbeiterPosition.Items.Count; i++)
             {
-                if (ddlMitarbeiterPosition.Items[i].ToString() == "Normal")
+                if (ddlMitarbeiterPosition.Items[i].ToString() == maPosBez)
                 {
                     pos = i;
                 }
@@ -257,7 +298,7 @@ namespace PuG_Verwaltungssoftware
                 String position = String.Empty;
 
                 String strSQL;
-                int posId;
+                int posId = 0;
 
                 // Neues Mitarbeiter Objekt anlegen
                 c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
@@ -324,20 +365,51 @@ namespace PuG_Verwaltungssoftware
                 if (tbBenutzername.Text != "" && ddlMitarbeiterPosition.Text != "")
                 {
                     benutzername = tbBenutzername.Text;
+                    position = ddlMitarbeiterPosition.SelectedItem.ToString();
+
                     // Ueberpruefen welche Position ausgewaehlt wurde
-                    if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Normal")
+                    int dbConnectOk = c.openConnection();
+                    DataTable result2 = c.select("SELECT * FROM positionen;");
+                    c.closeConnection();
+
+                    int[] arrPosId = new int[result2.Rows.Count];
+                    string[] arrPosBez = new string[result2.Rows.Count];
+
+                    if (dbConnectOk == 0)
                     {
-                        posId = 2;
+
+                        if (result2 != null)
+                        {
+                            for (int i = 0; i < result2.Rows.Count; i++)
+                            {
+                                arrPosId[i] = Convert.ToInt32(result2.Rows[i]["pos_id"]);
+                                arrPosBez[i] = (result2.Rows[i]["bezeichnung"]).ToString();
+                            }
+                        }
                     }
-                    else if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Chef")
+
+                    for (int i = 0; i < arrPosId.Length; i++)
                     {
-                        posId = 1;
+                        if (position.Equals((arrPosBez[i]).ToString()))
+                        {
+                            posId = arrPosId[i];
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Keine Position ausgewählt.");
-                        return;
-                    }
+
+
+                    //if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Normal")
+                    //{
+                    //    posId = 2;
+                    //}
+                    //else if (ddlMitarbeiterPosition.SelectedItem.ToString() == "Chef")
+                    //{
+                    //    posId = 1;
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Keine Position ausgewählt.");
+                    //    return;
+                    //}
                 }
                 else
                 {
@@ -365,7 +437,7 @@ namespace PuG_Verwaltungssoftware
                     if (gLoginPosId == 1)
                     {
                         // String fuer Chef
-                        strSQL = "UPDATE mitarbeiter SET benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "', gehalt = '" + (gehalt.ToString()).Replace(",", ".") + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
+                        strSQL = "UPDATE mitarbeiter SET position_id = '" + posId + "', benutzername = '" + benutzername + "', vorname = '" + vorname + "', nachname = '" + nachname + "', geburtsdatum = '" + gebDatum + "', strasse = '" + strasse + "', hausnummer = '" + hausnummer + "', plz = '" + plz + "', ort = '" + ort + "', gehalt = '" + (gehalt.ToString()).Replace(",", ".") + "' WHERE mitarbeiter_id = " + gId.ToString() + ";";
                     }
                     else
                     {

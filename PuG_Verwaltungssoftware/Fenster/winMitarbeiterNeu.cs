@@ -123,7 +123,7 @@ namespace PuG_Verwaltungssoftware
             String strSQL = String.Empty;
 
             int plz;
-            int posId;
+            int posId = 0;
             double gehalt;
 
 
@@ -189,19 +189,39 @@ namespace PuG_Verwaltungssoftware
             {
                 initBenutzer = tbInitUser.Text;
                 initPasswort = tbInitPasswort.Text;
-                // Ueberpruefen welche Position ausgewaehlt wurde
-                if (ddlPosition.SelectedItem.ToString() == "Normal")
+                if (initBenutzer.Length < 3 || initPasswort.Length < 8)
                 {
-                    posId = 2;
-                }
-                else if (ddlPosition.SelectedItem.ToString() == "Chef")
-                {
-                    posId = 1;
-                }
-                else
-                {
-                    MessageBox.Show("Keine Position ausgewählt.");
+                    MessageBox.Show("Mindeslänge Benutzername: 3 Zeichen.\nMindestlänge Passwort: 8 Zeichen.");
                     return;
+                }
+
+                // Ueberpruefen welche Position ausgewaehlt wurde
+                int dbConnectOk = c.openConnection();
+                DataTable result2 = c.select("SELECT * FROM positionen;");
+                c.closeConnection();
+
+                int[] arrPosId = new int[result2.Rows.Count];
+                string[] arrPosBez = new string[result2.Rows.Count];
+
+                if (dbConnectOk == 0)
+                {
+
+                    if (result2 != null)
+                    {
+                        for (int i = 0; i < result2.Rows.Count; i++)
+                        {
+                            arrPosId[i] = Convert.ToInt32(result2.Rows[i]["pos_id"]);
+                            arrPosBez[i] = (result2.Rows[i]["bezeichnung"]).ToString();
+                        }
+                    }
+                }
+
+                for (int i = 0; i < arrPosId.Length; i++)
+                {
+                    if (ddlPosition.SelectedItem.ToString().Equals((arrPosBez[i]).ToString()))
+                    {
+                        posId = arrPosId[i];
+                    }
                 }
             }
             else

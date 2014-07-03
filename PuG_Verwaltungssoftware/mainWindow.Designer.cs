@@ -32,6 +32,7 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.scHome = new System.Windows.Forms.SplitContainer();
+            this.btAbmelden = new System.Windows.Forms.Button();
             this.lbAngemeldet = new System.Windows.Forms.Label();
             this.lbTimer = new System.Windows.Forms.Label();
             this.lbMitarbeiterName = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
-            this.btAbmelden = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).BeginInit();
@@ -172,6 +172,15 @@
             this.scHome.Size = new System.Drawing.Size(555, 428);
             this.scHome.SplitterDistance = 127;
             this.scHome.TabIndex = 0;
+            // 
+            // btAbmelden
+            // 
+            this.btAbmelden.Location = new System.Drawing.Point(459, 21);
+            this.btAbmelden.Name = "btAbmelden";
+            this.btAbmelden.Size = new System.Drawing.Size(89, 30);
+            this.btAbmelden.TabIndex = 4;
+            this.btAbmelden.Text = "Abmelden";
+            this.btAbmelden.UseVisualStyleBackColor = true;
             // 
             // lbAngemeldet
             // 
@@ -768,15 +777,6 @@
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
-            // btAbmelden
-            // 
-            this.btAbmelden.Location = new System.Drawing.Point(459, 21);
-            this.btAbmelden.Name = "btAbmelden";
-            this.btAbmelden.Size = new System.Drawing.Size(89, 30);
-            this.btAbmelden.TabIndex = 4;
-            this.btAbmelden.Text = "Abmelden";
-            this.btAbmelden.UseVisualStyleBackColor = true;
-            // 
             // mainWindow
             // 
             this.AcceptButton = this.btLogin;
@@ -784,8 +784,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
