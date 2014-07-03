@@ -14,11 +14,13 @@ namespace PuG_Verwaltungssoftware
     public partial class winMitgliedNeu : Form
     {
         c_DBConnect c = new c_DBConnect();
-        DataGridView gGridView;
+        DataGridView gridMitglieder;
+        private BindingSource bindingSourceMitglieder = new BindingSource();
 
-        public winMitgliedNeu()
+        public winMitgliedNeu(DataGridView grid)
         {
             InitializeComponent();
+            gridMitglieder = grid;
 
         }
 
@@ -191,11 +193,40 @@ namespace PuG_Verwaltungssoftware
                     "VALUES ('" + newMitglied.getVertragsId() + "', '" + newMitglied.getVorname() + "', '" + newMitglied.getNachname() + "' , '" + newMitglied.getGebDatum() + "', '" + newMitglied.getStrasse() + "', '" + newMitglied.getHausnummer() + "', '" + newMitglied.getPlz() + "', '" + newMitglied.getOrt() + "', '" + newMitglied.getVertragsDatum() + "', '" + newMitglied.getGesperrt() + "', '" + newMitglied.getKommentar() + "');";
                 c.insert(strSQL, "Mitglied");
                 c.closeConnection();
-                //gridMitarbeiterAktualisieren();
+                gridMitgliederAktualisieren();
 
                 this.Close();
             }
 
+        }
+
+        private void gridMitgliederAktualisieren()
+        {
+            int dbConnect = c.openConnection();
+            if (dbConnect == 0)
+            {
+
+                c.displayData("SELECT mitglieder_id, bezeichnung, vorname, nachname, geburtsdatum, gesperrt FROM mitglieder a, vertrag b WHERE a.vertrags_id = b.vertrags_id;", gridMitglieder);
+                c.closeConnection();
+
+                // Headertexte anpassen
+                DataTable gridMitgliederTable = (DataTable)(gridMitglieder.DataSource);
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "ID";
+                gridMitgliederTable.Columns["bezeichnung"].ColumnName = "Bezeichnung";
+                gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitgliederTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+                gridMitgliederTable.Columns["gesperrt"].ColumnName = "Gesperrt";
+
+
+                // Binding Objekt zuweisen
+                bindingSourceMitglieder.DataSource = gridMitglieder.DataSource;
+                gridMitglieder.DataSource = bindingSourceMitglieder;
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

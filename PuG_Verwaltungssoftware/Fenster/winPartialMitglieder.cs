@@ -75,7 +75,7 @@ namespace PuG_Verwaltungssoftware
 
         private void btMgNeu_Click(object sender, EventArgs e)
         {
-            winMitgliedNeu window = new winMitgliedNeu();
+            winMitgliedNeu window = new winMitgliedNeu(gridMitglieder);
             window.Show();
         }
 
@@ -128,6 +128,35 @@ namespace PuG_Verwaltungssoftware
             else
             {
                 DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void gridMitgliederAktualisieren()
+        {
+            int dbConnect = c.openConnection();
+            if (dbConnect == 0)
+            {
+                
+                c.displayData("SELECT mitglieder_id, bezeichnung, vorname, nachname, geburtsdatum, gesperrt FROM mitglieder a, vertrag b WHERE a.vertrags_id = b.vertrags_id;", gridMitglieder);
+                c.closeConnection();
+
+                // Headertexte anpassen
+                DataTable gridMitgliederTable = (DataTable)(gridMitglieder.DataSource);
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "ID";
+                gridMitgliederTable.Columns["bezeichnung"].ColumnName = "Bezeichnung";
+                gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
+                gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
+                gridMitgliederTable.Columns["geburtsdatum"].ColumnName = "Geburtsdatum";
+                gridMitgliederTable.Columns["gesperrt"].ColumnName = "Gesperrt";
+
+
+                // Binding Objekt zuweisen
+                bindingSourceMitglieder.DataSource = gridMitglieder.DataSource;
+                gridMitglieder.DataSource = bindingSourceMitglieder;
+            }
+            else
+            {
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
