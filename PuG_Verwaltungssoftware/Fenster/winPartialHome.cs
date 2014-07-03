@@ -40,32 +40,6 @@ namespace PuG_Verwaltungssoftware
             listViewsLaden();
         }
 
-        private void TimerEvent(object sender, EventArgs e)
-        {
-            if (s < 59)
-            {
-                s = s + 1;
-            }
-            else
-            {
-                s = 0;
-                if (m < 59)
-                {
-                    m = m + 1;
-                }
-                else
-                {
-                    m = 0;
-                    h = h + 1;
-                }
-
-            }
-
-            // Timer ausgabe und String Format
-            lbTimer.Text = String.Format("{0:00}", h) + ":" + String.Format("{0:00}", m) + ":" + String.Format("{0:00}", s);
-
-        }
-
 
         // Initialize ListView
         private void initializeListView()
@@ -184,44 +158,32 @@ namespace PuG_Verwaltungssoftware
                 // Clear the ListView control
                 lvNewsHeute.Items.Clear();
 
-                DataTable dtable = c.select("SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse;");
+                DateTime today = DateTime.Now;
+                int tag = (int)today.DayOfWeek -1;  // -1 weil Montag 0 ist, anstatt 1
+
+                DataTable dtable = c.select("SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE wochentag = '" + tag + "';");
                 c.closeConnection();
 
-                DateTime today = DateTime.Now;
 
-                for (int i = 0; i < dtable.Rows.Count; i++) // Alle Zeilen anschauen
+                for (int i = 0; i < dtable.Rows.Count; i++)
                 {
-                    DateTime beginnDate = DateTime.Parse(dtable.Rows[i]["datum_von"].ToString());
-                    DateTime endDate = DateTime.Parse(dtable.Rows[i]["datum_bis"].ToString());
-                    if (today >= beginnDate && today <= endDate || beginnDate == endDate) // Wenn ein laufender Kurs
+                    DataRow drow = dtable.Rows[i];
+                    
+                    // Only row that have not been deleted
+                    if (drow.RowState != DataRowState.Deleted)
                     {
-                        String stringWochentag = c_Helper.umwandlungIntInWochentag(Convert.ToInt32(dtable.Rows[i]["Wochentag"]));
-                        if (c_Helper.umwandlungWochentagEngToGer(today.DayOfWeek.ToString()) == stringWochentag) // Wenn Tag = Heute
-                        {
-                            DateTime beginnUhrzeit = DateTime.Parse(dtable.Rows[i]["uhrzeit_von"].ToString());
-                            DateTime endUhrzeit = DateTime.Parse(dtable.Rows[i]["uhrzeit_bis"].ToString());
-                            if (!(today.TimeOfDay > beginnUhrzeit.TimeOfDay && today.TimeOfDay < endUhrzeit.TimeOfDay)) // Wenn Uhrzeit passt
-                            {
-                                DataRow drow = dtable.Rows[i];
+                        // Define the list items
+                        ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
+                        lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                        lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
+                        lvi.BackColor = Color.Red;
 
-                                // Only row that have not been deleted
-                                if (drow.RowState != DataRowState.Deleted)
-                                {
-                                    // Define the list items
-                                    ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
-                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
-                                    lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
-                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
-                                    lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
-                                    lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
-                                    lvi.BackColor = Color.Red;
-                                        
 
-                                    // Add the list items to the ListView
-                                    lvNewsHeute.Items.Add(lvi);
-                                }
-                            }                               
-                        }                           
+                        // Add the list items to the ListView
+                        lvNewsHeute.Items.Add(lvi);
                     }
                 }
             }
@@ -236,34 +198,48 @@ namespace PuG_Verwaltungssoftware
                 // Clear the ListView control
                 lvNewsKommend.Items.Clear();
 
-                DataTable dtable = c.select("SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse;");
+                DateTime today = DateTime.Now;
+                int tag = (int)today.DayOfWeek;
+                int tag2 = 0;
+                switch (tag) {
+                    case 4:
+                        tag2 = 6;
+                        break;
+                    case 5:
+                        tag2 = 0;
+                        break;
+                    case 6:
+                        tag2 = 1;
+                        break;
+                    default:
+                        tag = tag + 2;
+                        break;
+                }
+
+                DataTable dtable = c.select("SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE wochentag BETWEEN '" + tag + "' AND '" + tag2 + "';");
                 c.closeConnection();
 
-                DateTime today = DateTime.Now;
+                
 
                 for (int i = 0; i < dtable.Rows.Count; i++) // Alle Zeilen anschauen
                 {
-                    DateTime beginnDate = DateTime.Parse(dtable.Rows[i]["datum_von"].ToString());
-                    DateTime endDate = DateTime.Parse(dtable.Rows[i]["datum_bis"].ToString());
-                    if (!(today >= beginnDate && today <= endDate || beginnDate == endDate)) // Wenn ein laufender Kurs
+
+                    DataRow drow = dtable.Rows[i];
+
+                    // Only row that have not been deleted
+                    if (drow.RowState != DataRowState.Deleted)
                     {
-                        DataRow drow = dtable.Rows[i];
+                        // Define the list items
+                        ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
+                        lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                        lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
+                        lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
+                        lvi.BackColor = Color.Yellow;
 
-                        // Only row that have not been deleted
-                        if (drow.RowState != DataRowState.Deleted)
-                        {
-                            // Define the list items
-                            ListViewItem lvi = new ListViewItem(drow["bezeichnung"].ToString());
-                            lvi.SubItems.Add(DateTime.Parse(drow["datum_von"].ToString()).ToString("dd.MM.yyyy"));
-                            lvi.SubItems.Add(DateTime.Parse(drow["datum_bis"].ToString()).ToString("dd.MM.yyyy"));
-                            lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
-                            lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
-                            lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
-                            lvi.BackColor = Color.Yellow;
-
-                            // Add the list items to the ListView
-                            lvNewsKommend.Items.Add(lvi);
-                        }
+                        // Add the list items to the ListView
+                        lvNewsKommend.Items.Add(lvi);
                     }
                 }
             }
@@ -394,5 +370,6 @@ namespace PuG_Verwaltungssoftware
                 listViewsLaden(1);
             }
         }
+
     }
 }

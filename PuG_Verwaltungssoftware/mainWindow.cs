@@ -19,6 +19,8 @@ namespace PuG_Verwaltungssoftware
         private bool initKursUebersicht = false;
         private BindingSource bindingSourceKursUebersicht = new BindingSource();
 
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
         public mainWindow()
         {
             InitializeComponent();
@@ -116,7 +118,7 @@ namespace PuG_Verwaltungssoftware
 
 
                         // Timer anlegen
-                        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                        timer = new System.Windows.Forms.Timer();
                         timer.Interval = 999;
                         timer.Enabled = true;
                         // Timer starten
@@ -147,7 +149,34 @@ namespace PuG_Verwaltungssoftware
                 c.closeConnection();
             }
 
-        }      
+        }
+
+        private void TimerEvent(object sender, EventArgs e)
+        {
+            if (s < 59)
+            {
+                s = s + 1;
+            }
+            else
+            {
+                s = 0;
+                if (m < 59)
+                {
+                    m = m + 1;
+                }
+                else
+                {
+                    m = 0;
+                    h = h + 1;
+                }
+
+            }
+
+            // Timer ausgabe und String Format
+            lbTimer.Text = String.Format("{0:00}", h) + ":" + String.Format("{0:00}", m) + ":" + String.Format("{0:00}", s);
+
+        }
+
 
         private void btExit_Click(object sender, EventArgs e)
         {
@@ -292,5 +321,31 @@ namespace PuG_Verwaltungssoftware
         {
 
         }
+
+        private void btAbmelden_Click(object sender, EventArgs e)
+        {
+            // Benutzer und Passwort Textbox anpassen
+            tbUsername.Font = new Font(tbUsername.Font, FontStyle.Italic);
+            tbUsername.Text = "Benutzername";
+
+            tbPassword.Font = new Font(tbPassword.Font, FontStyle.Italic);
+            tbPassword.PasswordChar = char.Parse("\0");
+            tbPassword.Text = "Passwort";
+
+            // Timer zuruecksetzen
+            timer.Stop();
+            lbTimer.Text = "00:00:00";
+            s = 0;
+            m = 0;
+            h = 0;
+
+            // TabPage auswaehlen
+            newsTabControl.SelectedTab = tabPageAktuell;
+
+            // Panel anzeigen
+            loginPanel.Visible = true;
+            loginPanel.BringToFront();
+        }
+
     }
 }

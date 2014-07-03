@@ -74,10 +74,8 @@ namespace PuG_Verwaltungssoftware.Klassen
         /* Überprüfen ob nur Nummer, Komma oder Punkt im String enthalten sind. */
         /* Zusätzlich wird die Länge optional abgefragt                         */
         /************************************************************************/
-        public static bool numFormatPunktKomma(String query, int laenge = 0)
+        public static bool numFormatPunktKomma(String query)
         {
-            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
-
             int zaehler = 0;
             for (int i = 0; i < query.Length; i++)
             {
@@ -102,10 +100,8 @@ namespace PuG_Verwaltungssoftware.Klassen
         /* Überprüfen ob nur Nummer im String enthalten sind.         */
         /* Zusätzlich wird die Länge optional abgefragt               */
         /**************************************************************/
-        public static bool numFormat(String query, int laenge = 0)
+        public static bool numFormat(String query)
         {
-            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
-
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
@@ -123,10 +119,8 @@ namespace PuG_Verwaltungssoftware.Klassen
         /* Überprüfen ob nur Buchstaben im String enthalten sind.           */
         /* Zusätzlich wird die Länge optional abgefragt                     */
         /********************************************************************/
-        public static bool wrongCharacters(String query, int laenge = 0)
+        public static bool wrongCharacters(String query)
         {
-            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
-
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];
@@ -145,10 +139,8 @@ namespace PuG_Verwaltungssoftware.Klassen
         /* im String enthalten sind.                                             */
         /* Zusätzlich wird die Länge optional abgefragt                          */
         /*************************************************************************/
-        public static bool wrongCharNumberExtra(String query, int laenge = 0)
+        public static bool wrongCharNumberExtra(String query)
         {
-            if (query.Trim().Length <= 0 || query.Length < laenge) return true; // Länge falsch
-
             for (int i = 0; i < query.Length; i++)
             {
                 int character = query[i];

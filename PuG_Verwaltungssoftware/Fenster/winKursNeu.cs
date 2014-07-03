@@ -148,6 +148,8 @@ namespace PuG_Verwaltungssoftware
                             break;
                         }
                     }
+                    cbWochentag.Text = c_Helper.umwandlungWochentagEngToGer(wochentag);
+
                     // Ende Datum Von und Bis an Wochentag anpassen
 
                     c_DBConnect myConnection = new c_DBConnect();
@@ -155,17 +157,18 @@ namespace PuG_Verwaltungssoftware
                     if (connected == 0) // Kein Fehler Connect
                     {
                         // Format für SQL anpassen
-                        String datumVon   = dtpDatumVon.Value.ToString("yyyy-MM-dd");
-                        String datumBis   = dtpDatumBis.Value.ToString("yyyy-MM-dd");
-                        String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
-                        String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
-                        String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
-                        String preis      = tbPreis.Text.Replace(",", ".");
+                        String datumVon     = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis     = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String uhrzeitVon   = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String uhrzeitBis   = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String kursleiter   = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
+                        String preis        = tbPreis.Text.Replace(",", ".");
+                        String intWochentag = c_Helper.umwandlungWochentagInInt(c_Helper.umwandlungWochentagEngToGer(wochentag)).ToString();
                         
                         // Abfrage String generieren
                         String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, " +
-                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" + 
-                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
+                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" +
+                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + intWochentag + ", '" + uhrzeitVon + 
                                         "', '" + uhrzeitBis + "');";
 
                         bool ok = myConnection.insert(query, "Kurs"); // SQL Befehl ausführen

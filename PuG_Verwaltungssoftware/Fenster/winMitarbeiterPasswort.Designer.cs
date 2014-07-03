@@ -65,6 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbInitPw.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbInitPw.Location = new System.Drawing.Point(165, 67);
+            this.tbInitPw.MaxLength = 100;
             this.tbInitPw.Name = "tbInitPw";
             this.tbInitPw.Size = new System.Drawing.Size(273, 26);
             this.tbInitPw.TabIndex = 1;
@@ -98,6 +99,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNeuesPw2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNeuesPw2.Location = new System.Drawing.Point(165, 102);
+            this.tbNeuesPw2.MaxLength = 100;
             this.tbNeuesPw2.Name = "tbNeuesPw2";
             this.tbNeuesPw2.PasswordChar = '*';
             this.tbNeuesPw2.Size = new System.Drawing.Size(273, 26);
@@ -119,6 +121,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNeuesPw1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNeuesPw1.Location = new System.Drawing.Point(165, 72);
+            this.tbNeuesPw1.MaxLength = 100;
             this.tbNeuesPw1.Name = "tbNeuesPw1";
             this.tbNeuesPw1.PasswordChar = '*';
             this.tbNeuesPw1.Size = new System.Drawing.Size(273, 26);
@@ -140,6 +143,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbAltesPw.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAltesPw.Location = new System.Drawing.Point(165, 16);
+            this.tbAltesPw.MaxLength = 100;
             this.tbAltesPw.Name = "tbAltesPw";
             this.tbAltesPw.PasswordChar = '*';
             this.tbAltesPw.Size = new System.Drawing.Size(273, 26);

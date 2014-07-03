@@ -132,6 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 148);
+            this.tbMaxTeilnehmer.MaxLength = 5;
             this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
             this.tbMaxTeilnehmer.ReadOnly = true;
             this.tbMaxTeilnehmer.Size = new System.Drawing.Size(240, 26);
@@ -153,6 +154,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbAktTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAktTeilnehmer.Location = new System.Drawing.Point(129, 112);
+            this.tbAktTeilnehmer.MaxLength = 5;
             this.tbAktTeilnehmer.Name = "tbAktTeilnehmer";
             this.tbAktTeilnehmer.ReadOnly = true;
             this.tbAktTeilnehmer.Size = new System.Drawing.Size(240, 26);
@@ -174,6 +176,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPreis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPreis.Location = new System.Drawing.Point(129, 80);
+            this.tbPreis.MaxLength = 20;
             this.tbPreis.Name = "tbPreis";
             this.tbPreis.ReadOnly = true;
             this.tbPreis.Size = new System.Drawing.Size(240, 26);
@@ -205,6 +208,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBezeichnung.Location = new System.Drawing.Point(129, 15);
+            this.tbBezeichnung.MaxLength = 100;
             this.tbBezeichnung.Name = "tbBezeichnung";
             this.tbBezeichnung.ReadOnly = true;
             this.tbBezeichnung.Size = new System.Drawing.Size(240, 26);

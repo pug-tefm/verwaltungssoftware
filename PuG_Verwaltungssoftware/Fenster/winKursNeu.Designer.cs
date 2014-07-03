@@ -118,6 +118,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMaxTeilnehmer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMaxTeilnehmer.Location = new System.Drawing.Point(129, 112);
+            this.tbMaxTeilnehmer.MaxLength = 5;
             this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
             this.tbMaxTeilnehmer.Size = new System.Drawing.Size(240, 26);
             this.tbMaxTeilnehmer.TabIndex = 4;
@@ -138,6 +139,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPreis.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPreis.Location = new System.Drawing.Point(129, 80);
+            this.tbPreis.MaxLength = 20;
             this.tbPreis.Name = "tbPreis";
             this.tbPreis.Size = new System.Drawing.Size(240, 26);
             this.tbPreis.TabIndex = 3;
@@ -168,6 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBezeichnung.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBezeichnung.Location = new System.Drawing.Point(129, 15);
+            this.tbBezeichnung.MaxLength = 100;
             this.tbBezeichnung.Name = "tbBezeichnung";
             this.tbBezeichnung.Size = new System.Drawing.Size(240, 26);
             this.tbBezeichnung.TabIndex = 1;
