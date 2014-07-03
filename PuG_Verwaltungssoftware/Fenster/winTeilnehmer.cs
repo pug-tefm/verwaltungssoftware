@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PuG_Verwaltungssoftware.Fenster
+namespace PuG_Verwaltungssoftware
 {
     public partial class winTeilnehmer : Form
     {

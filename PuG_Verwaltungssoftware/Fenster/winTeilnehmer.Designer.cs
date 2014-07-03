@@ -1,4 +1,4 @@
-﻿namespace PuG_Verwaltungssoftware.Fenster
+﻿namespace PuG_Verwaltungssoftware
 {
     partial class winTeilnehmer
     {
