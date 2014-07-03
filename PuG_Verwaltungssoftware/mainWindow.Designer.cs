@@ -738,10 +738,11 @@
             // 
             // lbLoginMessage
             // 
+            this.lbLoginMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbLoginMessage.AutoSize = true;
             this.lbLoginMessage.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoginMessage.ForeColor = System.Drawing.Color.Red;
-            this.lbLoginMessage.Location = new System.Drawing.Point(119, 330);
+            this.lbLoginMessage.Location = new System.Drawing.Point(166, 308);
             this.lbLoginMessage.Name = "lbLoginMessage";
             this.lbLoginMessage.Size = new System.Drawing.Size(0, 19);
             this.lbLoginMessage.TabIndex = 5;
