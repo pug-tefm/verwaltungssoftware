@@ -108,23 +108,10 @@ namespace PuG_Verwaltungssoftware
         {
 
             // Neues Mitarbeiter Objekt anlegen
-            c_Mitarbeiter myMitarbeiter = new c_Mitarbeiter();
+            c_Mitarbeiter neuerMitarbeiter = new c_Mitarbeiter();
 
             // Variablendeklaration und Initialisierung
-            String vorname;
-            String nachname;
-            String gebDatum;
-            String strasse;
-            String hNummer;
-            String ort;
-            String initBenutzer;
-            String initPasswort;
-
             String strSQL = String.Empty;
-
-            int plz;
-            int posId = 0;
-            double gehalt;
 
 
             // =====================================
@@ -134,12 +121,12 @@ namespace PuG_Verwaltungssoftware
             // Persoenliche Daten
             if (tbVorname.Text != "" && tbNachname.Text != "" && dtpDatum.Text != "")
             {
-                vorname = tbVorname.Text;
-                nachname = tbNachname.Text;
+                neuerMitarbeiter.setVorname(tbVorname.Text);
+                neuerMitarbeiter.setNachname(tbNachname.Text);
                 // GebDatum umformatieren
-                gebDatum = dtpDatum.Text;
-                DateTime date = Convert.ToDateTime(gebDatum);
-                gebDatum = date.ToString("yyyy-MM-dd");
+                neuerMitarbeiter.setGebDatum(dtpDatum.Text);
+                DateTime date = Convert.ToDateTime(neuerMitarbeiter.getGebDatum());
+                neuerMitarbeiter.setGebDatum(date.ToString("yyyy-MM-dd"));
             }
             else
             {
@@ -150,12 +137,12 @@ namespace PuG_Verwaltungssoftware
             // Anschrift
             if (tbStrasse.Text != "" && tbHausnummer.Text != "" && tbOrt.Text != "" && tbPlz.Text != "")
             {
-                strasse = tbStrasse.Text;
-                ort = tbOrt.Text;
+                neuerMitarbeiter.setStrasse(tbStrasse.Text);
+                neuerMitarbeiter.setOrt(tbOrt.Text);
                 if (c_Helper.wrongCharNumberExtra(tbHausnummer.Text) == false && c_Helper.numFormat(tbPlz.Text) == false)
                 {
-                    hNummer = tbHausnummer.Text;
-                    plz = Convert.ToInt32(tbPlz.Text);
+                    neuerMitarbeiter.setHausnummer(tbHausnummer.Text);
+                    neuerMitarbeiter.setPlz(Convert.ToInt32(tbPlz.Text));
                 }
                 else
                 {
@@ -172,8 +159,8 @@ namespace PuG_Verwaltungssoftware
             // Gehalt
             if (tbGehalt.Text != "")
             {
-                gehalt = Convert.ToDouble(tbGehalt.Text);
-                if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
+                neuerMitarbeiter.setGehalt(Convert.ToDouble(tbGehalt.Text));
+                if (c_Helper.numFormatPunktKomma(tbGehalt.Text) == true)
                 {
                     MessageBox.Show("Falsches Format für das Feld Gehalt.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -187,9 +174,9 @@ namespace PuG_Verwaltungssoftware
             // Login - Daten
             if (tbInitUser.Text != "" && tbInitPasswort.Text != "")
             {
-                initBenutzer = tbInitUser.Text;
-                initPasswort = tbInitPasswort.Text;
-                if (initBenutzer.Length < 3 || initPasswort.Length < 8)
+                neuerMitarbeiter.setBenutzername(tbInitUser.Text);
+                neuerMitarbeiter.setPasswort(tbInitPasswort.Text);
+                if (neuerMitarbeiter.getBenutzername().Length < 3 || neuerMitarbeiter.getPasswort().Length < 8)
                 {
                     MessageBox.Show("Mindeslänge Benutzername: 3 Zeichen.\nMindestlänge Passwort: 8 Zeichen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -220,7 +207,7 @@ namespace PuG_Verwaltungssoftware
                 {
                     if (ddlPosition.SelectedItem.ToString().Equals((arrPosBez[i]).ToString()))
                     {
-                        posId = arrPosId[i];
+                        neuerMitarbeiter.setPositionId(arrPosId[i]);
                     }
                 }
             }
@@ -231,21 +218,6 @@ namespace PuG_Verwaltungssoftware
             }
 
 
-
-            myMitarbeiter.setVorname(vorname);
-            myMitarbeiter.setNachname(nachname);
-            myMitarbeiter.setGebDatum(gebDatum);
-            myMitarbeiter.setStrasse(strasse);
-            myMitarbeiter.setOrt(ort);
-            myMitarbeiter.setHausnummer(hNummer);
-            myMitarbeiter.setPlz(plz);
-            myMitarbeiter.setGehalt(gehalt);
-            myMitarbeiter.setBenutzername(initBenutzer);
-            myMitarbeiter.setPasswort(initPasswort);
-            myMitarbeiter.setPositionId(posId);
-
-
-
             // =====================================
             //     Daten in Datenbank schreiben
             // ===================================== 
@@ -254,7 +226,7 @@ namespace PuG_Verwaltungssoftware
             if (dBConnectOk == 0)
             {
                 strSQL = "INSERT INTO mitarbeiter (position_id, benutzername, passwort, vorname, nachname, geburtsdatum, strasse, hausnummer, plz, ort, gehalt)" +
-                    "VALUES ('" + posId + "', '" + initBenutzer + "', '" + c_Helper.encrypt(initPasswort) + "' , '" + vorname + "', '" + nachname + "', '" + gebDatum + "', '" + strasse + "', '" + hNummer + "', '" + plz + "', '" + ort + "', '" + (gehalt.ToString()).Replace(",",".") + "');";
+                    "VALUES ('" + neuerMitarbeiter.getPositionId() + "', '" + neuerMitarbeiter.getBenutzername() + "', '" + c_Helper.encrypt(neuerMitarbeiter.getPasswort()) + "' , '" + neuerMitarbeiter.getVorname() + "', '" + neuerMitarbeiter.getNachname() + "', '" + neuerMitarbeiter.getGebDatum() + "', '" + neuerMitarbeiter.getStrasse() + "', '" + neuerMitarbeiter.getHausnummer() + "', '" + neuerMitarbeiter.getPlz() + "', '" + neuerMitarbeiter.getOrt() + "', '" + (neuerMitarbeiter.getGehalt().ToString()).Replace(",",".") + "');";
                 c.insert(strSQL, "Mitarbeiter");
                 c.closeConnection();
                 gridMitarbeiterAktualisieren();

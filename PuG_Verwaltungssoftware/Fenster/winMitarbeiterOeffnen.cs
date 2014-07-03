@@ -61,6 +61,9 @@ namespace PuG_Verwaltungssoftware
                 gbLoginDaten.Visible = false;
             }
 
+            // Neues Mitarbeiter Objekt anlegen
+            c_Mitarbeiter oeffneMitarbeiter = new c_Mitarbeiter();
+
             // Variablendeklaration
             String vorname = String.Empty;
             String nachname = String.Empty;
@@ -81,17 +84,17 @@ namespace PuG_Verwaltungssoftware
                 c.closeConnection();
                 if (result != null)
                 {
-                    vorname = (String)result.Rows[0]["vorname"];
-                    nachname = (String)result.Rows[0]["nachname"];
-                    gebDatum = (result.Rows[0]["geburtsdatum"]).ToString();
-                    strasse = (String)result.Rows[0]["strasse"];
-                    hausnummer = (result.Rows[0]["hausnummer"]).ToString();
-                    plz = (result.Rows[0]["plz"]).ToString();
-                    ort = (String)result.Rows[0]["ort"];
-                    gehalt = Convert.ToDouble((result.Rows[0]["gehalt"])).ToString();
-                    benutzername = (String)result.Rows[0]["benutzername"];
-                    position = (result.Rows[0]["position_id"]).ToString();
-                    gPosId = Convert.ToInt32(position);
+                    oeffneMitarbeiter.setVorname((String)result.Rows[0]["vorname"]);
+                    oeffneMitarbeiter.setNachname((String)result.Rows[0]["nachname"]);
+                    oeffneMitarbeiter.setGebDatum((result.Rows[0]["geburtsdatum"]).ToString());
+                    oeffneMitarbeiter.setStrasse((String)result.Rows[0]["strasse"]);
+                    oeffneMitarbeiter.setHausnummer((result.Rows[0]["hausnummer"]).ToString());
+                    oeffneMitarbeiter.setPlz(Convert.ToInt32((result.Rows[0]["plz"])));
+                    oeffneMitarbeiter.setOrt((String)result.Rows[0]["ort"]);
+                    oeffneMitarbeiter.setGehalt(Convert.ToDouble((result.Rows[0]["gehalt"])));
+                    oeffneMitarbeiter.setBenutzername((String)result.Rows[0]["benutzername"]);
+                    oeffneMitarbeiter.setPositionId(Convert.ToInt32(result.Rows[0]["position_id"]));
+                    gPosId = Convert.ToInt32(oeffneMitarbeiter.getPositionId());
 
                     dbConnectOk = c.openConnection();
                     DataTable result2 = c.select("SELECT * FROM positionen;");
@@ -115,7 +118,7 @@ namespace PuG_Verwaltungssoftware
 
                     for (int i = 0; i < arrPosId.Length; i++)
                     {
-                        if (position.Equals((arrPosId[i]).ToString()))
+                        if (oeffneMitarbeiter.getPositionId() == (arrPosId[i]))
                         {
                             position = (arrPosBez[i]).ToString();
                         }
@@ -123,18 +126,18 @@ namespace PuG_Verwaltungssoftware
                
 
                     // Formatierungen
-                    gebDatum = gebDatum.Substring(0, 10);
+                    oeffneMitarbeiter.setGebDatum(oeffneMitarbeiter.getGebDatum().Substring(0, 10));
 
-                    tbVorname.Text = vorname;
-                    tbNachname.Text = nachname;
-                    tbGebDatum.Text = gebDatum;
-                    dtpGebDatum.Text = gebDatum;
-                    tbStrasse.Text = strasse;
-                    tbHausnummer.Text = hausnummer;
-                    tbPlz.Text = plz;
-                    tbOrt.Text = ort;
-                    tbGehalt.Text = gehalt;
-                    tbBenutzername.Text = benutzername;
+                    tbVorname.Text = oeffneMitarbeiter.getVorname();
+                    tbNachname.Text = oeffneMitarbeiter.getNachname();
+                    tbGebDatum.Text = oeffneMitarbeiter.getGebDatum();
+                    dtpGebDatum.Text = oeffneMitarbeiter.getGebDatum();
+                    tbStrasse.Text = oeffneMitarbeiter.getStrasse();
+                    tbHausnummer.Text = oeffneMitarbeiter.getHausnummer();
+                    tbPlz.Text = oeffneMitarbeiter.getPlz().ToString();
+                    tbOrt.Text = oeffneMitarbeiter.getOrt();
+                    tbGehalt.Text = oeffneMitarbeiter.getGehalt().ToString();
+                    tbBenutzername.Text = oeffneMitarbeiter.getBenutzername();
                     tbPosition.Text = position;
                     
                 }

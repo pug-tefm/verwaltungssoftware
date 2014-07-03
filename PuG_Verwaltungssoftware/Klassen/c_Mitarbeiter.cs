@@ -53,7 +53,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         {
             return this.passwort;
         }
-        public int getPositionId(int pId)
+        public int getPositionId()
         {
             return this.posId;
         }
