@@ -345,6 +345,9 @@
             // 
             this.gridMitarbeiter.AllowUserToAddRows = false;
             this.gridMitarbeiter.AllowUserToDeleteRows = false;
+            this.gridMitarbeiter.AllowUserToOrderColumns = true;
+            this.gridMitarbeiter.AllowUserToResizeColumns = false;
+            this.gridMitarbeiter.AllowUserToResizeRows = false;
             this.gridMitarbeiter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridMitarbeiter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitarbeiter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -450,6 +453,9 @@
             // 
             this.gridMitglieder.AllowUserToAddRows = false;
             this.gridMitglieder.AllowUserToDeleteRows = false;
+            this.gridMitglieder.AllowUserToOrderColumns = true;
+            this.gridMitglieder.AllowUserToResizeColumns = false;
+            this.gridMitglieder.AllowUserToResizeRows = false;
             this.gridMitglieder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridMitglieder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMitglieder.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -553,6 +559,9 @@
             // 
             this.gridKurse.AllowUserToAddRows = false;
             this.gridKurse.AllowUserToDeleteRows = false;
+            this.gridKurse.AllowUserToOrderColumns = true;
+            this.gridKurse.AllowUserToResizeColumns = false;
+            this.gridKurse.AllowUserToResizeRows = false;
             this.gridKurse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.gridKurse.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridKurse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -663,6 +672,9 @@
             // 
             this.gridKursUebersicht.AllowUserToAddRows = false;
             this.gridKursUebersicht.AllowUserToDeleteRows = false;
+            this.gridKursUebersicht.AllowUserToOrderColumns = true;
+            this.gridKursUebersicht.AllowUserToResizeColumns = false;
+            this.gridKursUebersicht.AllowUserToResizeRows = false;
             this.gridKursUebersicht.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridKursUebersicht.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);

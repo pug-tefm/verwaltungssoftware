@@ -268,7 +268,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         /***********************************************************************************************************/
         /*  Der Datentyp von einer Spalte wird zur Laufzeit verändert                                              */
         /***********************************************************************************************************/
-        public static bool changeColumnDataType(DataTable table, string columnname, Type newtype, int position)
+        public static bool changeColumnDataType(DataTable table, string columnname, Type newtype)
         {
             if (table.Columns.Contains(columnname) == false)
                 return false;
@@ -293,7 +293,6 @@ namespace PuG_Verwaltungssoftware.Klassen
                 }
                 table.Columns.Remove(columnname);
                 newcolumn.ColumnName = columnname;
-                table.Columns[columnname].SetOrdinal(position - 1);
             }
             catch (Exception)
             {

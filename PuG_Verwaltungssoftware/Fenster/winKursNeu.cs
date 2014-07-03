@@ -197,7 +197,8 @@ namespace PuG_Verwaltungssoftware
                                 gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
                                 gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
 
-                                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9); // Type von Wochentag ändern (int to string)
+                                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String)); // Type von Wochentag ändern (int to string)
+                                myGridKurse.Columns["Wochentag"].DisplayIndex = 8;
 
                                 for (int i = 0; i < gridKurseTable.Rows.Count; i++)
                                 {

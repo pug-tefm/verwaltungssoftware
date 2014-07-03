@@ -248,7 +248,8 @@ namespace PuG_Verwaltungssoftware
                 gridKursUebersichtTable.Columns["uhrzeit_von"].ColumnName = "Uhrzeit Von";
                 gridKursUebersichtTable.Columns["uhrzeit_bis"].ColumnName = "Uhrzeit Bis";
 
-                c_Helper.changeColumnDataType(gridKursUebersichtTable, "Wochentag", typeof(String), 6);// Wochentag muss in Spalte 6!
+                c_Helper.changeColumnDataType(gridKursUebersichtTable, "Wochentag", typeof(String));
+                gridKursUebersicht.Columns["Wochentag"].DisplayIndex = 6; // Info an Maxi ist jetzt dadurch änderbar
 
                 for (int i = 0; i < gridKursUebersichtTable.Rows.Count; i++)
                 {

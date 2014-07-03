@@ -42,7 +42,8 @@ namespace PuG_Verwaltungssoftware
                 gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
                 gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
 
-                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9);
+                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String));
+                gridKurse.Columns["Wochentag"].DisplayIndex = 8;
 
                 for (int i = 0; i < gridKurseTable.Rows.Count; i++)
                 {
@@ -417,7 +418,8 @@ namespace PuG_Verwaltungssoftware
                 gridKurseTable.Columns["uhrzeit_von"].ColumnName    = "Uhrzeit Von";
                 gridKurseTable.Columns["uhrzeit_bis"].ColumnName    = "Uhrzeit Bis";
 
-                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String), 9);
+                c_Helper.changeColumnDataType(gridKurseTable, "Wochentag", typeof(String));
+                gridKurse.Columns["Wochentag"].DisplayIndex = 8;
 
                 for (int i = 0; i < gridKurseTable.Rows.Count; i++)
                 {
