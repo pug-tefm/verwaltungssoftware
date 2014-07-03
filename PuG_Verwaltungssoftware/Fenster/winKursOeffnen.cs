@@ -155,21 +155,21 @@ namespace PuG_Verwaltungssoftware
                 bool fehlerGefunden = false;
 
                 // Fehlerüberprüfung Anfang
-                bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text, 100);
+                bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text /*, 100*/);
                 if (fehlerBezeichnung == true)
                 {
                     fehlerGefunden = true;
                     MessageBox.Show("'" + tbBezeichnung.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text, 6);
+                bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text /*, 6*/);
                 if (fehlerPreis == true)
                 {
                     fehlerGefunden = true;
                     MessageBox.Show("'" + tbPreis.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text, 3);
+                bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text /*, 3*/);
                 if (fehlerMaxTeilnehmer == true)
                 {
                     fehlerGefunden = true;
@@ -350,7 +350,7 @@ namespace PuG_Verwaltungssoftware
                     }
                     else
                     {
-                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

@@ -73,7 +73,7 @@ namespace PuG_Verwaltungssoftware
         }
 
         //Insert statement
-        public bool insert(string query, string textMB)
+        public bool insert(string query, string textMB, int fehlerAus = 0)
         {
             try
             {
@@ -82,18 +82,21 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
                 
-                MessageBox.Show(textMB + " wurde hinzugefügt", "Information", MessageBoxButtons.OK); // MSG bei success
+                if(textMB.Trim().Length != 0) MessageBox.Show(textMB + " wurde hinzugefügt", "Information", MessageBoxButtons.OK); // MSG bei success
                 return true;
             }
             catch (Exception ex) // Fehler
             {
-                MessageBox.Show(ex.Message);
+                if (fehlerAus == 0)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 return false;
             }
         }
 
         //Update statement
-        public bool update(string query, string textMB)
+        public bool update(string query, string textMB, int fehlerAus = 0)
         {
             try
             {
@@ -102,18 +105,21 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + " wurde geändert", "Information", MessageBoxButtons.OK); // MSG bei success
+                if (textMB.Trim().Length != 0) MessageBox.Show(textMB + " wurde geändert", "Information", MessageBoxButtons.OK); // MSG bei success
                 return true;
             }
             catch (Exception ex) // Fehler
             {
-                MessageBox.Show(ex.Message);
+                if (fehlerAus == 0)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 return false;
             }
         }
 
         //Delete statement
-        public bool delete(string query, string textMB)
+        public bool delete(string query, string textMB, int fehlerAus = 0)
         {
             try
             {
@@ -122,12 +128,15 @@ namespace PuG_Verwaltungssoftware
 
                 myReader = myCommand.ExecuteReader(); // Command ausführen
 
-                MessageBox.Show(textMB + " wurde gelöscht", "Information", MessageBoxButtons.OK); // MSG bei success
+                if (textMB.Trim().Length != 0) MessageBox.Show(textMB + " wurde gelöscht", "Information", MessageBoxButtons.OK); // MSG bei success
                 return true;
             }
             catch (Exception ex) // Fehler
             {
-                MessageBox.Show(ex.Message);
+                if (fehlerAus == 0)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 return false;
             }
         }

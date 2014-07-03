@@ -32,11 +32,18 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.scHome = new System.Windows.Forms.SplitContainer();
+            this.btAbmelden = new System.Windows.Forms.Button();
             this.lbAngemeldet = new System.Windows.Forms.Label();
             this.lbTimer = new System.Windows.Forms.Label();
             this.lbMitarbeiterName = new System.Windows.Forms.Label();
             this.lbWillkommen = new System.Windows.Forms.Label();
-            this.lvNachrichten = new System.Windows.Forms.ListView();
+            this.newsTabControl = new System.Windows.Forms.TabControl();
+            this.tabPageAktuell = new System.Windows.Forms.TabPage();
+            this.lvNewsAktuell = new System.Windows.Forms.ListView();
+            this.tabPageHeute = new System.Windows.Forms.TabPage();
+            this.lvNewsHeute = new System.Windows.Forms.ListView();
+            this.tabPageKommend = new System.Windows.Forms.TabPage();
+            this.lvNewsKommend = new System.Windows.Forms.ListView();
             this.tabPageMitarbeiter = new System.Windows.Forms.TabPage();
             this.scMitarbeiter = new System.Windows.Forms.SplitContainer();
             this.gridMitarbeiter = new System.Windows.Forms.DataGridView();
@@ -80,6 +87,10 @@
             this.scHome.Panel1.SuspendLayout();
             this.scHome.Panel2.SuspendLayout();
             this.scHome.SuspendLayout();
+            this.newsTabControl.SuspendLayout();
+            this.tabPageAktuell.SuspendLayout();
+            this.tabPageHeute.SuspendLayout();
+            this.tabPageKommend.SuspendLayout();
             this.tabPageMitarbeiter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMitarbeiter)).BeginInit();
             this.scMitarbeiter.Panel1.SuspendLayout();
@@ -149,6 +160,7 @@
             // 
             // scHome.Panel1
             // 
+            this.scHome.Panel1.Controls.Add(this.btAbmelden);
             this.scHome.Panel1.Controls.Add(this.lbAngemeldet);
             this.scHome.Panel1.Controls.Add(this.lbTimer);
             this.scHome.Panel1.Controls.Add(this.lbMitarbeiterName);
@@ -156,10 +168,21 @@
             // 
             // scHome.Panel2
             // 
-            this.scHome.Panel2.Controls.Add(this.lvNachrichten);
+            this.scHome.Panel2.Controls.Add(this.newsTabControl);
             this.scHome.Size = new System.Drawing.Size(555, 428);
             this.scHome.SplitterDistance = 127;
             this.scHome.TabIndex = 0;
+            // 
+            // btAbmelden
+            // 
+            this.btAbmelden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAbmelden.Location = new System.Drawing.Point(459, 21);
+            this.btAbmelden.Name = "btAbmelden";
+            this.btAbmelden.Size = new System.Drawing.Size(89, 30);
+            this.btAbmelden.TabIndex = 4;
+            this.btAbmelden.Text = "Abmelden";
+            this.btAbmelden.UseVisualStyleBackColor = true;
+            this.btAbmelden.Click += new System.EventHandler(this.btAbmelden_Click);
             // 
             // lbAngemeldet
             // 
@@ -200,15 +223,86 @@
             this.lbWillkommen.TabIndex = 0;
             this.lbWillkommen.Text = "Willkommen,";
             // 
-            // lvNachrichten
+            // newsTabControl
             // 
-            this.lvNachrichten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvNachrichten.Location = new System.Drawing.Point(0, 0);
-            this.lvNachrichten.Name = "lvNachrichten";
-            this.lvNachrichten.Size = new System.Drawing.Size(555, 297);
-            this.lvNachrichten.TabIndex = 0;
-            this.lvNachrichten.UseCompatibleStateImageBehavior = false;
-            this.lvNachrichten.View = System.Windows.Forms.View.List;
+            this.newsTabControl.Controls.Add(this.tabPageAktuell);
+            this.newsTabControl.Controls.Add(this.tabPageHeute);
+            this.newsTabControl.Controls.Add(this.tabPageKommend);
+            this.newsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsTabControl.Location = new System.Drawing.Point(0, 0);
+            this.newsTabControl.Name = "newsTabControl";
+            this.newsTabControl.SelectedIndex = 0;
+            this.newsTabControl.Size = new System.Drawing.Size(555, 297);
+            this.newsTabControl.TabIndex = 1;
+            // 
+            // tabPageAktuell
+            // 
+            this.tabPageAktuell.Controls.Add(this.lvNewsAktuell);
+            this.tabPageAktuell.Location = new System.Drawing.Point(4, 27);
+            this.tabPageAktuell.Name = "tabPageAktuell";
+            this.tabPageAktuell.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAktuell.Size = new System.Drawing.Size(547, 266);
+            this.tabPageAktuell.TabIndex = 0;
+            this.tabPageAktuell.Text = "Aktuelle Kurse";
+            this.tabPageAktuell.UseVisualStyleBackColor = true;
+            // 
+            // lvNewsAktuell
+            // 
+            this.lvNewsAktuell.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvNewsAktuell.Location = new System.Drawing.Point(3, 3);
+            this.lvNewsAktuell.Name = "lvNewsAktuell";
+            this.lvNewsAktuell.Size = new System.Drawing.Size(541, 260);
+            this.lvNewsAktuell.TabIndex = 0;
+            this.lvNewsAktuell.UseCompatibleStateImageBehavior = false;
+            this.lvNewsAktuell.View = System.Windows.Forms.View.List;
+            this.lvNewsAktuell.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsAktuell_KeyDown);
+            this.lvNewsAktuell.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsAktuell_MouseDown);
+            // 
+            // tabPageHeute
+            // 
+            this.tabPageHeute.Controls.Add(this.lvNewsHeute);
+            this.tabPageHeute.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHeute.Name = "tabPageHeute";
+            this.tabPageHeute.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHeute.Size = new System.Drawing.Size(547, 271);
+            this.tabPageHeute.TabIndex = 1;
+            this.tabPageHeute.Text = "Heutige Kurse";
+            this.tabPageHeute.UseVisualStyleBackColor = true;
+            // 
+            // lvNewsHeute
+            // 
+            this.lvNewsHeute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvNewsHeute.Location = new System.Drawing.Point(3, 3);
+            this.lvNewsHeute.Name = "lvNewsHeute";
+            this.lvNewsHeute.Size = new System.Drawing.Size(541, 265);
+            this.lvNewsHeute.TabIndex = 1;
+            this.lvNewsHeute.UseCompatibleStateImageBehavior = false;
+            this.lvNewsHeute.View = System.Windows.Forms.View.List;
+            this.lvNewsHeute.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsHeute_KeyDown);
+            this.lvNewsHeute.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsHeute_MouseDown);
+            // 
+            // tabPageKommend
+            // 
+            this.tabPageKommend.Controls.Add(this.lvNewsKommend);
+            this.tabPageKommend.Location = new System.Drawing.Point(4, 22);
+            this.tabPageKommend.Name = "tabPageKommend";
+            this.tabPageKommend.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageKommend.Size = new System.Drawing.Size(547, 271);
+            this.tabPageKommend.TabIndex = 2;
+            this.tabPageKommend.Text = "Kommende Kurse (3 Tage)";
+            this.tabPageKommend.UseVisualStyleBackColor = true;
+            // 
+            // lvNewsKommend
+            // 
+            this.lvNewsKommend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvNewsKommend.Location = new System.Drawing.Point(3, 3);
+            this.lvNewsKommend.Name = "lvNewsKommend";
+            this.lvNewsKommend.Size = new System.Drawing.Size(541, 265);
+            this.lvNewsKommend.TabIndex = 1;
+            this.lvNewsKommend.UseCompatibleStateImageBehavior = false;
+            this.lvNewsKommend.View = System.Windows.Forms.View.List;
+            this.lvNewsKommend.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvNewsKommend_KeyDown);
+            this.lvNewsKommend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvNewsKommend_MouseDown);
             // 
             // tabPageMitarbeiter
             // 
@@ -216,7 +310,7 @@
             this.tabPageMitarbeiter.Controls.Add(this.scMitarbeiter);
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
-            this.tabPageMitarbeiter.Size = new System.Drawing.Size(560, 434);
+            this.tabPageMitarbeiter.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitarbeiter.TabIndex = 1;
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
@@ -241,7 +335,7 @@
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
-            this.scMitarbeiter.Size = new System.Drawing.Size(560, 434);
+            this.scMitarbeiter.Size = new System.Drawing.Size(561, 434);
             this.scMitarbeiter.SplitterDistance = 375;
             this.scMitarbeiter.TabIndex = 2;
             // 
@@ -256,11 +350,8 @@
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(560, 375);
+            this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
             this.gridMitarbeiter.TabIndex = 0;
-            this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
-            this.gridMitarbeiter.SelectionChanged += new System.EventHandler(this.gridMitarbeiter_SelectionChanged);
-            this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
             // 
@@ -268,7 +359,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMitarbeiterSuchen.Location = new System.Drawing.Point(305, 12);
             this.tbMitarbeiterSuchen.Name = "tbMitarbeiterSuchen";
-            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(123, 26);
+            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(124, 26);
             this.tbMitarbeiterSuchen.TabIndex = 5;
             this.tbMitarbeiterSuchen.TextChanged += new System.EventHandler(this.tbMitarbeiterSuchen_TextChanged);
             // 
@@ -296,7 +387,7 @@
             // btMaOeffnen
             // 
             this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMaOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btMaOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btMaOeffnen.Name = "btMaOeffnen";
             this.btMaOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMaOeffnen.TabIndex = 2;
@@ -321,7 +412,7 @@
             this.tabPageMitglieder.Controls.Add(this.scMitglieder);
             this.tabPageMitglieder.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitglieder.Name = "tabPageMitglieder";
-            this.tabPageMitglieder.Size = new System.Drawing.Size(560, 434);
+            this.tabPageMitglieder.Size = new System.Drawing.Size(561, 434);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
             // 
@@ -341,7 +432,7 @@
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
-            this.scMitglieder.Size = new System.Drawing.Size(560, 434);
+            this.scMitglieder.Size = new System.Drawing.Size(561, 434);
             this.scMitglieder.SplitterDistance = 375;
             this.scMitglieder.TabIndex = 0;
             // 
@@ -357,7 +448,7 @@
             this.gridMitglieder.Name = "gridMitglieder";
             this.gridMitglieder.ReadOnly = true;
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitglieder.Size = new System.Drawing.Size(560, 375);
+            this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
             this.gridMitglieder.TabIndex = 1;
             // 
             // btMgLoeschen
@@ -385,7 +476,7 @@
             // btMgOeffnen
             // 
             this.btMgOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMgOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btMgOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btMgOeffnen.Name = "btMgOeffnen";
             this.btMgOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMgOeffnen.TabIndex = 5;
@@ -399,7 +490,7 @@
             this.tabPageKurse.Controls.Add(this.scKurse);
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
-            this.tabPageKurse.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKurse.Size = new System.Drawing.Size(561, 434);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
             this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
@@ -424,7 +515,7 @@
             this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
-            this.scKurse.Size = new System.Drawing.Size(560, 434);
+            this.scKurse.Size = new System.Drawing.Size(561, 434);
             this.scKurse.SplitterDistance = 375;
             this.scKurse.TabIndex = 0;
             // 
@@ -441,7 +532,7 @@
             this.gridKurse.ReadOnly = true;
             this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKurse.Size = new System.Drawing.Size(560, 375);
+            this.gridKurse.Size = new System.Drawing.Size(561, 375);
             this.gridKurse.TabIndex = 2;
             this.gridKurse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKurse_CellDoubleClick);
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
@@ -457,7 +548,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursSuchen.Name = "tbKursSuchen";
-            this.tbKursSuchen.Size = new System.Drawing.Size(127, 26);
+            this.tbKursSuchen.Size = new System.Drawing.Size(128, 26);
             this.tbKursSuchen.TabIndex = 11;
             this.tbKursSuchen.TextChanged += new System.EventHandler(this.textBoxSuchen_TextChanged);
             // 
@@ -496,7 +587,7 @@
             // btKursOeffnen
             // 
             this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btKursOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btKursOeffnen.Name = "btKursOeffnen";
             this.btKursOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursOeffnen.TabIndex = 8;
@@ -509,7 +600,7 @@
             this.tabPageKursUebersicht.Controls.Add(this.scKursUebersicht);
             this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
             this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
-            this.tabPageKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(561, 434);
             this.tabPageKursUebersicht.TabIndex = 4;
             this.tabPageKursUebersicht.Text = "Kurs Übersicht";
             this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
@@ -534,7 +625,7 @@
             this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtLoeschen);
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtNeu);
-            this.scKursUebersicht.Size = new System.Drawing.Size(560, 434);
+            this.scKursUebersicht.Size = new System.Drawing.Size(561, 434);
             this.scKursUebersicht.SplitterDistance = 375;
             this.scKursUebersicht.TabIndex = 0;
             // 
@@ -547,13 +638,13 @@
             this.gridKursUebersicht.Location = new System.Drawing.Point(0, 0);
             this.gridKursUebersicht.Name = "gridKursUebersicht";
             this.gridKursUebersicht.ReadOnly = true;
-            this.gridKursUebersicht.Size = new System.Drawing.Size(560, 375);
+            this.gridKursUebersicht.Size = new System.Drawing.Size(561, 375);
             this.gridKursUebersicht.TabIndex = 0;
             // 
             // btKursUebersichtOeffnen
             // 
             this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(434, 0);
+            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(435, 0);
             this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";
             this.btKursUebersichtOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursUebersichtOeffnen.TabIndex = 14;
@@ -567,7 +658,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
-            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(127, 26);
+            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(128, 26);
             this.tbKursUebersichtSuchen.TabIndex = 13;
             // 
             // ddlKursUebersichtSuchen
@@ -706,6 +797,10 @@
             this.scHome.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scHome)).EndInit();
             this.scHome.ResumeLayout(false);
+            this.newsTabControl.ResumeLayout(false);
+            this.tabPageAktuell.ResumeLayout(false);
+            this.tabPageHeute.ResumeLayout(false);
+            this.tabPageKommend.ResumeLayout(false);
             this.tabPageMitarbeiter.ResumeLayout(false);
             this.scMitarbeiter.Panel1.ResumeLayout(false);
             this.scMitarbeiter.Panel2.ResumeLayout(false);
@@ -755,7 +850,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbLoginMessage;
         private System.Windows.Forms.Button btMaNeu;
-        private System.Windows.Forms.DataGridView gridMitarbeiter;
         private System.Windows.Forms.SplitContainer scMitarbeiter;
         private System.Windows.Forms.Button btMaLoeschen;
         private System.Windows.Forms.Button btMaOeffnen;
@@ -774,7 +868,7 @@
         private System.Windows.Forms.Label lbMitarbeiterName;
         private System.Windows.Forms.Label lbWillkommen;
         private System.Windows.Forms.Label lbAngemeldet;
-        private System.Windows.Forms.ListView lvNachrichten;
+        private System.Windows.Forms.ListView lvNewsAktuell;
         private System.Windows.Forms.TextBox tbKursSuchen;
         private System.Windows.Forms.ComboBox ddlKursSuchen;
         private System.Windows.Forms.ComboBox ddlMitarbeiterSuchen;
@@ -787,6 +881,14 @@
         private System.Windows.Forms.ComboBox ddlKursUebersichtSuchen;
         private System.Windows.Forms.Button btKursUebersichtLoeschen;
         private System.Windows.Forms.Button btKursUebersichtNeu;
+        private System.Windows.Forms.TabControl newsTabControl;
+        private System.Windows.Forms.TabPage tabPageAktuell;
+        private System.Windows.Forms.TabPage tabPageHeute;
+        private System.Windows.Forms.ListView lvNewsHeute;
+        private System.Windows.Forms.TabPage tabPageKommend;
+        private System.Windows.Forms.ListView lvNewsKommend;
+        private System.Windows.Forms.Button btAbmelden;
+        private System.Windows.Forms.DataGridView gridMitarbeiter;
     }
 }
 

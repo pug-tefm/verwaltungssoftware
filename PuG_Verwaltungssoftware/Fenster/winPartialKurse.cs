@@ -75,13 +75,20 @@ namespace PuG_Verwaltungssoftware
                 foreach (DataGridViewRow row in dataGridView.SelectedRows) // Wegen Multiselect
                 {
                     int id = Convert.ToInt32(gridKurse.Rows[row.Index].Cells["Kurs-ID"].Value);
-                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-ID. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Wollen Sie den ausgewählten Kurs mit der Kurs-ID. '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (dialogResult == DialogResult.Yes)
                     {
                         c.openConnection();
-                        dataGridView.Rows.RemoveAt(row.Index); // Row löschen
-                        c.delete("DELETE FROM kurse WHERE kurs_id = '" + id + "';", "Kurs");
+                        
+                        if (c.delete("DELETE FROM kurse WHERE kurs_id = '" + id + "';", "Kurs", 1) == false)
+                        {
+                            MessageBox.Show("Kurs kann nicht gelöscht werden, da der Kurs Teilnehmer hat", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            dataGridView.Rows.RemoveAt(row.Index); // Row löschen
+                        }
                         c.closeConnection();
                     }
                 }
@@ -126,7 +133,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sie müssen zuvor eine Zeile oder mehrere Zeilen auswählen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -425,7 +432,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

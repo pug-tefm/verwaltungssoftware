@@ -13,9 +13,76 @@ namespace PuG_Verwaltungssoftware
 {
     public partial class winMitarbeiterNeu : Form
     {
-        public winMitarbeiterNeu()
+        /*
+         * ******************************
+         *     Variablendeklarationen
+         * ******************************
+         * */
+        int gLoginPosId = 0;   // Mitarbeiter-Nr. des angemeldeten Users
+        int gLoginMaId = 0;   // Mitarbeiter-Nr. des angemeldeten Users
+
+        c_DBConnect c = new c_DBConnect();
+        DataGridView gGridView;
+
+
+        public winMitarbeiterNeu(int loginId, int loginPosId, DataGridView grid)
         {
             InitializeComponent();
+
+            // ID festlegen
+            gLoginMaId = loginId;
+            gLoginPosId = loginPosId;
+
+            // GridView zuweisen
+            gGridView = grid;
+
+        }
+
+
+        /*
+         * ******************************
+         *         Control Events
+         * ******************************
+         * */
+
+        private void winMitarbeiterNeu_Load(object sender, EventArgs e)
+        {
+
+            // =====================================
+            //     Combobox mit Werten befuellen
+            // =====================================
+
+            string bezeichnung = "";
+            int pos = 0;
+
+            int dBConnectOk = c.openConnection();
+            if (dBConnectOk == 0)
+            {
+                int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
+                if (rows > 0)
+                {
+                    DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
+                    if (result != null)
+                    {
+                        for (int i = 0; i < rows; i++)
+                        {
+                            bezeichnung = (String)result.Rows[i]["bezeichnung"];
+                            ddlPosition.Items.Add(bezeichnung);
+                        }
+                    }
+                }
+                c.closeConnection();
+            }
+
+            // Combobox preselected Item
+            for (int i = 0; i < ddlPosition.Items.Count; i++)
+            {
+                if (ddlPosition.Items[i].ToString() == "Normal")
+                {
+                    pos = i;
+                }
+            }
+            ddlPosition.SelectedIndex = pos;
 
         }
 
@@ -56,7 +123,7 @@ namespace PuG_Verwaltungssoftware
             String strSQL = String.Empty;
 
             int plz;
-            int posId;
+            int posId = 0;
             double gehalt;
 
 
@@ -76,7 +143,7 @@ namespace PuG_Verwaltungssoftware
             }
             else
             {
-                MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.");
+                MessageBox.Show("Sie haben nicht alle Persönlichen Daten angegeben.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -92,13 +159,13 @@ namespace PuG_Verwaltungssoftware
                 }
                 else
                 {
-                    MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.");
+                    MessageBox.Show("Falsches Format für die Felder Hausnummer und Postleitzahl.\nIm Feld Postleitzahl dürfen nur Zahlen stehen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.");
+                MessageBox.Show("Sie haben nicht alle Anschrift-Daten angegeben.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -108,12 +175,12 @@ namespace PuG_Verwaltungssoftware
                 gehalt = Convert.ToDouble(tbGehalt.Text);
                 if (c_Helper.numFormatPunktKomma(gehalt.ToString()) == true)
                 {
-                    MessageBox.Show("Falsches Format für das Feld Gehalt.");
+                    MessageBox.Show("Falsches Format für das Feld Gehalt.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Bitte Feld Gehalt ausfüllen.");
+                MessageBox.Show("Bitte Feld Gehalt ausfüllen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -122,28 +189,48 @@ namespace PuG_Verwaltungssoftware
             {
                 initBenutzer = tbInitUser.Text;
                 initPasswort = tbInitPasswort.Text;
-                // Ueberpruefen welche Position ausgewaehlt wurde
-                if (ddlPosition.SelectedItem.ToString() == "Normal")
+                if (initBenutzer.Length < 3 || initPasswort.Length < 8)
                 {
-                    posId = 2;
-                }
-                else if (ddlPosition.SelectedItem.ToString() == "Chef")
-                {
-                    posId = 1;
-                }
-                else
-                {
-                    MessageBox.Show("Keine Position ausgewählt.");
+                    MessageBox.Show("Mindeslänge Benutzername: 3 Zeichen.\nMindestlänge Passwort: 8 Zeichen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
+                }
+
+                // Ueberpruefen welche Position ausgewaehlt wurde
+                int dbConnectOk = c.openConnection();
+                DataTable result2 = c.select("SELECT * FROM positionen;");
+                c.closeConnection();
+
+                int[] arrPosId = new int[result2.Rows.Count];
+                string[] arrPosBez = new string[result2.Rows.Count];
+
+                if (dbConnectOk == 0)
+                {
+
+                    if (result2 != null)
+                    {
+                        for (int i = 0; i < result2.Rows.Count; i++)
+                        {
+                            arrPosId[i] = Convert.ToInt32(result2.Rows[i]["pos_id"]);
+                            arrPosBez[i] = (result2.Rows[i]["bezeichnung"]).ToString();
+                        }
+                    }
+                }
+
+                for (int i = 0; i < arrPosId.Length; i++)
+                {
+                    if (ddlPosition.SelectedItem.ToString().Equals((arrPosBez[i]).ToString()))
+                    {
+                        posId = arrPosId[i];
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Login-Daten ausfüllen.");
+                MessageBox.Show("Login-Daten ausfüllen.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            
+
 
             myMitarbeiter.setVorname(vorname);
             myMitarbeiter.setNachname(nachname);
@@ -162,61 +249,38 @@ namespace PuG_Verwaltungssoftware
             // =====================================
             //     Daten in Datenbank schreiben
             // ===================================== 
-            
-            c_DBConnect c = new c_DBConnect();
+
             int dBConnectOk = c.openConnection();
             if (dBConnectOk == 0)
             {
                 strSQL = "INSERT INTO mitarbeiter (position_id, benutzername, passwort, vorname, nachname, geburtsdatum, strasse, hausnummer, plz, ort, gehalt)" +
-                    "VALUES (" + posId + ", '" + initBenutzer + "', '" + c_Helper.encrypt(initPasswort) + "' , '" + vorname + "', '" + nachname + "', '" + gebDatum + "', '" + strasse + "', " + hNummer + ", " + plz + ", '" + ort + "', " + gehalt + ");";
+                    "VALUES ('" + posId + "', '" + initBenutzer + "', '" + c_Helper.encrypt(initPasswort) + "' , '" + vorname + "', '" + nachname + "', '" + gebDatum + "', '" + strasse + "', '" + hNummer + "', '" + plz + "', '" + ort + "', '" + (gehalt.ToString()).Replace(",",".") + "');";
                 c.insert(strSQL, "Mitarbeiter");
                 c.closeConnection();
+                gridMitarbeiterAktualisieren();
 
                 this.Close();  // Fenster schliessen
             }
-            
+
         }
 
-        private void winMitarbeiterNeu_Load(object sender, EventArgs e)
+
+        /*
+         * ******************************
+         *        Eigene Methoden
+         * ******************************
+         * */
+
+        private void gridMitarbeiterAktualisieren()
         {
-
-            // =====================================
-            //     Combobox mit Werten befuellen
-            // =====================================
-
-            string bezeichnung = "";
-            int pos = 0;
-            c_DBConnect c = new c_DBConnect();
-
-            int dBConnectOk = c.openConnection();
-            if (dBConnectOk == 0)
+            if (gLoginPosId == 1)
             {
-                int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
-                if (rows > 0)
-                {
-                    DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
-                    if (result != null)
-                    {
-                        for (int i = 0; i < rows; i++)
-                        {
-                            bezeichnung = (String)result.Rows[i]["bezeichnung"];
-                            ddlPosition.Items.Add(bezeichnung);
-                        }
-                    }
-                }
-                c.closeConnection();
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter;", gGridView);
             }
-
-            // Combobox preselected Item
-            for (int i = 0; i < ddlPosition.Items.Count; i++)
+            else
             {
-                if (ddlPosition.Items[i].ToString() == "Normal")
-                {
-                    pos = i;
-                }
+                c.displayData("SELECT mitarbeiter_id, vorname, nachname, geburtsdatum FROM mitarbeiter WHERE mitarbeiter_id = '" + gLoginMaId + "';", gGridView);
             }
-            ddlPosition.SelectedIndex = pos;
-
         }
 
     }

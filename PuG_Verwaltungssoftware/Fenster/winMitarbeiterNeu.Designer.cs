@@ -71,6 +71,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -135,6 +136,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbInitPasswort.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbInitPasswort.Location = new System.Drawing.Point(116, 48);
+            this.tbInitPasswort.MaxLength = 100;
             this.tbInitPasswort.Name = "tbInitPasswort";
             this.tbInitPasswort.Size = new System.Drawing.Size(253, 26);
             this.tbInitPasswort.TabIndex = 9;
@@ -145,6 +147,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbInitUser.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbInitUser.Location = new System.Drawing.Point(116, 16);
+            this.tbInitUser.MaxLength = 100;
             this.tbInitUser.Name = "tbInitUser";
             this.tbInitUser.Size = new System.Drawing.Size(253, 26);
             this.tbInitUser.TabIndex = 8;
@@ -188,6 +191,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbGehalt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbGehalt.Location = new System.Drawing.Point(119, 22);
+            this.tbGehalt.MaxLength = 20;
             this.tbGehalt.Name = "tbGehalt";
             this.tbGehalt.Size = new System.Drawing.Size(253, 26);
             this.tbGehalt.TabIndex = 7;
@@ -227,6 +231,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOrt.Location = new System.Drawing.Point(119, 113);
+            this.tbOrt.MaxLength = 100;
             this.tbOrt.Name = "tbOrt";
             this.tbOrt.Size = new System.Drawing.Size(253, 26);
             this.tbOrt.TabIndex = 9;
@@ -237,6 +242,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
+            this.tbPlz.MaxLength = 5;
             this.tbPlz.Name = "tbPlz";
             this.tbPlz.Size = new System.Drawing.Size(253, 26);
             this.tbPlz.TabIndex = 8;
@@ -247,6 +253,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
+            this.tbHausnummer.MaxLength = 10;
             this.tbHausnummer.Name = "tbHausnummer";
             this.tbHausnummer.Size = new System.Drawing.Size(253, 26);
             this.tbHausnummer.TabIndex = 7;
@@ -257,6 +264,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStrasse.Location = new System.Drawing.Point(119, 22);
+            this.tbStrasse.MaxLength = 100;
             this.tbStrasse.Name = "tbStrasse";
             this.tbStrasse.Size = new System.Drawing.Size(253, 26);
             this.tbStrasse.TabIndex = 6;
@@ -354,6 +362,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbVorname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
+            this.tbVorname.MaxLength = 50;
             this.tbVorname.Name = "tbVorname";
             this.tbVorname.Size = new System.Drawing.Size(253, 26);
             this.tbVorname.TabIndex = 1;
@@ -374,6 +383,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNachname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
+            this.tbNachname.MaxLength = 50;
             this.tbNachname.Name = "tbNachname";
             this.tbNachname.Size = new System.Drawing.Size(253, 26);
             this.tbNachname.TabIndex = 3;

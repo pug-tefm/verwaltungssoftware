@@ -81,21 +81,21 @@ namespace PuG_Verwaltungssoftware
             bool fehlerGefunden = false;
 
             // Fehlerüberprüfung Anfang
-            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text, 100);
+            bool fehlerBezeichnung = c_Helper.wrongCharNumberExtra(tbBezeichnung.Text /*, 100*/);
             if (fehlerBezeichnung == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbBezeichnung.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text, 6);
+            bool fehlerPreis = c_Helper.numFormatPunktKomma(tbPreis.Text /*, 6*/);
             if (fehlerPreis == true)
             {
                 fehlerGefunden = true;
                 MessageBox.Show("'" + tbPreis.Text + "' Bitte Eingabe überprüfen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text, 3);
+            bool fehlerMaxTeilnehmer = c_Helper.numFormat(tbMaxTeilnehmer.Text /*, 3*/);
             if (fehlerMaxTeilnehmer == true)
             {
                 fehlerGefunden = true;
@@ -148,6 +148,8 @@ namespace PuG_Verwaltungssoftware
                             break;
                         }
                     }
+                    cbWochentag.Text = c_Helper.umwandlungWochentagEngToGer(wochentag);
+
                     // Ende Datum Von und Bis an Wochentag anpassen
 
                     c_DBConnect myConnection = new c_DBConnect();
@@ -155,17 +157,18 @@ namespace PuG_Verwaltungssoftware
                     if (connected == 0) // Kein Fehler Connect
                     {
                         // Format für SQL anpassen
-                        String datumVon   = dtpDatumVon.Value.ToString("yyyy-MM-dd");
-                        String datumBis   = dtpDatumBis.Value.ToString("yyyy-MM-dd");
-                        String uhrzeitVon = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
-                        String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
-                        String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
-                        String preis      = tbPreis.Text.Replace(",", ".");
+                        String datumVon     = dtpDatumVon.Value.ToString("yyyy-MM-dd");
+                        String datumBis     = dtpDatumBis.Value.ToString("yyyy-MM-dd");
+                        String uhrzeitVon   = dtpUhrzeitVon.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String uhrzeitBis   = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
+                        String kursleiter   = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
+                        String preis        = tbPreis.Text.Replace(",", ".");
+                        String intWochentag = c_Helper.umwandlungWochentagInInt(c_Helper.umwandlungWochentagEngToGer(wochentag)).ToString();
                         
                         // Abfrage String generieren
                         String query = "INSERT INTO kurse (kursleiter_id, bezeichnung , preis, akt_teilnehmer, max_teilnehmer, datum_von, datum_bis, wochentag, " +
-                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" + 
-                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + cbWochentag.SelectedIndex + ", '" + uhrzeitVon + 
+                                        "uhrzeit_von, uhrzeit_bis) VALUES (" + kursleiter + ", '" + tbBezeichnung.Text + "', " + preis + ", " + "0" +
+                                        ", " + tbMaxTeilnehmer.Text + ", '" + datumVon + "', '" + datumBis + "', " + intWochentag + ", '" + uhrzeitVon + 
                                         "', '" + uhrzeitBis + "');";
 
                         bool ok = myConnection.insert(query, "Kurs"); // SQL Befehl ausführen
@@ -208,7 +211,7 @@ namespace PuG_Verwaltungssoftware
                             }
                             else // Fehler Connect
                             {
-                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                             DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -237,7 +240,7 @@ namespace PuG_Verwaltungssoftware
                     }
                     else // Fehler Connect
                     {
-                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Datenbankverbindung konnte nicht hergestellt werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
 
