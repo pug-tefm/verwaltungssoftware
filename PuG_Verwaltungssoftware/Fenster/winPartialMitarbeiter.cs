@@ -296,7 +296,7 @@ namespace PuG_Verwaltungssoftware
                         c.openConnection();
                         if (c.delete("DELETE FROM mitarbeiter WHERE mitarbeiter_id = '" + id + "';", "Mitarbeiter", 1) == false)
                         {
-                            MessageBox.Show("Mitarbeiter kann nicht gelöscht werden, da der Mitarbeiter Kursleiter ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Mitarbeiter kann nicht gelöscht werden, da der Mitarbeiter ein Kursleiter ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {

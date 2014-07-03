@@ -354,6 +354,9 @@
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
             this.gridMitarbeiter.TabIndex = 0;
+            this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
+            this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
+            this.gridMitarbeiter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitarbeiter_MouseDown);
             // 
             // tbMitarbeiterSuchen
             // 
@@ -812,8 +815,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);

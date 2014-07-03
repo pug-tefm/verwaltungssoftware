@@ -92,8 +92,14 @@ namespace PuG_Verwaltungssoftware
                     if (dialogResult == DialogResult.Yes)
                     {
                         c.openConnection();
-                        gridMitglieder.Rows.RemoveAt(row.Index); // Row löschen
-                        c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied");
+                        if (c.delete("DELETE FROM mitglieder WHERE mitglieder_id = '" + id + "';", "Mitglied", 1) == false)
+                        {
+                            MessageBox.Show("Mitglied kann nicht gelöscht werden, da des Mitglied in einem Kurs ist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            gridMitglieder.Rows.RemoveAt(row.Index); // Row löschen
+                        }
                         c.closeConnection();
                     }
                 }
