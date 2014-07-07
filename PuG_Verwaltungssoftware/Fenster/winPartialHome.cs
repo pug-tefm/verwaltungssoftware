@@ -179,7 +179,7 @@ namespace PuG_Verwaltungssoftware
                         lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
                         lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
                         lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
-                        lvi.BackColor = Color.Red;
+                        lvi.BackColor = Color.LimeGreen;
 
 
                         // Add the list items to the ListView
@@ -236,7 +236,7 @@ namespace PuG_Verwaltungssoftware
                         lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_von"].ToString()).TimeOfDay.ToString("hh\\:mm"));
                         lvi.SubItems.Add(DateTime.Parse(drow["uhrzeit_bis"].ToString()).TimeOfDay.ToString("hh\\:mm"));
                         lvi.SubItems.Add(c_Helper.umwandlungIntInWochentag(Convert.ToInt32(drow["wochentag"])));
-                        lvi.BackColor = Color.Yellow;
+                        lvi.BackColor = Color.HotPink;
 
                         // Add the list items to the ListView
                         lvNewsKommend.Items.Add(lvi);

@@ -75,7 +75,7 @@
             this.gbVertrag.Controls.Add(this.lbVertragsart);
             this.gbVertrag.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbVertrag.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbVertrag.Location = new System.Drawing.Point(0, 291);
+            this.gbVertrag.Location = new System.Drawing.Point(0, 279);
             this.gbVertrag.Name = "gbVertrag";
             this.gbVertrag.Size = new System.Drawing.Size(384, 162);
             this.gbVertrag.TabIndex = 1;
@@ -174,7 +174,7 @@
             this.gbAnschrift.Controls.Add(this.lbStrasse);
             this.gbAnschrift.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbAnschrift.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAnschrift.Location = new System.Drawing.Point(0, 142);
+            this.gbAnschrift.Location = new System.Drawing.Point(0, 130);
             this.gbAnschrift.Name = "gbAnschrift";
             this.gbAnschrift.Size = new System.Drawing.Size(384, 149);
             this.gbAnschrift.TabIndex = 2;
@@ -273,7 +273,7 @@
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(384, 142);
+            this.gbDaten.Size = new System.Drawing.Size(384, 130);
             this.gbDaten.TabIndex = 3;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
@@ -340,10 +340,11 @@
             // 
             // btSchliessen
             // 
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSchliessen.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
-            this.btSchliessen.Location = new System.Drawing.Point(6, 12);
+            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(55, 55);
             this.btSchliessen.TabIndex = 12;
@@ -352,9 +353,10 @@
             // 
             // btSpeichern
             // 
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSpeichern.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
-            this.btSpeichern.Location = new System.Drawing.Point(324, 12);
+            this.btSpeichern.Location = new System.Drawing.Point(323, 10);
             this.btSpeichern.Name = "btSpeichern";
             this.btSpeichern.Size = new System.Drawing.Size(55, 55);
             this.btSpeichern.TabIndex = 13;
@@ -365,9 +367,9 @@
             // 
             this.gbButtons.Controls.Add(this.btSchliessen);
             this.gbButtons.Controls.Add(this.btSpeichern);
-            this.gbButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gbButtons.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbButtons.Location = new System.Drawing.Point(0, 453);
+            this.gbButtons.Location = new System.Drawing.Point(0, 465);
             this.gbButtons.Name = "gbButtons";
             this.gbButtons.Size = new System.Drawing.Size(384, 71);
             this.gbButtons.TabIndex = 4;

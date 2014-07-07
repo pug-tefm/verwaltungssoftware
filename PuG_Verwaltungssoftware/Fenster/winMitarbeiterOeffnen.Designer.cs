@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterOeffnen));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbLoginDaten = new System.Windows.Forms.GroupBox();
             this.ddlMitarbeiterPosition = new System.Windows.Forms.ComboBox();
-            this.tbPosition = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBenutzername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +49,6 @@
             this.gbDaten = new System.Windows.Forms.GroupBox();
             this.dtpGebDatum = new System.Windows.Forms.DateTimePicker();
             this.lbGebDatum = new System.Windows.Forms.Label();
-            this.tbGebDatum = new System.Windows.Forms.TextBox();
             this.lbVorname = new System.Windows.Forms.Label();
             this.lbNachname = new System.Windows.Forms.Label();
             this.tbVorname = new System.Windows.Forms.TextBox();
@@ -60,41 +57,15 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.tbPosition = new System.Windows.Forms.TextBox();
+            this.tbGebDatum = new System.Windows.Forms.TextBox();
+            this.gbButtons = new System.Windows.Forms.GroupBox();
             this.gbLoginDaten.SuspendLayout();
             this.gbGehalt.SuspendLayout();
             this.gbAnschrift.SuspendLayout();
             this.gbDaten.SuspendLayout();
+            this.gbButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbLoginDaten);
-            this.splitContainer1.Panel1.Controls.Add(this.gbGehalt);
-            this.splitContainer1.Panel1.Controls.Add(this.gbAnschrift);
-            this.splitContainer1.Panel1.Controls.Add(this.gbDaten);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.btPwAendern);
-            this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
-            this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
-            this.splitContainer1.Size = new System.Drawing.Size(384, 536);
-            this.splitContainer1.SplitterDistance = 482;
-            this.splitContainer1.TabIndex = 0;
             // 
             // gbLoginDaten
             // 
@@ -123,15 +94,6 @@
             this.ddlMitarbeiterPosition.Size = new System.Drawing.Size(253, 23);
             this.ddlMitarbeiterPosition.TabIndex = 11;
             this.ddlMitarbeiterPosition.Visible = false;
-            // 
-            // tbPosition
-            // 
-            this.tbPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPosition.Location = new System.Drawing.Point(119, 49);
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
-            this.tbPosition.Size = new System.Drawing.Size(253, 26);
-            this.tbPosition.TabIndex = 10;
             // 
             // label2
             // 
@@ -346,17 +308,6 @@
             this.lbGebDatum.TabIndex = 4;
             this.lbGebDatum.Text = "Geburtsdatum:";
             // 
-            // tbGebDatum
-            // 
-            this.tbGebDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbGebDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGebDatum.Location = new System.Drawing.Point(119, 82);
-            this.tbGebDatum.Name = "tbGebDatum";
-            this.tbGebDatum.ReadOnly = true;
-            this.tbGebDatum.Size = new System.Drawing.Size(253, 26);
-            this.tbGebDatum.TabIndex = 5;
-            // 
             // lbVorname
             // 
             this.lbVorname.AutoSize = true;
@@ -403,11 +354,11 @@
             // 
             // btPwAendern
             // 
-            this.btPwAendern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btPwAendern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btPwAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPwAendern.Location = new System.Drawing.Point(210, 0);
+            this.btPwAendern.Location = new System.Drawing.Point(169, 10);
             this.btPwAendern.Name = "btPwAendern";
-            this.btPwAendern.Size = new System.Drawing.Size(105, 50);
+            this.btPwAendern.Size = new System.Drawing.Size(87, 55);
             this.btPwAendern.TabIndex = 2;
             this.btPwAendern.Text = "Passwort ändern";
             this.btPwAendern.UseVisualStyleBackColor = true;
@@ -415,40 +366,77 @@
             // 
             // btSchliessen
             // 
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(279, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 50);
+            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
             this.btSchliessen.TabIndex = 3;
-            this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btSpeichern
             // 
-            this.btSpeichern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btSpeichern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSpeichern.Location = new System.Drawing.Point(105, 0);
+            this.btSpeichern.Location = new System.Drawing.Point(323, 10);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 50);
+            this.btSpeichern.Size = new System.Drawing.Size(55, 55);
             this.btSpeichern.TabIndex = 1;
-            this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
             // btBearbeiten
             // 
-            this.btBearbeiten.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btBearbeiten.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_edit_groß;
+            this.btBearbeiten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btBearbeiten.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btBearbeiten.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
+            this.btBearbeiten.Location = new System.Drawing.Point(262, 10);
             this.btBearbeiten.Name = "btBearbeiten";
-            this.btBearbeiten.Size = new System.Drawing.Size(105, 50);
+            this.btBearbeiten.Size = new System.Drawing.Size(55, 55);
             this.btBearbeiten.TabIndex = 0;
-            this.btBearbeiten.Text = "Bearbeiten";
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
+            // 
+            // tbPosition
+            // 
+            this.tbPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPosition.Location = new System.Drawing.Point(119, 49);
+            this.tbPosition.Name = "tbPosition";
+            this.tbPosition.ReadOnly = true;
+            this.tbPosition.Size = new System.Drawing.Size(253, 26);
+            this.tbPosition.TabIndex = 10;
+            // 
+            // tbGebDatum
+            // 
+            this.tbGebDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbGebDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGebDatum.Location = new System.Drawing.Point(119, 82);
+            this.tbGebDatum.Name = "tbGebDatum";
+            this.tbGebDatum.ReadOnly = true;
+            this.tbGebDatum.Size = new System.Drawing.Size(253, 26);
+            this.tbGebDatum.TabIndex = 5;
+            // 
+            // gbButtons
+            // 
+            this.gbButtons.Controls.Add(this.btPwAendern);
+            this.gbButtons.Controls.Add(this.btBearbeiten);
+            this.gbButtons.Controls.Add(this.btSchliessen);
+            this.gbButtons.Controls.Add(this.btSpeichern);
+            this.gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbButtons.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbButtons.Location = new System.Drawing.Point(0, 465);
+            this.gbButtons.Name = "gbButtons";
+            this.gbButtons.Size = new System.Drawing.Size(384, 71);
+            this.gbButtons.TabIndex = 12;
+            this.gbButtons.TabStop = false;
             // 
             // winMitarbeiterOeffnen
             // 
@@ -458,7 +446,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btSchliessen;
             this.ClientSize = new System.Drawing.Size(384, 536);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.gbButtons);
+            this.Controls.Add(this.gbLoginDaten);
+            this.Controls.Add(this.gbGehalt);
+            this.Controls.Add(this.gbAnschrift);
+            this.Controls.Add(this.gbDaten);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -470,10 +462,6 @@
             this.Text = "Mitarbeiter anzeigen und bearbeiten";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.winMitarbeiterOeffnen_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.gbLoginDaten.ResumeLayout(false);
             this.gbLoginDaten.PerformLayout();
             this.gbGehalt.ResumeLayout(false);
@@ -482,13 +470,13 @@
             this.gbAnschrift.PerformLayout();
             this.gbDaten.ResumeLayout(false);
             this.gbDaten.PerformLayout();
+            this.gbButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btSpeichern;
         private System.Windows.Forms.Button btBearbeiten;
@@ -512,12 +500,13 @@
         private System.Windows.Forms.GroupBox gbLoginDaten;
         private System.Windows.Forms.TextBox tbBenutzername;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbPosition;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox ddlMitarbeiterPosition;
         private System.Windows.Forms.Button btPwAendern;
         private System.Windows.Forms.Label lbGebDatum;
-        private System.Windows.Forms.TextBox tbGebDatum;
         private System.Windows.Forms.DateTimePicker dtpGebDatum;
+        private System.Windows.Forms.TextBox tbPosition;
+        private System.Windows.Forms.TextBox tbGebDatum;
+        private System.Windows.Forms.GroupBox gbButtons;
     }
 }

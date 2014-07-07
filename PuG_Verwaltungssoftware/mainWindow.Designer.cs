@@ -266,10 +266,10 @@
             // tabPageHeute
             // 
             this.tabPageHeute.Controls.Add(this.lvNewsHeute);
-            this.tabPageHeute.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHeute.Location = new System.Drawing.Point(4, 28);
             this.tabPageHeute.Name = "tabPageHeute";
             this.tabPageHeute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHeute.Size = new System.Drawing.Size(547, 271);
+            this.tabPageHeute.Size = new System.Drawing.Size(508, 245);
             this.tabPageHeute.TabIndex = 1;
             this.tabPageHeute.Text = "Heutige Kurse";
             this.tabPageHeute.UseVisualStyleBackColor = true;
@@ -279,7 +279,7 @@
             this.lvNewsHeute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsHeute.Location = new System.Drawing.Point(3, 3);
             this.lvNewsHeute.Name = "lvNewsHeute";
-            this.lvNewsHeute.Size = new System.Drawing.Size(541, 265);
+            this.lvNewsHeute.Size = new System.Drawing.Size(502, 239);
             this.lvNewsHeute.TabIndex = 1;
             this.lvNewsHeute.UseCompatibleStateImageBehavior = false;
             this.lvNewsHeute.View = System.Windows.Forms.View.List;
@@ -289,10 +289,10 @@
             // tabPageKommend
             // 
             this.tabPageKommend.Controls.Add(this.lvNewsKommend);
-            this.tabPageKommend.Location = new System.Drawing.Point(4, 22);
+            this.tabPageKommend.Location = new System.Drawing.Point(4, 28);
             this.tabPageKommend.Name = "tabPageKommend";
             this.tabPageKommend.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageKommend.Size = new System.Drawing.Size(547, 271);
+            this.tabPageKommend.Size = new System.Drawing.Size(508, 245);
             this.tabPageKommend.TabIndex = 2;
             this.tabPageKommend.Text = "Kommende Kurse (3 Tage)";
             this.tabPageKommend.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.lvNewsKommend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsKommend.Location = new System.Drawing.Point(3, 3);
             this.lvNewsKommend.Name = "lvNewsKommend";
-            this.lvNewsKommend.Size = new System.Drawing.Size(541, 265);
+            this.lvNewsKommend.Size = new System.Drawing.Size(502, 239);
             this.lvNewsKommend.TabIndex = 1;
             this.lvNewsKommend.UseCompatibleStateImageBehavior = false;
             this.lvNewsKommend.View = System.Windows.Forms.View.List;
@@ -379,7 +379,7 @@
             // 
             this.ddlMitarbeiterSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMitarbeiterSuchen.FormattingEnabled = true;
-            this.ddlMitarbeiterSuchen.Location = new System.Drawing.Point(190, 15);
+            this.ddlMitarbeiterSuchen.Location = new System.Drawing.Point(190, 14);
             this.ddlMitarbeiterSuchen.Name = "ddlMitarbeiterSuchen";
             this.ddlMitarbeiterSuchen.Size = new System.Drawing.Size(109, 27);
             this.ddlMitarbeiterSuchen.TabIndex = 4;
@@ -486,7 +486,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
             this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
-            this.tbMitgliederSuchen.Size = new System.Drawing.Size(87, 27);
+            this.tbMitgliederSuchen.Size = new System.Drawing.Size(85, 27);
             this.tbMitgliederSuchen.TabIndex = 8;
             this.tbMitgliederSuchen.TextChanged += new System.EventHandler(this.tbMitgliederSuchen_TextChanged);
             // 
@@ -494,7 +494,7 @@
             // 
             this.ddlMitgliederSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMitgliederSuchen.FormattingEnabled = true;
-            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
+            this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 14);
             this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
             this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 27);
             this.ddlMitgliederSuchen.TabIndex = 7;
@@ -605,9 +605,9 @@
             this.tbKursSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbKursSuchen.Location = new System.Drawing.Point(301, 14);
+            this.tbKursSuchen.Location = new System.Drawing.Point(305, 14);
             this.tbKursSuchen.Name = "tbKursSuchen";
-            this.tbKursSuchen.Size = new System.Drawing.Size(89, 27);
+            this.tbKursSuchen.Size = new System.Drawing.Size(85, 27);
             this.tbKursSuchen.TabIndex = 11;
             this.tbKursSuchen.TextChanged += new System.EventHandler(this.textBoxSuchen_TextChanged);
             // 
@@ -617,40 +617,46 @@
             this.ddlKursSuchen.FormattingEnabled = true;
             this.ddlKursSuchen.Location = new System.Drawing.Point(190, 14);
             this.ddlKursSuchen.Name = "ddlKursSuchen";
-            this.ddlKursSuchen.Size = new System.Drawing.Size(105, 27);
+            this.ddlKursSuchen.Size = new System.Drawing.Size(109, 27);
             this.ddlKursSuchen.TabIndex = 10;
             this.ddlKursSuchen.SelectedIndexChanged += new System.EventHandler(this.comboBoxSuchen_SelectedIndexChanged);
             // 
             // btKursLoeschen
             // 
+            this.btKursLoeschen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_delete_groß;
+            this.btKursLoeschen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btKursLoeschen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btKursLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btKursLoeschen.Location = new System.Drawing.Point(92, 0);
             this.btKursLoeschen.Name = "btKursLoeschen";
             this.btKursLoeschen.Size = new System.Drawing.Size(92, 55);
             this.btKursLoeschen.TabIndex = 7;
-            this.btKursLoeschen.Text = "Löschen";
             this.btKursLoeschen.UseVisualStyleBackColor = true;
             this.btKursLoeschen.Click += new System.EventHandler(this.btKursLoeschen_Click);
             // 
             // btKursNeu
             // 
+            this.btKursNeu.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_add_groß;
+            this.btKursNeu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btKursNeu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btKursNeu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btKursNeu.Location = new System.Drawing.Point(0, 0);
             this.btKursNeu.Name = "btKursNeu";
             this.btKursNeu.Size = new System.Drawing.Size(92, 55);
             this.btKursNeu.TabIndex = 9;
-            this.btKursNeu.Text = "Neu";
             this.btKursNeu.UseVisualStyleBackColor = true;
             this.btKursNeu.Click += new System.EventHandler(this.btKursNeu_Click);
             // 
             // btKursOeffnen
             // 
+            this.btKursOeffnen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_open_groß;
+            this.btKursOeffnen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btKursOeffnen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btKursOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btKursOeffnen.Name = "btKursOeffnen";
             this.btKursOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursOeffnen.TabIndex = 8;
-            this.btKursOeffnen.Text = "Öffnen";
             this.btKursOeffnen.UseVisualStyleBackColor = true;
             this.btKursOeffnen.Click += new System.EventHandler(this.btKursOeffnen_Click);
             // 
@@ -709,12 +715,13 @@
             // 
             // btKursUebersichtOeffnen
             // 
+            this.btKursUebersichtOeffnen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_open_groß;
+            this.btKursUebersichtOeffnen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";
             this.btKursUebersichtOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursUebersichtOeffnen.TabIndex = 14;
-            this.btKursUebersichtOeffnen.Text = "Öffnen";
             this.btKursUebersichtOeffnen.UseVisualStyleBackColor = true;
             this.btKursUebersichtOeffnen.Click += new System.EventHandler(this.btKursUebersichtOeffnen_Click);
             // 
@@ -723,7 +730,7 @@
             this.tbKursUebersichtSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(301, 14);
+            this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(140, 15);
             this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
             this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(250, 27);
             this.tbKursUebersichtSuchen.TabIndex = 13;
@@ -733,9 +740,9 @@
             // 
             this.ddlKursUebersichtSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlKursUebersichtSuchen.FormattingEnabled = true;
-            this.ddlKursUebersichtSuchen.Location = new System.Drawing.Point(190, 14);
+            this.ddlKursUebersichtSuchen.Location = new System.Drawing.Point(16, 15);
             this.ddlKursUebersichtSuchen.Name = "ddlKursUebersichtSuchen";
-            this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 27);
+            this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(118, 27);
             this.ddlKursUebersichtSuchen.TabIndex = 12;
             this.ddlKursUebersichtSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlKursUebersichtSuchen_SelectedIndexChanged);
             // 
@@ -833,11 +840,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
             this.ClientSize = new System.Drawing.Size(640, 422);
-            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(656, 460);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";
