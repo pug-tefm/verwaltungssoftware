@@ -54,6 +54,7 @@
             // 
             this.panelChef.Controls.Add(this.tbInitPw);
             this.panelChef.Controls.Add(this.lbInitPw);
+            this.panelChef.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChef.Location = new System.Drawing.Point(0, 0);
             this.panelChef.Name = "panelChef";
             this.panelChef.Size = new System.Drawing.Size(450, 169);
@@ -175,31 +176,31 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
             this.splitContainer1.Panel2.Controls.Add(this.btAendern);
-            this.splitContainer1.Size = new System.Drawing.Size(450, 217);
+            this.splitContainer1.Size = new System.Drawing.Size(450, 231);
             this.splitContainer1.SplitterDistance = 169;
             this.splitContainer1.TabIndex = 0;
             // 
             // btSchliessen
             // 
-            this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(333, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(3, 0);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(117, 44);
+            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
             this.btSchliessen.TabIndex = 1;
-            this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btAendern
             // 
-            this.btAendern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btAendern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btAendern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAendern.Location = new System.Drawing.Point(0, 0);
+            this.btAendern.Location = new System.Drawing.Point(392, 0);
             this.btAendern.Name = "btAendern";
-            this.btAendern.Size = new System.Drawing.Size(117, 44);
+            this.btAendern.Size = new System.Drawing.Size(55, 55);
             this.btAendern.TabIndex = 0;
-            this.btAendern.Text = "Speichern";
             this.btAendern.UseVisualStyleBackColor = true;
             this.btAendern.Click += new System.EventHandler(this.btAendern_Click);
             // 
@@ -207,14 +208,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 217);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(450, 231);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(465, 255);
             this.Name = "winMitarbeiterPasswort";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Passwort ändern";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.winMitarbeiterPasswort_Load);
             this.panelChef.ResumeLayout(false);
             this.panelChef.PerformLayout();
