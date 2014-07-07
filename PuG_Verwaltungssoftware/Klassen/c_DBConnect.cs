@@ -163,7 +163,7 @@ namespace PuG_Verwaltungssoftware
 
 
 
-        public void displayData(string query, DataGridView dataGridView) // SELECT
+        public bool displayData(string query, DataGridView dataGridView, int fehlerAus = 0) // SELECT
         {
             try
             {
@@ -174,10 +174,15 @@ namespace PuG_Verwaltungssoftware
                 DataTable dTable = new DataTable();
                 myAdapter.Fill(dTable);
                 dataGridView.DataSource = dTable;
+                return true;
             }
             catch (Exception ex) // Fehler
             {
-                MessageBox.Show(ex.Message);
+                if (fehlerAus == 0)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return false;
             }
         }
 
