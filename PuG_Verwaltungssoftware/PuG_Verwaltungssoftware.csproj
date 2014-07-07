@@ -200,29 +200,31 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ressources\Images\Icons\Buttons\pug_add_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_check_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_close_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_delete_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_edit_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_logout_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_open_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_refresh_groß.png" />
-    <Content Include="Ressources\Images\Icons\Buttons\pug_save_groß.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_add.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_check.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_close.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_delete.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_edit.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_logout.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_open.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_refresh.png" />
-    <Content Include="Ressources\Images\Icons\Contextmenu\pug_save.png" />
-    <Content Include="Ressources\Images\pug_runner.ico" />
-    <Content Include="Ressources\Images\pug_runner.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_add_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_check_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_close_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_delete_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_edit_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_logout_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_open_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_refresh_groß.png" />
+    <Content Include="Resources\Images\Icons\55x47\pug_save_groß.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_add.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_check.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_close.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_delete.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_edit.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_logout.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_open.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_refresh.png" />
+    <Content Include="Resources\Images\Icons\16x16\pug_save.png" />
+    <Content Include="Resources\Images\pug_runner.ico" />
+    <Content Include="Resources\Images\pug_runner.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
