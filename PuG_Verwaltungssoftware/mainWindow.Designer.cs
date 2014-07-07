@@ -129,26 +129,28 @@
             this.mainTabControl.Controls.Add(this.tabPageKursUebersicht);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.mainTabControl.HotTrack = true;
             this.mainTabControl.ItemSize = new System.Drawing.Size(80, 110);
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(679, 442);
+            this.mainTabControl.Size = new System.Drawing.Size(640, 422);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 1;
             this.mainTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.mainTabControl_DrawItem);
             // 
             // tabPageHome
             // 
-            this.tabPageHome.BackColor = System.Drawing.Color.Silver;
+            this.tabPageHome.BackColor = System.Drawing.Color.White;
             this.tabPageHome.Controls.Add(this.scHome);
+            this.tabPageHome.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageHome.Location = new System.Drawing.Point(114, 4);
             this.tabPageHome.Name = "tabPageHome";
             this.tabPageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHome.Size = new System.Drawing.Size(561, 434);
+            this.tabPageHome.Size = new System.Drawing.Size(522, 414);
             this.tabPageHome.TabIndex = 0;
-            this.tabPageHome.Text = "Home";
+            this.tabPageHome.Text = "Start";
             this.tabPageHome.Enter += new System.EventHandler(this.tabPageHome_Enter);
             // 
             // scHome
@@ -171,18 +173,19 @@
             // scHome.Panel2
             // 
             this.scHome.Panel2.Controls.Add(this.newsTabControl);
-            this.scHome.Size = new System.Drawing.Size(555, 428);
+            this.scHome.Size = new System.Drawing.Size(516, 408);
             this.scHome.SplitterDistance = 127;
             this.scHome.TabIndex = 0;
             // 
             // btAbmelden
             // 
             this.btAbmelden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAbmelden.Location = new System.Drawing.Point(459, 21);
+            this.btAbmelden.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_logout_groß;
+            this.btAbmelden.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btAbmelden.Location = new System.Drawing.Point(458, 21);
             this.btAbmelden.Name = "btAbmelden";
-            this.btAbmelden.Size = new System.Drawing.Size(89, 30);
+            this.btAbmelden.Size = new System.Drawing.Size(55, 53);
             this.btAbmelden.TabIndex = 4;
-            this.btAbmelden.Text = "Abmelden";
             this.btAbmelden.UseVisualStyleBackColor = true;
             this.btAbmelden.Click += new System.EventHandler(this.btAbmelden_Click);
             // 
@@ -190,9 +193,9 @@
             // 
             this.lbAngemeldet.AutoSize = true;
             this.lbAngemeldet.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbAngemeldet.Location = new System.Drawing.Point(382, 0);
+            this.lbAngemeldet.Location = new System.Drawing.Point(332, 0);
             this.lbAngemeldet.Name = "lbAngemeldet";
-            this.lbAngemeldet.Size = new System.Drawing.Size(115, 18);
+            this.lbAngemeldet.Size = new System.Drawing.Size(119, 19);
             this.lbAngemeldet.TabIndex = 3;
             this.lbAngemeldet.Text = "Angemeldet seit:";
             // 
@@ -200,18 +203,18 @@
             // 
             this.lbTimer.AutoSize = true;
             this.lbTimer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbTimer.Location = new System.Drawing.Point(497, 0);
+            this.lbTimer.Location = new System.Drawing.Point(451, 0);
             this.lbTimer.Name = "lbTimer";
-            this.lbTimer.Size = new System.Drawing.Size(58, 18);
+            this.lbTimer.Size = new System.Drawing.Size(65, 19);
             this.lbTimer.TabIndex = 2;
             this.lbTimer.Text = "00:00:00";
             // 
             // lbMitarbeiterName
             // 
             this.lbMitarbeiterName.AutoSize = true;
-            this.lbMitarbeiterName.Location = new System.Drawing.Point(23, 56);
+            this.lbMitarbeiterName.Location = new System.Drawing.Point(19, 55);
             this.lbMitarbeiterName.Name = "lbMitarbeiterName";
-            this.lbMitarbeiterName.Size = new System.Drawing.Size(128, 18);
+            this.lbMitarbeiterName.Size = new System.Drawing.Size(136, 19);
             this.lbMitarbeiterName.TabIndex = 1;
             this.lbMitarbeiterName.Text = "lbMitarbeiterName";
             // 
@@ -221,9 +224,9 @@
             this.lbWillkommen.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWillkommen.Location = new System.Drawing.Point(18, 16);
             this.lbWillkommen.Name = "lbWillkommen";
-            this.lbWillkommen.Size = new System.Drawing.Size(127, 26);
+            this.lbWillkommen.Size = new System.Drawing.Size(196, 26);
             this.lbWillkommen.TabIndex = 0;
-            this.lbWillkommen.Text = "Willkommen,";
+            this.lbWillkommen.Text = "Herzlich Willkommen";
             // 
             // newsTabControl
             // 
@@ -234,16 +237,16 @@
             this.newsTabControl.Location = new System.Drawing.Point(0, 0);
             this.newsTabControl.Name = "newsTabControl";
             this.newsTabControl.SelectedIndex = 0;
-            this.newsTabControl.Size = new System.Drawing.Size(555, 297);
+            this.newsTabControl.Size = new System.Drawing.Size(516, 277);
             this.newsTabControl.TabIndex = 1;
             // 
             // tabPageAktuell
             // 
             this.tabPageAktuell.Controls.Add(this.lvNewsAktuell);
-            this.tabPageAktuell.Location = new System.Drawing.Point(4, 27);
+            this.tabPageAktuell.Location = new System.Drawing.Point(4, 28);
             this.tabPageAktuell.Name = "tabPageAktuell";
             this.tabPageAktuell.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAktuell.Size = new System.Drawing.Size(547, 266);
+            this.tabPageAktuell.Size = new System.Drawing.Size(508, 245);
             this.tabPageAktuell.TabIndex = 0;
             this.tabPageAktuell.Text = "Aktuelle Kurse";
             this.tabPageAktuell.UseVisualStyleBackColor = true;
@@ -253,7 +256,7 @@
             this.lvNewsAktuell.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsAktuell.Location = new System.Drawing.Point(3, 3);
             this.lvNewsAktuell.Name = "lvNewsAktuell";
-            this.lvNewsAktuell.Size = new System.Drawing.Size(541, 260);
+            this.lvNewsAktuell.Size = new System.Drawing.Size(502, 239);
             this.lvNewsAktuell.TabIndex = 0;
             this.lvNewsAktuell.UseCompatibleStateImageBehavior = false;
             this.lvNewsAktuell.View = System.Windows.Forms.View.List;
@@ -308,11 +311,12 @@
             // 
             // tabPageMitarbeiter
             // 
-            this.tabPageMitarbeiter.BackColor = System.Drawing.Color.Silver;
+            this.tabPageMitarbeiter.BackColor = System.Drawing.Color.White;
             this.tabPageMitarbeiter.Controls.Add(this.scMitarbeiter);
+            this.tabPageMitarbeiter.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
-            this.tabPageMitarbeiter.Size = new System.Drawing.Size(561, 434);
+            this.tabPageMitarbeiter.Size = new System.Drawing.Size(522, 414);
             this.tabPageMitarbeiter.TabIndex = 1;
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
@@ -337,8 +341,8 @@
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
-            this.scMitarbeiter.Size = new System.Drawing.Size(561, 434);
-            this.scMitarbeiter.SplitterDistance = 375;
+            this.scMitarbeiter.Size = new System.Drawing.Size(522, 414);
+            this.scMitarbeiter.SplitterDistance = 355;
             this.scMitarbeiter.TabIndex = 2;
             // 
             // gridMitarbeiter
@@ -355,7 +359,7 @@
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(561, 375);
+            this.gridMitarbeiter.Size = new System.Drawing.Size(522, 355);
             this.gridMitarbeiter.TabIndex = 0;
             this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
             this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
@@ -365,9 +369,9 @@
             // 
             this.tbMitarbeiterSuchen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMitarbeiterSuchen.Location = new System.Drawing.Point(305, 12);
+            this.tbMitarbeiterSuchen.Location = new System.Drawing.Point(305, 14);
             this.tbMitarbeiterSuchen.Name = "tbMitarbeiterSuchen";
-            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(124, 26);
+            this.tbMitarbeiterSuchen.Size = new System.Drawing.Size(85, 27);
             this.tbMitarbeiterSuchen.TabIndex = 5;
             this.tbMitarbeiterSuchen.TextChanged += new System.EventHandler(this.tbMitarbeiterSuchen_TextChanged);
             // 
@@ -375,52 +379,59 @@
             // 
             this.ddlMitarbeiterSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMitarbeiterSuchen.FormattingEnabled = true;
-            this.ddlMitarbeiterSuchen.Location = new System.Drawing.Point(190, 12);
+            this.ddlMitarbeiterSuchen.Location = new System.Drawing.Point(190, 15);
             this.ddlMitarbeiterSuchen.Name = "ddlMitarbeiterSuchen";
-            this.ddlMitarbeiterSuchen.Size = new System.Drawing.Size(109, 26);
+            this.ddlMitarbeiterSuchen.Size = new System.Drawing.Size(109, 27);
             this.ddlMitarbeiterSuchen.TabIndex = 4;
             this.ddlMitarbeiterSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlMitarbeiterSuchen_SelectedIndexChanged);
             // 
             // btMaLoeschen
             // 
+            this.btMaLoeschen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_delete_groß;
+            this.btMaLoeschen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMaLoeschen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMaLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMaLoeschen.Location = new System.Drawing.Point(92, 0);
             this.btMaLoeschen.Name = "btMaLoeschen";
             this.btMaLoeschen.Size = new System.Drawing.Size(92, 55);
             this.btMaLoeschen.TabIndex = 3;
-            this.btMaLoeschen.Text = "Löschen";
             this.btMaLoeschen.UseVisualStyleBackColor = true;
             this.btMaLoeschen.Click += new System.EventHandler(this.btMaLoeschen_Click);
             // 
             // btMaOeffnen
             // 
+            this.btMaOeffnen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_open_groß;
+            this.btMaOeffnen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMaOeffnen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMaOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMaOeffnen.Location = new System.Drawing.Point(435, 0);
+            this.btMaOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btMaOeffnen.Name = "btMaOeffnen";
             this.btMaOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMaOeffnen.TabIndex = 2;
-            this.btMaOeffnen.Text = "Öffnen";
             this.btMaOeffnen.UseVisualStyleBackColor = true;
             this.btMaOeffnen.Click += new System.EventHandler(this.btMaOeffnen_Click);
             // 
             // btMaNeu
             // 
+            this.btMaNeu.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_add_groß;
+            this.btMaNeu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMaNeu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMaNeu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMaNeu.Location = new System.Drawing.Point(0, 0);
             this.btMaNeu.Name = "btMaNeu";
             this.btMaNeu.Size = new System.Drawing.Size(92, 55);
             this.btMaNeu.TabIndex = 1;
-            this.btMaNeu.Text = "Neu";
             this.btMaNeu.UseVisualStyleBackColor = true;
             this.btMaNeu.Click += new System.EventHandler(this.btMaNeu_Click);
             // 
             // tabPageMitglieder
             // 
-            this.tabPageMitglieder.BackColor = System.Drawing.Color.Silver;
+            this.tabPageMitglieder.BackColor = System.Drawing.Color.White;
             this.tabPageMitglieder.Controls.Add(this.scMitglieder);
+            this.tabPageMitglieder.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageMitglieder.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitglieder.Name = "tabPageMitglieder";
-            this.tabPageMitglieder.Size = new System.Drawing.Size(561, 434);
+            this.tabPageMitglieder.Size = new System.Drawing.Size(522, 414);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
             this.tabPageMitglieder.Enter += new System.EventHandler(this.tabPageMitglieder_Enter);
@@ -445,8 +456,8 @@
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
-            this.scMitglieder.Size = new System.Drawing.Size(561, 434);
-            this.scMitglieder.SplitterDistance = 375;
+            this.scMitglieder.Size = new System.Drawing.Size(522, 414);
+            this.scMitglieder.SplitterDistance = 355;
             this.scMitglieder.TabIndex = 0;
             // 
             // gridMitglieder
@@ -464,7 +475,7 @@
             this.gridMitglieder.Name = "gridMitglieder";
             this.gridMitglieder.ReadOnly = true;
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitglieder.Size = new System.Drawing.Size(561, 375);
+            this.gridMitglieder.Size = new System.Drawing.Size(522, 355);
             this.gridMitglieder.TabIndex = 1;
             this.gridMitglieder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitglieder_CellDoubleClick);
             this.gridMitglieder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitglieder_MouseDown);
@@ -475,7 +486,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMitgliederSuchen.Location = new System.Drawing.Point(305, 14);
             this.tbMitgliederSuchen.Name = "tbMitgliederSuchen";
-            this.tbMitgliederSuchen.Size = new System.Drawing.Size(126, 26);
+            this.tbMitgliederSuchen.Size = new System.Drawing.Size(87, 27);
             this.tbMitgliederSuchen.TabIndex = 8;
             this.tbMitgliederSuchen.TextChanged += new System.EventHandler(this.tbMitgliederSuchen_TextChanged);
             // 
@@ -485,50 +496,57 @@
             this.ddlMitgliederSuchen.FormattingEnabled = true;
             this.ddlMitgliederSuchen.Location = new System.Drawing.Point(190, 15);
             this.ddlMitgliederSuchen.Name = "ddlMitgliederSuchen";
-            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 26);
+            this.ddlMitgliederSuchen.Size = new System.Drawing.Size(109, 27);
             this.ddlMitgliederSuchen.TabIndex = 7;
             this.ddlMitgliederSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlMitgliederSuchen_SelectedIndexChanged);
             // 
             // btMgLoeschen
             // 
+            this.btMgLoeschen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_delete_groß;
+            this.btMgLoeschen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMgLoeschen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMgLoeschen.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMgLoeschen.Location = new System.Drawing.Point(92, 0);
             this.btMgLoeschen.Name = "btMgLoeschen";
             this.btMgLoeschen.Size = new System.Drawing.Size(92, 55);
             this.btMgLoeschen.TabIndex = 6;
-            this.btMgLoeschen.Text = "Löschen";
             this.btMgLoeschen.UseVisualStyleBackColor = true;
             this.btMgLoeschen.Click += new System.EventHandler(this.btMgLoeschen_Click);
             // 
             // btMgNeu
             // 
+            this.btMgNeu.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_add_groß;
+            this.btMgNeu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMgNeu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMgNeu.Dock = System.Windows.Forms.DockStyle.Left;
             this.btMgNeu.Location = new System.Drawing.Point(0, 0);
             this.btMgNeu.Name = "btMgNeu";
             this.btMgNeu.Size = new System.Drawing.Size(92, 55);
             this.btMgNeu.TabIndex = 4;
-            this.btMgNeu.Text = "Neu";
             this.btMgNeu.UseVisualStyleBackColor = true;
             this.btMgNeu.Click += new System.EventHandler(this.btMgNeu_Click);
             // 
             // btMgOeffnen
             // 
+            this.btMgOeffnen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_open_groß;
+            this.btMgOeffnen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btMgOeffnen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btMgOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btMgOeffnen.Location = new System.Drawing.Point(435, 0);
+            this.btMgOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btMgOeffnen.Name = "btMgOeffnen";
             this.btMgOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btMgOeffnen.TabIndex = 5;
-            this.btMgOeffnen.Text = "Öffnen";
             this.btMgOeffnen.UseVisualStyleBackColor = true;
             this.btMgOeffnen.Click += new System.EventHandler(this.btMgOeffnen_Click);
             // 
             // tabPageKurse
             // 
-            this.tabPageKurse.BackColor = System.Drawing.Color.Silver;
+            this.tabPageKurse.BackColor = System.Drawing.Color.White;
             this.tabPageKurse.Controls.Add(this.scKurse);
+            this.tabPageKurse.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
-            this.tabPageKurse.Size = new System.Drawing.Size(561, 434);
+            this.tabPageKurse.Size = new System.Drawing.Size(522, 414);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
             this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
@@ -553,8 +571,8 @@
             this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
-            this.scKurse.Size = new System.Drawing.Size(561, 434);
-            this.scKurse.SplitterDistance = 375;
+            this.scKurse.Size = new System.Drawing.Size(522, 414);
+            this.scKurse.SplitterDistance = 355;
             this.scKurse.TabIndex = 0;
             // 
             // gridKurse
@@ -573,7 +591,7 @@
             this.gridKurse.ReadOnly = true;
             this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKurse.Size = new System.Drawing.Size(561, 375);
+            this.gridKurse.Size = new System.Drawing.Size(522, 355);
             this.gridKurse.TabIndex = 2;
             this.gridKurse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKurse_CellDoubleClick);
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
@@ -589,7 +607,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursSuchen.Name = "tbKursSuchen";
-            this.tbKursSuchen.Size = new System.Drawing.Size(128, 26);
+            this.tbKursSuchen.Size = new System.Drawing.Size(89, 27);
             this.tbKursSuchen.TabIndex = 11;
             this.tbKursSuchen.TextChanged += new System.EventHandler(this.textBoxSuchen_TextChanged);
             // 
@@ -599,7 +617,7 @@
             this.ddlKursSuchen.FormattingEnabled = true;
             this.ddlKursSuchen.Location = new System.Drawing.Point(190, 14);
             this.ddlKursSuchen.Name = "ddlKursSuchen";
-            this.ddlKursSuchen.Size = new System.Drawing.Size(105, 26);
+            this.ddlKursSuchen.Size = new System.Drawing.Size(105, 27);
             this.ddlKursSuchen.TabIndex = 10;
             this.ddlKursSuchen.SelectedIndexChanged += new System.EventHandler(this.comboBoxSuchen_SelectedIndexChanged);
             // 
@@ -628,7 +646,7 @@
             // btKursOeffnen
             // 
             this.btKursOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursOeffnen.Location = new System.Drawing.Point(435, 0);
+            this.btKursOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btKursOeffnen.Name = "btKursOeffnen";
             this.btKursOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursOeffnen.TabIndex = 8;
@@ -638,13 +656,14 @@
             // 
             // tabPageKursUebersicht
             // 
+            this.tabPageKursUebersicht.BackColor = System.Drawing.Color.White;
             this.tabPageKursUebersicht.Controls.Add(this.scKursUebersicht);
+            this.tabPageKursUebersicht.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
             this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
-            this.tabPageKursUebersicht.Size = new System.Drawing.Size(561, 434);
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(522, 414);
             this.tabPageKursUebersicht.TabIndex = 4;
             this.tabPageKursUebersicht.Text = "Kurs Übersicht";
-            this.tabPageKursUebersicht.UseVisualStyleBackColor = true;
             this.tabPageKursUebersicht.Enter += new System.EventHandler(this.tabPageKursUebersicht_Enter);
             // 
             // scKursUebersicht
@@ -665,8 +684,8 @@
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtOeffnen);
             this.scKursUebersicht.Panel2.Controls.Add(this.tbKursUebersichtSuchen);
             this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
-            this.scKursUebersicht.Size = new System.Drawing.Size(561, 434);
-            this.scKursUebersicht.SplitterDistance = 375;
+            this.scKursUebersicht.Size = new System.Drawing.Size(522, 414);
+            this.scKursUebersicht.SplitterDistance = 355;
             this.scKursUebersicht.TabIndex = 0;
             // 
             // gridKursUebersicht
@@ -682,7 +701,7 @@
             this.gridKursUebersicht.Name = "gridKursUebersicht";
             this.gridKursUebersicht.ReadOnly = true;
             this.gridKursUebersicht.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKursUebersicht.Size = new System.Drawing.Size(561, 375);
+            this.gridKursUebersicht.Size = new System.Drawing.Size(522, 355);
             this.gridKursUebersicht.TabIndex = 0;
             this.gridKursUebersicht.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKursUebersicht_CellDoubleClick);
             this.gridKursUebersicht.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridKursUebersicht_KeyDown);
@@ -691,7 +710,7 @@
             // btKursUebersichtOeffnen
             // 
             this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(435, 0);
+            this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(396, 0);
             this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";
             this.btKursUebersichtOeffnen.Size = new System.Drawing.Size(126, 55);
             this.btKursUebersichtOeffnen.TabIndex = 14;
@@ -706,7 +725,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKursUebersichtSuchen.Location = new System.Drawing.Point(301, 14);
             this.tbKursUebersichtSuchen.Name = "tbKursUebersichtSuchen";
-            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(128, 26);
+            this.tbKursUebersichtSuchen.Size = new System.Drawing.Size(250, 27);
             this.tbKursUebersichtSuchen.TabIndex = 13;
             this.tbKursUebersichtSuchen.TextChanged += new System.EventHandler(this.tbKursUebersichtSuchen_TextChanged);
             // 
@@ -716,24 +735,22 @@
             this.ddlKursUebersichtSuchen.FormattingEnabled = true;
             this.ddlKursUebersichtSuchen.Location = new System.Drawing.Point(190, 14);
             this.ddlKursUebersichtSuchen.Name = "ddlKursUebersichtSuchen";
-            this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 26);
+            this.ddlKursUebersichtSuchen.Size = new System.Drawing.Size(105, 27);
             this.ddlKursUebersichtSuchen.TabIndex = 12;
             this.ddlKursUebersichtSuchen.SelectedIndexChanged += new System.EventHandler(this.ddlKursUebersichtSuchen_SelectedIndexChanged);
             // 
             // loginPanel
             // 
-            this.loginPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.loginPanel.Controls.Add(this.lbLoginMessage);
             this.loginPanel.Controls.Add(this.pictureBox1);
             this.loginPanel.Controls.Add(this.btExit);
             this.loginPanel.Controls.Add(this.tbPassword);
             this.loginPanel.Controls.Add(this.tbUsername);
             this.loginPanel.Controls.Add(this.btLogin);
+            this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(678, 442);
+            this.loginPanel.Size = new System.Drawing.Size(640, 422);
             this.loginPanel.TabIndex = 2;
             // 
             // lbLoginMessage
@@ -742,7 +759,7 @@
             this.lbLoginMessage.AutoSize = true;
             this.lbLoginMessage.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoginMessage.ForeColor = System.Drawing.Color.Red;
-            this.lbLoginMessage.Location = new System.Drawing.Point(166, 308);
+            this.lbLoginMessage.Location = new System.Drawing.Point(147, 298);
             this.lbLoginMessage.Name = "lbLoginMessage";
             this.lbLoginMessage.Size = new System.Drawing.Size(0, 19);
             this.lbLoginMessage.TabIndex = 5;
@@ -751,9 +768,9 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::PuG_Verwaltungssoftware.Properties.Resources.pug_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(172, 63);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(347, 148);
+            this.pictureBox1.Size = new System.Drawing.Size(309, 148);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -762,7 +779,7 @@
             // 
             this.btExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btExit.Location = new System.Drawing.Point(424, 261);
+            this.btExit.Location = new System.Drawing.Point(407, 301);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(93, 32);
             this.btExit.TabIndex = 3;
@@ -774,7 +791,7 @@
             // 
             this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(167, 229);
+            this.tbPassword.Location = new System.Drawing.Point(150, 269);
             this.tbPassword.MaxLength = 50;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(350, 26);
@@ -788,7 +805,7 @@
             // 
             this.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbUsername.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(167, 197);
+            this.tbUsername.Location = new System.Drawing.Point(150, 237);
             this.tbUsername.MaxLength = 50;
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(350, 26);
@@ -801,7 +818,7 @@
             // btLogin
             // 
             this.btLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btLogin.Location = new System.Drawing.Point(167, 261);
+            this.btLogin.Location = new System.Drawing.Point(150, 301);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(251, 32);
             this.btLogin.TabIndex = 0;
@@ -815,13 +832,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btExit;
-            this.ClientSize = new System.Drawing.Size(679, 442);
-            this.Controls.Add(this.loginPanel);
+            this.ClientSize = new System.Drawing.Size(640, 422);
             this.Controls.Add(this.mainTabControl);
+            this.Controls.Add(this.loginPanel);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(695, 480);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P&G Verwaltungssoftware";

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitgliedOeffnen));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbVertrag = new System.Windows.Forms.GroupBox();
             this.ddlVertragsart = new System.Windows.Forms.ComboBox();
             this.cbGesperrt = new System.Windows.Forms.CheckBox();
@@ -58,37 +57,12 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.gbButtons = new System.Windows.Forms.GroupBox();
             this.gbVertrag.SuspendLayout();
             this.gbAnschrift.SuspendLayout();
             this.gbDaten.SuspendLayout();
+            this.gbButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbVertrag);
-            this.splitContainer1.Panel1.Controls.Add(this.gbAnschrift);
-            this.splitContainer1.Panel1.Controls.Add(this.gbDaten);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
-            this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
-            this.splitContainer1.Size = new System.Drawing.Size(503, 507);
-            this.splitContainer1.SplitterDistance = 450;
-            this.splitContainer1.TabIndex = 0;
             // 
             // gbVertrag
             // 
@@ -104,20 +78,22 @@
             this.gbVertrag.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbVertrag.Location = new System.Drawing.Point(0, 291);
             this.gbVertrag.Name = "gbVertrag";
-            this.gbVertrag.Size = new System.Drawing.Size(503, 162);
-            this.gbVertrag.TabIndex = 10;
+            this.gbVertrag.Size = new System.Drawing.Size(384, 162);
+            this.gbVertrag.TabIndex = 3;
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
             // 
             // ddlVertragsart
             // 
+            this.ddlVertragsart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ddlVertragsart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlVertragsart.Enabled = false;
             this.ddlVertragsart.FormattingEnabled = true;
             this.ddlVertragsart.Location = new System.Drawing.Point(119, 23);
             this.ddlVertragsart.Name = "ddlVertragsart";
-            this.ddlVertragsart.Size = new System.Drawing.Size(362, 23);
-            this.ddlVertragsart.TabIndex = 17;
+            this.ddlVertragsart.Size = new System.Drawing.Size(253, 23);
+            this.ddlVertragsart.TabIndex = 8;
             // 
             // cbGesperrt
             // 
@@ -126,26 +102,30 @@
             this.cbGesperrt.Location = new System.Drawing.Point(119, 98);
             this.cbGesperrt.Name = "cbGesperrt";
             this.cbGesperrt.Size = new System.Drawing.Size(15, 14);
-            this.cbGesperrt.TabIndex = 15;
+            this.cbGesperrt.TabIndex = 10;
             this.cbGesperrt.UseVisualStyleBackColor = true;
             // 
             // dtpVertragsDatum
             // 
+            this.dtpVertragsDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpVertragsDatum.Enabled = false;
             this.dtpVertragsDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 59);
             this.dtpVertragsDatum.Name = "dtpVertragsDatum";
-            this.dtpVertragsDatum.Size = new System.Drawing.Size(362, 23);
-            this.dtpVertragsDatum.TabIndex = 14;
+            this.dtpVertragsDatum.Size = new System.Drawing.Size(253, 23);
+            this.dtpVertragsDatum.TabIndex = 9;
             // 
             // tbKommentar
             // 
+            this.tbKommentar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbKommentar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbKommentar.Location = new System.Drawing.Point(119, 123);
             this.tbKommentar.Name = "tbKommentar";
             this.tbKommentar.ReadOnly = true;
-            this.tbKommentar.Size = new System.Drawing.Size(362, 26);
-            this.tbKommentar.TabIndex = 13;
+            this.tbKommentar.Size = new System.Drawing.Size(253, 26);
+            this.tbKommentar.TabIndex = 11;
             // 
             // lbKommentar
             // 
@@ -201,46 +181,54 @@
             this.gbAnschrift.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAnschrift.Location = new System.Drawing.Point(0, 142);
             this.gbAnschrift.Name = "gbAnschrift";
-            this.gbAnschrift.Size = new System.Drawing.Size(503, 149);
-            this.gbAnschrift.TabIndex = 9;
+            this.gbAnschrift.Size = new System.Drawing.Size(384, 149);
+            this.gbAnschrift.TabIndex = 2;
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
             // 
             // tbPlz
             // 
+            this.tbPlz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPlz.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
             this.tbPlz.Name = "tbPlz";
             this.tbPlz.ReadOnly = true;
-            this.tbPlz.Size = new System.Drawing.Size(362, 26);
-            this.tbPlz.TabIndex = 9;
+            this.tbPlz.Size = new System.Drawing.Size(253, 26);
+            this.tbPlz.TabIndex = 6;
             // 
             // tbOrt
             // 
+            this.tbOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbOrt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOrt.Location = new System.Drawing.Point(119, 109);
             this.tbOrt.Name = "tbOrt";
             this.tbOrt.ReadOnly = true;
-            this.tbOrt.Size = new System.Drawing.Size(362, 26);
-            this.tbOrt.TabIndex = 8;
+            this.tbOrt.Size = new System.Drawing.Size(253, 26);
+            this.tbOrt.TabIndex = 7;
             // 
             // tbHausnummer
             // 
+            this.tbHausnummer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbHausnummer.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
             this.tbHausnummer.Name = "tbHausnummer";
             this.tbHausnummer.ReadOnly = true;
-            this.tbHausnummer.Size = new System.Drawing.Size(362, 26);
-            this.tbHausnummer.TabIndex = 7;
+            this.tbHausnummer.Size = new System.Drawing.Size(253, 26);
+            this.tbHausnummer.TabIndex = 5;
             // 
             // tbStrasse
             // 
+            this.tbStrasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbStrasse.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStrasse.Location = new System.Drawing.Point(119, 22);
             this.tbStrasse.Name = "tbStrasse";
             this.tbStrasse.ReadOnly = true;
-            this.tbStrasse.Size = new System.Drawing.Size(362, 26);
-            this.tbStrasse.TabIndex = 6;
+            this.tbStrasse.Size = new System.Drawing.Size(253, 26);
+            this.tbStrasse.TabIndex = 4;
             // 
             // lbPlz
             // 
@@ -294,8 +282,8 @@
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(503, 142);
-            this.gbDaten.TabIndex = 8;
+            this.gbDaten.Size = new System.Drawing.Size(384, 142);
+            this.gbDaten.TabIndex = 1;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
             // 
@@ -321,20 +309,24 @@
             // 
             // dtpDatum
             // 
+            this.dtpDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDatum.Enabled = false;
             this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatum.Location = new System.Drawing.Point(119, 88);
             this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(362, 23);
-            this.dtpDatum.TabIndex = 5;
+            this.dtpDatum.Size = new System.Drawing.Size(253, 23);
+            this.dtpDatum.TabIndex = 3;
             // 
             // tbVorname
             // 
+            this.tbVorname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbVorname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
             this.tbVorname.Name = "tbVorname";
             this.tbVorname.ReadOnly = true;
-            this.tbVorname.Size = new System.Drawing.Size(362, 26);
+            this.tbVorname.Size = new System.Drawing.Size(253, 26);
             this.tbVorname.TabIndex = 1;
             // 
             // lbDatum
@@ -349,77 +341,104 @@
             // 
             // tbNachname
             // 
+            this.tbNachname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNachname.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
             this.tbNachname.Name = "tbNachname";
             this.tbNachname.ReadOnly = true;
-            this.tbNachname.Size = new System.Drawing.Size(362, 26);
+            this.tbNachname.Size = new System.Drawing.Size(253, 26);
             this.tbNachname.TabIndex = 3;
             // 
             // btSchliessen
             // 
-            this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(398, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(6, 12);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 53);
-            this.btSchliessen.TabIndex = 2;
-            this.btSchliessen.Text = "Schließen";
+            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
+            this.btSchliessen.TabIndex = 12;
+            this.btSchliessen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btSpeichern
             // 
-            this.btSpeichern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btSpeichern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSpeichern.Location = new System.Drawing.Point(105, 0);
+            this.btSpeichern.Location = new System.Drawing.Point(324, 12);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 53);
-            this.btSpeichern.TabIndex = 1;
-            this.btSpeichern.Text = "Speichern";
+            this.btSpeichern.Size = new System.Drawing.Size(55, 55);
+            this.btSpeichern.TabIndex = 14;
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
             // btBearbeiten
             // 
-            this.btBearbeiten.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btBearbeiten.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_edit_groß;
+            this.btBearbeiten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btBearbeiten.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btBearbeiten.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
+            this.btBearbeiten.Location = new System.Drawing.Point(263, 12);
             this.btBearbeiten.Name = "btBearbeiten";
-            this.btBearbeiten.Size = new System.Drawing.Size(105, 53);
-            this.btBearbeiten.TabIndex = 0;
-            this.btBearbeiten.Text = "Bearbeiten";
+            this.btBearbeiten.Size = new System.Drawing.Size(55, 55);
+            this.btBearbeiten.TabIndex = 13;
+            this.btBearbeiten.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
+            // gbButtons
+            // 
+            this.gbButtons.Controls.Add(this.btBearbeiten);
+            this.gbButtons.Controls.Add(this.btSpeichern);
+            this.gbButtons.Controls.Add(this.btSchliessen);
+            this.gbButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbButtons.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbButtons.Location = new System.Drawing.Point(0, 453);
+            this.gbButtons.Name = "gbButtons";
+            this.gbButtons.Size = new System.Drawing.Size(384, 71);
+            this.gbButtons.TabIndex = 4;
+            this.gbButtons.TabStop = false;
+            // 
             // winMitgliedOeffnen
             // 
+            this.AcceptButton = this.btSpeichern;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 507);
-            this.Controls.Add(this.splitContainer1);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btSchliessen;
+            this.ClientSize = new System.Drawing.Size(384, 536);
+            this.Controls.Add(this.gbButtons);
+            this.Controls.Add(this.gbVertrag);
+            this.Controls.Add(this.gbAnschrift);
+            this.Controls.Add(this.gbDaten);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(400, 570);
+            this.MinimumSize = new System.Drawing.Size(400, 570);
             this.Name = "winMitgliedOeffnen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mitglied anzeigen und bearbeiten";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.winMitgliedOeffnen_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.gbVertrag.ResumeLayout(false);
             this.gbVertrag.PerformLayout();
             this.gbAnschrift.ResumeLayout(false);
             this.gbAnschrift.PerformLayout();
             this.gbDaten.ResumeLayout(false);
             this.gbDaten.PerformLayout();
+            this.gbButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btSpeichern;
         private System.Windows.Forms.Button btBearbeiten;
@@ -448,5 +467,6 @@
         private System.Windows.Forms.DateTimePicker dtpVertragsDatum;
         private System.Windows.Forms.CheckBox cbGesperrt;
         private System.Windows.Forms.ComboBox ddlVertragsart;
+        private System.Windows.Forms.GroupBox gbButtons;
     }
 }
