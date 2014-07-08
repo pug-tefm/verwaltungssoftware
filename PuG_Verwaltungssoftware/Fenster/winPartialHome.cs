@@ -204,9 +204,11 @@ namespace PuG_Verwaltungssoftware
                 lvNewsKommend.Items.Clear();
 
                 DateTime today = DateTime.Now;
+
                 int tag = (int)today.DayOfWeek;
-                int tag2 = 0;
-                switch (tag) {
+                int tag2 = tag;
+                switch (tag) 
+                {
                     case 4:
                         tag2 = 6;
                         break;
@@ -217,11 +219,13 @@ namespace PuG_Verwaltungssoftware
                         tag2 = 1;
                         break;
                     default:
-                        tag = tag + 2;
+                        tag2 = tag2 + 3;
                         break;
                 }
 
-                DataTable dtable = c.select("SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE wochentag BETWEEN '" + tag + "' AND '" + tag2 + "';");
+                String sql = "SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE datum_von > '" + today.ToString("yyyy-MM-dd") + "' AND wochentag BETWEEN '" + tag + "' AND '" + tag2 + "';";
+                DataTable dtable = c.select(sql);
+
                 c.closeConnection();
 
                 if (dtable != null)
