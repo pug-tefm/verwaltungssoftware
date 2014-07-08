@@ -22,6 +22,11 @@ namespace PuG_Verwaltungssoftware
         {
             InitializeComponent();
 
+            // ToolTips generieren
+            c_Helper.setToolTip(btNeu, "Neu");
+            c_Helper.setToolTip(btLoeschen, "Löschen");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+            
             gmyKurs = myKurs;
             g = gridKursUebersicht;
             tbBezeichnung.Text = myKurs.getBezeichnung();
@@ -54,11 +59,11 @@ namespace PuG_Verwaltungssoftware
                 int maxTeilnehmer = myKurs.getMaxTeilnehmer();
                 if (aktuelleTeilnehmer >= maxTeilnehmer)
                 {
-                    btKursUebersichtNeu.Enabled = false;
+                    btNeu.Enabled = false;
                 }
                 else
                 {
-                    btKursUebersichtNeu.Enabled = true;
+                    btNeu.Enabled = true;
                 }
             }
         }
@@ -93,11 +98,11 @@ namespace PuG_Verwaltungssoftware
                 int maxTeilnehmer = gmyKurs.getMaxTeilnehmer();
                 if (aktuelleTeilnehmer >= maxTeilnehmer)
                 {
-                    btKursUebersichtNeu.Enabled = false;
+                    btNeu.Enabled = false;
                 }
                 else
                 {
-                    btKursUebersichtNeu.Enabled = true;
+                    btNeu.Enabled = true;
                 }
             }
         }
@@ -241,11 +246,11 @@ namespace PuG_Verwaltungssoftware
                 int maxTeilnehmer = gmyKurs.getMaxTeilnehmer();
                 if (aktuelleTeilnehmer >= maxTeilnehmer)
                 {
-                    btKursUebersichtNeu.Enabled = false;
+                    btNeu.Enabled = false;
                 }
                 else
                 {
-                    btKursUebersichtNeu.Enabled = true;
+                    btNeu.Enabled = true;
                 }
             }
         }

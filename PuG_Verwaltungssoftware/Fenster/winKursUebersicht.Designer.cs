@@ -33,7 +33,7 @@
             this.tbBezeichnung = new System.Windows.Forms.TextBox();
             this.lbBezeichnung = new System.Windows.Forms.Label();
             this.btLoeschen = new System.Windows.Forms.Button();
-            this.btKursUebersichtNeu = new System.Windows.Forms.Button();
+            this.btNeu = new System.Windows.Forms.Button();
             this.btSchliessen = new System.Windows.Forms.Button();
             this.gbButtons = new System.Windows.Forms.GroupBox();
             this.gbKursname = new System.Windows.Forms.GroupBox();
@@ -102,17 +102,17 @@
             this.btLoeschen.UseVisualStyleBackColor = true;
             this.btLoeschen.Click += new System.EventHandler(this.btLoeschen_Click);
             // 
-            // btKursUebersichtNeu
+            // btNeu
             // 
-            this.btKursUebersichtNeu.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_add_groß;
-            this.btKursUebersichtNeu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btKursUebersichtNeu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btKursUebersichtNeu.Location = new System.Drawing.Point(373, 10);
-            this.btKursUebersichtNeu.Name = "btKursUebersichtNeu";
-            this.btKursUebersichtNeu.Size = new System.Drawing.Size(55, 55);
-            this.btKursUebersichtNeu.TabIndex = 24;
-            this.btKursUebersichtNeu.UseVisualStyleBackColor = true;
-            this.btKursUebersichtNeu.Click += new System.EventHandler(this.btKursUebersichtNeu_Click);
+            this.btNeu.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_add_groß;
+            this.btNeu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btNeu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btNeu.Location = new System.Drawing.Point(373, 10);
+            this.btNeu.Name = "btNeu";
+            this.btNeu.Size = new System.Drawing.Size(55, 55);
+            this.btNeu.TabIndex = 24;
+            this.btNeu.UseVisualStyleBackColor = true;
+            this.btNeu.Click += new System.EventHandler(this.btKursUebersichtNeu_Click);
             // 
             // btSchliessen
             // 
@@ -130,7 +130,7 @@
             // 
             // gbButtons
             // 
-            this.gbButtons.Controls.Add(this.btKursUebersichtNeu);
+            this.gbButtons.Controls.Add(this.btNeu);
             this.gbButtons.Controls.Add(this.btLoeschen);
             this.gbButtons.Controls.Add(this.btSchliessen);
             this.gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -153,7 +153,7 @@
             // 
             // winKursUebersicht
             // 
-            this.AcceptButton = this.btKursUebersichtNeu;
+            this.AcceptButton = this.btNeu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -184,7 +184,7 @@
         private System.Windows.Forms.GroupBox gbTeilnehmer;
         private System.Windows.Forms.DataGridView gridKursUebersichtTeilnehmer;
         private System.Windows.Forms.Button btSchliessen;
-        private System.Windows.Forms.Button btKursUebersichtNeu;
+        private System.Windows.Forms.Button btNeu;
         private System.Windows.Forms.Button btLoeschen;
         private System.Windows.Forms.GroupBox gbButtons;
         private System.Windows.Forms.GroupBox gbKursname;

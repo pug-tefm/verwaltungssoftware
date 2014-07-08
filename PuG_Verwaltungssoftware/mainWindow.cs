@@ -25,6 +25,20 @@ namespace PuG_Verwaltungssoftware
         public mainWindow()
         {
             InitializeComponent();
+
+            // ToolTips generieren
+            c_Helper.setToolTip(btMaNeu, "Neu");
+            c_Helper.setToolTip(btMgNeu, "Neu");
+            c_Helper.setToolTip(btKursNeu, "Neu");
+
+            c_Helper.setToolTip(btMaOeffnen, "Öffnen");
+            c_Helper.setToolTip(btMgOeffnen, "Öffnen");
+            c_Helper.setToolTip(btKursOeffnen, "Öffnen");
+            c_Helper.setToolTip(btKursUebersichtOeffnen, "Öffnen");
+
+            c_Helper.setToolTip(btMaLoeschen, "Löschen");
+            c_Helper.setToolTip(btMgLoeschen, "Löschen");
+            c_Helper.setToolTip(btKursLoeschen, "Löschen");           
         }
 
         private void miBeenden_Click(object sender, EventArgs e)

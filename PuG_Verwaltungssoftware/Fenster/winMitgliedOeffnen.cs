@@ -26,6 +26,12 @@ namespace PuG_Verwaltungssoftware
         public winMitgliedOeffnen(int id, DataGridView grid)
         {
             InitializeComponent();
+
+            // ToolTips generieren
+            c_Helper.setToolTip(btSpeichern, "Speichern");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+            c_Helper.setToolTip(btBearbeiten, "Bearbeiten");
+
             mId = id;
             gridMitglieder = grid;
         }

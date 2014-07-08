@@ -78,7 +78,7 @@
             this.gbVertrag.Location = new System.Drawing.Point(0, 279);
             this.gbVertrag.Name = "gbVertrag";
             this.gbVertrag.Size = new System.Drawing.Size(384, 162);
-            this.gbVertrag.TabIndex = 1;
+            this.gbVertrag.TabIndex = 10;
             this.gbVertrag.TabStop = false;
             this.gbVertrag.Text = "Vertragsdaten";
             // 
@@ -90,7 +90,7 @@
             this.dtpVertragsDatum.Location = new System.Drawing.Point(119, 60);
             this.dtpVertragsDatum.Name = "dtpVertragsDatum";
             this.dtpVertragsDatum.Size = new System.Drawing.Size(253, 23);
-            this.dtpVertragsDatum.TabIndex = 9;
+            this.dtpVertragsDatum.TabIndex = 12;
             // 
             // cbGesperrt
             // 
@@ -98,7 +98,7 @@
             this.cbGesperrt.Location = new System.Drawing.Point(119, 97);
             this.cbGesperrt.Name = "cbGesperrt";
             this.cbGesperrt.Size = new System.Drawing.Size(15, 14);
-            this.cbGesperrt.TabIndex = 10;
+            this.cbGesperrt.TabIndex = 13;
             this.cbGesperrt.UseVisualStyleBackColor = true;
             // 
             // ddlVertragsart
@@ -110,7 +110,7 @@
             this.ddlVertragsart.Location = new System.Drawing.Point(119, 23);
             this.ddlVertragsart.Name = "ddlVertragsart";
             this.ddlVertragsart.Size = new System.Drawing.Size(253, 23);
-            this.ddlVertragsart.TabIndex = 8;
+            this.ddlVertragsart.TabIndex = 11;
             // 
             // tbKommentar
             // 
@@ -120,7 +120,7 @@
             this.tbKommentar.Location = new System.Drawing.Point(119, 123);
             this.tbKommentar.Name = "tbKommentar";
             this.tbKommentar.Size = new System.Drawing.Size(253, 26);
-            this.tbKommentar.TabIndex = 11;
+            this.tbKommentar.TabIndex = 14;
             // 
             // lbKommentar
             // 
@@ -129,7 +129,7 @@
             this.lbKommentar.Location = new System.Drawing.Point(12, 131);
             this.lbKommentar.Name = "lbKommentar";
             this.lbKommentar.Size = new System.Drawing.Size(85, 18);
-            this.lbKommentar.TabIndex = 12;
+            this.lbKommentar.TabIndex = 0;
             this.lbKommentar.Text = "Kommentar:";
             // 
             // lbGesperrt
@@ -139,7 +139,7 @@
             this.lbGesperrt.Location = new System.Drawing.Point(12, 98);
             this.lbGesperrt.Name = "lbGesperrt";
             this.lbGesperrt.Size = new System.Drawing.Size(66, 18);
-            this.lbGesperrt.TabIndex = 10;
+            this.lbGesperrt.TabIndex = 0;
             this.lbGesperrt.Text = "Gesperrt:";
             // 
             // lbVertragsdatum
@@ -149,7 +149,7 @@
             this.lbVertragsdatum.Location = new System.Drawing.Point(12, 64);
             this.lbVertragsdatum.Name = "lbVertragsdatum";
             this.lbVertragsdatum.Size = new System.Drawing.Size(103, 18);
-            this.lbVertragsdatum.TabIndex = 8;
+            this.lbVertragsdatum.TabIndex = 0;
             this.lbVertragsdatum.Text = "Vertragsdatum:";
             // 
             // lbVertragsart
@@ -159,7 +159,7 @@
             this.lbVertragsart.Location = new System.Drawing.Point(12, 30);
             this.lbVertragsart.Name = "lbVertragsart";
             this.lbVertragsart.Size = new System.Drawing.Size(80, 18);
-            this.lbVertragsart.TabIndex = 3;
+            this.lbVertragsart.TabIndex = 0;
             this.lbVertragsart.Text = "Vertragsart:";
             // 
             // gbAnschrift
@@ -177,7 +177,7 @@
             this.gbAnschrift.Location = new System.Drawing.Point(0, 130);
             this.gbAnschrift.Name = "gbAnschrift";
             this.gbAnschrift.Size = new System.Drawing.Size(384, 149);
-            this.gbAnschrift.TabIndex = 2;
+            this.gbAnschrift.TabIndex = 5;
             this.gbAnschrift.TabStop = false;
             this.gbAnschrift.Text = "Anschrift";
             // 
@@ -189,7 +189,7 @@
             this.tbPlz.Location = new System.Drawing.Point(119, 81);
             this.tbPlz.Name = "tbPlz";
             this.tbPlz.Size = new System.Drawing.Size(253, 26);
-            this.tbPlz.TabIndex = 6;
+            this.tbPlz.TabIndex = 8;
             // 
             // tbOrt
             // 
@@ -199,7 +199,7 @@
             this.tbOrt.Location = new System.Drawing.Point(119, 109);
             this.tbOrt.Name = "tbOrt";
             this.tbOrt.Size = new System.Drawing.Size(253, 26);
-            this.tbOrt.TabIndex = 7;
+            this.tbOrt.TabIndex = 9;
             // 
             // tbHausnummer
             // 
@@ -209,7 +209,7 @@
             this.tbHausnummer.Location = new System.Drawing.Point(119, 53);
             this.tbHausnummer.Name = "tbHausnummer";
             this.tbHausnummer.Size = new System.Drawing.Size(253, 26);
-            this.tbHausnummer.TabIndex = 5;
+            this.tbHausnummer.TabIndex = 7;
             // 
             // tbStrasse
             // 
@@ -219,7 +219,7 @@
             this.tbStrasse.Location = new System.Drawing.Point(119, 22);
             this.tbStrasse.Name = "tbStrasse";
             this.tbStrasse.Size = new System.Drawing.Size(253, 26);
-            this.tbStrasse.TabIndex = 4;
+            this.tbStrasse.TabIndex = 6;
             // 
             // lbPlz
             // 
@@ -228,7 +228,7 @@
             this.lbPlz.Location = new System.Drawing.Point(12, 89);
             this.lbPlz.Name = "lbPlz";
             this.lbPlz.Size = new System.Drawing.Size(85, 18);
-            this.lbPlz.TabIndex = 5;
+            this.lbPlz.TabIndex = 0;
             this.lbPlz.Text = "Postleitzahl:";
             // 
             // lbOrt
@@ -238,7 +238,7 @@
             this.lbOrt.Location = new System.Drawing.Point(12, 117);
             this.lbOrt.Name = "lbOrt";
             this.lbOrt.Size = new System.Drawing.Size(32, 18);
-            this.lbOrt.TabIndex = 4;
+            this.lbOrt.TabIndex = 0;
             this.lbOrt.Text = "Ort:";
             // 
             // lbHausnummer
@@ -248,7 +248,7 @@
             this.lbHausnummer.Location = new System.Drawing.Point(12, 61);
             this.lbHausnummer.Name = "lbHausnummer";
             this.lbHausnummer.Size = new System.Drawing.Size(95, 18);
-            this.lbHausnummer.TabIndex = 3;
+            this.lbHausnummer.TabIndex = 0;
             this.lbHausnummer.Text = "Hausnummer:";
             // 
             // lbStrasse
@@ -258,7 +258,7 @@
             this.lbStrasse.Location = new System.Drawing.Point(12, 30);
             this.lbStrasse.Name = "lbStrasse";
             this.lbStrasse.Size = new System.Drawing.Size(52, 18);
-            this.lbStrasse.TabIndex = 2;
+            this.lbStrasse.TabIndex = 0;
             this.lbStrasse.Text = "Straße:";
             // 
             // gbDaten
@@ -274,7 +274,7 @@
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
             this.gbDaten.Size = new System.Drawing.Size(384, 130);
-            this.gbDaten.TabIndex = 3;
+            this.gbDaten.TabIndex = 1;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Persönliche Daten";
             // 
@@ -286,7 +286,7 @@
             this.dtpDatum.Location = new System.Drawing.Point(119, 88);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(253, 23);
-            this.dtpDatum.TabIndex = 3;
+            this.dtpDatum.TabIndex = 4;
             // 
             // lbVorname
             // 
@@ -295,7 +295,7 @@
             this.lbVorname.Location = new System.Drawing.Point(12, 26);
             this.lbVorname.Name = "lbVorname";
             this.lbVorname.Size = new System.Drawing.Size(68, 18);
-            this.lbVorname.TabIndex = 1;
+            this.lbVorname.TabIndex = 0;
             this.lbVorname.Text = "Vorname:";
             // 
             // lbNachname
@@ -305,7 +305,7 @@
             this.lbNachname.Location = new System.Drawing.Point(12, 58);
             this.lbNachname.Name = "lbNachname";
             this.lbNachname.Size = new System.Drawing.Size(78, 18);
-            this.lbNachname.TabIndex = 2;
+            this.lbNachname.TabIndex = 0;
             this.lbNachname.Text = "Nachname:";
             // 
             // tbVorname
@@ -316,7 +316,7 @@
             this.tbVorname.Location = new System.Drawing.Point(119, 18);
             this.tbVorname.Name = "tbVorname";
             this.tbVorname.Size = new System.Drawing.Size(253, 26);
-            this.tbVorname.TabIndex = 1;
+            this.tbVorname.TabIndex = 2;
             // 
             // lbDatum
             // 
@@ -325,7 +325,7 @@
             this.lbDatum.Location = new System.Drawing.Point(12, 92);
             this.lbDatum.Name = "lbDatum";
             this.lbDatum.Size = new System.Drawing.Size(101, 18);
-            this.lbDatum.TabIndex = 4;
+            this.lbDatum.TabIndex = 0;
             this.lbDatum.Text = "Geburtsdatum:";
             // 
             // tbNachname
@@ -336,7 +336,7 @@
             this.tbNachname.Location = new System.Drawing.Point(119, 50);
             this.tbNachname.Name = "tbNachname";
             this.tbNachname.Size = new System.Drawing.Size(253, 26);
-            this.tbNachname.TabIndex = 2;
+            this.tbNachname.TabIndex = 3;
             // 
             // btSchliessen
             // 
@@ -347,7 +347,7 @@
             this.btSchliessen.Location = new System.Drawing.Point(6, 10);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(55, 55);
-            this.btSchliessen.TabIndex = 12;
+            this.btSchliessen.TabIndex = 16;
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
@@ -359,7 +359,7 @@
             this.btSpeichern.Location = new System.Drawing.Point(323, 10);
             this.btSpeichern.Name = "btSpeichern";
             this.btSpeichern.Size = new System.Drawing.Size(55, 55);
-            this.btSpeichern.TabIndex = 13;
+            this.btSpeichern.TabIndex = 15;
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 

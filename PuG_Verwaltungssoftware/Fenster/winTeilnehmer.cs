@@ -22,6 +22,11 @@ namespace PuG_Verwaltungssoftware
         public winTeilnehmer(c_Kurse kurs, DataGridView gridKursUebersichtTeilnehmer)
         {
             InitializeComponent();
+
+            // ToolTips generieren
+            c_Helper.setToolTip(btHinzufuegen, "Hinzufügen");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+
             tmyKurs = kurs;
             kurs_ID = kurs.getKursId();
             g = gridKursUebersichtTeilnehmer;

@@ -723,6 +723,7 @@
             // 
             this.btKursUebersichtOeffnen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_open_groß;
             this.btKursUebersichtOeffnen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btKursUebersichtOeffnen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btKursUebersichtOeffnen.Dock = System.Windows.Forms.DockStyle.Right;
             this.btKursUebersichtOeffnen.Location = new System.Drawing.Point(490, 0);
             this.btKursUebersichtOeffnen.Name = "btKursUebersichtOeffnen";

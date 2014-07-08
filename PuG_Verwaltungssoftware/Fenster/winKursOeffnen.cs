@@ -24,6 +24,11 @@ namespace PuG_Verwaltungssoftware
         {
             InitializeComponent();
 
+            // ToolTips generieren
+            c_Helper.setToolTip(btSpeichern, "Speichern");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+            c_Helper.setToolTip(btBearbeiten, "Bearbeiten");
+
             //Unsichtbar machen 
             cbKursleiter.Visible = false;
             dtpDatumBis.Visible  = false;

@@ -35,6 +35,11 @@ namespace PuG_Verwaltungssoftware
         public winMitarbeiterOeffnen(int id, int loginId, int loginPosId, DataGridView grid)
         {
             InitializeComponent();
+
+            // ToolTips generieren
+            c_Helper.setToolTip(btSpeichern, "Speichern");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+            c_Helper.setToolTip(btBearbeiten, "Bearbeiten");
             
             // ID festlegen
             gId = id;

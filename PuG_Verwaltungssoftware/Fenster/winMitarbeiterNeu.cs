@@ -30,6 +30,10 @@ namespace PuG_Verwaltungssoftware
         {
             InitializeComponent();
 
+            // ToolTips generieren
+            c_Helper.setToolTip(btSpeichern, "Speichern");
+            c_Helper.setToolTip(btSchliessen, "Schließen");
+
             // ID festlegen
             gLoginMaId = loginId;
             gLoginPosId = loginPosId;

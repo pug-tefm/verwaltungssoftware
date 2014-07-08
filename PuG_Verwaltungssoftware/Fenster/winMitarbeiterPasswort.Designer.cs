@@ -30,7 +30,8 @@
         {
             System.Windows.Forms.GroupBox gbButtons;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterPasswort));
-            this.btAendern = new System.Windows.Forms.Button();
+            this.btSchliessen = new System.Windows.Forms.Button();
+            this.btSpeichern = new System.Windows.Forms.Button();
             this.panelChef = new System.Windows.Forms.Panel();
             this.tbInitPw = new System.Windows.Forms.TextBox();
             this.lbInitPw = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.lbNeuesPw1 = new System.Windows.Forms.Label();
             this.tbAltesPw = new System.Windows.Forms.TextBox();
             this.lbAltesPw = new System.Windows.Forms.Label();
-            this.btSchliessen = new System.Windows.Forms.Button();
             gbButtons = new System.Windows.Forms.GroupBox();
             gbButtons.SuspendLayout();
             this.panelChef.SuspendLayout();
@@ -51,7 +51,7 @@
             // gbButtons
             // 
             gbButtons.Controls.Add(this.btSchliessen);
-            gbButtons.Controls.Add(this.btAendern);
+            gbButtons.Controls.Add(this.btSpeichern);
             gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             gbButtons.Location = new System.Drawing.Point(0, 160);
             gbButtons.Name = "gbButtons";
@@ -59,18 +59,32 @@
             gbButtons.TabIndex = 2;
             gbButtons.TabStop = false;
             // 
-            // btAendern
+            // btSchliessen
             // 
-            this.btAendern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
-            this.btAendern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btAendern.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAendern.Location = new System.Drawing.Point(389, 10);
-            this.btAendern.Name = "btAendern";
-            this.btAendern.Size = new System.Drawing.Size(55, 55);
-            this.btAendern.TabIndex = 0;
-            this.btAendern.UseVisualStyleBackColor = true;
-            this.btAendern.Click += new System.EventHandler(this.btAendern_Click);
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
+            this.btSchliessen.Name = "btSchliessen";
+            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
+            this.btSchliessen.TabIndex = 1;
+            this.btSchliessen.UseVisualStyleBackColor = true;
+            this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
+            // 
+            // btSpeichern
+            // 
+            this.btSpeichern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSpeichern.Location = new System.Drawing.Point(389, 10);
+            this.btSpeichern.Name = "btSpeichern";
+            this.btSpeichern.Size = new System.Drawing.Size(55, 55);
+            this.btSpeichern.TabIndex = 0;
+            this.btSpeichern.UseVisualStyleBackColor = true;
+            this.btSpeichern.Click += new System.EventHandler(this.btAendern_Click);
             // 
             // panelChef
             // 
@@ -182,23 +196,9 @@
             this.lbAltesPw.TabIndex = 2;
             this.lbAltesPw.Text = "Altes Passwort:";
             // 
-            // btSchliessen
-            // 
-            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
-            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
-            this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
-            this.btSchliessen.TabIndex = 1;
-            this.btSchliessen.UseVisualStyleBackColor = true;
-            this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
-            // 
             // winMitarbeiterPasswort
             // 
-            this.AcceptButton = this.btAendern;
+            this.AcceptButton = this.btSpeichern;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -230,7 +230,7 @@
         private System.Windows.Forms.Panel panelChef;
         private System.Windows.Forms.Panel panelMitarbeiter;
         private System.Windows.Forms.Label lbInitPw;
-        private System.Windows.Forms.Button btAendern;
+        private System.Windows.Forms.Button btSpeichern;
         private System.Windows.Forms.TextBox tbInitPw;
         private System.Windows.Forms.TextBox tbNeuesPw2;
         private System.Windows.Forms.Label lbNeuesPw2;

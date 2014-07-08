@@ -303,5 +303,23 @@ namespace PuG_Verwaltungssoftware.Klassen
             }
             return true;
         }
+
+        // Tim
+        /**************************************************************/
+        /*public static void setToolTip(Button myButton, String text) */
+        /**************************************************************/
+        /*  Tooltipitems einem Button zuweisen                        */
+        /**************************************************************/
+        public static void setToolTip(Button myButton, String text)
+        {
+            ToolTip toolTip = new ToolTip();
+            toolTip.AutoPopDelay = 5000;
+            toolTip.InitialDelay = 1000;
+            toolTip.ReshowDelay  = 500;
+
+            toolTip.ShowAlways = true;
+
+            toolTip.SetToolTip(myButton, text);
+        }
     }
 }
