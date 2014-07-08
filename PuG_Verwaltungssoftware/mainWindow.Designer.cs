@@ -712,6 +712,7 @@
             this.gridKursUebersicht.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKursUebersicht_CellDoubleClick);
             this.gridKursUebersicht.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridKursUebersicht_KeyDown);
             this.gridKursUebersicht.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridKursUebersicht_MouseDown);
+            this.gridKursUebersicht.Resize += new System.EventHandler(this.gridKursUebersicht_Resize);
             // 
             // btKursUebersichtOeffnen
             // 

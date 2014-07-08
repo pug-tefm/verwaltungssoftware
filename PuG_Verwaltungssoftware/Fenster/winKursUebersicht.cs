@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Maxi
 namespace PuG_Verwaltungssoftware
 {      
     public partial class winKursUebersicht : Form
@@ -172,7 +173,7 @@ namespace PuG_Verwaltungssoftware
 
         private void toolStripItemTeilnehmerAktualisieren_Click(object sender, EventArgs args)
         {
-            
+            kursUebersichtaktualisieren();
         }
 
         private void kursUebersichtaktualisieren()

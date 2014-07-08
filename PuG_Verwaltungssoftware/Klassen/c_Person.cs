@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Florian und Erik
 namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Person

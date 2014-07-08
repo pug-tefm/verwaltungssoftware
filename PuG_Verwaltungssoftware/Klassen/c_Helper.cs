@@ -17,6 +17,7 @@ namespace PuG_Verwaltungssoftware.Klassen
         static readonly string SaltKey = "S@LT&KEY";
         static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
+        // Florian, Erik, Maxi und Tim
         /**********************************************/
         /* public static String encrypt(String query) */
         /**********************************************/
@@ -46,6 +47,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Convert.ToBase64String(cipherTextBytes);
         }
 
+        // Florian, Erik, Maxi und Tim
         /**********************************************/
         /* public static String decrypt(String query) */
         /**********************************************/
@@ -68,6 +70,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
 
+        // Florian und Tim
         /************************************************************************/
         /* public static bool numFormatPunktKomma(String query, int laenge = 0) */
         /************************************************************************/
@@ -93,6 +96,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        // Florian und Tim
         /**************************************************************/
         /* public static bool numFormat(String query, int laenge = 0) */
         /**************************************************************/
@@ -111,6 +115,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        // Florian und Tim
         /********************************************************************/
         /* public static bool wrongCharacters(String query, int laenge = 0) */
         /********************************************************************/
@@ -129,6 +134,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        // Florian und Tim
         /*************************************************************************/
         /* public static bool wrongCharNumberExtra(String query, int laenge = 0) */
         /*************************************************************************/
@@ -149,6 +155,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             return false;
         }
 
+        // Tim
         /****************************************************************/
         /* public static String umwandlungIntInWochentag(int wochentag) */
         /****************************************************************/
@@ -167,6 +174,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return "-1";
         }
 
+        // Tim
         /****************************************************************/
         /* public static int umwandlungWochentagInInt(String wochentag) */
         /****************************************************************/
@@ -185,6 +193,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return -1;
         }
 
+        // Tim
         /**********************************************************************/
         /* public static String umwandlungWochentagEngToGer(String wochentag) */
         /**********************************************************************/
@@ -202,6 +211,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return "-1";
         }
 
+        // Tim
         /**********************************************************************/
         /* public static String umwandlungWochentagGerToEng(String wochentag) */
         /**********************************************************************/
@@ -219,6 +229,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             else return "-1";
         }
 
+        // Tim
         /************************************************************************************************************************************/
         /* public void textBoxSuchenTextChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource) */
         /************************************************************************************************************************************/
@@ -241,6 +252,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             
         }
 
+        // Tim
         /**********************************************************************************************************************************************/
         /* public void comboBoxSuchenSelectedIndexChanged(DataGridView dataGridView, ComboBox comboBox, TextBox textBox, BindingSource bindingSource) */
         /**********************************************************************************************************************************************/
@@ -259,6 +271,7 @@ namespace PuG_Verwaltungssoftware.Klassen
             }
         }
 
+        // Tim
         /***********************************************************************************************************/
         /* public static bool changeColumnDataType(DataTable table, string columnname, Type newtype, int position) */
         /***********************************************************************************************************/

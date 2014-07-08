@@ -18,7 +18,6 @@ namespace PuG_Verwaltungssoftware
 
         private bool initHome = false;
         private bool initKursUebersicht = false;
-        private BindingSource bindingSourceKursUebersicht = new BindingSource();
 
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
@@ -240,7 +239,6 @@ namespace PuG_Verwaltungssoftware
             // Panel anzeigen
             loginPanel.Visible = true;
             loginPanel.BringToFront();
-        }
-
+        }      
     }
 }

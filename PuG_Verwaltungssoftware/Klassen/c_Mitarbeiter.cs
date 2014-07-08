@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Florian
 namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Mitarbeiter : c_Person

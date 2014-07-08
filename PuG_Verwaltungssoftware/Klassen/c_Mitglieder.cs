@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Erik
 namespace PuG_Verwaltungssoftware.Klassen
 {
     public class c_Mitglieder : c_Person

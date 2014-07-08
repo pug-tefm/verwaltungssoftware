@@ -9,10 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Maxi
 namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
     {
+        private BindingSource bindingSourceKursUebersicht = new BindingSource();
+
         private void tabPageKursUebersicht_Enter(object sender, EventArgs e)
         {
             int connected = c.openConnection();  // Datenbank oeffnen
@@ -171,8 +174,8 @@ namespace PuG_Verwaltungssoftware
                     gridKursUebersichtTable.Rows[i]["Wochentag"] = wert;
                 }
 
-                gridKursUebersicht.Refresh();
-
+                bindingSourceKursUebersicht.DataSource = gridKursUebersicht.DataSource;
+                gridKursUebersicht.DataSource = bindingSourceKursUebersicht;
             }
         }
 
@@ -188,6 +191,7 @@ namespace PuG_Verwaltungssoftware
                         myKurs.setKursId(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Kurs-ID"].Value.ToString()));
                         myKurs.setBezeichnung(gridKursUebersicht.Rows[row.Index].Cells["Kurs-Name"].Value.ToString());
                         myKurs.setMaxTeilnehmer(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Max. Teilnehmer"].Value.ToString()));
+                        myKurs.setAktTeilnehmer(int.Parse(gridKursUebersicht.Rows[row.Index].Cells["Akt. Teilnehmer"].Value.ToString()));
                         winKursUebersicht window = new winKursUebersicht(myKurs, gridKursUebersicht);
                         window.Show();
                     }
@@ -199,5 +203,39 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        private void gridKursUebersicht_Resize(object sender, EventArgs e)
+        {
+            HScrollBar horizontalScrollBar = null;
+
+            foreach (Control c in gridKursUebersicht.Controls)
+            {
+                if (c is HScrollBar)
+                {
+                    horizontalScrollBar = c as HScrollBar;
+                    break;
+                }
+            }
+
+            int horizontalScrollbarBreite = horizontalScrollBar.Width;
+            int differenz = gridKursUebersicht.Size.Width - horizontalScrollbarBreite;
+
+            if (gridKursUebersicht.Size.Width <= horizontalScrollbarBreite + differenz)
+            {
+                for (int i = 0; i < gridKursUebersicht.RowCount; i++)
+                {
+                    DataGridViewColumn column = gridKursUebersicht.Columns[i];
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                }
+            }
+
+            if (horizontalScrollBar.Visible == false)
+            {
+                for (int i = 0; i < gridKursUebersicht.RowCount; i++)
+                {
+                    DataGridViewColumn column = gridKursUebersicht.Columns[i];
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+            }
+        }
     }
 }

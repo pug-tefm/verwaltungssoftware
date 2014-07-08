@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PuG_Verwaltungssoftware.Klassen;
 
+// Florian
 namespace PuG_Verwaltungssoftware
 {
     public partial class mainWindow : Form
@@ -59,7 +60,7 @@ namespace PuG_Verwaltungssoftware
  
                 // Headertexte anpassen
                 DataTable gridMitarbeiterTable = (DataTable)(gridMitarbeiter.DataSource);
-                gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter_ID";
+                gridMitarbeiterTable.Columns["mitarbeiter_id"].ColumnName = "Mitarbeiter-ID";
                 gridMitarbeiterTable.Columns["vorname"].ColumnName        = "Vorname";
                 gridMitarbeiterTable.Columns["nachname"].ColumnName       = "Nachname";
                 gridMitarbeiterTable.Columns["geburtsdatum"].ColumnName   = "Geburtsdatum";
@@ -227,7 +228,7 @@ namespace PuG_Verwaltungssoftware
                 {
                     if (gridMitarbeiter.RowCount > 0) // Wenn Zeilenanzahl größer 0
                     {
-                        int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                        int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["Mitarbeiter-ID"].Value);
                         winMitarbeiterOeffnen window = new winMitarbeiterOeffnen(id, loginMaId, loginMaPosId, gridMitarbeiter);
                         window.Show();
 

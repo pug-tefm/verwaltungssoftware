@@ -23,6 +23,7 @@ namespace PuG_Verwaltungssoftware
             initialize();
         }
 
+        // Florian
         private void initialize()
         {
             string connectionString;
@@ -32,6 +33,7 @@ namespace PuG_Verwaltungssoftware
             connection = new MySqlConnection(connectionString);
         }
 
+        // Florian
         // Verbindung zur Datenbank herstellen
         public int openConnection()
         {
@@ -57,6 +59,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Florian
         // Datenbankverbindung schliessen
         public bool closeConnection()
         {
@@ -72,6 +75,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Tim
         //Insert statement
         public bool insert(string query, string textMB, int fehlerAus = 0)
         {
@@ -95,6 +99,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Tim
         //Update statement
         public bool update(string query, string textMB, int fehlerAus = 0)
         {
@@ -118,6 +123,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Tim
         //Delete statement
         public bool delete(string query, string textMB, int fehlerAus = 0)
         {
@@ -141,6 +147,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Flo und Erik
         //Select statement
         public DataTable select(String query)
         {
@@ -161,8 +168,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-
-
+        // Tim
         public bool displayData(string query, DataGridView dataGridView, int fehlerAus = 0) // SELECT
         {
             try
@@ -186,7 +192,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
-
+        // Florian
         //Count statement
         public bool count(String query)
         {
@@ -207,6 +213,7 @@ namespace PuG_Verwaltungssoftware
             }
         }
 
+        // Tim
         public int countRows(String query)
         {
             try
@@ -230,6 +237,5 @@ namespace PuG_Verwaltungssoftware
         public void restore()
         {
         }
-
     }
 }

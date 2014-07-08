@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Tim
 namespace PuG_Verwaltungssoftware
 {
     public partial class winKursOeffnen : Form
@@ -299,11 +300,11 @@ namespace PuG_Verwaltungssoftware
                         String uhrzeitBis = dtpUhrzeitBis.Value.TimeOfDay.ToString().Substring(0, 5);
                         String kursleiter = new String(cbKursleiter.Text.Where(c => Char.IsDigit(c)).ToArray());
                         String kursID     = myKurs.getKursId().ToString();
+                        String wochentag  = myKurs.getWochentag().ToString();
                         
-
                         String query = "UPDATE kurse SET bezeichnung = '" + tbBezeichnung.Text + "', kursleiter_id = " + kursleiter +
                                        ", preis = " + preis + ", max_teilnehmer = " + tbMaxTeilnehmer.Text +
-                                       ", datum_von = '" + datumVon + "', datum_bis = '" + datumBis + "', wochentag = " + cbWochentag.SelectedIndex +
+                                       ", datum_von = '" + datumVon + "', datum_bis = '" + datumBis + "', wochentag = " + wochentag +
                                        ", uhrzeit_von = '" + uhrzeitVon + "', uhrzeit_bis = '" + uhrzeitBis + "' WHERE kurs_id = " + kursID + ";";
 
                         bool ok = myConnection.update(query, "Kurs");
