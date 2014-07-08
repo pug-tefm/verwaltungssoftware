@@ -279,10 +279,10 @@ namespace PuG_Verwaltungssoftware
             {
                 foreach (DataGridViewRow row in gridMitarbeiter.SelectedRows) // Wegen Multiselect
                 {
-                    int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["mitarbeiter_id"].Value);
+                    int id = Convert.ToInt32(gridMitarbeiter.Rows[row.Index].Cells["Mitarbeiter-ID"].Value);
                     if (id == 1)
                     {
-                        DialogResult dialogResultSelf = MessageBox.Show("Der Mitarbeiter mit der Mitarbeiter-Nr. '1' kann nicht gelöscht werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult dialogResultSelf = MessageBox.Show("Der Mitarbeiter mit der Mitarbeiter-ID. '1' kann nicht gelöscht werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (id == loginMaId)

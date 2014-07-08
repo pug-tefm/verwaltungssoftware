@@ -212,7 +212,7 @@ namespace PuG_Verwaltungssoftware
 
                 // Headertexte anpassen
                 DataTable gridMitgliederTable = (DataTable)(gridMitglieder.DataSource);
-                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "ID";
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "Mitglieder-ID";
                 gridMitgliederTable.Columns["bezeichnung"].ColumnName = "Bezeichnung";
                 gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
                 gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";

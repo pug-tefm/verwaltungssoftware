@@ -29,7 +29,7 @@ namespace PuG_Verwaltungssoftware
             {
                 // Headertexte anpassen
                 DataTable gridMitgliederTable = (DataTable)(gridMitglieder.DataSource);
-                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "ID";
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "Mitglieder-ID";
                 gridMitgliederTable.Columns["bezeichnung"].ColumnName = "Bezeichnung";
                 gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
                 gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
@@ -161,7 +161,7 @@ namespace PuG_Verwaltungssoftware
                 {
                     if (gridMitglieder.RowCount > 0) // Wenn Zeilenanzahl größer 0
                     {
-                        int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["ID"].Value);
+                        int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["Mitglieder-ID"].Value);
                         winMitgliedOeffnen window = new winMitgliedOeffnen(id, gridMitglieder);
                         window.Show();
 
@@ -185,7 +185,7 @@ namespace PuG_Verwaltungssoftware
 
                 // Headertexte anpassen
                 DataTable gridMitgliederTable = (DataTable)(gridMitglieder.DataSource);
-                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "ID";
+                gridMitgliederTable.Columns["mitglieder_id"].ColumnName = "Mitglieder-ID";
                 gridMitgliederTable.Columns["bezeichnung"].ColumnName = "Bezeichnung";
                 gridMitgliederTable.Columns["vorname"].ColumnName = "Vorname";
                 gridMitgliederTable.Columns["nachname"].ColumnName = "Nachname";
@@ -215,7 +215,7 @@ namespace PuG_Verwaltungssoftware
             {
                 foreach (DataGridViewRow row in gridMitglieder.SelectedRows) // Wegen Multiselect
                 {
-                    int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["ID"].Value);
+                    int id = Convert.ToInt32(gridMitglieder.Rows[row.Index].Cells["Mitglieder-ID"].Value);
 
                     DialogResult dialogResult = MessageBox.Show("Wollen Sie das asugewählte Mitglied mit der ID '" + id + "' wirklich löschen?", "Information", MessageBoxButtons.YesNo);
 
