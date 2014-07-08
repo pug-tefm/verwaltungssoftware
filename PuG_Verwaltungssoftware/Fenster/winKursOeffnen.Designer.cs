@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winKursOeffnen));
             this.gbDaten = new System.Windows.Forms.GroupBox();
             this.cbKursleiter = new System.Windows.Forms.ComboBox();
             this.tbMaxTeilnehmer = new System.Windows.Forms.TextBox();
@@ -60,40 +60,14 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.gbButtons = new System.Windows.Forms.GroupBox();
             this.gbDaten.SuspendLayout();
             this.gbZeiten.SuspendLayout();
+            this.gbButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbDaten);
-            this.splitContainer1.Panel1.Controls.Add(this.gbZeiten);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
-            this.splitContainer1.Panel2.Controls.Add(this.btSpeichern);
-            this.splitContainer1.Panel2.Controls.Add(this.btBearbeiten);
-            this.splitContainer1.Size = new System.Drawing.Size(404, 427);
-            this.splitContainer1.SplitterDistance = 371;
-            this.splitContainer1.TabIndex = 0;
             // 
             // gbDaten
             // 
-            this.gbDaten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDaten.Controls.Add(this.cbKursleiter);
             this.gbDaten.Controls.Add(this.tbMaxTeilnehmer);
             this.gbDaten.Controls.Add(this.lbMaxTeilnehmer);
@@ -105,10 +79,11 @@
             this.gbDaten.Controls.Add(this.tbBezeichnung);
             this.gbDaten.Controls.Add(this.lbPreis);
             this.gbDaten.Controls.Add(this.tbKursleiter);
+            this.gbDaten.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbDaten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDaten.Location = new System.Drawing.Point(0, 0);
             this.gbDaten.Name = "gbDaten";
-            this.gbDaten.Size = new System.Drawing.Size(392, 178);
+            this.gbDaten.Size = new System.Drawing.Size(384, 190);
             this.gbDaten.TabIndex = 1;
             this.gbDaten.TabStop = false;
             this.gbDaten.Text = "Allgemeine Daten";
@@ -123,7 +98,7 @@
             this.cbKursleiter.FormattingEnabled = true;
             this.cbKursleiter.Location = new System.Drawing.Point(129, 47);
             this.cbKursleiter.Name = "cbKursleiter";
-            this.cbKursleiter.Size = new System.Drawing.Size(240, 26);
+            this.cbKursleiter.Size = new System.Drawing.Size(232, 26);
             this.cbKursleiter.TabIndex = 4;
             // 
             // tbMaxTeilnehmer
@@ -135,7 +110,7 @@
             this.tbMaxTeilnehmer.MaxLength = 5;
             this.tbMaxTeilnehmer.Name = "tbMaxTeilnehmer";
             this.tbMaxTeilnehmer.ReadOnly = true;
-            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(240, 26);
+            this.tbMaxTeilnehmer.Size = new System.Drawing.Size(232, 26);
             this.tbMaxTeilnehmer.TabIndex = 7;
             // 
             // lbMaxTeilnehmer
@@ -157,7 +132,7 @@
             this.tbAktTeilnehmer.MaxLength = 5;
             this.tbAktTeilnehmer.Name = "tbAktTeilnehmer";
             this.tbAktTeilnehmer.ReadOnly = true;
-            this.tbAktTeilnehmer.Size = new System.Drawing.Size(240, 26);
+            this.tbAktTeilnehmer.Size = new System.Drawing.Size(232, 26);
             this.tbAktTeilnehmer.TabIndex = 6;
             // 
             // lbAktTeilnehmer
@@ -179,7 +154,7 @@
             this.tbPreis.MaxLength = 20;
             this.tbPreis.Name = "tbPreis";
             this.tbPreis.ReadOnly = true;
-            this.tbPreis.Size = new System.Drawing.Size(240, 26);
+            this.tbPreis.Size = new System.Drawing.Size(232, 26);
             this.tbPreis.TabIndex = 5;
             // 
             // lbBezeichnung
@@ -211,7 +186,7 @@
             this.tbBezeichnung.MaxLength = 100;
             this.tbBezeichnung.Name = "tbBezeichnung";
             this.tbBezeichnung.ReadOnly = true;
-            this.tbBezeichnung.Size = new System.Drawing.Size(240, 26);
+            this.tbBezeichnung.Size = new System.Drawing.Size(232, 26);
             this.tbBezeichnung.TabIndex = 2;
             // 
             // lbPreis
@@ -232,14 +207,11 @@
             this.tbKursleiter.Location = new System.Drawing.Point(129, 47);
             this.tbKursleiter.Name = "tbKursleiter";
             this.tbKursleiter.ReadOnly = true;
-            this.tbKursleiter.Size = new System.Drawing.Size(240, 26);
+            this.tbKursleiter.Size = new System.Drawing.Size(232, 26);
             this.tbKursleiter.TabIndex = 3;
             // 
             // gbZeiten
             // 
-            this.gbZeiten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbZeiten.Controls.Add(this.dtpUhrzeitBis);
             this.gbZeiten.Controls.Add(this.tbUhrzeitBis);
             this.gbZeiten.Controls.Add(this.lbUhrzeitBis);
@@ -255,10 +227,11 @@
             this.gbZeiten.Controls.Add(this.lbUhrzeitVon);
             this.gbZeiten.Controls.Add(this.lbDatumBis);
             this.gbZeiten.Controls.Add(this.lbDatumVon);
+            this.gbZeiten.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbZeiten.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbZeiten.Location = new System.Drawing.Point(0, 184);
+            this.gbZeiten.Location = new System.Drawing.Point(0, 190);
             this.gbZeiten.Name = "gbZeiten";
-            this.gbZeiten.Size = new System.Drawing.Size(392, 185);
+            this.gbZeiten.Size = new System.Drawing.Size(384, 189);
             this.gbZeiten.TabIndex = 8;
             this.gbZeiten.TabStop = false;
             this.gbZeiten.Text = "Zeitliche Angaben";
@@ -273,7 +246,7 @@
             this.dtpUhrzeitBis.Location = new System.Drawing.Point(129, 155);
             this.dtpUhrzeitBis.Name = "dtpUhrzeitBis";
             this.dtpUhrzeitBis.ShowUpDown = true;
-            this.dtpUhrzeitBis.Size = new System.Drawing.Size(62, 26);
+            this.dtpUhrzeitBis.Size = new System.Drawing.Size(54, 26);
             this.dtpUhrzeitBis.TabIndex = 19;
             this.dtpUhrzeitBis.Visible = false;
             // 
@@ -285,7 +258,7 @@
             this.tbUhrzeitBis.Location = new System.Drawing.Point(129, 155);
             this.tbUhrzeitBis.Name = "tbUhrzeitBis";
             this.tbUhrzeitBis.ReadOnly = true;
-            this.tbUhrzeitBis.Size = new System.Drawing.Size(62, 26);
+            this.tbUhrzeitBis.Size = new System.Drawing.Size(54, 26);
             this.tbUhrzeitBis.TabIndex = 18;
             // 
             // lbUhrzeitBis
@@ -308,7 +281,7 @@
             this.dtpUhrzeitVon.Location = new System.Drawing.Point(129, 121);
             this.dtpUhrzeitVon.Name = "dtpUhrzeitVon";
             this.dtpUhrzeitVon.ShowUpDown = true;
-            this.dtpUhrzeitVon.Size = new System.Drawing.Size(62, 26);
+            this.dtpUhrzeitVon.Size = new System.Drawing.Size(54, 26);
             this.dtpUhrzeitVon.TabIndex = 16;
             this.dtpUhrzeitVon.Visible = false;
             // 
@@ -322,7 +295,7 @@
             this.cbWochentag.FormattingEnabled = true;
             this.cbWochentag.Location = new System.Drawing.Point(129, 89);
             this.cbWochentag.Name = "cbWochentag";
-            this.cbWochentag.Size = new System.Drawing.Size(240, 26);
+            this.cbWochentag.Size = new System.Drawing.Size(232, 26);
             this.cbWochentag.TabIndex = 14;
             // 
             // dtpDatumVon
@@ -333,7 +306,7 @@
             this.dtpDatumVon.Font = new System.Drawing.Font("Calibri", 11.25F);
             this.dtpDatumVon.Location = new System.Drawing.Point(129, 22);
             this.dtpDatumVon.Name = "dtpDatumVon";
-            this.dtpDatumVon.Size = new System.Drawing.Size(240, 26);
+            this.dtpDatumVon.Size = new System.Drawing.Size(232, 26);
             this.dtpDatumVon.TabIndex = 10;
             this.dtpDatumVon.ValueChanged += new System.EventHandler(this.dtpDatumVon_ValueChanged);
             // 
@@ -345,7 +318,7 @@
             this.dtpDatumBis.Font = new System.Drawing.Font("Calibri", 11.25F);
             this.dtpDatumBis.Location = new System.Drawing.Point(129, 56);
             this.dtpDatumBis.Name = "dtpDatumBis";
-            this.dtpDatumBis.Size = new System.Drawing.Size(240, 26);
+            this.dtpDatumBis.Size = new System.Drawing.Size(232, 26);
             this.dtpDatumBis.TabIndex = 12;
             this.dtpDatumBis.ValueChanged += new System.EventHandler(this.dtpDatumBis_ValueChanged);
             // 
@@ -357,7 +330,7 @@
             this.tbDatumVon.Location = new System.Drawing.Point(129, 22);
             this.tbDatumVon.Name = "tbDatumVon";
             this.tbDatumVon.ReadOnly = true;
-            this.tbDatumVon.Size = new System.Drawing.Size(224, 26);
+            this.tbDatumVon.Size = new System.Drawing.Size(216, 26);
             this.tbDatumVon.TabIndex = 9;
             // 
             // tbWochentag
@@ -368,7 +341,7 @@
             this.tbWochentag.Location = new System.Drawing.Point(129, 89);
             this.tbWochentag.Name = "tbWochentag";
             this.tbWochentag.ReadOnly = true;
-            this.tbWochentag.Size = new System.Drawing.Size(224, 26);
+            this.tbWochentag.Size = new System.Drawing.Size(216, 26);
             this.tbWochentag.TabIndex = 13;
             // 
             // tbUhrzeitVon
@@ -379,7 +352,7 @@
             this.tbUhrzeitVon.Location = new System.Drawing.Point(129, 121);
             this.tbUhrzeitVon.Name = "tbUhrzeitVon";
             this.tbUhrzeitVon.ReadOnly = true;
-            this.tbUhrzeitVon.Size = new System.Drawing.Size(62, 26);
+            this.tbUhrzeitVon.Size = new System.Drawing.Size(54, 26);
             this.tbUhrzeitVon.TabIndex = 15;
             // 
             // tbDatumBis
@@ -390,7 +363,7 @@
             this.tbDatumBis.Location = new System.Drawing.Point(129, 56);
             this.tbDatumBis.Name = "tbDatumBis";
             this.tbDatumBis.ReadOnly = true;
-            this.tbDatumBis.Size = new System.Drawing.Size(224, 26);
+            this.tbDatumBis.Size = new System.Drawing.Size(216, 26);
             this.tbDatumBis.TabIndex = 11;
             // 
             // lbWochentag
@@ -435,68 +408,86 @@
             // 
             // btSchliessen
             // 
-            this.btSchliessen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
+            this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(299, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
             this.btSchliessen.Name = "btSchliessen";
-            this.btSchliessen.Size = new System.Drawing.Size(105, 52);
+            this.btSchliessen.Size = new System.Drawing.Size(55, 55);
             this.btSchliessen.TabIndex = 19;
-            this.btSchliessen.Text = "Schließen";
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
             // btSpeichern
             // 
-            this.btSpeichern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btSpeichern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btSpeichern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSpeichern.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btSpeichern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSpeichern.Location = new System.Drawing.Point(105, 0);
+            this.btSpeichern.Location = new System.Drawing.Point(323, 10);
             this.btSpeichern.Name = "btSpeichern";
-            this.btSpeichern.Size = new System.Drawing.Size(105, 52);
+            this.btSpeichern.Size = new System.Drawing.Size(55, 55);
             this.btSpeichern.TabIndex = 18;
-            this.btSpeichern.Text = "Speichern";
             this.btSpeichern.UseVisualStyleBackColor = true;
             this.btSpeichern.Click += new System.EventHandler(this.btSpeichern_Click);
             // 
             // btBearbeiten
             // 
-            this.btBearbeiten.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btBearbeiten.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_edit_groß;
+            this.btBearbeiten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btBearbeiten.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btBearbeiten.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBearbeiten.Location = new System.Drawing.Point(0, 0);
+            this.btBearbeiten.Location = new System.Drawing.Point(262, 10);
             this.btBearbeiten.Name = "btBearbeiten";
-            this.btBearbeiten.Size = new System.Drawing.Size(105, 52);
+            this.btBearbeiten.Size = new System.Drawing.Size(55, 55);
             this.btBearbeiten.TabIndex = 17;
-            this.btBearbeiten.Text = "Bearbeiten";
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
+            // 
+            // gbButtons
+            // 
+            this.gbButtons.Controls.Add(this.btBearbeiten);
+            this.gbButtons.Controls.Add(this.btSpeichern);
+            this.gbButtons.Controls.Add(this.btSchliessen);
+            this.gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbButtons.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbButtons.Location = new System.Drawing.Point(0, 385);
+            this.gbButtons.Name = "gbButtons";
+            this.gbButtons.Size = new System.Drawing.Size(384, 71);
+            this.gbButtons.TabIndex = 9;
+            this.gbButtons.TabStop = false;
             // 
             // winKursOeffnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 427);
-            this.Controls.Add(this.splitContainer1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(384, 456);
+            this.Controls.Add(this.gbButtons);
+            this.Controls.Add(this.gbZeiten);
+            this.Controls.Add(this.gbDaten);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(420, 465);
-            this.MinimumSize = new System.Drawing.Size(420, 465);
+            this.MaximumSize = new System.Drawing.Size(400, 490);
+            this.MinimumSize = new System.Drawing.Size(400, 490);
             this.Name = "winKursOeffnen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kurs anzeigen und bearbeiten";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.winKursOeffnen_FormClosing);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.gbDaten.ResumeLayout(false);
             this.gbDaten.PerformLayout();
             this.gbZeiten.ResumeLayout(false);
             this.gbZeiten.PerformLayout();
+            this.gbButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btSpeichern;
         private System.Windows.Forms.Button btBearbeiten;
@@ -528,5 +519,6 @@
         private System.Windows.Forms.DateTimePicker dtpUhrzeitBis;
         private System.Windows.Forms.TextBox tbUhrzeitBis;
         private System.Windows.Forms.Label lbUhrzeitBis;
+        private System.Windows.Forms.GroupBox gbButtons;
     }
 }

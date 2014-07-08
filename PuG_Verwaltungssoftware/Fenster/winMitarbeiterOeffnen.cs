@@ -97,32 +97,66 @@ namespace PuG_Verwaltungssoftware
                     oeffneMitarbeiter.setPositionId(Convert.ToInt32(result.Rows[0]["position_id"]));
                     gPosId = Convert.ToInt32(oeffneMitarbeiter.getPositionId());
 
-                    dbConnectOk = c.openConnection();
-                    DataTable result2 = c.select("SELECT * FROM positionen;");
-                    c.closeConnection();
 
-                    int[] arrPosId = new int[result2.Rows.Count];
-                    string[] arrPosBez = new string[result2.Rows.Count];
+                    // =====================================
+                    //     Combobox mit Werten befuellen
+                    // =====================================
 
-                    if (dbConnectOk == 0)
+                    string bezeichnung = "";
+                    int id = 0;
+                    int pos = 0;
+
+                    if (initOeffnen == true)
                     {
-                        
-                        if (result2 != null)
+                        int dBConnectOk = c.openConnection();
+                        if (dBConnectOk == 0)
                         {
-                            for (int i = 0; i < result2.Rows.Count; i++)
+                            int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
+                            if (rows > 0)
                             {
-                                arrPosId[i] = Convert.ToInt32(result2.Rows[i]["pos_id"]);
-                                arrPosBez[i] = (result2.Rows[i]["bezeichnung"]).ToString();
+                                DataTable result2 = c.select("SELECT pos_id, bezeichnung FROM positionen;");
+                                if (result2 != null)
+                                {
+                                    for (int i = 0; i < rows; i++)
+                                    {
+                                        bezeichnung = (String)result2.Rows[i]["bezeichnung"];
+                                        id = (int)result2.Rows[i]["pos_id"];
+                                        ddlMitarbeiterPosition.Items.Add(bezeichnung);
+
+                                    }
+                                }
                             }
+                            c.closeConnection();
                         }
+                        initOeffnen = false;
                     }
 
-                    for (int i = 0; i < arrPosId.Length; i++)
+
+                    // Positionsbezeichnung abfragen
+                    string maPosBez = "";
+                    c.openConnection();  // Datenbank oeffnen
+                    DataTable result3 = c.select("SELECT pos_id, bezeichnung FROM positionen WHERE pos_id = '" + gPosId + "';");
+                    c.closeConnection(); // Datenbank schliessen
+                    if (result3 != null)
                     {
-                        if (oeffneMitarbeiter.getPositionId() == (arrPosId[i]))
+                        maPosBez = (result3.Rows[0]["bezeichnung"]).ToString();
+                    }
+
+                    // Combobox preselected Item
+                    for (int i = 0; i < ddlMitarbeiterPosition.Items.Count; i++)
+                    {
+                        if (ddlMitarbeiterPosition.Items[i].ToString() == maPosBez)
                         {
-                            position = (arrPosBez[i]).ToString();
+                            pos = i;
                         }
+                    }
+                    if (gPosId == 1)
+                    {
+                        ddlMitarbeiterPosition.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        ddlMitarbeiterPosition.SelectedIndex = pos;
                     }
                
 
@@ -131,7 +165,6 @@ namespace PuG_Verwaltungssoftware
 
                     tbVorname.Text = oeffneMitarbeiter.getVorname();
                     tbNachname.Text = oeffneMitarbeiter.getNachname();
-                    tbGebDatum.Text = oeffneMitarbeiter.getGebDatum();
                     dtpGebDatum.Text = oeffneMitarbeiter.getGebDatum();
                     tbStrasse.Text = oeffneMitarbeiter.getStrasse();
                     tbHausnummer.Text = oeffneMitarbeiter.getHausnummer();
@@ -139,7 +172,6 @@ namespace PuG_Verwaltungssoftware
                     tbOrt.Text = oeffneMitarbeiter.getOrt();
                     tbGehalt.Text = oeffneMitarbeiter.getGehalt().ToString();
                     tbBenutzername.Text = oeffneMitarbeiter.getBenutzername();
-                    tbPosition.Text = position;
                     
                 }
 
@@ -207,77 +239,12 @@ namespace PuG_Verwaltungssoftware
             }
 
             // Controls visible 
-            tbPosition.Visible = false;
-            ddlMitarbeiterPosition.Visible = true;
+            ddlMitarbeiterPosition.Enabled = true;
 
             if (gLoginPosId == 1)
             {
-                tbGebDatum.Visible = false;
-                dtpGebDatum.Visible = true;
-            }
-            
-
-            // =====================================
-            //     Combobox mit Werten befuellen
-            // =====================================
-
-            string bezeichnung = "";
-            int id = 0;
-            int pos = 0;
-
-            if (initOeffnen == true)
-            {
-                int dBConnectOk = c.openConnection();
-                if (dBConnectOk == 0)
-                {
-                    int rows = c.countRows("SELECT COUNT(*) FROM positionen;");
-                    if (rows > 0)
-                    {
-                        DataTable result = c.select("SELECT pos_id, bezeichnung FROM positionen;");
-                        if (result != null)
-                        {
-                            for (int i = 0; i < rows; i++)
-                            {
-                                bezeichnung = (String)result.Rows[i]["bezeichnung"];
-                                id = (int)result.Rows[i]["pos_id"];
-                                ddlMitarbeiterPosition.Items.Add(bezeichnung);
-
-                            }
-                        }
-                    }
-                    c.closeConnection();
-                }
-                initOeffnen = false;
-            }
-            
-
-            // Positionsbezeichnung abfragen
-            string maPosBez = "";
-            c.openConnection();  // Datenbank oeffnen
-            DataTable result2 = c.select("SELECT pos_id, bezeichnung FROM positionen WHERE pos_id = '" + gPosId +"';");
-            c.closeConnection(); // Datenbank schliessen
-            if (result2 != null)
-            {
-                maPosBez = (result2.Rows[0]["bezeichnung"]).ToString();
-            }
-
-            // Combobox preselected Item
-            for (int i = 0; i < ddlMitarbeiterPosition.Items.Count; i++)
-            {
-                if (ddlMitarbeiterPosition.Items[i].ToString() == maPosBez)
-                {
-                    pos = i;
-                }
-            }
-            if (gPosId == 1)
-            {
-                ddlMitarbeiterPosition.SelectedIndex = 0;
-            }
-            else
-            {
-                ddlMitarbeiterPosition.SelectedIndex = pos; 
-            }
-                  
+                dtpGebDatum.Enabled = true;
+            }   
         }
 
         private void btSpeichern_Click(object sender, EventArgs e)

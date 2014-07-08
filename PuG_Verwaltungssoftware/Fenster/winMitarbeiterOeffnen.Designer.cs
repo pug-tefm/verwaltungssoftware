@@ -57,8 +57,6 @@
             this.btSchliessen = new System.Windows.Forms.Button();
             this.btSpeichern = new System.Windows.Forms.Button();
             this.btBearbeiten = new System.Windows.Forms.Button();
-            this.tbPosition = new System.Windows.Forms.TextBox();
-            this.tbGebDatum = new System.Windows.Forms.TextBox();
             this.gbButtons = new System.Windows.Forms.GroupBox();
             this.gbLoginDaten.SuspendLayout();
             this.gbGehalt.SuspendLayout();
@@ -70,7 +68,6 @@
             // gbLoginDaten
             // 
             this.gbLoginDaten.Controls.Add(this.ddlMitarbeiterPosition);
-            this.gbLoginDaten.Controls.Add(this.tbPosition);
             this.gbLoginDaten.Controls.Add(this.label2);
             this.gbLoginDaten.Controls.Add(this.tbBenutzername);
             this.gbLoginDaten.Controls.Add(this.label1);
@@ -88,12 +85,12 @@
             this.ddlMitarbeiterPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ddlMitarbeiterPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMitarbeiterPosition.Enabled = false;
             this.ddlMitarbeiterPosition.FormattingEnabled = true;
-            this.ddlMitarbeiterPosition.Location = new System.Drawing.Point(119, 52);
+            this.ddlMitarbeiterPosition.Location = new System.Drawing.Point(119, 54);
             this.ddlMitarbeiterPosition.Name = "ddlMitarbeiterPosition";
             this.ddlMitarbeiterPosition.Size = new System.Drawing.Size(253, 23);
             this.ddlMitarbeiterPosition.TabIndex = 11;
-            this.ddlMitarbeiterPosition.Visible = false;
             // 
             // label2
             // 
@@ -273,7 +270,6 @@
             // 
             this.gbDaten.Controls.Add(this.dtpGebDatum);
             this.gbDaten.Controls.Add(this.lbGebDatum);
-            this.gbDaten.Controls.Add(this.tbGebDatum);
             this.gbDaten.Controls.Add(this.lbVorname);
             this.gbDaten.Controls.Add(this.lbNachname);
             this.gbDaten.Controls.Add(this.tbVorname);
@@ -291,12 +287,12 @@
             // 
             this.dtpGebDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpGebDatum.Enabled = false;
             this.dtpGebDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpGebDatum.Location = new System.Drawing.Point(119, 82);
+            this.dtpGebDatum.Location = new System.Drawing.Point(119, 86);
             this.dtpGebDatum.Name = "dtpGebDatum";
             this.dtpGebDatum.Size = new System.Drawing.Size(252, 23);
             this.dtpGebDatum.TabIndex = 6;
-            this.dtpGebDatum.Visible = false;
             // 
             // lbGebDatum
             // 
@@ -404,26 +400,6 @@
             this.btBearbeiten.UseVisualStyleBackColor = true;
             this.btBearbeiten.Click += new System.EventHandler(this.btBearbeiten_Click);
             // 
-            // tbPosition
-            // 
-            this.tbPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPosition.Location = new System.Drawing.Point(119, 49);
-            this.tbPosition.Name = "tbPosition";
-            this.tbPosition.ReadOnly = true;
-            this.tbPosition.Size = new System.Drawing.Size(253, 26);
-            this.tbPosition.TabIndex = 10;
-            // 
-            // tbGebDatum
-            // 
-            this.tbGebDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbGebDatum.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGebDatum.Location = new System.Drawing.Point(119, 82);
-            this.tbGebDatum.Name = "tbGebDatum";
-            this.tbGebDatum.ReadOnly = true;
-            this.tbGebDatum.Size = new System.Drawing.Size(253, 26);
-            this.tbGebDatum.TabIndex = 5;
-            // 
             // gbButtons
             // 
             this.gbButtons.Controls.Add(this.btPwAendern);
@@ -505,8 +481,6 @@
         private System.Windows.Forms.Button btPwAendern;
         private System.Windows.Forms.Label lbGebDatum;
         private System.Windows.Forms.DateTimePicker dtpGebDatum;
-        private System.Windows.Forms.TextBox tbPosition;
-        private System.Windows.Forms.TextBox tbGebDatum;
         private System.Windows.Forms.GroupBox gbButtons;
     }
 }

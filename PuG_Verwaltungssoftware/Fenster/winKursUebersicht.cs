@@ -109,7 +109,7 @@ namespace PuG_Verwaltungssoftware
 
         }
 
-        private void btKursUebersichtLoeschen_Click(object sender, EventArgs e)
+        private void btLoeschen_Click(object sender, EventArgs e)
         {
             if (gridKursUebersichtTeilnehmer.CurrentCell != null) // Wenn eine Zelle ausgewählt
             {
