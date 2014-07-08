@@ -223,6 +223,7 @@
     <Content Include="Resources\Images\Icons\16x16\pug_open.png" />
     <Content Include="Resources\Images\Icons\16x16\pug_refresh.png" />
     <Content Include="Resources\Images\Icons\16x16\pug_save.png" />
+    <None Include="Resources\Images\Icons\55x47\pug_undo_groß.png" />
     <Content Include="Resources\Images\pug_runner.ico" />
     <Content Include="Resources\Images\pug_runner.png" />
   </ItemGroup>

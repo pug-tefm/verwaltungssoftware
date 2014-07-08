@@ -98,7 +98,7 @@ namespace PuG_Verwaltungssoftware
         {
             bearbeitenBool = true; // Bearbeitungsmodus setzen
 
-            btBearbeiten.Text = "Zurücksetzen"; // Text ändern
+            btBearbeiten.BackgroundImage = PuG_Verwaltungssoftware.Properties.Resources.pug_undo_groß; // Bild ändern
 
             tbKursleiter.Visible = false;
             tbDatumVon.Visible   = false;
@@ -346,7 +346,7 @@ namespace PuG_Verwaltungssoftware
 
                             speichernBool  = false;
                             bearbeitenBool = false;
-                            btBearbeiten.Text = "Bearbeiten";
+                            btBearbeiten.BackgroundImage = PuG_Verwaltungssoftware.Properties.Resources.pug_edit_groß; // Bild ändern
                         }
                     }
                     else

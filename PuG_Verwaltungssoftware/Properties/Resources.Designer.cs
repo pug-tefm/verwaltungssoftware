@@ -249,5 +249,15 @@ namespace PuG_Verwaltungssoftware.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pug_undo_groß {
+            get {
+                object obj = ResourceManager.GetObject("pug_undo_groß", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

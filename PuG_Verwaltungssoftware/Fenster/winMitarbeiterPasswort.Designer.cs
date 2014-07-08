@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.GroupBox gbButtons;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winMitarbeiterPasswort));
+            this.btAendern = new System.Windows.Forms.Button();
             this.panelChef = new System.Windows.Forms.Panel();
             this.tbInitPw = new System.Windows.Forms.TextBox();
             this.lbInitPw = new System.Windows.Forms.Label();
@@ -39,16 +41,36 @@
             this.lbNeuesPw1 = new System.Windows.Forms.Label();
             this.tbAltesPw = new System.Windows.Forms.TextBox();
             this.lbAltesPw = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btSchliessen = new System.Windows.Forms.Button();
-            this.btAendern = new System.Windows.Forms.Button();
+            gbButtons = new System.Windows.Forms.GroupBox();
+            gbButtons.SuspendLayout();
             this.panelChef.SuspendLayout();
             this.panelMitarbeiter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // gbButtons
+            // 
+            gbButtons.Controls.Add(this.btSchliessen);
+            gbButtons.Controls.Add(this.btAendern);
+            gbButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            gbButtons.Location = new System.Drawing.Point(0, 160);
+            gbButtons.Name = "gbButtons";
+            gbButtons.Size = new System.Drawing.Size(450, 71);
+            gbButtons.TabIndex = 2;
+            gbButtons.TabStop = false;
+            // 
+            // btAendern
+            // 
+            this.btAendern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
+            this.btAendern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btAendern.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAendern.Location = new System.Drawing.Point(389, 10);
+            this.btAendern.Name = "btAendern";
+            this.btAendern.Size = new System.Drawing.Size(55, 55);
+            this.btAendern.TabIndex = 0;
+            this.btAendern.UseVisualStyleBackColor = true;
+            this.btAendern.Click += new System.EventHandler(this.btAendern_Click);
             // 
             // panelChef
             // 
@@ -57,7 +79,7 @@
             this.panelChef.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChef.Location = new System.Drawing.Point(0, 0);
             this.panelChef.Name = "panelChef";
-            this.panelChef.Size = new System.Drawing.Size(450, 169);
+            this.panelChef.Size = new System.Drawing.Size(450, 160);
             this.panelChef.TabIndex = 0;
             // 
             // tbInitPw
@@ -91,7 +113,7 @@
             this.panelMitarbeiter.Controls.Add(this.lbAltesPw);
             this.panelMitarbeiter.Location = new System.Drawing.Point(0, 0);
             this.panelMitarbeiter.Name = "panelMitarbeiter";
-            this.panelMitarbeiter.Size = new System.Drawing.Size(450, 169);
+            this.panelMitarbeiter.Size = new System.Drawing.Size(450, 164);
             this.panelMitarbeiter.TabIndex = 0;
             // 
             // tbNeuesPw2
@@ -160,57 +182,31 @@
             this.lbAltesPw.TabIndex = 2;
             this.lbAltesPw.Text = "Altes Passwort:";
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panelChef);
-            this.splitContainer1.Panel1.Controls.Add(this.panelMitarbeiter);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.btSchliessen);
-            this.splitContainer1.Panel2.Controls.Add(this.btAendern);
-            this.splitContainer1.Size = new System.Drawing.Size(450, 231);
-            this.splitContainer1.SplitterDistance = 169;
-            this.splitContainer1.TabIndex = 0;
-            // 
             // btSchliessen
             // 
             this.btSchliessen.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_close_groß;
             this.btSchliessen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btSchliessen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btSchliessen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btSchliessen.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSchliessen.Location = new System.Drawing.Point(3, 0);
+            this.btSchliessen.Location = new System.Drawing.Point(6, 10);
             this.btSchliessen.Name = "btSchliessen";
             this.btSchliessen.Size = new System.Drawing.Size(55, 55);
             this.btSchliessen.TabIndex = 1;
             this.btSchliessen.UseVisualStyleBackColor = true;
             this.btSchliessen.Click += new System.EventHandler(this.btSchliessen_Click);
             // 
-            // btAendern
-            // 
-            this.btAendern.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_save_groß;
-            this.btAendern.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btAendern.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAendern.Location = new System.Drawing.Point(392, 0);
-            this.btAendern.Name = "btAendern";
-            this.btAendern.Size = new System.Drawing.Size(55, 55);
-            this.btAendern.TabIndex = 0;
-            this.btAendern.UseVisualStyleBackColor = true;
-            this.btAendern.Click += new System.EventHandler(this.btAendern_Click);
-            // 
             // winMitarbeiterPasswort
             // 
+            this.AcceptButton = this.btAendern;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btSchliessen;
             this.ClientSize = new System.Drawing.Size(450, 231);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.panelChef);
+            this.Controls.Add(this.panelMitarbeiter);
+            this.Controls.Add(gbButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -220,14 +216,11 @@
             this.Text = "Passwort ändern";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.winMitarbeiterPasswort_Load);
+            gbButtons.ResumeLayout(false);
             this.panelChef.ResumeLayout(false);
             this.panelChef.PerformLayout();
             this.panelMitarbeiter.ResumeLayout(false);
             this.panelMitarbeiter.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -235,10 +228,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panelChef;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panelMitarbeiter;
         private System.Windows.Forms.Label lbInitPw;
-        private System.Windows.Forms.Button btSchliessen;
         private System.Windows.Forms.Button btAendern;
         private System.Windows.Forms.TextBox tbInitPw;
         private System.Windows.Forms.TextBox tbNeuesPw2;
@@ -247,5 +238,6 @@
         private System.Windows.Forms.Label lbNeuesPw1;
         private System.Windows.Forms.TextBox tbAltesPw;
         private System.Windows.Forms.Label lbAltesPw;
+        private System.Windows.Forms.Button btSchliessen;
     }
 }

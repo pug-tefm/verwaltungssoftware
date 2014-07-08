@@ -44,7 +44,7 @@ namespace PuG_Verwaltungssoftware
                     connection.Open();
                     return 0;
                 }
-                catch (MySqlException ex)
+                catch (MySqlException)
                 {
                     return 1;
                 }

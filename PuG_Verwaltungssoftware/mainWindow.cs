@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -239,6 +240,24 @@ namespace PuG_Verwaltungssoftware
             // Panel anzeigen
             loginPanel.Visible = true;
             loginPanel.BringToFront();
-        }      
+        }
+
+
+        // Hintergrundfarbe Hauptfenster
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, Color.Gray, Color.Black, 90F))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+        }
+
+        // Hauptfenster aktualisieren bei Groessenveraenderung
+        private void mainWindow_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate();
+        }
+
+
     }
 }

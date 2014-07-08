@@ -47,7 +47,6 @@ namespace PuG_Verwaltungssoftware
                 panelChef.Visible = true;
                 panelMitarbeiter.SendToBack();
                 panelMitarbeiter.Visible = false;
-                btAendern.Text = "Zurücksetzen";
             }
             else
             {                
@@ -55,7 +54,6 @@ namespace PuG_Verwaltungssoftware
                 panelMitarbeiter.Visible = true;
                 panelChef.SendToBack();
                 panelChef.Visible = false;
-                btAendern.Text = "Speichern";
             }
         }
 
