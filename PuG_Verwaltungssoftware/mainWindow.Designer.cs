@@ -184,6 +184,7 @@
             this.btAbmelden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAbmelden.BackgroundImage = global::PuG_Verwaltungssoftware.Properties.Resources.pug_logout_groß;
             this.btAbmelden.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btAbmelden.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btAbmelden.Location = new System.Drawing.Point(552, 21);
             this.btAbmelden.Name = "btAbmelden";
             this.btAbmelden.Size = new System.Drawing.Size(55, 53);

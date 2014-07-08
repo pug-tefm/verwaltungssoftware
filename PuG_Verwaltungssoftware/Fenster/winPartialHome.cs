@@ -204,6 +204,8 @@ namespace PuG_Verwaltungssoftware
                 lvNewsKommend.Items.Clear();
 
                 DateTime today = DateTime.Now;
+                DateTime date2 = today.AddDays(3);
+                String datum2 = date2.ToString("yyyy-MM-dd");
 
                 int tag = (int)today.DayOfWeek;
                 int tag2 = tag;
@@ -219,12 +221,12 @@ namespace PuG_Verwaltungssoftware
                         tag2 = 1;
                         break;
                     default:
-                        tag2 = tag2 + 3;
+                        tag2 = tag2 + 2;
                         break;
                 }
 
-                String sql = "SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE datum_von > '" + today.ToString("yyyy-MM-dd") + "' AND wochentag BETWEEN '" + tag + "' AND '" + tag2 + "';";
-                DataTable dtable = c.select(sql);
+                String strSQL = "SELECT bezeichnung, datum_von, datum_bis, uhrzeit_von, uhrzeit_bis, wochentag FROM kurse WHERE datum_von < '" + today.ToString("yyyy-MM-dd") + "' AND datum_bis > '" + datum2 + "' AND wochentag BETWEEN '" + tag + "' AND '" + tag2 + "';";
+                DataTable dtable = c.select(strSQL);
 
                 c.closeConnection();
 
