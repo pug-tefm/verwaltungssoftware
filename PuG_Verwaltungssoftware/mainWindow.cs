@@ -38,7 +38,10 @@ namespace PuG_Verwaltungssoftware
 
             c_Helper.setToolTip(btMaLoeschen, "Löschen");
             c_Helper.setToolTip(btMgLoeschen, "Löschen");
-            c_Helper.setToolTip(btKursLoeschen, "Löschen");           
+            c_Helper.setToolTip(btKursLoeschen, "Löschen");
+
+            // Versionsnummer einfügen
+            lbVersion.Text = "Version " + this.ProductVersion;
         }
 
         private void miBeenden_Click(object sender, EventArgs e)
@@ -271,7 +274,6 @@ namespace PuG_Verwaltungssoftware
         {
             this.Invalidate();
         }
-
 
     }
 }

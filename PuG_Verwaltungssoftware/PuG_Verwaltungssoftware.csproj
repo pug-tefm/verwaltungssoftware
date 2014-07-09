@@ -11,6 +11,7 @@
     <AssemblyName>PuG_Verwaltungssoftware</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>veröffentlichen\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,8 +24,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,6 +49,27 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>PuG_Verwaltungssoftware.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pug_runner.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A8C06E1C4FDA37FE68B95F017186249425429E23</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>PuG_Verwaltungssoftware_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -184,6 +206,7 @@
     <EmbeddedResource Include="Fenster\winMitarbeiterOeffnen.resx">
       <DependentUpon>winMitarbeiterOeffnen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -205,6 +228,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pug_runner.ico" />
     <Content Include="Resources\Images\Icons\55x47\pug_add_groß.png" />
     <Content Include="Resources\Images\Icons\55x47\pug_check_groß.png" />
     <Content Include="Resources\Images\Icons\55x47\pug_close_groß.png" />
@@ -223,6 +247,7 @@
     <Content Include="Resources\Images\Icons\16x16\pug_open.png" />
     <Content Include="Resources\Images\Icons\16x16\pug_refresh.png" />
     <Content Include="Resources\Images\Icons\16x16\pug_save.png" />
+    <None Include="PuG_Verwaltungssoftware_TemporaryKey.pfx" />
     <None Include="Resources\Images\Icons\55x47\pug_undo_groß.png" />
     <Content Include="Resources\Images\pug_runner.ico" />
     <Content Include="Resources\Images\pug_runner.png" />

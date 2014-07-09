@@ -32,6 +32,7 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPageHome = new System.Windows.Forms.TabPage();
             this.scHome = new System.Windows.Forms.SplitContainer();
+            this.lbVersion = new System.Windows.Forms.Label();
             this.btAbmelden = new System.Windows.Forms.Button();
             this.lbAngemeldet = new System.Windows.Forms.Label();
             this.lbTimer = new System.Windows.Forms.Label();
@@ -135,7 +136,7 @@
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(734, 462);
+            this.mainTabControl.Size = new System.Drawing.Size(734, 463);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 1;
             this.mainTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.mainTabControl_DrawItem);
@@ -148,7 +149,7 @@
             this.tabPageHome.Location = new System.Drawing.Point(114, 4);
             this.tabPageHome.Name = "tabPageHome";
             this.tabPageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHome.Size = new System.Drawing.Size(616, 454);
+            this.tabPageHome.Size = new System.Drawing.Size(616, 455);
             this.tabPageHome.TabIndex = 0;
             this.tabPageHome.Text = "Start";
             this.tabPageHome.Enter += new System.EventHandler(this.tabPageHome_Enter);
@@ -165,6 +166,7 @@
             // scHome.Panel1
             // 
             this.scHome.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.scHome.Panel1.Controls.Add(this.lbVersion);
             this.scHome.Panel1.Controls.Add(this.btAbmelden);
             this.scHome.Panel1.Controls.Add(this.lbAngemeldet);
             this.scHome.Panel1.Controls.Add(this.lbTimer);
@@ -175,9 +177,21 @@
             // 
             this.scHome.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.scHome.Panel2.Controls.Add(this.newsTabControl);
-            this.scHome.Size = new System.Drawing.Size(610, 448);
+            this.scHome.Size = new System.Drawing.Size(610, 449);
             this.scHome.SplitterDistance = 127;
             this.scHome.TabIndex = 0;
+            // 
+            // lbVersion
+            // 
+            this.lbVersion.AutoSize = true;
+            this.lbVersion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbVersion.Font = new System.Drawing.Font("Calibri Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVersion.ForeColor = System.Drawing.Color.Gray;
+            this.lbVersion.Location = new System.Drawing.Point(0, 114);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(0, 13);
+            this.lbVersion.TabIndex = 5;
+            this.lbVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btAbmelden
             // 
@@ -215,7 +229,7 @@
             // lbMitarbeiterName
             // 
             this.lbMitarbeiterName.AutoSize = true;
-            this.lbMitarbeiterName.Location = new System.Drawing.Point(19, 55);
+            this.lbMitarbeiterName.Location = new System.Drawing.Point(19, 45);
             this.lbMitarbeiterName.Name = "lbMitarbeiterName";
             this.lbMitarbeiterName.Size = new System.Drawing.Size(136, 19);
             this.lbMitarbeiterName.TabIndex = 1;
@@ -240,7 +254,7 @@
             this.newsTabControl.Location = new System.Drawing.Point(0, 0);
             this.newsTabControl.Name = "newsTabControl";
             this.newsTabControl.SelectedIndex = 0;
-            this.newsTabControl.Size = new System.Drawing.Size(610, 317);
+            this.newsTabControl.Size = new System.Drawing.Size(610, 318);
             this.newsTabControl.TabIndex = 1;
             // 
             // tabPageAktuell
@@ -249,7 +263,7 @@
             this.tabPageAktuell.Location = new System.Drawing.Point(4, 28);
             this.tabPageAktuell.Name = "tabPageAktuell";
             this.tabPageAktuell.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAktuell.Size = new System.Drawing.Size(602, 285);
+            this.tabPageAktuell.Size = new System.Drawing.Size(602, 286);
             this.tabPageAktuell.TabIndex = 0;
             this.tabPageAktuell.Text = "Aktuelle Kurse";
             this.tabPageAktuell.UseVisualStyleBackColor = true;
@@ -259,7 +273,7 @@
             this.lvNewsAktuell.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsAktuell.Location = new System.Drawing.Point(3, 3);
             this.lvNewsAktuell.Name = "lvNewsAktuell";
-            this.lvNewsAktuell.Size = new System.Drawing.Size(596, 279);
+            this.lvNewsAktuell.Size = new System.Drawing.Size(596, 280);
             this.lvNewsAktuell.TabIndex = 0;
             this.lvNewsAktuell.UseCompatibleStateImageBehavior = false;
             this.lvNewsAktuell.View = System.Windows.Forms.View.List;
@@ -272,7 +286,7 @@
             this.tabPageHeute.Location = new System.Drawing.Point(4, 28);
             this.tabPageHeute.Name = "tabPageHeute";
             this.tabPageHeute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHeute.Size = new System.Drawing.Size(602, 285);
+            this.tabPageHeute.Size = new System.Drawing.Size(602, 286);
             this.tabPageHeute.TabIndex = 1;
             this.tabPageHeute.Text = "Heutige Kurse";
             this.tabPageHeute.UseVisualStyleBackColor = true;
@@ -282,7 +296,7 @@
             this.lvNewsHeute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsHeute.Location = new System.Drawing.Point(3, 3);
             this.lvNewsHeute.Name = "lvNewsHeute";
-            this.lvNewsHeute.Size = new System.Drawing.Size(596, 279);
+            this.lvNewsHeute.Size = new System.Drawing.Size(596, 280);
             this.lvNewsHeute.TabIndex = 1;
             this.lvNewsHeute.UseCompatibleStateImageBehavior = false;
             this.lvNewsHeute.View = System.Windows.Forms.View.List;
@@ -295,7 +309,7 @@
             this.tabPageKommend.Location = new System.Drawing.Point(4, 28);
             this.tabPageKommend.Name = "tabPageKommend";
             this.tabPageKommend.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageKommend.Size = new System.Drawing.Size(602, 285);
+            this.tabPageKommend.Size = new System.Drawing.Size(602, 286);
             this.tabPageKommend.TabIndex = 2;
             this.tabPageKommend.Text = "Kommende Kurse (3 Tage)";
             this.tabPageKommend.UseVisualStyleBackColor = true;
@@ -305,7 +319,7 @@
             this.lvNewsKommend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvNewsKommend.Location = new System.Drawing.Point(3, 3);
             this.lvNewsKommend.Name = "lvNewsKommend";
-            this.lvNewsKommend.Size = new System.Drawing.Size(596, 279);
+            this.lvNewsKommend.Size = new System.Drawing.Size(596, 280);
             this.lvNewsKommend.TabIndex = 1;
             this.lvNewsKommend.UseCompatibleStateImageBehavior = false;
             this.lvNewsKommend.View = System.Windows.Forms.View.List;
@@ -319,7 +333,7 @@
             this.tabPageMitarbeiter.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageMitarbeiter.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitarbeiter.Name = "tabPageMitarbeiter";
-            this.tabPageMitarbeiter.Size = new System.Drawing.Size(616, 454);
+            this.tabPageMitarbeiter.Size = new System.Drawing.Size(616, 455);
             this.tabPageMitarbeiter.TabIndex = 1;
             this.tabPageMitarbeiter.Text = "Mitarbeiter";
             this.tabPageMitarbeiter.Enter += new System.EventHandler(this.tabPageMitarbeiter_Enter);
@@ -345,8 +359,8 @@
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaLoeschen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaOeffnen);
             this.scMitarbeiter.Panel2.Controls.Add(this.btMaNeu);
-            this.scMitarbeiter.Size = new System.Drawing.Size(616, 454);
-            this.scMitarbeiter.SplitterDistance = 395;
+            this.scMitarbeiter.Size = new System.Drawing.Size(616, 455);
+            this.scMitarbeiter.SplitterDistance = 396;
             this.scMitarbeiter.TabIndex = 2;
             // 
             // gridMitarbeiter
@@ -363,7 +377,7 @@
             this.gridMitarbeiter.Name = "gridMitarbeiter";
             this.gridMitarbeiter.ReadOnly = true;
             this.gridMitarbeiter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitarbeiter.Size = new System.Drawing.Size(616, 395);
+            this.gridMitarbeiter.Size = new System.Drawing.Size(616, 396);
             this.gridMitarbeiter.TabIndex = 0;
             this.gridMitarbeiter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitarbeiter_CellDoubleClick);
             this.gridMitarbeiter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMitarbeiter_KeyDown);
@@ -435,7 +449,7 @@
             this.tabPageMitglieder.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageMitglieder.Location = new System.Drawing.Point(114, 4);
             this.tabPageMitglieder.Name = "tabPageMitglieder";
-            this.tabPageMitglieder.Size = new System.Drawing.Size(616, 454);
+            this.tabPageMitglieder.Size = new System.Drawing.Size(616, 455);
             this.tabPageMitglieder.TabIndex = 2;
             this.tabPageMitglieder.Text = "Mitglieder";
             this.tabPageMitglieder.Enter += new System.EventHandler(this.tabPageMitglieder_Enter);
@@ -461,8 +475,8 @@
             this.scMitglieder.Panel2.Controls.Add(this.btMgLoeschen);
             this.scMitglieder.Panel2.Controls.Add(this.btMgNeu);
             this.scMitglieder.Panel2.Controls.Add(this.btMgOeffnen);
-            this.scMitglieder.Size = new System.Drawing.Size(616, 454);
-            this.scMitglieder.SplitterDistance = 395;
+            this.scMitglieder.Size = new System.Drawing.Size(616, 455);
+            this.scMitglieder.SplitterDistance = 396;
             this.scMitglieder.TabIndex = 0;
             // 
             // gridMitglieder
@@ -480,7 +494,7 @@
             this.gridMitglieder.Name = "gridMitglieder";
             this.gridMitglieder.ReadOnly = true;
             this.gridMitglieder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMitglieder.Size = new System.Drawing.Size(616, 395);
+            this.gridMitglieder.Size = new System.Drawing.Size(616, 396);
             this.gridMitglieder.TabIndex = 1;
             this.gridMitglieder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMitglieder_CellDoubleClick);
             this.gridMitglieder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridMitglieder_MouseDown);
@@ -551,7 +565,7 @@
             this.tabPageKurse.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageKurse.Location = new System.Drawing.Point(114, 4);
             this.tabPageKurse.Name = "tabPageKurse";
-            this.tabPageKurse.Size = new System.Drawing.Size(616, 454);
+            this.tabPageKurse.Size = new System.Drawing.Size(616, 455);
             this.tabPageKurse.TabIndex = 3;
             this.tabPageKurse.Text = "Kurse";
             this.tabPageKurse.Enter += new System.EventHandler(this.tabPageKurse_Enter);
@@ -577,8 +591,8 @@
             this.scKurse.Panel2.Controls.Add(this.btKursLoeschen);
             this.scKurse.Panel2.Controls.Add(this.btKursNeu);
             this.scKurse.Panel2.Controls.Add(this.btKursOeffnen);
-            this.scKurse.Size = new System.Drawing.Size(616, 454);
-            this.scKurse.SplitterDistance = 395;
+            this.scKurse.Size = new System.Drawing.Size(616, 455);
+            this.scKurse.SplitterDistance = 396;
             this.scKurse.TabIndex = 0;
             // 
             // gridKurse
@@ -597,7 +611,7 @@
             this.gridKurse.ReadOnly = true;
             this.gridKurse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gridKurse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKurse.Size = new System.Drawing.Size(616, 395);
+            this.gridKurse.Size = new System.Drawing.Size(616, 396);
             this.gridKurse.TabIndex = 2;
             this.gridKurse.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKurse_CellDoubleClick);
             this.gridKurse.Sorted += new System.EventHandler(this.gridKurse_Sorted);
@@ -673,7 +687,7 @@
             this.tabPageKursUebersicht.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageKursUebersicht.Location = new System.Drawing.Point(114, 4);
             this.tabPageKursUebersicht.Name = "tabPageKursUebersicht";
-            this.tabPageKursUebersicht.Size = new System.Drawing.Size(616, 454);
+            this.tabPageKursUebersicht.Size = new System.Drawing.Size(616, 455);
             this.tabPageKursUebersicht.TabIndex = 4;
             this.tabPageKursUebersicht.Text = "Kurs Übersicht";
             this.tabPageKursUebersicht.Enter += new System.EventHandler(this.tabPageKursUebersicht_Enter);
@@ -696,8 +710,8 @@
             this.scKursUebersicht.Panel2.Controls.Add(this.btKursUebersichtOeffnen);
             this.scKursUebersicht.Panel2.Controls.Add(this.tbKursUebersichtSuchen);
             this.scKursUebersicht.Panel2.Controls.Add(this.ddlKursUebersichtSuchen);
-            this.scKursUebersicht.Size = new System.Drawing.Size(616, 454);
-            this.scKursUebersicht.SplitterDistance = 395;
+            this.scKursUebersicht.Size = new System.Drawing.Size(616, 455);
+            this.scKursUebersicht.SplitterDistance = 396;
             this.scKursUebersicht.TabIndex = 0;
             // 
             // gridKursUebersicht
@@ -713,7 +727,7 @@
             this.gridKursUebersicht.Name = "gridKursUebersicht";
             this.gridKursUebersicht.ReadOnly = true;
             this.gridKursUebersicht.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridKursUebersicht.Size = new System.Drawing.Size(616, 395);
+            this.gridKursUebersicht.Size = new System.Drawing.Size(616, 396);
             this.gridKursUebersicht.TabIndex = 0;
             this.gridKursUebersicht.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridKursUebersicht_CellDoubleClick);
             this.gridKursUebersicht.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridKursUebersicht_KeyDown);
@@ -766,7 +780,7 @@
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(734, 462);
+            this.loginPanel.Size = new System.Drawing.Size(734, 463);
             this.loginPanel.TabIndex = 2;
             // 
             // lbLoginMessage
@@ -849,7 +863,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btExit;
-            this.ClientSize = new System.Drawing.Size(734, 462);
+            this.ClientSize = new System.Drawing.Size(734, 463);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -960,6 +974,7 @@
         private System.Windows.Forms.DataGridView gridMitarbeiter;
         private System.Windows.Forms.TextBox tbMitgliederSuchen;
         private System.Windows.Forms.ComboBox ddlMitgliederSuchen;
+        private System.Windows.Forms.Label lbVersion;
     }
 }
 
