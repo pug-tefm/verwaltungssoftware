@@ -214,32 +214,29 @@ namespace PuG_Verwaltungssoftware
                                 // Aktualisierten Inhalt binden (für die Suche)
                                 myBindingSourceKurse.DataSource = myGridKurse.DataSource;
                                 myGridKurse.DataSource = myBindingSourceKurse;
+
+                                DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                // Werte auf default setzen
+                                cbKursleiter.SelectedIndex = -1;
+                                cbWochentag.SelectedIndex = -1;
+
+                                tbBezeichnung.Text = "";
+                                tbPreis.Text = "";
+                                tbMaxTeilnehmer.Text = "";
+
+                                DateTime today = DateTime.Now;
+                                dtpDatumVon.Value = today.Date;
+                                dtpDatumBis.Value = today.Date;
+                                dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                                dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
+                                if (dialogResult == DialogResult.No)
+                                {
+                                    this.Close();
+                                }
                             }
                             else // Fehler Connect
                             {
                                 MessageBox.Show("Verbindungsfehler!\nÜbersicht konnte nicht aktualisiert werden.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-
-                            DialogResult dialogResult = MessageBox.Show("Wollen Sie einen weiteren Kurs erfassen?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                // Werte auf default setzen
-                                cbKursleiter.SelectedIndex = -1;
-                                cbWochentag.SelectedIndex  = -1;
-
-                                tbBezeichnung.Text   = "";
-                                tbPreis.Text         = "";
-                                tbMaxTeilnehmer.Text = "";
-
-                                DateTime today      = DateTime.Now;
-                                dtpDatumVon.Value   = today.Date;
-                                dtpDatumBis.Value   = today.Date;
-                                dtpUhrzeitVon.Value = DateTime.Parse(today.TimeOfDay.ToString());
-                                dtpUhrzeitBis.Value = DateTime.Parse(today.TimeOfDay.ToString());
-                            }
-                            if (dialogResult == DialogResult.No)
-                            {
-                                this.Close();
                             }
                         }
                         myConnection.closeConnection();
